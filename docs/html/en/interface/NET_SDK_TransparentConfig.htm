@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_TransparentConfig</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.10570.1001"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_TransparentConfig</H1>
+<P>Transparent API protocol Interface</P><PRE class=syntax> BOOL NET_SDK_TransparentConfig(
+ LONG<I>     lUserID</I>,
+ char<I>    *sendXML</I>,
+ char<I>    *strUrl</I>,
+ LPVOID<I>   lpOutBuffer</I>,
+ DWORD<I>   dwOutBufferSize</I>,
+ LPDWORD<I>   lpBytesReturned</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] return value of NET_SDK_Login 
+  <DT><I>sendXML</I> 
+  <DD>[in] xml contents in API 
+  <DT><I>strUrl </I>
+  <DD>[in] URL of API。（IP and port are not included. eg：the origninal URL of API 
+  protocol ishttp://[:port]/PtzStopCruise[/channelId]. Here the URL is 
+  PtzStopCruise/channelId） . 
+  <DT><I>lpOutBuffer</I> 
+  <DD>[out] the buffer pointer of receiving data 
+  <DT><I>dwOutBufferSize</I> 
+  <DD>[in]the buffer size of receiving data in bytes can not be zero. 
+  <DT><I>lpBytesReturned</I> 
+  <DD>[out]a pointer to the data length actually received can not be null. 
+</DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information, please 
+call <A href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A><BR>
+<H3>Remarks</H3>
+<P>This function can be used to send http command to the device eg. <IMG 
+src="pic/urlAndXml.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Test the function with the sdk demo: click the "Config" tab, input the strUrl 
+and sendXML,click the "Transparent" button, the lpOutBuffer will display under 
+<IMG src="pic/demoTransparent.png"> </P>
+<HR>
+
+<P></P></BODY></HTML>

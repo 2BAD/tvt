@@ -1,0 +1,313 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml" xmlns:o = 
+"urn:schemas-microsoft-com:office:office"><HEAD><TITLE>111</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.10570.1001"></HEAD>
+<BODY><SPAN>
+<P style="BACKGROUND-COLOR: #888888"><BIG><FONT size=4>&nbsp;</FONT><FONT 
+size=4>Client SDK Instructions</FONT></BIG></P>
+<H1>NET_SDK_SetFishEyeAdjust</H1>
+<P><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; mso-spacerun: 'yes'">(windows</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">&nbsp;&nbsp;only</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; mso-spacerun: 'yes'">)Set&nbsp;the&nbsp;fisheye&nbsp;correction&nbsp;mode<FONT 
+face=宋体>，</FONT><FONT 
+face=Verdana>This&nbsp;interface&nbsp;is&nbsp;called&nbsp;to&nbsp;enter</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">&nbsp;and&nbsp;exit&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; mso-spacerun: 'yes'">&nbsp;fisheye&nbsp;correction&nbsp;mode&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">both</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; mso-spacerun: 'yes'">,&nbsp;only&nbsp;in&nbsp;single&nbsp;window&nbsp;mode.</SPAN></P><PRE class=syntax><!--EndFragment--> BOOL NET_SDK_SetFishEyeAdjust(
+ POINTERHANDLE lPlayHandle,
+ FISHEYE_MODE fishEyeMode
+ );</PRE>
+<H3>Parameters</H3>
+<DT><I>lPlayHandle</I> 
+<DD>[in] the&nbsp;handel&nbsp;of play video&nbsp; 
+<DT>fishEyeMode<BR>
+<DD>[in] <SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">fisheye&nbsp;mode</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">:Installation&nbsp;mode&nbsp;+&nbsp;correction&nbsp;mode</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">,</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">&nbsp;The&nbsp;specific&nbsp;defined&nbsp;values&nbsp;are&nbsp;as&nbsp;follows:</SPAN> 
+
+<DD>
+<DD><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">typedef&nbsp;enum</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FISHEYE_ORIGNAL&nbsp;=&nbsp;0,&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">//Original&nbsp;mode,That&nbsp;is,&nbsp;the&nbsp;fisheye&nbsp;map&nbsp;in&nbsp;the&nbsp;top&nbsp;/&nbsp;wall&nbsp;/&nbsp;bottom&nbsp;mount&nbsp;mode,&nbsp;equivalent&nbsp;to&nbsp;quitting&nbsp;the&nbsp;fisheye&nbsp;correction&nbsp;mod</SPAN> 
+
+<DD><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">FISHEYE_ROOF&nbsp;=&nbsp;0x0100,&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;//Top&nbsp;(suction&nbsp;top)</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FISHEYE_ROOF_360,&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">//Top-mounted&nbsp;360&nbsp;rectangular&nbsp;expansion&nbsp;panorama&nbsp;+&nbsp;independent&nbsp;sub-screen;Sub</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">frames&nbsp;and&nbsp;rectangular</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;expansion</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;panorama&nbsp;support&nbsp;doubling&nbsp;and&nbsp;moving&nbsp;operations<FONT 
+face=宋体>，</FONT><FONT face=Verdana>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Rectangular&nbsp;expansion&nbsp;panorama&nbsp;also&nbsp;supports&nbsp;left&nbsp;and&nbsp;right&nbsp;start&nbsp;point&nbsp;movement</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+FISHEYE_ROOF_2x180,&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">//Two&nbsp;associated&nbsp;180&nbsp;rectangular&nbsp;expansion&nbsp;screens</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;of&nbsp;top-mounted</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">，<FONT 
+face=Verdana>At&nbsp;any&nbsp;moment,&nbsp;the&nbsp;two&nbsp;sub</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">Windows&nbsp;constitute&nbsp;360&nbsp;panoramic&nbsp;views,&nbsp;also&nbsp;known&nbsp;as&nbsp;the&nbsp;"double&nbsp;panorama",Both&nbsp;rectangular&nbsp;expansion&nbsp;pictures&nbsp;support&nbsp;the&nbsp;left&nbsp;and&nbsp;right&nbsp;movement&nbsp;start&nbsp;point&nbsp;operation,&nbsp;and&nbsp;linkage&nbsp;with&nbsp;each&nbsp;other;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;</SPAN> 
+
+<DD><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">FISHEYE_ROOF_FISH_3PTZ,&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">//Top-mounted&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">o</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">riginal&nbsp;image&nbsp;+&nbsp;3&nbsp;independent&nbsp;sub</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">images<FONT 
+face=宋体>，</FONT><FONT face=Verdana>Both&nbsp;sub</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">frames&nbsp;and&nbsp;frames&nbsp;in&nbsp;the&nbsp;original&nbsp;image&nbsp;support&nbsp;doubling&nbsp;and&nbsp;moving<FONT 
+face=宋体>，</FONT><FONT 
+face=Verdana>The&nbsp;original&nbsp;image&nbsp;also&nbsp;supports&nbsp;rotation&nbsp;change&nbsp;start&nbsp;point&nbsp;operations;</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;</SPAN> 
+
+<DD><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">FISHEYE_ROOF_FISH_4PTZ,&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">//Top-mounted&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">o</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">riginal&nbsp;image&nbsp;+&nbsp;4&nbsp;independent&nbsp;subimages</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">，<FONT 
+face=Verdana>Both&nbsp;sub</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">frames&nbsp;and&nbsp;frames&nbsp;in&nbsp;the&nbsp;original&nbsp;image&nbsp;support&nbsp;doubling&nbsp;and&nbsp;moving<FONT 
+face=宋体>，</FONT><FONT 
+face=Verdana>The&nbsp;original&nbsp;image&nbsp;also&nbsp;supports&nbsp;rotation&nbsp;change&nbsp;start&nbsp;point&nbsp;operations;</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;</SPAN> 
+
+<DD><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">FISHEYE_ROOF_360_6PTZ,&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;//Top-mounted&nbsp;360&nbsp;rectangular&nbsp;expansion&nbsp;panorama&nbsp;+</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">6</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;independent&nbsp;sub-screen</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">s</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">，<FONT 
+face=Verdana>Sub</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">frames&nbsp;and&nbsp;rectangular&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">expansion</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;panorama&nbsp;support&nbsp;doubling&nbsp;and&nbsp;moving&nbsp;operations<FONT 
+face=宋体>，</FONT><FONT 
+face=Verdana>Rectangular&nbsp;expansion&nbsp;panorama&nbsp;also&nbsp;supports&nbsp;left&nbsp;and&nbsp;right&nbsp;start&nbsp;point&nbsp;movement</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+FISHEYE_ROOF_FISH_8PTZ,&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;//Top-mounted&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">o</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">riginal&nbsp;image&nbsp;+&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">8</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;independent&nbsp;sub</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">images<FONT 
+face=宋体>，</FONT><FONT face=Verdana>Both&nbsp;sub</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">frames&nbsp;and&nbsp;frames&nbsp;in&nbsp;the&nbsp;original&nbsp;image&nbsp;support&nbsp;doubling&nbsp;and&nbsp;moving<FONT 
+face=宋体>，</FONT><FONT 
+face=Verdana>The&nbsp;original&nbsp;image&nbsp;also&nbsp;supports&nbsp;rotation&nbsp;change&nbsp;start&nbsp;point&nbsp;operations;</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 'Calibri'; mso-spacerun: 'yes'"><o:p></o:p></SPAN> 
+
+<DD>
+<P class=p15 
+style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt; TEXT-INDENT: 14.75pt"><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">FISHEYE_WALL&nbsp;=&nbsp;0x0200,&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">//</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">Wall</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-mounted&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;&nbsp;FISHEYE_WALL_180,&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">//The&nbsp;180&nbsp;wall-mounted&nbsp;panorama,&nbsp;from&nbsp;left&nbsp;to&nbsp;right&nbsp;180&nbsp;rectangular&nbsp;expansion&nbsp;panorama,&nbsp;180&nbsp;rectangular&nbsp;expansion&nbsp;panorama&nbsp;support&nbsp;up&nbsp;and&nbsp;down&nbsp;movement&nbsp;operation,&nbsp;change&nbsp;the&nbsp;vertical&nbsp;viewing&nbsp;angle;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'"><o:p></o:p></SPAN></P>
+<P class=p15 
+style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt; TEXT-INDENT: 14.75pt"><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;FISHEYE_WALL_180_3PTZ,&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;//180&nbsp;Rectangle&nbsp;panoramic&nbsp;panorama&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;of&nbsp;wall-mounted</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">+&nbsp;3</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;i</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">ndependent&nbsp;su</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">b-frames</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">，</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">s</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">ub</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">frames&nbsp;and&nbsp;rectangular&nbsp;panoramic&nbsp;panorama&nbsp;support&nbsp;doubling&nbsp;and&nbsp;moving&nbsp;operations<FONT 
+face=宋体>，</FONT><FONT 
+face=Verdana>Rectangular&nbsp;expansion&nbsp;panorama&nbsp;supports&nbsp;up&nbsp;and&nbsp;down&nbsp;movement,</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;to&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">chang</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">e</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;the&nbsp;vertical&nbsp;perspective</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'"><o:p></o:p></SPAN></P>
+<P class=p15 
+style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt; TEXT-INDENT: 14.75pt"><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;FISHEYE_WALL_180_4PTZ,&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">//180&nbsp;Rectangle&nbsp;panoramic&nbsp;panorama&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;of&nbsp;wall-mounted</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">+</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;4&nbsp;i</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">ndependent&nbsp;su</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">b-frames</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">，</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">s</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">ub</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">frames&nbsp;and&nbsp;rectangular&nbsp;panoramic&nbsp;panorama&nbsp;support&nbsp;doubling&nbsp;and&nbsp;moving&nbsp;operations<FONT 
+face=宋体>，</FONT><FONT 
+face=Verdana>Rectangular&nbsp;expansion&nbsp;panorama&nbsp;supports&nbsp;up&nbsp;and&nbsp;down&nbsp;movement,</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;to&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">chang</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">e</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;the&nbsp;vertical&nbsp;perspective&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;&nbsp;FISHEYE_WALL_180_8PTZ,&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;//180&nbsp;Rectangle&nbsp;panoramic&nbsp;panorama&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;of&nbsp;wall-mounted</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">+&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">8&nbsp;i</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">ndependent&nbsp;su</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">b-frames</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">，</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">s</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">ub</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">frames&nbsp;and&nbsp;rectangular&nbsp;panoramic&nbsp;panorama&nbsp;support&nbsp;doubling&nbsp;and&nbsp;moving&nbsp;operations<FONT 
+face=宋体>，</FONT><FONT 
+face=Verdana>Rectangular&nbsp;expansion&nbsp;panorama&nbsp;supports&nbsp;up&nbsp;and&nbsp;down&nbsp;movement,</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;to&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">chang</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">e</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;the&nbsp;vertical&nbsp;perspective&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 'Calibri'; mso-spacerun: 'yes'"><o:p></o:p></SPAN></P>
+<P class=p15 
+style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt; TEXT-INDENT: 14.75pt"><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">FISHEYE_DESKTOP&nbsp;=&nbsp;0x0300,</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;//Bottom</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-mounted</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">(desktop)</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;&nbsp;FISHEYE_DESKTOP_360,</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;&nbsp;//&nbsp;360&nbsp;rectangular&nbsp;expansion&nbsp;panorama&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">of&nbsp;bottom-mounted</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">+</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">i</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">ndependent&nbsp;su</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">b-frames</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">s</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">ub</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">frames&nbsp;and&nbsp;rectangular&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">expansion</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;panorama&nbsp;support&nbsp;doubling&nbsp;and&nbsp;moving&nbsp;operations<FONT 
+face=宋体>，</FONT><FONT 
+face=Verdana>Rectangular&nbsp;expansion&nbsp;panorama&nbsp;also&nbsp;supports&nbsp;left&nbsp;and&nbsp;right&nbsp;start&nbsp;point&nbsp;movement</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;&nbsp;FISHEYE_DESKTOP_2x180,&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;//Two&nbsp;associated&nbsp;180&nbsp;rectangular&nbsp;expansion&nbsp;screens</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;of&nbsp;bottom-mounted</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">，<FONT 
+face=Verdana>At&nbsp;any&nbsp;moment,&nbsp;the&nbsp;two&nbsp;sub</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">Windows&nbsp;constitute&nbsp;360&nbsp;panoramic&nbsp;views,&nbsp;also&nbsp;known&nbsp;as&nbsp;the&nbsp;"double&nbsp;panorama",Both&nbsp;rectangular&nbsp;expansion&nbsp;pictures&nbsp;support&nbsp;the&nbsp;left&nbsp;and&nbsp;right&nbsp;movement&nbsp;start&nbsp;point&nbsp;operation,&nbsp;and&nbsp;linkage&nbsp;with&nbsp;each&nbsp;other;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'"><o:p></o:p></SPAN></P>
+<P class=p15 
+style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt; TEXT-INDENT: 14.75pt"><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">FISHEYE_DESKTOP_FISH_3PTZ,&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">//</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">Bottom</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-mounted&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">o</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">riginal&nbsp;image&nbsp;+&nbsp;3&nbsp;independent&nbsp;sub</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">images<FONT 
+face=宋体>，</FONT><FONT face=Verdana>Both&nbsp;sub</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">frames&nbsp;and&nbsp;frames&nbsp;in&nbsp;the&nbsp;original&nbsp;image&nbsp;support&nbsp;doubling&nbsp;and&nbsp;moving<FONT 
+face=宋体>，</FONT><FONT 
+face=Verdana>The&nbsp;original&nbsp;image&nbsp;also&nbsp;supports&nbsp;rotation&nbsp;change&nbsp;start&nbsp;point&nbsp;operations;</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;&nbsp;FISHEYE_DESKTOP_FISH_4PTZ,</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;//</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">Bottom</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-mounted&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">o</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">riginal&nbsp;image&nbsp;+&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">4</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;independent&nbsp;sub</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">images<FONT 
+face=宋体>，</FONT><FONT face=Verdana>Both&nbsp;sub</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">frames&nbsp;and&nbsp;frames&nbsp;in&nbsp;the&nbsp;original&nbsp;image&nbsp;support&nbsp;doubling&nbsp;and&nbsp;moving<FONT 
+face=宋体>，</FONT><FONT 
+face=Verdana>The&nbsp;original&nbsp;image&nbsp;also&nbsp;supports&nbsp;rotation&nbsp;change&nbsp;start&nbsp;point&nbsp;operations;</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;&nbsp;FISHEYE_DESKTOP_360_6PTZ,</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;//</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">Bottom</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-mounted&nbsp;360&nbsp;rectangular&nbsp;expansion&nbsp;panorama&nbsp;+</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">6</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;independent&nbsp;sub-screen</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">s</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">，<FONT 
+face=Verdana>Sub</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">frames&nbsp;and&nbsp;rectangular&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">expansion</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;panorama&nbsp;support&nbsp;doubling&nbsp;and&nbsp;moving&nbsp;operations<FONT 
+face=宋体>，</FONT><FONT 
+face=Verdana>Rectangular&nbsp;expansion&nbsp;panorama&nbsp;also&nbsp;supports&nbsp;left&nbsp;and&nbsp;right&nbsp;start&nbsp;point&nbsp;movement</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'"><BR></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;&nbsp;&nbsp;&nbsp;FISHEYE_DESKTOP_FISH_8PTZ,</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;//</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">Bottom</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-mounted&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">o</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">riginal&nbsp;image&nbsp;+&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">8</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">&nbsp;independent&nbsp;sub</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">images<FONT 
+face=宋体>，</FONT><FONT face=Verdana>Both&nbsp;sub</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">-</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'">frames&nbsp;and&nbsp;frames&nbsp;in&nbsp;the&nbsp;original&nbsp;image&nbsp;support&nbsp;doubling&nbsp;and&nbsp;moving<FONT 
+face=宋体>，</FONT><FONT 
+face=Verdana>The&nbsp;original&nbsp;image&nbsp;also&nbsp;supports&nbsp;rotation&nbsp;change&nbsp;start&nbsp;point&nbsp;operations;</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(0,128,0); mso-spacerun: 'yes'"><o:p></o:p></SPAN></P>
+<P class=p0 style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt"><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; COLOR: rgb(128,0,128); mso-spacerun: 'yes'">&nbsp;}FISHEYE_MODE;</SPAN></P><!--EndFragment-->
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information, please 
+call<A 
+href="NET_SDK_GetlastError.htm"><U>NET_SDK_GetLastError</U></A></P></SPAN><!--EndFragment--></DD></BODY></HTML>

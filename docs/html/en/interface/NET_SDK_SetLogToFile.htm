@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_SetLogToFile</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_SetLogToFile</H1>
+<P>enable writing log file</P><PRE class=syntax> BOOL NET_SDK_SetLogToFile(
+ BOOL<I>     bLogEnable</I>,
+ char<I>     *strLogDir</I>,
+ BOOL<I>     bAutoDel</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT>bLogEnable 
+  <DD>[in] whether enable the function of writing log,default value is FALSE 
+  <DT>strLogDir 
+  <DD>[in] directory of log file,default directory is "C:\\SdkLog\\" 
+  <DT>bAutoDel 
+  <DD>[in] whether delete excess file count,default value is TRUE </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please call 
+<A href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>Directory of log file must be absolute path,and ends with "\\",for 
+example:"C:\\SdkLog\\".Advise user to create file manually,if no specified 
+path,adopt default path "C:\\SdkLog\\". This interface can be called many times 
+to create log files, and support creating 10 files at most.When assign bAutoDel 
+TRUE,system will delete excess file automatically.New directory will be valid in 
+writing file when changing directory or next time to write file. </P><BR>
+<HR>
+</BODY></HTML>

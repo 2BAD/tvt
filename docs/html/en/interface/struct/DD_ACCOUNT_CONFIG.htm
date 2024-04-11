@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>DD_ACCOUNT_CONFIG</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_ACCOUNT_CONFIG</h1>
+<p>struct of account configuration</p>
+<pre class ="syntax"> struct _dd_account_config{
+ unsigned long           iSize;			
+ unsigned long           enable;			
+ unsigned long           bindMAC;			
+ unsigned long           group;			
+ char                    MAC [8];					
+ char                    name [DD_MAX_USER_NAME_BUF_LEN];	
+ char                    password [DD_MAX_PASSWORD_BUF_LEN];
+ unsigned char           logSearch;		
+ unsigned char           systemSetup;		
+ unsigned char           fileManagement;	
+ unsigned char           diskManagement;
+ unsigned char           remoteLogin;		
+ unsigned char           twoWayAudio;		
+ unsigned char           systemMaintain;	
+ unsigned char           OnlineUserManagement;	
+ unsigned char           shutdown;			
+ unsigned char           alarmOutCtrl;		
+ unsigned char           netAlarm;			
+ unsigned char           netSerialCtrl;	
+ unsigned char           authLive;
+ unsigned char           authRecord;
+ unsigned char           authPlayback;
+ unsigned char           authBackup;
+ unsigned char           authPTZ;
+ unsigned char           netAuthView;
+ unsigned char           netauthRecord;
+ unsigned char           netauthPlayback;
+ unsigned char           netauthBackup;
+ unsigned char           netauthPTZ;
+ unsigned char           recv[2];
+ unsigned char           authLiveCH [DD_MAX_CAMERA_NUM_BYTE_LEN];        
+ unsigned char           authRecordCH [DD_MAX_CAMERA_NUM_BYTE_LEN];		
+ unsigned char           authPlaybackCH [DD_MAX_CAMERA_NUM_BYTE_LEN];		
+ unsigned char           authBackupCH [DD_MAX_CAMERA_NUM_BYTE_LEN];		
+ unsigned char           authPTZCH [DD_MAX_CAMERA_NUM_BYTE_LEN];			
+ unsigned char           netAuthViewCH [DD_MAX_CAMERA_NUM_BYTE_LEN];		
+ unsigned char           netAuthRecordCH [DD_MAX_CAMERA_NUM_BYTE_LEN];		
+ unsigned char           netAuthPlaybackCH [DD_MAX_CAMERA_NUM_BYTE_LEN];	
+ unsigned char           netAuthBackupCH [DD_MAX_CAMERA_NUM_BYTE_LEN];		
+ unsigned char           netAuthPTZCH [DD_MAX_CAMERA_NUM_BYTE_LEN];		
+ }DD_ACCOUNT_CONFIG;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>iSize</i></dt>
+<dd>size of the struct</dd>
+<dt><i>enable</i></dt>
+<dd>whether to use the account</dd>
+<dt><i>bindMAC</i></dt>
+<dd>whether to bind MAC</dd>
+<dt><i>group</i></dt>
+<dd>the group belonged to,refer to DD_USER_GROUP:</dd>
+<table>
+<tr>
+<th>Group Name</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>DD_USER_GROUP_NONE</td>
+<td>0x00</td>
+<td></td>
+</tr>
+<tr>
+<td>DD_USER_GROUP_ADMIN</td>
+<td>0x01</td>
+<td>administrator,have all rights</td>
+</tr>
+<tr>
+<td>DD_USER_GROUP_ADVANCE</td>
+<td>0x02</td>
+<td>advanced user,default rights:basic,record,config,playback,backup,data management,disk management,PTZ control,remote login and all channels rights
+</tr>
+<tr>
+<td>DD_USER_GROUP_NORMAL</td>
+<td>0x03</td>
+<td>normal user,default rights:basic,record,playback,backup,PTZ control,remote login and all channels rights</td>
+</tr>
+</table>
+<dt><i>MAC [8]</i></dt>
+<dd>binded MAC</dd>
+<dt><i>name [DD_MAX_USER_NAME_BUF_LEN]</i></dt>
+<dd>user name</dd>
+<dt><i>password [DD_MAX_PASSWORD_BUF_LEN]</i></dt>
+<dd>password</dd>
+<dt><i>logSearch</i></dt>
+<dd>limit of log search</dd>
+<dt><i>systemSetup</i></dt>
+<dd>system configuration</dd>
+<dt><i>fileManagement</i></dt>
+<dd>file management</dd>
+<dt><i>diskManagement</i></dt>
+<dd>disc management</dd>
+<dt><i>remoteLogin</i></dt>
+<dd>remote login</dd>
+<dt><i>twoWayAudio</i></dt>
+<dd>audio talkback</dd>
+<dt><i>systemMaintain</i></dt>
+<dd>system maintain</dd>
+<dt><i>OnlineUserManagement</i></dt>
+<dd>online user management</dd>
+<dt><i>shutdown</i></dt>
+<dd>shutdown or reboot</dd>
+<dt><i>alarmOutCtrl</i></dt>
+<dd>alarm output control</dd>
+<dt><i>netAlarm</i></dt>
+<dd>network alarm</dd>
+<dt><i>netSerialCtrl</i></dt>
+<dd>network serial port control</dd>
+<dt><i>authLive</i></dt>
+<dd>live preview</dd>
+<dt><i>authRecord</i></dt>
+<dd>local record</dd>
+<dt><i>authPlayback</i></dt>
+<dd>local search playback</dd>
+<dt><i>authBackup</i></dt>
+<dd>local backup</dd>
+<dt><i>authPTZ</i></dt>
+<dd>local PTZ</dd>
+<dt><i>netAuthView</i></dt>
+<dd>local control</dd>
+<dt><i>netauthRecord</i></dt>
+<dd>remote record</dd>
+<dt><i>netauthPlayback</i></dt>
+<dd>remote live playback</dd>
+<dt><i>netauthBackup</i></dt>
+<dd>remote backup</dd>
+<dt><i>netauthPTZ</i></dt>
+<dd>remote PTZ</dd>
+<dt><i>recv[2]</i></dt>
+<dd>reserved bytes</dd>
+<dt><i>authLiveCH [DD_MAX_CAMERA_NUM_BYTE_LEN]</i></dt>
+<dd>live preview channel</dd>
+<dt><i>authRecordCH [DD_MAX_CAMERA_NUM_BYTE_LEN]</i></dt>
+<dd>local record manually</dd>
+<dt><i>authPlaybackCH [DD_MAX_CAMERA_NUM_BYTE_LEN]</i></dt>
+<dd>local search and playback</dd>
+<dt><i>authBackupCH [DD_MAX_CAMERA_NUM_BYTE_LEN]</i></dt>
+<dd>local backup</dd>
+<dt><i>authPTZCH [DD_MAX_CAMERA_NUM_BYTE_LEN]</i></dt>
+<dd>local PTZ control</dd>
+<dt><i>netAuthViewCH [DD_MAX_CAMERA_NUM_BYTE_LEN]</i></dt>
+<dd>remote live preview</dd>
+<dt><i>netAuthRecordCH [DD_MAX_CAMERA_NUM_BYTE_LEN]</i></dt>
+<dd>remote record manually</dd>
+<dt><i>netAuthPlaybackCH [DD_MAX_CAMERA_NUM_BYTE_LEN]</i></dt>
+<dd>remote playback</dd>
+<dt><i>netAuthBackupCH [DD_MAX_CAMERA_NUM_BYTE_LEN]</i></dt>
+<dd>remote backup</dd>
+<dt><i>netAuthPTZCH [DD_MAX_CAMERA_NUM_BYTE_LEN]</i></dt>
+<dd>remote PTZ control</dd>
+
+</dl>
+<br />
+ <hr />
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

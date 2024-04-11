@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_GetNvrRecordDays</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.10570.1001"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG><FONT size=4>&nbsp;Client SDK 
+Instructions</FONT></BIG></P>
+<H1>NET_SDK_GetNvrRecordDays</H1>
+<P><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; mso-spacerun: 'yes'">Query&nbsp;the&nbsp;number&nbsp;of&nbsp;days&nbsp;of&nbsp;video&nbsp;exists&nbsp;on&nbsp;the&nbsp;NVR&nbsp;device<FONT 
+face=宋体>（</FONT></SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">works&nbsp;for&nbsp;</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; mso-spacerun: 'yes'">NVR</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: '宋体'; mso-spacerun: 'yes'">&nbsp;only</SPAN><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; mso-spacerun: 'yes'">）</SPAN></P><!--EndFragment--><PRE class=syntax> BOOL NET_SDK_GetNvrRecordDays(
+   LONG<I>    lUserID</I>,
+   NET_SDK_NVR_DISKREC_DATE_ITEM* pDiskRecDateInfo
+   LONG lBuffSize,
+   LONG* pDISKCount 
+  ); </PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] returned value of NET_SDK_Login() 
+  <DT>pDiskRecDateInfo 
+  <DD>[out]&nbsp;video days information structure pointer for the NVR device 
+  <DT>lBuffSize 
+  <DD>[in] size of NET_SDK_NVR_DISKREC_DATE_ITEM structure<!--EndFragment--> 
+  <DT>pDISKCount 
+  <DD>[out] number of hard drives for the NVR</DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information, please 
+call<A href="NET_SDK_GetlastError.htm"><U>NET_SDK_GetLastError</U></A></P>
+<H3>Remarks</H3>
+<DIV class=Section0 style="LAYOUT-GRID:  15.6pt none">
+<P class=p0 style="MARGIN-BOTTOM: 0pt; MARGIN-TOP: 0pt"><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; mso-spacerun: 'yes'">Each&nbsp;hard&nbsp;disk&nbsp;of&nbsp;the&nbsp;NVR&nbsp;device&nbsp;corresponds&nbsp;to&nbsp;a&nbsp;query&nbsp;result,&nbsp;with&nbsp;the&nbsp;video&nbsp;days&nbsp;format&nbsp;2021-11-27~2021-12-07,&nbsp;indicating&nbsp;the&nbsp;existence&nbsp;of&nbsp;video&nbsp;on&nbsp;the&nbsp;hard&nbsp;disk&nbsp;during&nbsp;this&nbsp;time&nbsp;period</SPAN><SPAN 
+style="FONT-SIZE: 13.5pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(136,136,136); mso-spacerun: 'yes'; mso-shading: rgb(136,136,136)"><?xml:namespace 
+prefix = "o" ns = "urn:schemas-microsoft-com:office:office" 
+/><o:p></o:p></SPAN></P></DIV><!--EndFragment--></BODY></HTML>

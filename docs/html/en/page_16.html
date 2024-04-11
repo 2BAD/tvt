@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET_SDK_GetIVMRuleConfig</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;<FONT size=4>Client SDK 
+Instructions</FONT></BIG></P>
+<H1>NET_SDK_GetIVMRuleConfig</H1>
+<P>Get IVM configuration information of the device(only support IPC).</P><PRE class=syntax> BOOL NET_SDK_GetIVMRuleConfig(
+ LONG<I>     lUserID</I>,
+ DWORD<I>    dwCommand</I>,
+ LONG<I>     lChannel</I>,
+ LPVOID<I>   lpOutBuffer</I>,
+ DWORD<I>    dwOutBufferSize</I>,
+ LPDWORD<I>  lpBytesReturned</I>,
+);</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] the return value of&nbsp;NET_SDK_Login() 
+  <DT><I>dwCommand</I> 
+  <DD>[in] the configuration command of the device. Refer to configuration 
+  command. 
+  <DT><I>lChannel</I> 
+  <DD>[in] the channel number starts from 0 
+  <DT><I>lpOutBuffer</I> 
+  <DD>[out] a pointer to the buffer of receiving data. 
+  <DT><I>dwOutBufferSize</I> 
+  <DD>[in] the buffer length receiving data (in bytes) can not be&nbsp;zero. 
+  <DT><I>lpBytesReturned</I> 
+  <DD>[out] a pointer to the data length actually received can not be NULL 
+  <DT>&nbsp;</DT></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information, please 
+call<A href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>The structures and commands are as follows:<BR></P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TH>
+      <P>dwCommand</P>
+      <P>macro definition</P></TH>
+    <TH>
+      <P>dwCommand</P>
+      <P><FONT style="BACKGROUND-COLOR: #eeeeee">value</FONT></P></TH>
+    <TH>
+      <P>dwCommand</P>
+      <P>Meanings</P></TH>
+    <TH>structure</TH></TR>
+  <TR>
+    <TD>IVM_RULE_VFD_CONFIG</TD>
+    <TD>0x0</TD>
+    <TD>face&nbsp;recognition configuration</TD>
+    <TD><SPAN style="COLOR: #800080">NET_SDK_VFD_CONFIG</SPAN></TD></TR>
+  <TR>
+    <TD>IVM_RULE_VFD_TRIGGER_CONFIG</TD>
+    <TD>0x1</TD>
+    <TD>alarm trigger configuration of face recognition</TD>
+    <TD><SPAN style="COLOR: #800080">NET_SDK_VFD_TRIGGER_CONFIG</SPAN></TD></TR>
+  <TR>
+    <TD>IVM_RULE_VFD_SCHEDULE_CONFIG</TD>
+    <TD>0x2</TD>
+    <TD>schedule of face recognition</TD>
+    <TD><SPAN style="COLOR: #800080">NET_DVR_SCHEDULE_CONFIG</SPAN></TD></TR>
+  <TR>
+    <TD>IVM_RULE_AVD_CONFIG</TD>
+    <TD>0x3</TD>
+    <TD>abnormal video signal detection configuration</TD>
+    <TD><SPAN 
+style="COLOR: #800080">NET_SDK_AVD_CONFIG</SPAN></TD></TR></TBODY></TABLE>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_SetDVRConfig.htm">NET_SDK_SetDVRConfig</A>&nbsp;&nbsp;&nbsp;<A 
+href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P><BR>
+<HR>
+</BODY></HTML>

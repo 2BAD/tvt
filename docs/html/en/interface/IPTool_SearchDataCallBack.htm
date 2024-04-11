@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>IPTool_SearchDataCallBack</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>IPTool_SearchDataCallBack</H1>
+<P>call back of  asynchronous searching</P><PRE class=syntax> void *IPTool_SearchDataCallBack(
+ char* <I>  hwaddr </I>, 
+ char* <I>  szDevIP </I>, 
+ int  <I>  opt </I>, 
+ const char*  <I>  szXmlData</I>, 
+ void *  <I>  pParam</I>, 
+ const char *<I>  szRecvFromNIC</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>hwaddr</I> 
+  <DD>hard ware address 
+  <DT><I>szDevIP</I> 
+  <DD>IP
+  <DT><I>opt</I> 
+  <DD> reserve
+  <DT><I>szXmlData</I> 
+  <DD>the searched device's information with xml format
+  <DT><I>pParam</I> 
+  <DD> reserve
+  <DT><I>szRecvFromNIC</I> 
+  <DD>reserve </DD></DL>
+<H3>Return Values</H3>
+<P>No return value. To get error information, 
+please&nbsp;refer to <A 
+href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P></BIG>
+<HR>
+</BODY></HTML>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_SetVideoEffect</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;<FONT size=4>Client SDK 
+Instructions</FONT></BIG></P>
+<H1>NET_SDK_SetVideoEffect_Ex</H1>
+<P>Set the display parameter of the video.</P><PRE class=syntax> BOOL NET_SDK_SetVideoEffect_Ex(
+ LONG<I>      lUserID</I>,
+ LONG<I>      lChannel</I>,
+ DWORD<I>     dwBrightValue</I>,
+ DWORD<I>     dwContrastValue</I>,
+ DWORD<I>     dwSaturationValue</I>,
+ DWORD<I>     dwHueValue</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] the return value of NET_SDK_Login() 
+  <DT><I>lChannel</I> 
+  <DD>[in] the return value of NET_SDK_CLIENTINFO. The channel number starts 
+  from 0 
+  <DT><I>dwBrightValue</I> 
+  <DD>[out] Brightness: the return value range of NET_SDK_SetVideoEffect_Ex : 
+  [minValue,maxValue] 
+  <DT><I>dwContrastValue</I> 
+  <DD>[out]&nbsp;Contrast: the return value range of&nbsp; 
+  NET_SDK_SetVideoEffect_Ex: [minValue,maxValue] 
+  <DT><I>dwSaturationValue</I> 
+  <DD>[out] Saturation:&nbsp; the return value range of&nbsp; 
+  NET_SDK_SetVideoEffect_Ex : [minValue,maxValue]&nbsp; 
+  <DT><I>dwHueValue</I> 
+  <DD>[out] Hue: the return value range of NET_SDK_SetVideoEffect_Ex 
+  :[minValue,maxValue] </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please 
+call<A href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_LivePlay.htm">NET_SDK_LivePlay</A>&nbsp;&nbsp;</P>
+<H1>Android Interface</H1>
+<P>The corresponding Android interface：NO</P><BR><BR>
+<HR>
+</BODY></HTML>

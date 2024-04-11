@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_InitAudioEncoder</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_InitAudioEncoder</H1>
+<P>initialize audio encoder</P><PRE class=syntax> void* NET_SDK_InitAudioEncoder( 
+ void<I>     *pAudioInfo</I>,
+ LONG<I>     infoLen</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>pAudioInfo</I> 
+  <DD>[in] pointer to audio information 
+  <DT><I>infoLen</I> 
+  <DD>[in] length of audio information </DD></DL>
+<H3>Return Values</H3>
+<P>-1 means failure and other value is handle of audio encoding. To get error 
+information,please call <A 
+href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_ReleaseAudioEncoder.htm">NET_SDK_ReleaseAudioEncoder</A>&nbsp;&nbsp;&nbsp;<A 
+href="NET_SDK_EncodeAudioFrame.htm">NET_SDK_EncodeAudioFrame</A> </P><BR>
+<HR>
+</BODY></HTML>

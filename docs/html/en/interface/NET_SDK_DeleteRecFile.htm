@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET SDK DeleteRecFile</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_DeleteRecFile</H1>
+<P>delete recorded file(only support 3.0DVR)</P><PRE class=syntax> BOOL NET_SDK_DeleteRecFile(   
+ LONG <I>            lUserID</I>,
+ <A href="struct/NET_SDK_REC_FILE.htm">NET_SDK_REC_FILE</A><I> *pFileToUnlock</I>,
+ LONG<I>             fileNum</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] user ID 
+  <DT><I>*pFileToUnlock</I> 
+  <DD>[in] pointer to unlock file 
+  <DT><I>fileNum</I> 
+  <DD>[in] number of files </DD></DL>
+<H3>Return Values</H3>
+<P>TURE means success; FALSE means failure. To get error information,please call 
+<A href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P><BR>
+<HR>
+</BODY></HTML>

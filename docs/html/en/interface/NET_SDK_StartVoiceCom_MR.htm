@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_StartVoiceCom_MR</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_StartVoiceCom_MR</H1>
+<P>start voice forward function</P><PRE class=syntax> LONG NET_SDK_StartVoiceCom_MR( 
+ LONG <I>                  lUserID</I>,
+ <A href="TALK_DATA_CALLBACK.htm">TALK_DATA_CALLBACK</A><I>     fVoiceDataCallBack</I>,
+ void<I>                   * pUser</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] user ID 
+  <DT><I>bNeedNoEncodeData</I> 
+  <DD>[in]&nbsp; whether to encode the language data. If TRUE is selected, the 
+  stream from the device will be directly called back and the stream transfered 
+  to the device&nbsp;is encoded by SDK . If FALSE is selected, the stream from 
+  the deivce is decoded first and then called back; the stream transfered to the 
+  device is not encoded by SDK.</DD>
+  <DT><I>fVoiceDataCallBack</I> 
+  <DD>[in] return value of voice data callback function 
+  <DT><I>pUser</I> 
+  <DD>[in] user information </DD></DL>
+<H3>Return Values</H3>
+<P>-1 means failure and other value is return value of voice forward. To get 
+error information,please call <A 
+href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_VoiceComSendData.htm">NET_SDK_VoiceComSendData</A></P><BR>
+<HR>
+</BODY></HTML>

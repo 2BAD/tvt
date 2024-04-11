@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>DD TIME EX</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>DD_TIME_EX</H1>
+<P>Struct of time configuration information of the device. Compared&nbsp;to 
+DD_TIME，the month and year value of DD_TIME&nbsp;is different&nbsp;.</P><PRE class=syntax> typedef struct _dd_time_ex_
+{
+    unsigned char	second;		//Seconds after minute (0–59)
+    unsigned char	minute;		//Minutes after hour (0–59)
+    unsigned char	hour;		//Hours since midnight (0–23)
+    unsigned char	wday;		//Day of week (0–6; Sunday = 0)
+    unsigned char	mday;		//Day of month (1–31)
+    unsigned char	month;		//Month (1–12; January = 1)
+    unsigned short	year;		//Year (current year )
+    int				nTotalseconds;		//total seconds</PRE><PRE class=syntax>    int				nMicrosecond;	//microsecond
+}DD_TIME_EX;//Compared&nbsp;to DD_TIME，the month and year value of DD_TIME&nbsp;is different.
+
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT><I>second</I> 
+  <DD>second; it ranges from 0 to 59. 
+  <DT><I>minute</I> 
+  <DD>minute; it ranges from 0 to 59. 
+  <DD><I>hour</I> 
+  <DD>Count from 0 0'clock. It ranges from 0 to 23.
+  <DT><I>wday</I> 
+  <DD>Day (it ranges from 0 to 6)，A week starts from sunday (the corresponding 
+  value is 0). 
+  <DT><I>mday</I> 
+  <DD>date of a month. It ranges from 1 to 31. 
+  <DT><I>month</I> 
+  <DD>month. It ranges from 1 to 12. It starts from January. The coresponding 
+  value of January is 1. 
+  <DT><I>year</I> 
+  <DD>Year, the current year </DD></DL><BR>
+<HR>
+</BODY></HTML>

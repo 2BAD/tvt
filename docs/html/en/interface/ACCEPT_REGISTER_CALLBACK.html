@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>ACCEPT_REGISTER_CALLBACK</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK
+Instructions</BIG></P>
+<H1>ACCEPT_REGISTER_CALLBACK</H1>
+<P>callback information when device receives DVR's register</P><PRE class=syntax> void ACCEPT_REGISTER_CALLBACK(
+ LONG <I>         lUserID</I>,
+ LONG <I>         lRegisterID</I>,
+ <A href="struct/NET_SDK_DEVICEINFO.htm">LPNET_SDK_DEVICEINFO</A> <I>         pDeviceInfo</I>,
+ void <I>         *pUser</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I>
+  <DD>[in] connection ID,other interface accesses device through this ID
+  <DT><I>lRegisterID</I>
+  <DD>[in] device received DVR initiative register ID
+  <DT><I>pDeviceInfo</I>
+  <DD>[in] information of initiative register device
+  <DT><I>*pUser</I>
+  <DD>[in] custom parameter passed by user </DD></DL>
+<H3>Return Values</H3>
+<P>None. To get error code, please call <A
+href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A
+href="NET_SDK_SetRegisterCallback.html">NET_SDK_SetRegisterCallback</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A
+href="NET_SDK_SetRegisterPort.html">NET_SDK_SetRegisterPort</A></P><BR>
+<HR>
+</BODY></HTML>

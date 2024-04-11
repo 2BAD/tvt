@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>DD_LIVE_VIDEO_GROUP</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_LIVE_VIDEO_GROUP</h1>
+<p>struct of preview video group</p>
+<pre class ="syntax"> struct _dd_live_video_group_{
+ unsigned short	holdTime;	
+ unsigned short	channelNum;
+ unsigned long	       splitMode;	
+ unsigned char	       channel [DD_MAX_CAMERA_NUM]; 
+ }DD_LIVE_VIDEO_GROUP;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>holdTime</i></dt>
+<dd>hold time,(in second), 0 means invalid</dd>
+<dt><i>channelNum</i></dt>
+<dd>valid channel number(read only)</dd>
+<dt><i>splitMode</i></dt>
+<dd>split mode, refer to DD_VIEW_SPLIT_MODE:
+<table>
+<tr >
+<th>type</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>DD_VIEW_SPLIT_1X1</td>
+<td>0x00010000</td>
+<td>1X1</td>
+</tr>
+<tr>
+<td>DD_VIEW_SPLIT_2X2</td>
+<td>0x00020000</td>
+<td>2X2</td>
+</tr>
+<tr>
+<td>
+DD_VIEW_SPLIT_1A2/
+DD_VIEW_SPLIT_2X3</td>
+<td>0x00040000</td>
+<td>2X3</td>
+</tr>
+<tr>
+<td>DD_VIEW_SPLIT_1A5/DD_VIEW_SPLIT_3X3</td>
+<td>0x00080000</td>
+<td>3X3</td>
+</tr>
+<tr>
+<td>DD_VIEW_SPLIT_1A7/DD_VIEW_SPLIT_1A12/DD_VIEW_SPLIT_4X4</td>
+<td>0x00100000</td>
+<td>4X4</td>
+</tr>
+<tr>
+<td>DD_VIEW_SPLIT_2A6/DD_VIEW_SPLIT_4X6</td>
+<td>0x00200000</td>
+<td>4X6</td>
+</tr>
+<tr>
+<td>DD_VIEW_SPLIT_1A9/DD_VIEW_SPLIT_4A9/DD_VIEW_SPLIT_1A16/DD_VIEW_SPLIT_4A16/DD_VIEW_SPLIT_5X5</td>
+<td>0x00400000</td>
+<td>5X5</td>
+</tr>
+<tr>
+<td>DD_VIEW_SPLIT_1A11/DD_VIEW_SPLIT_1A20/DD_VIEW_SPLIT_4A20/DD_VIEW_SPLIT_6X6</td>
+<td>0x00800000</td>
+<td>6X6</td>
+</tr>
+</table>
+</dd>
+<dt><i>channel [DD_MAX_CAMERA_NUM]</i></dt>
+<dd>channel number corresponding to each area,array index stands for channel number,element value stands for window area number,0xff means invalid channel</dd>
+</dl>
+<br />
+ <hr />
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+
+

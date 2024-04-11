@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET_SDK_DEV_SUPPORT</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-CN http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 9.00.8112.16446"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;Client SDK Instructions</BIG></P>
+<H1>NET_SDK_DEV_SUPPORT</H1>
+<P> the functions of the IPC</P><PRE class=syntax> struct {
+ unsigned int	supportThermometry:1;				//support mask and temperature detect
+ unsigned int	supportVfd:1;				//support face detect
+ unsigned int	supportVfdMatch:1;				//support face match
+ unsigned int	supportThermal:1;				//thermal
+ unsigned int	supportPassLine:1;				//pass line
+ unsigned int	supportresv:27;				//
+ unsigned int	resv[15];				//
+ }NET_SDK_DEV_SUPPORT;
+</PRE><BR>
+<HR>
+</BODY></HTML>

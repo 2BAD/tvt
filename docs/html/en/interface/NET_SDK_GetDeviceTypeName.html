@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_GetDeviceTypeName</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_GetDeviceTypeName</H1>
+<P>get device type name</P><PRE class=syntax> LONG NET_SDK_GetDeviceTypeName(
+ LONG<I>            lUserID</I>,             
+ char<I>   *pNameBuffer</I>,
+ long<I>    bufferLen</I> 
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] the return value of NET_SDK_Login() 
+  <DT><I>*pNameBuffer</I> 
+  <DD>[out] type name buffer of device 
+  <DT><I>bufferLen</I> 
+  <DD>[out] buffer length of device type name </DD></DL>
+<H3>Return Values</H3>
+<P>The returned value is the device type name. To get error information,please 
+call <A href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_Login.htm">NET_SDK_Login</A>&nbsp;&nbsp;</P><BR>
+<HR>
+</BODY></HTML>

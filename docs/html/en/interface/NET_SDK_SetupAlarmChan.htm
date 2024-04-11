@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_SetupAlarmChan</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_SetupAlarmChan</H1>
+<P>build uploading channel for alarm,get alarm information</P><PRE class=syntax> LONG NET_SDK_SetupAlarmChan(
+ LONG<I>   lUserID</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] return value of NET_SDK_Login </DD></DL>
+<H3>Return Values</H3>
+<P>-1 means failure and other value is handle parameter of 
+NET_SDK_CloseAlarmChan. To get error information, please call <A 
+href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>Start arming and then call the interface of register callback function(just 
+call NET_SDK_SetDVRMessCallBack when need)to get uploading information. </P>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_CloseAlarmChan.htm">NET_SDK_CloseAlarmChan</A>&nbsp;&nbsp;&nbsp;<A 
+href="NET_SDK_Login.htm">NET_SDK_Login</A>&nbsp;&nbsp;&nbsp; <A 
+href="NET_SDK_SetDVRMessageCallBack.htm">NET_SDK_SetDVRMessCallBack</A>&nbsp;&nbsp;</P><BR>
+<HR>
+</BODY></HTML>

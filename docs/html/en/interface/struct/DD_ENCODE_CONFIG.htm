@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>DD_ENCODE_CONFIG</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_ENCODE_CONFIG</h1>
+<p>struct of encoding configuration</p>
+<pre class ="syntax"> struct _dd_encode_config_{
+ unsigned long       iSize;		
+ unsigned short      resolution;	
+ unsigned short      rate;		
+ unsigned short      encodeType;	
+ unsigned short      quality;		
+ unsigned short      minBitrate;	
+ unsigned short      maxBitrate;	
+ }DD_ENCODE_CONFIG;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>iSize</i></dt>
+<dd>size of the struct</dd>
+<dt><i>resolution</i></dt>
+<dd>resolution, refer to DD_VIDEO_SIZE:
+<table>
+<tr >
+<th>Type</th>
+<th>Value</th>
+<th>Video Format</th>
+</tr>
+<tr>
+<td>DD_VIDEO_SIZE_QCIF</td>
+<td>0x0001</td>
+<td>QCIF</td>
+</tr>
+<tr>
+<td>DD_VIDEO_SIZE_CIF</td>
+<td>0x0002</td>
+<td>CIF</td>
+</tr>
+<tr>
+<td>DD_VIDEO_SIZE_HD1</td>
+<td>0x0004</td>
+<td>HD1</td>
+</tr>
+<tr>
+<td>DD_VIDEO_SIZE_D1</td>
+<td>0x0008</td>
+<td>D1</td>
+</tr>
+<tr>
+<td>DD_VIDEO_SIZE_QVGA</td>
+<td>0x0010</td>
+<td>QVGA</td>
+</tr>
+<tr>
+<td>DD_VIDEO_SIZE_VGA</td>
+<td>0x0020</td>
+<td>VGA</td>
+</tr>
+<tr>
+<td>DD_VIDEO_SIZE_XVGA</td>
+<td>0x0040</td>
+<td>XVGA</td>
+</tr>
+<tr>
+<td>DD_VIDEO_SIZE_QQVGA</td>
+<td>0x0080</td>
+<td>QQVGA</td>
+</tr>
+<tr>
+<td>DD_VIDEO_SIZE_480P</td>
+<td>0x0100</td>
+<td>480P</td>
+</tr>
+<tr>
+<td>DD_VIDEO_SIZE_720P</td>
+<td>0x0200</td>
+<td>720P</td>
+</tr>
+<tr>
+<td>DD_VIDEO_SIZE_1080P</td>
+<td>0x0400</td>
+<td>1080P</td>
+</tr>
+</table>
+</dd>
+<dt><i>rate</i></dt>
+<dd>frame rate</dd>
+<dt><i>encodeType</i></dt>
+<dd>encoding type,refer to the following list:
+<table>
+</dd>
+<dt><i>rate</i></dt>
+<dd>frame rate</dd>
+<dt><i>encodeType</i></dt>
+<dd>encoding type,refer to the following list:
+<table>
+<tr >
+<th>type</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>DD_VIDEO_ENCODE_MODE_VBR</td>
+<td>0x01</td>
+<td>mutable code stream</td>
+</tr>
+<tr>
+<td>DD_VIDEO_ENCODE_MODE_CBR</td>
+<td>0x02</td>
+<td>fixed code stream</td>
+</tr>
+</table>	
+</dd>
+<dt><i>quality</i></dt>
+<dd>image quality, refer to DD_IMAGE_QUALITY:
+<table>
+<tr >
+<th>Type</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>DD_IMAGE_QUALITY_LOWEST</td>
+<td>0x01</td>
+<td>lowest image quality</td>
+</tr>
+<tr>
+<td>DD_IMAGE_QUALITY_LOWER</td>
+<td>0x02</td>
+<td>lower image quality</td>
+</tr>
+<tr>
+<td>DD_IMAGE_QUALITY_LOW</td>
+<td>0x03</td>
+<td>low image quality</td>
+</tr>
+<tr>
+<td>DD_IMAGE_QUALITY_MEDIUM</td>
+<td>0x04</td>
+<td>medium image quality</td>
+</tr>
+<tr>
+<td>DD_IMAGE_QUALITY_HEIGHTER</td>
+<td>0x05</td>
+<td>heighter image quality</td>
+</tr>
+<tr>
+<td>DD_IMAGE_QUALITY_HEIGHTEST</td>
+<td>0x06</td>
+<td>heightest image quality</td>
+</tr>
+</table>
+</dd>
+<dt><i>minBitrate</i></dt>
+<dd>code stream lower limit,in kbps</dd>
+<dt><i>maxBitrate</i></dt>
+<dd>code stream upper limit,in kbps</dd>
+</dl>
+<br />
+ <hr />
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

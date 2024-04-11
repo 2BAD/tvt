@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_LivePlay</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_LivePlay</H1>
+<P>real time preview</P><PRE class=syntax> LONG NET_SDK_LivePlay(
+ LONG<I>                     lUserID</I>,
+<A href="struct/LPNET_SDK_CLIENTINFO.htm"> LPNET_SDK_CLIENTINFO</A><I>     lpClientInfo</I>,
+<A href="LIVE_DATA_CALLBACK.htm"> LIVE_DATA_CALLBACK</A> <I>      fLiveDataCallBack</I>, 
+ void<I>                     * pUser</I>
+ );</PRE>
+<H4>Parameters</H4>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] return value of NET_SDK_Login() 
+  <DT><I>lpClientInfo</I> 
+  <DD>[in] preview parameter 
+  <DT><I>fLiveDataCallBack</I> 
+  <DD>[in] preview data callback parameter,default value is NULL 
+  <DT><I>* pUser</I> 
+  <DD>[in] pointer to user,default value is NULL </DD></DL>
+<H3>Return Values</H3>
+<P>-1 means failure and other value is parameter of handle of function 
+NET_SDK_StopLivePlay. To get error information,please call <A 
+href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>After calling this interface successfully,if need to capture real time code 
+stream data,call NET_SDK_SetLiveDataCallBack to register the callback function 
+for capturing code stream data,and access the code stream data in the callback 
+function.</P>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_StopLivePlay.htm">NET_SDK_StopLivePlay</A>&nbsp;&nbsp;&nbsp;</P><BR>
+<HR>
+</BODY></HTML>

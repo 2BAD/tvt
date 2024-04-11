@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_GetDeviceIPCInfo</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;<FONT size=4>Client SDK 
+Instructions</FONT></BIG></P>
+<H1>NET_SDK_GetDeviceCHStatus</H1>
+<P>Get the channel information of the NVR, like channel type, online or 
+offline&nbsp;status, etc.</P><PRE class=syntax> <SPAN style="COLOR: #800080">BOOL </SPAN>NET_SDK_GetDeviceCHStatus(
+ LONG<I>            lUserID</I>,             
+ <SPAN style="COLOR: #800080">NET_SDK_CH_DEVICE_STATUS</SPAN><SPAN style="COLOR: #000000">*</SPAN><SPAN style="COLOR: #c0c0c0"> </SPAN>pDeviceCHStatus,
+ LONG<I>    lBuffSize</I>,
+ LONG<EM>    *</EM>pCHCount
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] the return value of NET_SDK_Login() 
+  <DT>*pDeviceCHStatus 
+  <DD>[in] the connection status of the current channel configured&nbsp; 
+  <DT><I>lBuffSize</I> 
+  <DD>[in] size of pDeviceCHStatus(sizeof(<SPAN 
+  style="COLOR: #800080">NET_SDK_CH_DEVICE_STATUS</SPAN>) * support how many 
+  channels ) 
+  <DT>*pCHCount 
+  <DD>[in] the actual numbers of the current channels&nbsp; </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please call 
+<A href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_Login.htm">NET_SDK_Login</A>&nbsp;&nbsp;</P><BR>
+<HR>
+</BODY></HTML>

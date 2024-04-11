@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET SDK GetFormatProgress</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_GetFormatProgress</H1>
+<P>get progress of formatting harddisk(only support 3.0DVR)</P><PRE class=syntax> BOOL NET_SDK_GetFormatProgress(
+ LONG<I>    lFormatHandle</I>,
+ LONG<I>    *pCurrentFormatDisk</I>,
+ LONG<I>    *pCurrentDiskPos</I>,
+ LONG<I>    *pFormatStatic</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lFormatHandle</I> 
+  <DD>[in] handle of save formatting harddisk,return value of NET_SDK_FormatDisk 
+
+  <DT><I>pCurrentFormatDisk</I> 
+  <DD>[out] pointer to save current formatting harddisk number,harddisk number 
+  starts from 0,-1 is the initial value 
+  <DT><I>pCurrentDiskPos</I> 
+  <DD>[out] pointer to save current progress of formatting harddisk,progress 
+  range is 0-100 
+  <DT><I>pFormatStatic</I> 
+  <DD>[out] pointer to save the state of formatting 
+  harddisk,0-formatting;1-finish formation; 2-formatting current harddisk makes 
+  mistake,formation can't continue,this error shows both in local and network 
+  harddisks; 3-formation of current harddisk can't start due to lost of network 
+  harddisk caused by network exception </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please call 
+<A href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_FormatDisk.htm">NET_SDK_FormatDisk</A> </P><BR>
+<HR>
+</BODY></HTML>

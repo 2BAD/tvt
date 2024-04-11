@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_DecodeAudioFrame</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_DecodeAudioFrame</H1>
+<P>audio decode</P><PRE class=syntax> BOOL NET_SDK_DecodeAudioFrame(   
+ LONG<I>             lDecodeHandle</I>,
+ unsigned char<I>    *pInBuffer</I>,
+ LONG<I>             inLen</I>,
+ unsigned char<I>    * pOutBuffer</I>,
+ LONG<I>             *pOutLen</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>IDecodeHandle</I> 
+  <DD>[in] audio encode handle,return value of NET_SDK_InitAudioDecoder() 
+  <DT><I>*pInBuffer</I> 
+  <DD>[in] input buffer area,get PCM audio data according to sample 
+  standard(sampling frequency is in000,16 bits, signal channel),standard data 
+  size of input is 1280 bytes 
+  <DT><I>inLen</I> 
+  <DD>[out] output buffer are,data length after encoding 
+  <DT><I>pOutBuffer</I> 
+  <DD>[out] output buffer area,output data size after encoding is 80 bytes 
+  <DT><I>*pOutLen</I> 
+  <DD>[out] output buffer area,output data length after encoding </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success and FALSE means failure. To get error information,please 
+call <A href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>It's set to mate with talkback &amp; forward function.When client send 
+original audio data to device, firstly compress and encode audio through 
+function of audio encoding,and then send to device. Client gets the compressed 
+code stream,and then call this interface to decode data. Before calling encode 
+and decode function initialization is needed, also when call function is 
+finished,free resource.</P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_InitAudioDecoder.htm">NET_SDK_InitAudioDecoder</A></P><BR>
+<HR>
+</BODY></HTML>

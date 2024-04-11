@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_GetFileByTime</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_GetFileByTime</H1>
+<P>download record file by time</P><PRE class=syntax> LONG NET_SDK_GetFileByTime( 
+ LONG<I>              lUserID</I>,
+ LONG<I>              lChannel</I>,
+ <A href="struct/DD_TIME.htm">DD_TIME</A><I>           *lpStartTime</I>,
+ <A href="struct/DD_TIME.htm">DD_TIME</A><I>           *lpStopTime</I>,
+ char<I>              *sSavedFileName</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] return value of NET_SDK_Login 
+  <DT><I>lChannel</I> 
+  <DD>[in] channel number,start from 0 
+  <DT><I>*lpStartTime</I> 
+  <DD>[in] pointer to the start time 
+  <DT><I>*lpStopTime</I> 
+  <DD>[in] pointer to the stop time 
+  <DT><I>*sSavedFileName</I> 
+  <DD>[in] directory of storing downloaded file to PC </DD></DL>
+<H3>Return Values</H3>
+<P>-1 means failure and other value is parameter of NET_SDK_StopGetFile. To get 
+error information,please call <A 
+href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_PlayBackControl.htm">NET_SDK_PlayBackControl</A>&nbsp;&nbsp;&nbsp;<A 
+href="NET_SDK_StopGetFile.htm">NET_SDK_StopGetFile</A>&nbsp;&nbsp;&nbsp; <A 
+href="NET_SDK_Login.htm">NET_SDK_Login</A>&nbsp;&nbsp;</P><BR>
+<HR>
+</BODY></HTML>

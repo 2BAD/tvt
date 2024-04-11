@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_PTZAutoScan</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_PTZAutoScan</H1>
+<P>PTZ automatic scan operation</P><PRE class=syntax> BOOL NET_SDK_PTZAutoScan(  
+ LONG <I>      lLiveHandle</I>,
+ DWORD<I>      dwPTZAutoScanCmd</I>,
+ DWORD<I>      dwSpeed</I>,
+ BOOL<I>       bIsAutoScan</I> 
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lLiveHandle</I> 
+  <DD>[in] play handle 
+  <DT><I>dwPTZAutoScanCmd</I> 
+  <DD>[in] PTZ automatic scan command, list as follows: </DD></DL>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TH>macro definition</TH>
+    <TH>value of macro definition</TH>
+    <TH>meaning</TH></TR>
+  <TR>
+    <TD>PTZ_CMD_AUTO_SCAN_START</TD>
+    <TD>29</TD>
+    <TD>start automatic scan </TD></TR>
+  <TR>
+    <TD>PTZ_CMD_AUTO_SCAN_STOP</TD>
+    <TD>30</TD>
+    <TD>stop automatic scan</TD></TR></TBODY></TABLE>
+<DL>
+  <DT><I>dwSpeed</I> 
+  <DD>[in] speed of PTZ ,list as follows: </DD></DL>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TH>macro definition</TH>
+    <TH>value of macro definition</TH></TR>
+  <TR>
+    <TD>PTZ_SPEED_1</TD>
+    <TD>1</TD></TR>
+  <TR>
+    <TD>PTZ_SPEED_2</TD>
+    <TD>2</TD></TR>
+  <TR>
+    <TD>PTZ_SPEED_3</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD>PTZ_SPEED_4</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD>PTZ_SPEED_5</TD>
+    <TD>5</TD></TR>
+  <TR>
+    <TD>PTZ_SPEED_6</TD>
+    <TD>6</TD></TR>
+  <TR>
+    <TD>PTZ_SPEED_7</TD>
+    <TD>7</TD></TR>
+  <TR>
+    <TD>PTZ_SPEED_8</TD>
+    <TD>8</TD></TR></TBODY></TABLE>
+<DT><I>bIsAutoScan</I> 
+<DD>[in] Scan mode, TURE means automatic scan, and FALSE represents random scan 
+<DL></DL>
+<H3>Return Values</H3>
+<P>TURE means success,FALSE means failure. To get error information,please call 
+<A href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_PTZAutoScan_Other.htm">NET_SDK_PTZAutoScan_Other</A></P><BR>
+<HR>
+</DD></BODY></HTML>

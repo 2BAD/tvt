@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>BACKUP_DATA_CALLBACK</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY><BIG>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<P style="BACKGROUND-COLOR: #888888">BACKUP_DATA_CALLBACK</BIG></P>
+<P>Call back the data when downloading the records.</P><PRE class=syntax> void *PLAY_DATA_CALLBACK(
+ LONG<I>                       lFileHandle</I>, 
+ UINT<I>                       dataType</I>, 
+ BYTE<I>                       *pBuffer</I>, 
+ UINT<I>                       dataLen</I>, 
+ void<I>                       *pUser</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lFileHandle</I> 
+  <DD>[in] download file handle 
+<DT><I>dataType</I> 
+  <DD>[in] data type 
+  <DT><I>*pBuffer</I> 
+  <DD>[in] File download stream and frame information 
+  <DT><I>dataLen</I> 
+  <DD>[in] data length
+  <DT><I>* pUser</I> 
+  <DD>[in] a pointer to user information </DD></DL>
+<H3>Return Values</H3>
+<P>No return value. To get error information, please call<A 
+href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P><BR>
+<HR>
+</BODY></HTML>

@@ -1,0 +1,48 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+    <title>DD_TRIGGER_ALARM_OUT</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_TRIGGER_ALARM_OUT</h1>
+<p>struct of triggering alarm</p>
+<pre class ="syntax"> struct _dd_trigger_alarm_out_{
+ unsigned char             toBuzzer;					
+ unsigned char             ShowFullScreen;			
+ unsigned char             sendEmail;				
+ unsigned char             toUploadToAlarmCentre;	
+ unsigned long             toAlarmOut;				
+ }DD_TRIGGER_ALARM_OUT;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>toBuzzer</i></dt>
+<dd>trigger buzzer alarm</dd>
+<dt><i>ShowFullScreen</i></dt>
+<dd>trigger full screen alarm(no trigger when channel number is 0xff)</dd>
+<dt><i>sendEmail</i></dt>
+<dd>send email</dd>
+<dt><i>toUploadToAlarmCentre</i></dt>
+<dd>upload to alarm center</dd>
+<dt><i>toAlarmOut</i></dt>
+<dd>alarm output(bit matches output device)</dd>
+</dl>
+<br />
+<hr />
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

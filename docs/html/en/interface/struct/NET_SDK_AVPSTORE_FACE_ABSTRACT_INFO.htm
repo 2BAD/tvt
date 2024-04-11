@@ -1,0 +1,105 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>NET_SDK_AVPSTORE_FACE_ABSTRACT_INFO</title>
+</head>
+<body>
+<p style ="BACKGROUND-COLOR: #abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>NET_SDK_AVPSTORE_FACE_ABSTRACT_INFO</h1>
+<p>struct of face abstract</p>
+<pre class = "syntax" >  
+typedef  struct
+         { 
+         char szName[32];                                    
+	unsigned int dwBirth;                   
+	char szNativePlace[16];            
+	char szNote[16];                
+	unsigned char byPicNum;                   
+	unsigned char byTypeCredential;           
+	unsigned char bySex;                      
+	unsigned char byGroupCount;              
+	unsigned char byGroupID[4];
+	union
+	{
+		struct
+		{
+			unsigned int dwStartTime;
+			unsigned int dwReserve[3];
+			unsigned int dwEndTime;
+			unsigned char  byReserve[11];
+			unsigned char  byContentType;
+		}PeriodV1;
+
+		struct
+		{
+			unsigned int  byWeekOrDate;
+			unsigned int  dwReserve[3];
+			unsigned short  wStartTime;
+			unsigned short  wEndTime;
+			unsigned short  wReserve[5];
+			unsigned char   byMode;
+			unsigned char   byContentType;
+		}PeriodV2;
+
+		struct
+		{
+			unsigned char  dwReserve[31];
+			unsigned char  byContentType;
+		}PlaceHolder;
+	}TimeCycle;
+
+	char szCredential[32];             
+	unsigned char   byPhoneNum[16];           
+	unsigned char   byIDParam[16];             
+    }NET_SDK_AVPSTORE_FACE_ABSTRACT_INFO
+ </pre>
+<h3>Members</h3>
+<dl>
+<dt>szName
+<dd>name
+<dt>dwBirth
+<dd>birthday like 19991220
+<dt>szNativePlace
+<dd>native place
+<dt>szNote
+<dd>note
+<dt>byPicNum
+<dd>number of picture
+<dt>byTypeCredential
+<dd>credential type
+<dt>bySex
+<dd>0:male 1:female
+<dt>byGroupCount
+<dd>group count
+<dt>byGroupID
+<dd>group id
+<dt>ress
+<dd>reserve
+<dt>szCredential
+<dd>credential id
+<dt>byPhoneNum
+<dd>phone number
+<dt>byIDParam
+<dd>id
+
+</dd>
+</dl>
+<br >
+<hr >
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

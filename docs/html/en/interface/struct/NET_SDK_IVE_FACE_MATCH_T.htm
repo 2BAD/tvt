@@ -1,0 +1,62 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>NET_SDK_IVE_FACE_MATCH_T</title>
+</head>
+<body>
+<p style ="BACKGROUND-COLOR: #abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>NET_SDK_IVE_FACE_MATCH_T</h1>
+<p>struct of face match</p>
+<pre class ="syntax">
+typedef struct 
+ { 
+        <A href="DD_TIME_EX.html">DD_TIME_EX</A> frameTime;   
+        unsigned int dwRealFaceID;
+        unsigned int dwGrpID;       
+        unsigned int dwLibFaceID;   
+        unsigned int dwSimilar;     
+        unsigned char byName[32]; 
+        unsigned int Channel;         
+        unsigned int  imgLen;      
+    }NET_SDK_IVE_FACE_MATCH_T
+ </pre>
+<h3>Members</h3>
+<dl>
+<dt>frameTime
+<dd>frameTime
+<dt>dwRealFaceID
+<dd>snap face id
+<dt>dwGrpID
+<dd>group id
+<dt>dwLibFaceID
+<dd>library face id
+<dt>dwSimilar
+<dd>similarity
+<dt>byName
+<dd>name
+<dt>Channel
+<dd>Channel
+<dt>imgLen
+<dd>image length
+
+</dd>
+</dl>
+<br >
+<hr >
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

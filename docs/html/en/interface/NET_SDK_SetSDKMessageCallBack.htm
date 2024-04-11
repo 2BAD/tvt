@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_SetSDKMessageCallBack</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_SetSDKMessageCallBack</H1>
+<P>callback function of SDK operation exception</P><PRE class=syntax> BOOL  NET_SDK_SetSDKMessageCallBack(
+ UINT <I>                nMessage</I>,
+ HWND <I>                hWnd</I>,
+ <A href="EXCEPTION_CALLBACK.htm">EXCEPTION_CALLBACK</A> <I>  fExceptionCallBack</I>,
+ void <I>                *pUser</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT>nMessage 
+  <DD>[in] message 
+  <DT>hWnd 
+  <DD>[in] window handle of receiving exception message 
+  <DT>fExceptionCallBack 
+  <DD>[in] callback function of receiving exception message,callback current 
+  relevant information of exception 
+  <DT>*pUser 
+  <DD>[in] user data </DD></DL>
+<H3>Callback Function</H3><PRE class=syntax> void (CALLBACK fExceptionCallBack)(
+ DWORD<I>    dwType</I>,
+ LONG<I>     lUserID</I>,
+ LONG<I>     lHandle</I>,
+ void<I>     *pUser</I>
+ );</PRE>
+<H3>Callback Function Parameters</H3>
+<DL>
+  <DT>dwType 
+  <DD>message type of exception or reconnection 
+  <DT>lUserID 
+  <DD>login ID 
+  <DT>lHandle 
+  <DD>relevant type handle of exception 
+  <DT>pUser 
+  <DD>user data </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please call 
+<A href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P><BR>
+<HR>
+</BODY></HTML>

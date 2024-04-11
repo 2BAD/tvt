@@ -1,0 +1,216 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>DEC_ADVANCE_NETWORK</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DEC_ADVANCE_NETWORK</h1>
+<p>struct of decoder advanced network configuration</p>
+<pre class ="syntax"> struct _dec_advance_network{
+ unsigned long	             iSize;		
+ unsigned char              TimeZone; 
+ unsigned char              hour;
+ unsigned char              min;
+ unsigned char              sec;
+ unsigned char              mday;
+ unsigned char              month;
+ unsigned short             year;
+ bool	                     enableFlag;		
+ char	                     name [132];			
+ int		             NTP_Port;			
+ int		             syncInterval;		
+ }DEC_ADVANCE_NETWORK;
+
+ </pre>
+<h3>Members</h3>
+<dl>
+<dt><i>iSize</i></dt>
+<dd>size of the struct</dd>
+<dt><i>TimeZone</i></dt>
+<dd>time zone, refer to DD_TIME_ZONE_NAME:
+<table>
+<tr >
+<th>Type</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D12</td>
+<td>0</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D11</td>
+<td>1</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D10</td>
+<td>2</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D9</td>
+<td>3</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D8</td>
+<td>4</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D7</td>
+<td>5</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D6</td>
+<td>6</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D5</td>
+<td>7</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D4_30</td>
+<td>8</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D4</td>
+<td>9</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D3_30</td>
+<td>10</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D3</td>
+<td>11</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D2</td>
+<td>12</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D1</td>
+<td>13</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT</td>
+<td>14</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A1</td>
+<td>15</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A2</td>
+<td>16</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A3</td>
+<td>17</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A3_30</td>
+<td>18</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A4</td>
+<td>19</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A4_30</td>
+<td>20</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A5</td>
+<td>21</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A5_30</td>
+<td>22</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A5_45</td>
+<td>23</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A6</td>
+<td>24</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A6_30</td>
+<td>25</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A7</td>
+<td>26</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A8</td>
+<td>27</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A9</td>
+<td>28</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A9_30</td>
+<td>29</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A10</td>
+<td>30</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A11</td>
+<td>31</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A12</td>
+<td>32</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A13</td>
+<td>33</td>
+</tr>
+</table>
+</dd>
+<dt><i>hour</i></dt>
+<dd>hour</dd>
+<dt><i>min</i></dt>
+<dd>minute</dd>
+<dt><i>sec</i></dt>
+<dd>second</dd>
+<dt><i>mday</i></dt>
+<dd>which day in a week</dd>
+<dt><i>month</i></dt>
+<dd>which month in a year</dd>
+<dt><i>year</i></dt>
+<dd>a particular year,2008-2025</dd>
+<dt><i>enableFlag</i></dt>
+<dd>NTP enable flag</dd>
+<dt><i>name [132]</i></dt>
+<dd>NTP server address</dd>
+<dt><i>NTP_Port</i></dt>
+<dd>NTP server port</dd>
+<dt><i>syncInterval</i></dt>
+<dd>synchronous time interval,in hour</dd>
+</dl>
+<br />
+<hr />
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

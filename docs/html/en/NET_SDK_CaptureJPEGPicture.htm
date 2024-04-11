@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>NET_SDK_CapturePicture_Other</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG><FONT face=Verdana>&nbsp;Client SDK 
+Instructions</FONT></BIG></P>
+<H1><FONT face=Verdana>NET_SDK_CaptureJPEGPicture</FONT></H1>
+<P><FONT face=Verdana>Capture data in JPEG format and store to be JPEG 
+file.</FONT></P><PRE class=syntax><FONT face=Verdana> BOOL NET_SDK_CaptureJPEGFile_V2(
+ LONG<I>    lUserID</I>,
+ LONG<I>    lChannel</I>,
+ LPNET_SDK_JPEGPARA lpJpegPara,
+ char *sJpegPicBuffer ,
+ DWORD dwPicSize, 
+ LPDWORD lpSizeReturned</I>
+ );</FONT></PRE>
+<H3><FONT face=Verdana>Parameters</FONT></H3>
+<DL>
+  <DT><FONT face=Verdana><I>lUserID</I> </FONT>
+  <DD><FONT face=Verdana>[in] user ID </FONT>
+  <DT><FONT face=Verdana><I>lChannel</I> </FONT>
+  <DD><FONT face=Verdana>[in] channel number </FONT>
+  <DT><FONT face=Verdana><I>*LPNET_SDK_JPEGPARA</I> </FONT>
+  <DD><FONT face=Verdana>[in] a command type </FONT>
+  <DT><FONT face=Verdana><I>sJpegPicBuffer</I> </FONT>
+  <DD><FONT face=Verdana>[in]JPEG data buffer </FONT>
+  <DT><FONT face=Verdana><I>dwPicSize</I> </FONT>
+  <DD><FONT face=Verdana>[in]sJpegPicBuffer buffer size </FONT>
+  <DT><FONT face=Verdana><I>lpSizeReturned</I> </FONT>
+  <DD><FONT face=Verdana>[in]JPEG data size </FONT></DD></DL>
+<H3><FONT face=Verdana>Return Values</FONT></H3>
+<P><FONT face=Verdana>TRUE means success; FALSE means failure. To get error 
+information,please call </FONT><A href="NET_SDK_GetLastError.htm"><FONT 
+face=Verdana>NET_SDK_GetLastError</FONT></A></P>
+<H3><FONT face=Verdana>Remarks</FONT></H3>
+<P><FONT face=Verdana>This interface is used to capture jpeg data and store,do 
+not need to open the stream. Only applicable to specific firmware </FONT></P>
+<H3><FONT face=Verdana>See Also</FONT></H3>
+<P><A href="NET_SDK_CaptureJPEGData_V2.htm"><FONT 
+face=Verdana>NET_SDK_CaptureJPEGData_V2</FONT></A></P>
+<H1>Android Interface</H1>
+<P>The corresponding Android interface：no<BR></P><BR><FONT face=Verdana>
+<HR>
+</FONT></BODY></HTML>

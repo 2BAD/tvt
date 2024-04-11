@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>SEARCHED_DEVICE_INFO</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<h1>SEARCHED_DEVICE_INFO</h1>
+<p>searched device's information</p>
+<pre class ="syntax"> struct  _searched_deviceInfo{
+        char			series[64];
+	char			devName[64];
+	char	        deviceType[16];
+	char			szproductModel[16];
+	char			szVersion[32];
+	char			szFactoryName[16];
+	char            szEthName[16];
+	unsigned short	netport;
+	unsigned short	nHttpPort;
+	unsigned int			ipaddr;
+	unsigned int			gateway;
+	unsigned int			netmask;
+	unsigned int			dns1;
+	unsigned int			dns2;
+	unsigned short  nChannelCount;  //NVR's channel count
+	unsigned int	dwSecondIP;
+	unsigned int	dwSecondMask;
+ }SEARCHED_DEVICE_INFO;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>series[64]</i>
+<dd>series
+<dt><i>devName[64]</i>
+<dd>device name
+  
+<dt><i>deviceType[16]</i>
+<dd>device type
+  
+<dt><i>szproductModel[16]</i>
+<dd>product model
+
+<dt><i> szVersion[32] </i>
+<dd>version
+
+<dt><i> szFactoryName[16] </i>
+<dd>factory name
+
+<dt><i> szEthName[16] </i>
+<dd>ethnet name
+
+<dt><i> netport; </i>
+<dd>net port
+
+<dt><i> nHttpPort;</i> 
+<dd>http port
+
+<dt><i> ipaddr</i>
+<dd>ip address
+
+<dt><i> gateway</i>
+<dd>gate way
+
+<dt><i> netmask</i>
+<dd>net mask
+  
+<dt><i> dns1</i>
+<dd>dns1
+
+<dt><i> dns2</i>
+<dd>dns2
+
+<dt><i> nChannelCount</i>
+<dd>NVR channel count
+
+<dt><i> dwSecondIP</i>
+<dd>second ip
+
+<dt><i> dwSecondMask</i>
+<dd>second mask
+
+</dd>
+</dl>
+<br >
+ <hr >
+ 
+</BODY>
+</html>
+
+
+
+
+
+
+
+
+
+
+

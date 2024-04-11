@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>DD SMART VFD CONFIG</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>DD_SMART_VFD_CONFIG</H1>
+<P>Face comparison configuration</P><PRE class=syntax> typedef struct _dd_smart_vfd_config_
+{
+	unsigned int iSize;					   //struct size
+
+	unsigned char  enableFaceDetect;        //enable/disable face detection
+	unsigned char  enableSaveFacePicture;   //enable/disable "Save Face Picture"
+	unsigned short enableSaveSourcePicture; //enable/disable "Save Source Picture"
+	unsigned int   holdTime;                //hold time</PRE><PRE class=syntax>	DD_POSITION    startPoint;              //coordinate information of the upper left point of the rectangle
+	DD_POSITION    endPoint;                //coordinate information of the bottom right point of the rectangle
+	unsigned int   pushModeType;            //snapshot mode: 0：auto; it will not capture repeatedly. 1：capture pictures according to the fixed time interval.</PRE><PRE class=syntax>	unsigned int   intervalTime;            //inteval period of snapshot (seconds)，only when the snapshot mode is 1, will it take effect.
+}DD_SMART_VFD_CONFIG;
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT>iSize 
+  <DD>struct size 
+  <DT>enableFaceDetect 
+  <DD>enable/disable face detection 
+  <DT>enableSaveFacePicture 
+  <DD>enable/disable "Save Face Picture"<BR>enableSaveSourcePicture 
+  <DD>enable/disable "Save Source Picture"<BR>holdTime 
+  <DD>hold time&nbsp;
+  <DT>startPoint 
+  <DD>coordinate information of the upper left point of the rectangle
+  <DT>endPoint 
+  <DD>coordinate information of the bottom right point of the 
+  rectangle<BR>&nbsp;pushModeType 
+  <DD>snapshot mode: 0：auto; it will not capture repeatedly. 1：capture 
+  pictures&nbsp;according to&nbsp;the fixed time interval. 
+  <DT>intervalTime 
+  <DD>inteval period of snapshot (seconds)，only when the snapshot mode is 1, 
+  will it take effect.<BR>&nbsp;<BR>
+  <HR>
+  </DD></DL></BODY></HTML>

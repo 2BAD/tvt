@@ -1,0 +1,58 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>NET_DVR_IVE_VFD_RESULT_HEAD_T</title>
+</head>
+<body>
+<p style ="BACKGROUND-COLOR: #abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>NET_DVR_IVE_VFD_RESULT_HEAD_T</h1>
+<p>struct of video face detection result head</p>
+<pre class ="syntax">
+    typedef struct 
+    {
+       LONGLONG      time;            
+       LONGLONG      relativeTime;   
+       unsigned int     detectDataLen;  
+       unsigned int     softwareVersion; 
+       unsigned int     softwareBuildDate;
+       unsigned int     faceCnt;       
+       unsigned int     faceDataLen[40]; 
+    }NET_DVR_IVE_VFD_RESULT_HEAD_T
+ </pre>
+<h3>Members</h3>
+<dl>
+<dt><i>time</i>
+<dd>current time
+<dt><i>relativeTime</i>
+<dd>relative time
+<dt><i>detectDataLen</i>
+<dd>detect data length
+<dt><i>softwareVersion</i>
+<dd>software version 0xABCDEFGH,AB:manufacture,CD:major version EFGH:minor version
+<dt><i>softwareBuildDate</i>
+<dd>software build date
+<dt><i>faceCnt</i>
+<dd>face count, max is 40
+<dt><i>faceDataLen</i>
+<dd> face data length     
+</dd>
+</dl>
+<br >
+<hr >
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

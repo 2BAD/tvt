@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_SetYUVCallBack</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_SetYUVCallBack</H1>
+<P>Configure the YUV data cabllback after decoding video.</P><PRE class=syntax> 
+BOOL NET_SDK_SetYUVCallBack(
+ LONG <I>              lLiveHandle</I>,
+ <A href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43441.5957271065/interface/YUV_DATA_CALLBACK.htm">YUV_DATA_CALLBACK</A> <I>fYuvCallBack</I>,
+ void <I>              *pUser</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lLiveHandle</I> 
+  <DD>[in] the return value of&nbsp;NET_SDK_LivePlay() 
+  <DT><I>fYuvCallBack</I> 
+  <DD>[in] YUV stream data callback function 
+  <DT><I>pUser</I> 
+  <DD>[in]&nbsp;user data&nbsp;</DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please call 
+<A 
+href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43441.5957271065/interface/NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>This function includes starting and stopping processing data captured by SDK 
+. When the callback function (fYuvCallback) set to any vaule except null, it 
+means callback and processing data; when it set to null, it means stopping 
+callback and processing data. The callback data are the YUV data after 
+decoding.</P>
+<H3>See Also</H3>
+<P><A 
+href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43441.5957271065/interface/NET_SDK_LivePlay.htm">NET_SDK_LivePlay</A>&nbsp;&nbsp;</P>
+<H1>Android Interface</H1><BR></BODY></HTML>

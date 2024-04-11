@@ -1,0 +1,114 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>DD_PTZ_CONFIG</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_PTZ_CONFIG</h1>
+<p>struct of PTZ configuration</p>
+<pre class ="syntax"> struct _dd_ptz_config_{
+ unsigned long              iSize;		
+ unsigned char              enable;		
+ unsigned char              address;		
+ unsigned char              recv1;		
+ unsigned char              recv2;		
+ unsigned long              protocol;		
+ <a href="DD_SERIAL_CONFIG.htm">DD_SERIAL_CONFIG</a>           serial;	
+ }DD_PTZ_CONFIG;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>iSize</i></dt>
+<dd>size of the struct</dd>
+<dt><i>enable</i></dt>
+<dd>whether enable PTZ function</dd>
+<dt><i>address</i></dt>
+<dd>address</dd>
+<dt><i>recv1</i></dt>
+<dd>reserved byte</dd>
+<dt><i>recv2</i></dt>
+<dd>reserved byte</dd>
+<dt><i>protocol</i></dt>
+<dd>protocol,refer to PROTOCOL_TYPE:</dd>
+<table>
+<tr>
+<th>Type</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>PROTOCOL_NULL</td>
+<td>0</td>
+</tr>
+<tr>
+<td>PROTOCOL_PELCOP</td>
+<td>1</td>
+</tr>
+<tr>
+<td>PROTOCOL_PELCOD</td>
+<td>2</td>
+</tr>
+<tr>
+<td>PROTOCOL_LILIN</td>
+<td>3</td>
+</tr>
+<tr>
+<td>PROTOCOL_MINKING</td>
+<td>4</td>
+</tr>
+<tr>
+<td>PROTOCOL_NEON</td>
+<td>5</td>
+</tr>
+<tr>
+<td>PROTOCOL_STAR</td>
+<td>6</td>
+</tr>
+<tr>
+<td>PROTOCOL_VIDO</td>
+<td>7</td>
+</tr>
+<tr>
+<td>PROTOCOL_DSCP</td>
+<td>8</td>
+</tr>
+<tr>
+<td>PROTOCOL_VISCA</td>
+<td>9</td>
+</tr>
+<tr>
+<td>PROTOCOL_SAMSUNG</td>
+<td>10</td>
+</tr>
+<tr>
+<td>PROTOCOL_RM110</td>
+<td>11</td>
+</tr>
+<tr>
+<td>PROTOCOL_HY</td>
+<td>12</td>
+</tr>
+</table>
+<dt><i>serial</i></dt>
+<dd>serial port</dd>
+</dl>
+<br />
+<hr />
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

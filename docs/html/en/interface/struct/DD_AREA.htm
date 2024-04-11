@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>DD_AREA</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_AREA</h1>
+<p>area struct</p>
+<pre class ="syntax"> struct  _dd_area_{
+ unsigned short x;		
+ unsigned short y;		
+ unsigned short cx;		
+ unsigned short cy;		
+ }DD_AREA;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>x</i></dt>
+<dd>abscissa,range 0-99</dd>
+<dt><i>y</i></dt>
+<dd>ordinate,range 0-99</dd>
+<dt><i>cx</i></dt>
+<dd>width,range 1-100</dd>
+<dt><i>cy</i></dt>
+<dd>height,range 1-100</dd>
+</dl>
+<p><strong>Notice:</strong>&nbsp;x+cx <= 100, y+cy <=100</p>
+<br />
+ <hr />
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

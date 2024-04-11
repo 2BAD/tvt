@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />  
+<title>DD_DEVICEINFO</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_DEVICEINFO</h1>
+<p>struct of device basic information.</p>
+<pre class ="syntax"> struct _dd_device_info_{
+ unsigned long	      iSize;		
+ unsigned long	       deviceID;	
+ char	              deviceNo[DD_MAX_SERIAL_NUMBER_LEN];		
+ char	              deviceName [DD_MAX_NAME_LEN];			
+ char	              firmwareVersion [DD_MAX_VERSION_BUF_LEN];
+ char	              firmwareBuildDate [DD_MAX_VERSION_BUF_LEN];
+ char	              hardwareVersion [DD_MAX_VERSION_BUF_LEN];
+ char	              kernelVersion [DD_MAX_VERSION_BUF_LEN];
+ char	              mcuVersion [DD_MAX_VERSION_BUF_LEN];
+ unsigned char	      audioNum;
+ unsigned char	      localVideoInNum;
+ unsigned char	      netVideoInNum;
+ unsigned char	      sensorInNum;
+ unsigned char	      relayOutNum;
+ unsigned char	      rs232Num;
+ unsigned char	      rs485Num;
+ unsigned char	      networkPortNum;
+ unsigned char	      diskCtrlNum;
+ unsigned char	      DiskNum;
+ unsigned char	      vgaNum;
+ unsigned char	      usbNum;
+ }DD_DEVICE_INFO;
+</pre> 
+<h3>Members</h3>
+<dl>
+<dt><i>iSize</i></dt>
+<dd>size of the struct. </dd>
+<dt><i>deviceID</i></dt>
+<dd>device ID(0~255). </dd>
+<dt><i>deviceNo[DD_MAX_SERIAL_NUMBER_LEN]</i></dt>
+<dd>serial number of device,letter is usable. </dd>
+<dt><i>deviceName [DD_MAX_NAME_LEN]</i></dt>
+<dd>device name(attention to double byte character). </dd>
+<dt><i>firmwareVersion [DD_MAX_VERSION_BUF_LEN]</i></dt>
+<dd>software version number. </dd>
+<dt><i>firmwareBuildDate [DD_MAX_VERSION_BUF_LEN]</i></dt>
+<dd>software building date. </dd>
+<dt><i>hardwareVersion [DD_MAX_VERSION_BUF_LEN]</i></dt>
+<dd>hardware version. </dd>
+<dt><i>kernelVersion [DD_MAX_VERSION_BUF_LEN]</i></dt>
+<dd>system core version. </dd>
+<dt><i>mcuVersion [DD_MAX_VERSION_BUF_LEN]</i></dt>
+<dd>MCU version. </dd>
+<dt><i>audioNum</i></dt>
+<dd>audio number. </dd>
+<dt><i>localVideoInNum</i></dt>
+<dd>channel number of local video input. </dd>
+<dt><i>netVideoInNum</i></dt>
+<dd>channel number of network video input. </dd>
+<dt><i>sensorInNum</i></dt>
+<dd>number of sensor for input.</dd>
+<dt><i>relayOutNum</i></dt>
+<dd>number of relay for output. </dd>
+<dt><i>rs232Num</i></dt>
+<dd>channel number of 232 remote sensing. </dd>
+<dt><i>rs485Num</i></dt>
+<dd>channel number of 485 remote sensing. </dd>
+<dt><i>networkPortNum</i></dt>
+<dd>number of network port. </dd>
+<dt><i>diskCtrlNum</i></dt>
+<dd>number of harddisk for control.</dd>
+<dt><i>DiskNum</i></dt>
+<dd>number of harddisk. </dd>
+<dt><i>vgaNum</i></dt>
+<dd>number of displayer.</dd>
+<dt><i>usbNum</i></dt>
+<dd>number of USB soket. </dd>
+</dl> 
+<br />
+ <hr />
+ 
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

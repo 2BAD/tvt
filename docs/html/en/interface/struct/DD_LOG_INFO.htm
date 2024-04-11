@@ -1,0 +1,684 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>DD_LOG_INFO</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_LOG_INFO</h1>
+<p>struct of log information</p>
+<pre class ="syntax"> struct _dd_log_info_{
+ unsigned long	   majorType;		
+ unsigned long	   minorType;		
+ unsigned long	   time;			
+ unsigned long	   IP;				
+ char	          name [36];		
+ <a href="DD_TIME.htm">DD_TIME</a>         localTime;		
+ unsigned long	   infoLen;
+ char	          info[1024];
+ }DD_LOG_INFO, *LP_DD_LOG_INFO;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>majorType</i></dt>
+<dd>major type, refer to DD_LOG_CONTENT:
+<table>
+<tr >
+<th>Type</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>DD_LOG_CONTENT_SYSTEM_CTRL</td>
+<td>0x00000001</td>
+</tr>
+<tr>
+<td>DD_LOG_CONTENT_CONFIG</td>
+<td>0x00000002</td>
+</tr>
+<tr>
+<td>DD_LOG_CONTENT_PLAYBACK</td>
+<td>0x00000004</td>
+</tr>
+<tr>
+<td>DD_LOG_CONTENT_BACKUP</td>
+<td>0x00000008</td>
+</tr>
+<tr>
+<td>DD_LOG_CONTENT_SEARCH</td>
+<td>0x00000010</td>
+</tr>
+<tr>
+<td>DD_LOG_CONTENT_VIEW_INFO</td>
+<td>0x00000020</td>
+</tr>
+<tr>
+<td>DD_LOG_CONTENT_EVENT_INFO</td>
+<td>0x00000040</td>
+</tr>
+<tr>
+<td>DD_LOG_CONTENT_ERROR_INFO</td>
+<td>0x00000080</td>
+</tr>
+</table>
+</dd>
+<dt><i>minorType</i></dt>
+<dd>minor type, refer to DD_LOG_TYPE:
+<table>
+<tr>
+<th>DD_LOG_TYPE_SYSTEM_CTRL	</th>
+<th>0x01000000</th>
+</tr>
+<tr >
+<th>Type</th>
+<th>description</th>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_BOOT</td>
+<td>boot system</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_SHUTDOWN</td>
+<td>shutdown system</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_REBOOT</td>
+<td>reboot system</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_FORMAT_SUCC</td>
+<td>format disc successfully</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_FORMAT_FAIL</td>
+<td>formatting disc fail</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_UPGRADE_SUCC</td>
+<td>upgrade successfully</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_UPGRADE_FAIL</td>
+<td>upgrade fail</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CLEAR_ALARM</td>
+<td>clear alarm</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_OPEN_ALARM</td>
+<td>open alarm</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_MANUAL_START</td>
+<td>open manual record</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_MANUAL_STOP</td>
+<td>stop manual record</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_PTZ_ENTER</td>
+<td>start PTZ control</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_PTZ_CTRL</td>
+<td>PTZ operation</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_PTZ_EXIT</td>
+<td>exit PTZ control</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_AUDIO_CH_CHANGE</td>
+<td>chang audio channel</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_VOLUME_ADJUST</td>
+<td>adjust volume</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_MUTE_ENABLE</td>
+<td>enable mute</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_MUTE_DISENABLE</td>
+<td>disenable mute</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_DWELL_ENABLE</td>
+<td>enable dwell</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_DWELL_DISENABLE</td>
+<td>disenable dwell</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_LOG_IN</td>
+<td>login</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_LOG_OFF</td>
+<td>logout</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHANGE_TIME</td>
+<td>change system time</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_MANUAL_SNAP_SUCC</td>
+<td>manual capture succeed</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_MANUAL_SNAP_FAIL</td>
+<td>manual capture fail</td>
+</tr>
+<tr>
+<th>DD_LOG_TYPE_CONFIG</th>
+<th>0x02000000</th>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_VIDEO_FORMAT</td>
+<td>change video format</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_VGA_RESOLUTION</td>
+<td>change VGA resolution</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_LANGUAGE</td>
+<td>change language</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_NET_USER_NUM</td>
+<td>change network user number</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_TIME_ZONE</td>
+<td>change time zone</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_NTP_MANUAL</td>
+<td>manual network time check</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_NTP_ON</td>
+<td>enable automatic network time check</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_NTP_OFF</td>
+<td>disenable automatic network time check</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_NTP_SERVER</td>
+<td>change network time server address</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_DST</td>
+<td>change daylight saving time setting</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_PASSWD_ON</td>
+<td>enable operation password</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_PASSWD_OFF</td>
+<td>disappear operation password</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_CAM_NAME</td>
+<td>change channel name</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_MODIFY_COLOR</td>
+<td>modify color</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_HOST_MONITOR</td>
+<td>change host monitor image setting</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_SPOT</td>
+<td>change auxiliary output image setting</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_OSD</td>
+<td>change character overlap setting</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_LOCAL_ENCODE</td>
+<td>change encoding parameter of record stream</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_REC_VIDEO_SWITCH</td>
+<td>change record video switch setting</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_REC_AUDIO_SWITCH</td>
+<td>change record audio switch setting</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_REC_REDU_SWITCH</td>
+<td>change redundant record switch setting</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_REC_PRE_TIME</td>
+<td>change the time before record</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_REC_POST_TIME</td>
+<td>change the time after record</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_REC_HOLD_TIME</td>
+<td>change record data expiry time</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_SCH_SCHEDULE</td>
+<td>change the plan of regular record</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_SCH_MOTION</td>
+<td>change motion detection record schedule</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_SCH_ALARM</td>
+<td>change alarm record schedule</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_SENSOR_SWITCH</td>
+<td>change alarm input switch setting</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_SENSOR_TYPE</td>
+<td>change alarm input sensor type</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_SENSOR_TRIGGER</td>
+<td>change alarm input semsor trigger setting</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_SENSOR_SCH</td>
+<td>change alarm input detection schedule</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_MOTION_SWITCH</td>
+<td>change motion detection switch setting</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_MOTION_SENS</td>
+<td>change motion detection sensitivity</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_MOTION_AREA</td>
+<td>change motion detection area setting</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_MOTION_TRIGGER</td>
+<td>change motion detection process mode</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_MOTION_SCH</td>
+<td>change motion detection schedule</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_VL_TRIGGER</td>
+<td>change video lost process mode setting</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_RELAY_SWITCH</td>
+<td>change alarm output relay setting</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_RELAY_SCH</td>
+<td>change alarm output schedule</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_BUZZER_ON</td>
+<td>enable buzzer alarm</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_BUZZER_OFF</td>
+<td>disenable buzzer alarm</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_BUZZER_SCH</td>
+<td>change buzzer alarm schedule</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_HTTP_PORT</td>
+<td>modify HTTP server port</td>
+</tr>
+
+<tr>
+<td>DD_LOG_TYPE_CHGE_SER_PORT</td>
+<td>modify network server port</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_IP</td>
+<td>change network IP</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_DHCP_SUCC</td>
+<td>obtain DHCP automatically succeed</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_DHCP_FAIL</td>
+<td>obtain DHCP automatically fail</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_PPPOE</td>
+<td>set PPPoE</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_DDNS</td>
+<td>set DDNS</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_NET_STREAM_CFG</td>
+<td>change network stream edcoding setting</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_SERIAL</td>
+<td>change PTZ serial port setting</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_PRESET_MODIFY</td>
+<td>modify preset point</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CRUISE_MODIFY</td>
+<td>modify cruise line</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_TRACK_MODIFY</td>
+<td>modify track</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_USER_ADD</td>
+<td>add users</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_USER_MODIFY</td>
+<td>modify user authority</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_USER_DELETE</td>
+<td>delete user</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHANGE_PASSWD</td>
+<td>modify user password</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_LOAD_DEFAULT</td>
+<td>recover default configuration</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_IMPORT_CONFIG</td>
+<td>import configuration</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_EXPORT_CONFIG</td>
+<td>export configuration</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_IMAGE_MASK</td>
+<td>image shield</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_RECYCLE_REC_ON</td>
+<td>enable loop record</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_RECYCLE_REC_OFF</td>
+<td>close loop record</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_DISK_ALARM</td>
+<td>change disc alarm space</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_SEND_EMAIL</td>
+<td>set Email sender information</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_RECV_EMAIL</td>
+<td>set Email receiver information</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_CHGE_SNAP_SETTING</td>
+<td>change capture configuration</td>
+</tr>
+<tr>
+<th>DD_LOG_TYPE_PLAYBACK</th>
+<th>0x03000000</th>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_PLAYBACK_PLAY</td>
+<td>play</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_PLAYBACK_PAUSE</td>
+<td>pause</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_PLAYBACK_RESUME</td>
+<td>resume play</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_PLAYBACK_FF</td>
+<td>fast forward</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_PLAYBACK_REW</td>
+<td>rewind</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_PLAYBACK_STOP</td>
+<td>stop</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_PLAYBACK_NEXT_SECTION</td>
+<td>play next section</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_PLAYBACK_PREV_SECTION</td>
+<td>play previous section</td>
+</tr>
+<tr>
+<th>DD_LOG_TYPE_BACKUP</th>
+<th>0x04000000</th>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_BACKUP_START</td>
+<td>start to backup</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_BACKUP_COMPLETE</td>
+<td>backup is completed</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_BACKUP_CANCEL</td>
+<td>cancel backup</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_BACKUP_FAIL</td>
+<td>backup fails</td>
+</tr>
+<tr>
+<th>DD_LOG_TYPE_SEARCH</th>
+<th>0x05000000</th>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_SEARCH_TIME</td>
+<td>search by time</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_SEARCH_EVENT</td>
+<td>search by event</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_SEARCH_FILE_MAN</td>
+<td>search file management</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_SEARCH_PICTURE</td>
+<td>search picture</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_DELETE_FILE</td>
+<td>delete file</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_LOCK_FILE</td>
+<td>lock file</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_UNLOCK_FILE</td>
+<td>unlock file</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_DELETE_PICTURE</td>
+<td>delete picture</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_LOCK_PICTURE</td>
+<td>lock picture</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_UNLOCK_PICTURE</td>
+<td>unlock picture</td>
+</tr>
+<tr>
+<th>DD_LOG_TYPE_EVENT_INFO</th>
+<th>0x07000000</th>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_SENSOR_START</td>
+<td>start sensor alarm</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_SENSOR_END</td>
+<td>sensor alarm ends</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_MOTION_START</td>
+<td>motion detection starts</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_MOTION_END</td>
+<td>motion detection ends</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_VLOSS_START</td>
+<td>video loss start</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_VLOSS_END</td>
+<td>video loss ends</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_SHELTER_START</td>
+<td>video  shelter starts</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_SHELTER_END</td>
+<td>video shelter ends</td>
+</tr>
+<tr>
+<th>DD_LOG_TYPE_BEHAVIOR_INFO</th>
+<th>0x08000000</th>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_ENTER_AREA</td>
+<td>enter area</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_EXIT_AREA</td>
+<td>exit area</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_INTRUSION</td>
+<td>intrusion</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_LOITER</td>
+<td>loiter</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_LEFT_TAKE</td>
+<td>across left cordon</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_PARKING</td>
+<td>parking</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_RUN</td>
+<td>run</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_HIGH_DENSITY</td>
+<td>high density behaviour</td>
+</tr>
+<tr>
+<th>DD_LOG_TYPE_ERROR_INFO</th>
+<th>0x09000000</th>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_IP_CONFLICT</td>
+<td>network IP conflict</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_NETWORK_ERR</td>
+<td>network exception</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_DDNS_ERR</td>
+<td>DDNS error</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_DISK_IO_ERR</td>
+<td>disc read-write error</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_UNKNOWN_OFF</td>
+<td>electricity outage exception</td>
+</tr>
+<tr>
+<td>DD_LOG_TYPE_UNKNOWN_ERR</td>
+<td>unknown error</td>
+</tr>
+</table>
+</dd>
+<dt><i>time</i></dt>
+<dd>log occurrence time</dd>
+<dt><i>IP</i></dt>
+<dd>user IP </dd>
+<dt><i>name [36]</i></dt>
+<dd>user name</dd>
+<dt><i>localTime</i></dt>
+<dd>local time, later fill in</dd>
+<dt><i>infoLen</i></dt>
+<dd>length of log information</dd>
+<dt><i>info[1024]</i></dt>
+<dd>length of the log information</dd>
+</dl>
+<br/>
+<hr/>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

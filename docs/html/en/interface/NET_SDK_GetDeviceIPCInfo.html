@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_GetDeviceInfo</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_GetDeviceIPCInfo</H1>
+<P>get device management information</P><PRE class=syntax> LONG NET_SDK_GetDeviceIPCInfo(
+ LONG<I>            lUserID</I>,             
+ <A href="struct/NET_SDK_IPC_DEVICE_INFO.html">NET_SDK_IPC_DEVICE_INFO</A><I>   *pDeviceIPCInfo</I>,
+ LONG<I>    lBuffSize</I>,
+ LONG<I>    *pIPCCount</I> 
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] return value of NET_SDK_Login() 
+  <DT><I>*pDeviceIPCInfo</I> 
+  <DD>[in] added IPC structural buffer 
+  <DT><I>lBuffSize</I> 
+  <DD>[in] size of pDeviceIPCInfo(sizeof(NET_SDK_IPC_DEVICE_INFO)* the number of 
+  digital channel) 
+  <DT><I>*pIPCCount</I> 
+  <DD>[in] the number of IPC has been added </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please call 
+<A href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_Login.htm">NET_SDK_Login</A>&nbsp;&nbsp;</P><BR>
+<HR>
+</BODY></HTML>

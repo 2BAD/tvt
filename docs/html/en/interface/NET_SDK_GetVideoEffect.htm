@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_GetVideoEffect</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_GetVideoEffect</H1>
+<P>Set the display parameter of the video.</P><PRE class=syntax> BOOL NET_SDK_GetVideoEffect(
+ LONG<I>      lUserID</I>,
+ LONG<I>      lChannel</I>,
+ DWORD<I>     *pBrightValue</I>,
+ DWORD<I>     *pContrastValue</I>,
+ DWORD<I>     *pSaturationValue</I>,
+ DWORD<I>     *pHueValue</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] return value of NET_SDK_Login 
+  <DT><I>lChannel</I> 
+  <DD>[in] return value of NET_SDK_CLIENTINFO,channel number starts from 0 
+  <DT><I>pBrightValue</I> 
+  <DD>[out] pointer to brightness,range[0,255] 
+  <DT><I>pContrastValue</I> 
+  <DD>[out] pointer to contrast,range[0,255] 
+  <DT><I>pSaturationValue</I> 
+  <DD>[out] pointer to saturation,range[0,255] 
+  <DT><I>pHueValue</I> 
+  <DD>[out] pointer to gray scale,range[0,255] </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please call 
+<A href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_LivePlay.htm">NET_SDK_LivePlay</A>&nbsp;&nbsp;</P><BR>
+<HR>
+</BODY></HTML>

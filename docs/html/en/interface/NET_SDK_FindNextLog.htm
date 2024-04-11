@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET SDK FindNextLog</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_FindNextLog</H1>
+<P>get log information one by one(not support IPC)</P><PRE class=syntax> LONG NET_SDK_FindNextLog(
+ LONG<I>                lLogHandle</I>,
+ <A href="struct/NET_SDK_LOG.htm">LPNET_SDK_LOG</A><I>       lpLogData</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lLogHandle</I> 
+  <DD>[in] handle for finding log.return value of NET_SDK_FindDVRLog() 
+  <DT><I>lpLogData</I> 
+  <DD>[out] pointer to store log information </DD></DL>
+<H3>Return Values</H3>
+<P>-1 means failure and other values&nbsp;are current state information. To get 
+error information, please call <A 
+href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>Before calling this interface,call <A 
+href="NET_SDK_FindDVRLog.htm">NET_SDK_FindDVRLog</A> to get current handle for 
+finding.</P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_FindDVRLog.htm">NET_SDK_FindDVRLog</A></P><BR>
+<HR>
+</BODY></HTML>

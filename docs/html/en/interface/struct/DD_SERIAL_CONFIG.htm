@@ -1,0 +1,175 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>DD_SERIAL_CONFIG</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_SERIAL_CONFIG</h1>
+<p>struct of serial configuration</p>
+<pre class ="syntax"> struct _dd_serial_config_{
+ unsigned long            baudRate;			
+ unsigned long            dataBit;			
+ unsigned long            stopBit;			
+ unsigned long            parity;			
+ unsigned long            dataFlowControl;	
+ }DD_SERIAL_CONFIG;
+ </pre>
+<h3>Members</h3>
+<dl>
+<dt><i>baudRate</i></dt>
+<dd>baud rate,refer to the list below:</dd>
+<table>
+<tr>
+<th>Type</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>SBR_110</td>
+<td>0</td>
+</tr>
+<tr>
+<td>SBR_300</td>
+<td>1</td>
+</tr>
+<tr>
+<td>SBR_600</td>
+<td>2</td>
+</tr>
+<tr>
+<td>SBR_1200</td>
+<td>3</td>
+</tr>
+<tr>
+<td>SBR_2400</td>
+<td>4</td>
+</tr>
+<tr>
+<td>SBR_4800</td>
+<td>5</td>
+</tr>
+<tr>
+<td>SBR_9600</td>
+<td>6</td>
+</tr>
+<tr>
+<td>SBR_19200</td>
+<td>7</td>
+</tr>
+<tr>
+<td>SBR_38400</td>
+<td>8</td>
+</tr>
+<tr>
+<td>SBR_57600</td>
+<td>9</td>
+</tr>
+<tr>
+<td>SBR_115200</td>
+<td>10</td>
+</tr>
+<tr>
+<td>SBR_230400</td>
+<td>11</td>
+</tr>
+<tr>
+<td>SBR_460800</td>
+<td>12</td>
+</tr>
+<tr>
+<td>SBR_921600</td>
+<td>13</td>
+</tr>
+</table>
+<dt><i>dataBit</i></dt>
+<dd>data bit,refer to the list below:</dd>
+<table>
+<tr>
+<th>Type</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>DATABITS7</td>
+<td>7</td>
+</tr>
+<tr>
+<td>DATABITS8</td>
+<td>8</td>
+</tr>
+</table>
+<dt><i>stopBit</i></dt>
+<dd>stop bit,refer to the list below:</dd>
+<table>
+<tr>
+<th>Type</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>STOPBITS1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>STOPBITSONEHALF</td>
+<td>3</td>
+</tr>
+<tr>
+<td>STOPBITS2</td>
+<td>4</td>
+</tr>
+</table>
+<dt><i>parity</i></dt>
+<dd>parity check bit,refer to the list below:</dd>
+<table>
+<tr>
+<th>Type</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>PARITYEVEN</td>
+<td>'E'</td>
+<td>even parity check</td>
+</tr>
+<tr>
+<td>PARITYODD</td>
+<td>'O'</td>
+<td>odd parity check</td>
+</tr>
+<tr>
+<td>PARITYMARK</td>
+<td>'M'</td>
+<td>mark parity check</td>
+</tr>
+<tr>
+<td>PARITYSPACE</td>
+<td>'S'</td>
+<td>space parity check</td>
+</tr>
+<tr>
+<td>PARITYNONE</td>
+<td>'N'</td>
+<td>no parity check</td>
+</tr>
+</table>
+<dt><i>dataFlowControl</i></dt>
+<dd>data stream control</dd>
+</dl>
+<br />
+<hr />
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET_SDK_AddRegisterDeviceInfo</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18978"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_AddRegisterDeviceInfo</H1>
+<P>add the informations of the devices which need to auto register to sdk</P><PRE class=syntax> BOOL NET_SDK_AddRegisterDeviceInfo(
+<A href="struct/REG_LOGIN_INFO.html">REG_LOGIN_INFO</A><I>  * pLoginInfo, 
+unsigned int deviceNum
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>REG_LOGIN_INFO</I> 
+  <DD>[in] the pointer of the devices' information 
+  
+<DT><I>deviceNum</I> 
+  <DD>[in] number of the devices </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means sccess; FALSE means failure. To get error code, please call <A 
+href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_SetRegisterCallback.html">NET_SDK_SetRegisterCallback</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A 
+href="ACCEPT_REGISTER_CALLBACK.html">ACCEPT_REGISTER_CALLBACK</A></P><PRE></PRE><BR>
+<HR>
+</I>
+</BODY></HTML>

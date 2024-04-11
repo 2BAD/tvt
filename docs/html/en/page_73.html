@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET SDK FACE MATCH ALARM</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_FACE_MATCH_ALARM</H1>
+<P>Face match alarm</P><PRE class=syntax> 
+typedef struct _net_sdk_face_match_alarm_
+{
+    unsigned int    similarity;// similarity
+    unsigned int    enableCH[128];//【Enable CH】 starts from 1.
+    unsigned int    faceFeatureGroupsNum;//number of face group
+    <A href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43441.5957271065/interface/struct/NET_SDK_FACE_MATCH_ALARM_TRIGGER.htm">NET_SDK_FACE_MATCH_ALARM_TRIGGER</A>  *pFaceMatchAlarmTrigger;
+
+}NET_SDK_FACE_MATCH_ALARM;
+
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT><SPAN style="COLOR: #800000">similarity</SPAN> 
+  <DD>face picture similarity&nbsp; 
+  <DT><SPAN style="COLOR: #800000">enableCH</SPAN> 
+  <DD>enable channel. It starts from1.&nbsp; 
+  <DT><SPAN style="COLOR: #800000">faceFeatureGroupsNum</SPAN> 
+  <DD>Number of linkage alarms of face target groups 
+  <DT><SPAN style="COLOR: #800000">sFaceMatchAlarmTrigger</SPAN> 
+  <DD>linkage alarm information of face target groups 
+  <HR>
+  </DD></DL>
+<HR>
+</BODY></HTML>

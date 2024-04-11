@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+    <title>DD_DAYLIGHT_INFO</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_DAYLIGHT_INFO</h1>
+<p>struct of daylight saving time information</p>
+<pre class ="syntax"> struct _dd_daylight_info_{
+ unsigned char          InMonth;		
+ unsigned char          InMday;		
+ unsigned char          OutMonth;		
+ unsigned char          OutMday;		
+ unsigned char          InWeekIndex;	
+ unsigned char          InWday;		
+ unsigned char          OutWeekIndex;	
+ unsigned char          OutWday;		
+ unsigned short         InYear;		
+ unsigned short         OutYear;		
+ unsigned short         enable;		
+ unsigned short         type;		
+ unsigned long          InSecond;		
+ unsigned long          OutSecond;	
+ unsigned long          offSet;		
+ }DD_DAYLIGHT_INFO;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>InMonth</i></dt>
+<dd>which month to enter DST</dd>
+<dt><i>InMday</i></dt>
+<dd>which day to enter DST(data mode is valid)</dd>
+<dt><i>OutMonth</i></dt>
+<dd>which month to exit DST</dd>
+<dt><i>OutMday</i></dt>
+<dd>which day to exit DST(data mode is valid)</dd>
+<dt><i>InWeekIndex</i></dt>
+<dd>which week to enter DST(week mode is valid)</dd>
+<dt><i>InWday</i></dt>
+<dd>which weekday to enter DST(week mode is valid)</dd>
+<dt><i>OutWeekIndex</i></dt>
+<dd>which week to exit DST(week mode is valid)</dd>
+<dt><i>OutWday</i></dt>
+<dd>which weekday to exit DST(week mode is valid)</dd>
+<dt><i>InYear</i></dt>
+<dd>which year to enter DST,reserved due to align the struct</dd>
+<dt><i>OutYear</i> </dt>
+<dd>which year to exit DST,reserved due to align the struct</dd>
+<dt><i>enable</i></dt>
+<dd>whether enable DST function</dd>
+<dt><i>type</i></dt>
+<dd>DST setting modern: week or data mode</dd>
+<dt><i>InSecond</i></dt>
+<dd>second offset in one day of DST(0-86399),it can switch to be hour and minute and second</dd>
+<dt><i>OutSecond</i></dt>
+<dd>second offset out of one day of DST(0-86399),it can switch to be hour and minute and second</dd>
+<dt><i>offSet</i></dt>
+<dd>offset second in DST(0-86399)</dd>
+</dl>
+<br />
+ <hr />
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

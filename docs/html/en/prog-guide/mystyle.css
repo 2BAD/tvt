@@ -1,0 +1,130 @@
+/*CSS for SDK docoment*/
+
+body
+{
+ background-color:Transparent;
+ font-size:80%;
+ font-family:Verdana, Arial, Helvetica, sans-serif;
+ padding:5px,10px;
+ margin:0;
+ height:100%;
+
+}
+title
+{
+    font-family:@Arial Unicode MS, @·ÂËÎ, Times New Roman;
+    }
+h1,h2,h3,h4
+{
+    font-family: Verdana; Arial;
+    text-align:left;
+    margin-left :2%;
+}
+h1
+{
+    font-size:135%;
+ 
+}
+h2
+{
+    font-size:130%;
+}
+h3
+ {
+    font-size :125%
+ }
+h4
+{ 
+    font-size:120%;
+}   
+table
+{
+     border:1;
+     margin:2% 2%;
+     padding:2% 2%;
+     font-size:small ;
+     vertical-align:bottom;
+     width:90%;
+  
+
+     
+ }
+p
+ {
+    text-decoration :none;
+    margin-left :3%;
+    margin-right :3%; 
+  
+ }
+ 
+ul,ol,dl
+{
+
+   text-align:left;
+   padding-left :10px;
+   margin-left :2%;
+ }
+ dt
+ {
+    margin-left :3%;
+     font-style:italic;
+ }
+li
+ {
+    list-style-type:disc;
+    margin-left :3%;
+ }
+ a
+ {
+    text-decoration:none;
+    text-align:center;
+ }
+ th
+ { font-weight:bold;
+    height :40px;
+    }
+ tr
+ {
+    background-color:#EEEEEE;
+    text-align:center ; 
+ }
+ td
+ {  width:250px;
+    height:20px;
+    font-weight:normal;
+    text-align:left ;
+  }
+hr
+  {
+    width:100%;
+    height:2px;
+    color:#999999;
+   }
+img
+   {
+    margin:5% 5%;
+    text-align:center;
+    }
+ pre.syntax
+  {
+        background-color :#aaaaaa;
+        margin-left :3%;
+        margin-right :3%;
+       
+   }
+ address
+ {
+    font-style:normal;
+    text-align:center;
+    padding-bottom:3%;  
+    margin-top :70%;
+    text-decoration:underline;
+  }
+
+
+
+
+
+
+
+

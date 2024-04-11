@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_RemoteSnap</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<H1 style="BACKGROUND-COLOR: #abcdef" align=left><BIG><FONT color=#000000 
+size=4>&nbsp;Client SDK Instructions</FONT></BIG></H1>
+<H1>NET_SDK_RemoteSnap</H1>
+<P>Caputre images by controlling devices remotely. The&nbsp;images are saved in 
+the device end.<SPAN style="COLOR: #000000">(only </SPAN><SPAN 
+style="COLOR: #800080"><FONT color=#000000>N9000 availabe）</FONT></SPAN></P><PRE class=syntax> BOOL NET_SDK_RemoteSnap(
+ LONG<I>    lUserID</I>,
+ <SPAN style="COLOR: #808000"><FONT color=#000000>int</FONT>	</SPAN><EM>lChannel</EM>,
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] the return value of NET_SDK_Login() 
+  <DT><I>lChannel</I> 
+  <DD>[in] Channel number（starting&nbsp;with 0） 
+  <DT></DT></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information, please 
+call<A 
+href="mk:@MSITStore:C:\Users\Administrator\Desktop\设备网络SDK开发手册.CHM::/NET_SDK_GetlastError.htm"><U>NET_SDK_GetLastError</U></A></P></BODY></HTML>

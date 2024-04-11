@@ -1,0 +1,105 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>NET_SDK_IVE_BASE_INFO</title>
+</head>
+<body>
+<p style ="BACKGROUND-COLOR: #abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>NET_SDK_IVE_BASE_INFO</h1>
+<p>struct of IPC face match base information</p>
+<pre class ="syntax">typedef struct NET_SDK_IVE_BASE_INFO_T
+ { 
+        long long            i64SnapTime;      
+        unsigned int             iSnapPicId;   
+
+        int                 iSimilarity;       
+        int                 iPersonId;         
+        int                 iType;             
+        char                szName[128];       
+        int                 iMale;             
+        int                 iAge;              
+        char                szIdentifyNum[128];
+        char                szTel[64];         
+        char                szRes[128];        
+
+        int                 iSnapPicQuality;   
+        int                 iSnapPicAge;       
+        int                 iSnapPicSex;       
+
+        char                livingBody;        
+        char                comparisonRes;     
+        char                wearmask;          
+        char                tempUnitsType;     
+        int                 temperature;       
+
+        char                keyID[36];         
+        char                szReserve[20];
+
+    }NET_SDK_IVE_BASE_INFO
+ </pre>
+<h3>Members</h3>
+<dl>
+<dt>i64SnapTime
+<dd> snap time
+<dt>iSnapPicId
+<dd> snap picture id
+<dt>iSimilarity
+<dd> (0-100) similarity
+<dt>iPersonId
+<dd> the person's id
+<dt>iType
+<dd> 0:stranger 1:white list 2: black list
+<dt>szName
+<dd> name
+<dt>iMale
+<dd> 1:male 0:female.
+<dt>iAge
+<dd> age
+<dt>szIdentifyNum
+<dd> identify number
+<dt>szTel
+<dd> telphone number
+<dt>szRes
+<dd> reserve
+<dt>iSnapPicQuality
+<dd> snap picture's quality
+<dt>iSnapPicAge
+<dd> snap picture's age
+<dt>iSnapPicSex
+<dd>snap picture's sex 
+<dt>livingBody
+<dd> 1:living body 0:not
+<dt>comparisonRes
+<dd> comparision result 1:success 0:failed
+<dt>wearmask
+<dd> if ware mask 0:not detect 1:not wear 2 wear mask
+<dt>tempUnitsType
+<dd> temperature unit type 0:celsius 1:Fahrenheit
+<dt>temperature
+<dd> temperature
+<dt>keyID
+<dd> keyID
+<dt>szReserve
+<dd> reserve
+
+</dd>
+</dl>
+<br >
+<hr >
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

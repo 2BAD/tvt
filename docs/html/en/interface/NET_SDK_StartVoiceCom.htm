@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_StartVoiceCom</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_StartVoiceCom</H1>
+<P>start talkback</P><PRE class=syntax> LONG NET_SDK_StartVoiceCom(  
+ LONG<I>                  lUserID</I>,
+ BOOL<I>                  bNeedCBNoEncData</I>,
+ <A href="TALK_DATA_CALLBACK.htm">TALK_DATA_CALLBACK</A><I>    fVoiceDataCallBack</I>,
+ void<I>                  * pUser</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] return value of NET_SDK_Login 
+  <DT><I>bNeedCBNoEncData</I> 
+  <DD>[in] whether need to encode voice when local voice data callback.&nbsp;If 
+  FALSE is selected, the stream from the device&nbsp;&nbsp;will be decoded first 
+  and then it is called back.
+  <DT><I>fVoiceDataCallBack</I> 
+  <DD>[in] function of audio data callback 
+  <DT><I>PUser</I> 
+  <DD>[in] user data </DD></DL>
+<H3>Return Values</H3>
+<P>-1 means failure and other value is handle parameter of NET_SDK_StopVoiceCom. 
+To get error information,please call <A 
+href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_StopVoiceCom.htm">NET_SDK_StopVoiceCom</A>&nbsp;&nbsp;&nbsp;<A 
+href="NET_SDK_Login.htm">NET_SDK_Login</A></P><BR>
+<HR>
+</BODY></HTML>

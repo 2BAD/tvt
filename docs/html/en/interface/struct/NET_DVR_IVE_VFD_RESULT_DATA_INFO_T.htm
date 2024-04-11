@@ -1,0 +1,52 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>NET_DVR_IVE_VFD_RESULT_DATA_INFO_T</title>
+</head>
+<body>
+<p style ="BACKGROUND-COLOR: #abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>NET_DVR_IVE_VFD_RESULT_DATA_INFO_T</h1>
+<p>struct of video face detection result data information</p>
+<pre class ="syntax">   
+ typedef struct 
+{     unsigned  inttype; 
+        unsigned     int status;
+        unsigned int     width;
+        unsigned int     height;
+        unsigned int     dataLen;
+    }NET_DVR_IVE_VFD_RESULT_DATA_INFO_T
+ </pre>
+<h3>Members</h3>
+<dl>
+<dt><i>type</i>
+<dd> 0, JPG; 1, YUV
+<dt><i>status</i>
+<dd> 0, INVALID; 1, VALID; 2, SAVED
+<dt><i>width</i>
+<dd> width
+<dt><i>height</i>
+<dd> height
+<dt><i>dataLen</i>
+<dd> data Length
+
+</dd>
+</dl>
+<br >
+<hr >
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

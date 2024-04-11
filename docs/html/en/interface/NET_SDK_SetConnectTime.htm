@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_SetConnectTime</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_SetConnectTime</H1>
+<P>set network connection timeout time and connection times</P><PRE class=syntax> BOOL NET_SDK_SetConnectTime(
+ DWORD<I>     dwWaitTime</I>  
+ DWORD<I>     dwTryTimes</I>
+ );
+</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT>dwWaitTime 
+  <DD>[in] timeout time,in millisecond,its value is greater than 300. actual 
+  maximum timeout value is <STRONG>connect</STRONG> timeout 
+  value(<STRONG>connect</STRONG> timeout value depends on different system)the 
+  excess part is invalid,default value is 5 seconds. 
+  <DT>dwTryTimes 
+  <DD>[in] reconnection times(kept),default value is 3 </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please call 
+<A href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>SDK default timeout value is 5 seconds.</P><BR>
+<HR>
+</BODY></HTML>

@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>DD_LIVE_DISPLAY</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_LIVE_DISPLAY</h1>
+<p>struct of real time display</p>
+<pre class ="syntax"> struct _dd_live_display_{
+ unsigned long        iSize;			
+ unsigned long        showTime;			
+ unsigned long        showNetwork;		
+ unsigned long        showHDD;			
+ unsigned long        showUSB;			
+ unsigned short       alarmInNum;		
+ unsigned short       alarmOutNum;	
+ unsigned long	        showAlarmIn;	
+ unsigned long	        showAlarmOut;	
+ unsigned long        cameraNum;		
+ unsigned char        showCameraName [DD_MAX_CAMERA_NUM];	
+ unsigned char        showRecordStatus [DD_MAX_CAMERA_NUM];	
+ }DD_LIVE_DISPLAY;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>iSize</i></dt>
+<dd>size of the struct</dd>
+<dt><i>showTime</i></dt>
+<dd>whether show system time</dd>
+<dt><i>showNetwork</i></dt>
+<dd>whether show network status</dd>
+<dt><i>showHDD</i></dt>
+<dd>whether show harddisc information</dd>
+<dt><i>showUSB</i></dt>
+<dd>whether show movable storage infomation</dd>
+<dt><i>alarmInNum</i></dt>
+<dd>alarm input number(read only)</dd>
+<dt><i>alarmOutNum</i></dt>
+<dd>alarm output number(read only)</dd>
+<dt><i>showAlarmIn</i></dt>
+<dd>whether show alarm input information</dd>
+<dt><i>showAlarmOut</i></dt>
+<dd>whether show alarm output information</dd>
+<dt><i>cameraNum</i></dt>
+<dd>valid channel number(read only)</dd>
+<dt><i>showCameraName [DD_MAX_CAMERA_NUM]</i></dt>
+<dd>whether show channel name</dd>
+<dt><i>showRecordStatus [DD_MAX_CAMERA_NUM]</i></dt>
+<dd>whether show record status</dd>
+</dl>
+<br />
+ <hr />
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+ <meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css"rel="Stylesheet"type="text/css"  />   
+<title>main flow of calling SDK interface</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>main flow of calling SDK interface</h1>
+<img src="pic/main%20flow%20chart%20of%20calling%20interface%20.jpg"/>
+<p>It has seven function modules,each function module has four necessary the same flow:initialize SDK,user to login,user to logout and free SDK resource.
+<ul>
+<li>
+Initialization of SDK interface:initialize whole network SDK system,preassign internal memory etc.
+</li>
+<li>
+Interface of setting connection timeout:this part is optional,user can set SDK network connection timeout time according to their need.If not call this interface,adopt  the default in SDK.
+</li>
+<li>
+Set callback function of receiving exception information:most module function in SDK is realized with asynchronous mode,so we provide this interface to receive exception in preview,alarming, playback and talkback module.User can call this callback function after initialization of SDK to receive and dispose exception from all module on application layer.
+</li>
+<li>Get device IP address from analysis server:this interface provides the function of getting device IP address from analysis server in condition of only knowing device name and serial number.
+<li>
+Interface of user register:realize function of register,under successful register,returned ID is the unique identification for other functions.SDK permits maximum of register user count is 512.For device,this version permits 32 register username,meanwhile permits 128 users to register at the same time.
+<li>
+Preview module:get real time code stream from front server,decode to display and play control function etc.
+</li>
+<li>
+Play and download module:playback or download from front server by time remotely ,later encode and store,meanwhile support resuming from break point.
+</li>
+<li>
+Parameter configuration module:set and obtain parameter of front server,including device parameter,network parameter,channel compression parameter,port parameter,alarm parameter,exception parameter,exchange information and user configuration parameter etc.
+</li>
+<li>
+Remote device maintenance module:close device,reboot device,recover default setting, format harddisk remotely,remote upgrade,import&export of configuration file etc. 
+</li>
+<li>
+Audio talkback module:audio data talkback and obtain from front server,audio encoding method can be appointed.
+</li>
+<li>
+Alarm module:dispose alarm signal uploaded from front server.
+</li>
+<li>
+PTZ control module:including basic operation on PTZ,preset point,cruise and track control.SDK divides PTZ control into two methods:control by the returned handle from image preview;preview without limit,user to control PTZ through register ID.
+</li>
+</ul>
+<br/>
+</p>
+<hr />
+</body>
+</html>
+
+
+
+
+
+
+
+
+

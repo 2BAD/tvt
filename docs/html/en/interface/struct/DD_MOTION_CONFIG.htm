@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>DD_MOTION_CONFIG</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 9.00.8112.16684"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>DD_MOTION_CONFIG</H1>
+<P>struct of motion configuration</P><PRE class=syntax> struct _dd_motion_config_{
+ unsigned long                iSize;		
+ unsigned char	                enable;		
+ unsigned char	                recv;		
+ unsigned short	         holdTime;	
+ <A href="DD_MOTION_AREA.htm">DD_MOTION_AREA</A>	         area;		
+ }DD_MOTION_CONFIG;
+ </PRE>
+<H3>Members</H3>
+<DL>
+  <DT><I>iSize</I> 
+  <DD>size of the struct 
+  <DT><I>enable</I> 
+  <DD>whether enable motion detection 
+  <DT><I>recv</I> 
+  <DD>reserved byte 
+  <DT><I>holdTime</I> 
+  <DD>delay time 
+  <DT><I>area</I> 
+  <DD>area setting </DD></DL><BR>
+<HR>
+</BODY></HTML>

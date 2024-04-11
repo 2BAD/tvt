@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml" xmlns:o = 
+"urn:schemas-microsoft-com:office:office"><HEAD><TITLE>NET_SDK_Login</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.10570.1001"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_LoginEx</H1>
+<P>user to register device</P><PRE class=syntax> NET_SDK_API LONG CALL_METHOD NET_SDK_LoginEx(
+ char<I>                   *sDVRIP</I>,
+ WORD<I>                   wDVRPort</I>,
+ char<I>                   *sUserName</I>,
+ char<I>                   *sPassword</I>,
+ <A href="struct/NET_SDK_DEVICEINFO.htm">NET_SDK_DEVICEINFO</A><I>          lpDeviceInfo</I>,
+ NET_SDK_CONNECT_TYPE<I>          eConnectType</I>,
+ const char<I>             *sDevSN</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT>sDVRIP 
+  <DD>[in] device IP address or P2P Server address
+  <DT>wDVRPort 
+  <DD>[in] number of device port or P2P Server port 
+  <DT>sUserName 
+  <DD>[in] user name for login 
+  <DT>sPassword 
+  <DD>[in] user password 
+  <DT>lpDeviceInfo 
+  <DD>[out] device informantion 
+  <DT>eConnectType 
+  <DD>[in] Connect type,refer to NET_SDK_CONNECT_TYPE: 
+  <DD>
+  <TABLE 
+  style="BORDER-COLLAPSE: collapse; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; MARGIN-LEFT: 5.5pt; PADDING-RIGHT: 5.4pt; mso-table-layout-alt: fixed" 
+  align=center>
+    <TBODY>
+    <TR>
+      <TD 
+      style="BORDER-TOP: rgb(0,0,0) 0.75pt inset; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 144.1pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=192>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: center; TEXT-AUTOSPACE: "><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: bold; mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Type</SPAN><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: bold; mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: rgb(0,0,0) 0.75pt inset; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 144.1pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=192>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: center; TEXT-AUTOSPACE: "><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: bold; mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Value</SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: rgb(0,0,0) 0.75pt inset; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 144.1pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=192>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: center; TEXT-AUTOSPACE: "><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: bold; mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Description</SPAN><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: bold; mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 144.1pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=192>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left; TEXT-AUTOSPACE: "><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_CONNECT_TCP</SPAN><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 144.1pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=192>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left; TEXT-AUTOSPACE: "><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-shading: rgb(238,238,238)">0</SPAN><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 144.1pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=192>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left; TEXT-AUTOSPACE: "><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">TCP&nbsp;connection</SPAN><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 144.1pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=192>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left; TEXT-AUTOSPACE: "><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_CONNECT_NAT</SPAN><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 144.1pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=192>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left; TEXT-AUTOSPACE: "><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-shading: rgb(238,238,238)">1</SPAN><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 144.1pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=192>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left; TEXT-AUTOSPACE: "><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NAT1.0&nbsp;connection</SPAN><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 144.1pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=192>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left; TEXT-AUTOSPACE: "><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_CONNECT_NAT20</SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 144.1pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=192>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left; TEXT-AUTOSPACE: "><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-shading: rgb(238,238,238)"></SPAN><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-shading: rgb(238,238,238)"><o:p><FONT 
+        face=Verdana>2</FONT></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 144.1pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=192>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left; TEXT-AUTOSPACE: "><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NAT2.0</SPAN><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">&nbsp;connection</SPAN><SPAN 
+        style="FONT-SIZE: 12.5pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: normal; mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR></TBODY></TABLE><!--EndFragment-->
+  <DD>
+  <DT>sDevSN 
+  <DD>[in] Serial number of P2P. If TCP is connected, ignore this parameter 
+</DD></DL>
+<H3>Return Values</H3>
+<P>-1 means failure and other value is the returned ID from user.The ID is 
+unique. Later operations on device realize through this ID. To get error 
+information,please call<A 
+href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>Device permits 32 registered names,and supports 128 users to register at the 
+same time. </P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_Logout.htm">NET_SDK_Logout</A>&nbsp;&nbsp;&nbsp;</P><BR>
+<HR>
+</BODY></HTML>

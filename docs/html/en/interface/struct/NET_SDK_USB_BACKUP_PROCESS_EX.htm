@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET_SDK_USB_BACKUP_PROCESS_EX</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-CN http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18978"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_USB_BACKUP_PROCESS_EX</H1>
+<P>the process and status of the saving record to USB device</P><PRE class=syntax>typedef struct _usb_backup_process_ex
+{
+                 DD_TIME_EX			startTime; // the start time of the record
+	DD_TIME_EX			endTime; // the end time of the record
+	unsigned int        dataSize;//MB  the size of the record
+	unsigned char       backupPath[64]; // the usb path of the backup
+	unsigned char       creator[36];// the creator of the backup task
+	unsigned int        progress;//0-100, the process of the backup 0-100
+	unsigned int        backupFileFormat;//
+	unsigned int        status;//
+	unsigned int        eventType;//
+	unsigned char		chls[64];// the channel of the backup
+	unsigned int        chlNum;// the actual number of the channels
+
+}NET_SDK_USB_BACKUP_PROCESS_EX;
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT><I>startTime</I> 
+  <DD>the start time of the record
+  <DT><I>endTime</I> 
+  <DD>the end time of the record
+  <DT><I>dataSize</I> 
+  <DD>MB  the size of the record
+  <DT><I> backupPath</I> 
+  <DD> the usb path of the backup
+  <DT><I>creator</I> 
+  <DD> the creator of the backup task
+
+<DT><I> progress</I> 
+  <DD>0-100, the process of the backup 0-100
+<DT><I>backupFileFormat</I> 
+  <DD> 0 is avi,1 is private format
+<DT><I> status</I> 
+  <DD> 0 is backuping, 1 is complete
+<DT><I>eventType</I> 
+  <DD> refer to DD_RECORD_TYPE
+<DT><I>chls</I> 
+  <DD> the channels of the backup
+<DT><I>chlNum</I> 
+  <DD>the number of the backup channels
+
+
+ </DD></DL><BR>
+<HR>
+</BODY></HTML>

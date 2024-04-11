@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_MESSAGE_CALLBACK</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_MESSAGE_CALLBACK</H1>
+<P>data callback when alarm</P><PRE class=syntax> BOOL NET_MESSAGE_CALLBACK(
+ LONG <I>         lCommand</I>, 
+ LONG <I>         lUserID</I>, 
+ char<I>          *pBuf</I>, 
+ DWORD<I>         dwBufLen</I>, 
+ void<I>          * pUser</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lCommand</I> 
+  <DD>[in] command handle,refer to the list below: 
+  <TABLE>
+    <TBODY>
+    <TR>
+      <TH>Type</TH>
+      <TH>Description</TH></TR>
+    <TR>
+      <TD>NET_SDK_ALARM</TD>
+      <TD>device alarm information</TD></TR>
+    <TR>
+      <TD>NET_SDK_RECORD</TD>
+      <TD>device record information</TD></TR>
+    <TR>
+      <TD>NET_SDK_IVM_RULE</TD>
+      <TD>Intelligent behavior analysis information(reserved)</TD></TR>
+    <TR>
+      <TD>NET_SDK_TRADEINFO</TD>
+      <TD>ATM trade information(reserved)</TD></TR>
+    <TR>
+      <TD>NET_SDK_IPCCFG</TD>
+      <TD>IPC information change of mixed DVR(reserved)</TD></TR></TBODY></TABLE>
+  <DT><I>lUserID</I> 
+  <DD>[in] user ID 
+  <DT><I>*pBuf</I> 
+  <DD>[in] pointer to buffer area,when <B>lCommand </B>value is NET_SDK_ALARM 
+  <B>pBuf</B> is array of struct NET_SDK_ALARMINFO,when <B>lCommand </B>value is 
+  NET_SDK_RECORD <B>pBuf</B> is array of struct NET_SDK_RECORD_STATUS 
+  <DT><I>dwBufLen</I> 
+  <DD>[in] length of buffer area 
+  <DT><I>* pUser</I> 
+  <DD>[in] pointer to user information </DD></DL>
+<H3>Return Values</H3>
+<P>None. To get error code, please call <A 
+href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P><BR>
+<HR>
+</BODY></HTML>

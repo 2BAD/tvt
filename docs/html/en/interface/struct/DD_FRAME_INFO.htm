@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />  
+<title>DD_FRAME_INFO</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_FRAME_INFO</h1>
+<p>struct of data frame information</p>
+<pre class ="syntax"> struct _dd_frame_info_{
+ unsigned long		frameType;	
+ unsigned long		length;
+ unsigned long		keyFrame;	
+ unsigned long             width;
+ unsigned long             height;
+ unsigned long             *pData;
+ unsigned short            deviceIndex;
+ unsigned short            channel;
+ unsigned long             bufIndex;
+ unsigned long		frameIndex;
+ unsigned long		frameAttrib;
+ unsigned long		streamID;
+ LONGLONG			time;	  
+ LONGLONG			relativeTime;
+ DD_TIME                   localTime;
+ }DD_FRAME_INFO, *LP_DD_FRAME_INFO;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>frameType</i></dt>
+<dd>data frame type, refer to DD_FRAME_TYPE:
+<table>
+<tr >
+<th>Type</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>DD_FRAME_TYPE_NONE</td>
+<td>0x00</td>
+</tr>
+<tr>
+<td>DD_FRAME_TYPE_VIDEO</td>
+<td>0x01</td>
+</tr>
+<tr>
+<td>DD_FRAME_TYPE_AUDIO</td>
+<td>0x02</td>
+</tr>
+<tr>
+<td>DD_FRAME_TYPE_TALK_AUDIO</td>
+<td>0x03</td>
+</tr>
+<tr>
+<td>DD_FRAME_TYPE_JPEG</td>
+<td>0x04</td>
+</tr>
+<tr>
+<td>DD_FRAME_TYPE_VIDEO_FORMAT</td>
+<td>0x05</td>
+</tr>
+<tr>
+<td>DD_FRAME_TYPE_AUDIO_FORMAT</td>
+<td>0x06</td>
+</tr>
+<tr>
+<td>DD_FRAME_TYPE_TALK_AUDIO_FORMAT</td>
+<td>0x07</td>
+</tr>
+<tr>
+<td>DD_FRAME_TYPE_END</td>
+<td></td>
+</tr>
+</table>
+</dd>
+<dt><i>length</i></dt>
+<dd>data length</dd>
+<dt><i>keyFrame</i></dt>
+<dd>keyframe,0:non-key-frame,1:keyframe</dd>
+<dt><i>width</i></dt>
+<dd>width of data frame</dd>
+<dt><i>height</i></dt>
+<dd>height of data frame</dd>
+<dt><i>*pData</i></dt>
+<dd>pointer to data</dd>
+<dt><i>deviceIndex</i></dt>
+<dd>device index number</dd>
+<dt><i>channel</i></dt>
+<dd>data channel</dd>
+<dt><i>bufIndex</i></dt>
+<dd>buffer area index</dd>
+<dt><i>frameIndex</i></dt>
+<dd>data frame index</dd>
+<dt><i>frameAttrib</i></dt>
+<dd>data frame attribute, refer to DD_FRAME_ATTRIB:
+<table>
+<tr >
+<th>Type</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>DD_PLAY_FRAME_NO_SHOW</td>
+<td>0x01</td>
+<td>no show this frame</td>
+</tr>
+<tr>
+<td>DD_PLAY_FRAME_SHOW</td>
+<td>0x02</td>
+<td>the frame can be showed</td>
+</tr>
+<tr>
+<td>DD_PLAY_FRAME_ALL_END</td>
+<td>0x04</td>
+<td>reading data is finished,no more data</td>
+</tr>
+<tr>
+<td>DD_PLAY_FRAME_SEC_END</td>
+<td>0x08</td>
+<td>the event section is ended</td>
+</tr>
+<tr>
+<td>DD_PLAY_FRAME_NO_TIME_STAMP</td>
+<td>0x10</td>
+<td>the frame includes timestamp,shield time function when capture</td>
+</tr>
+<tr>
+<td>DD_PLAY_FRAME_FF</td>
+<td>0x20</td>
+<td>the frame applied to fastforward</td>
+</tr>
+<tr>
+<td>DD_LIVE_FRAME_FIRST_STREAM</td>
+<td>0x40</td>
+<td>the frame is live main code stream</td>
+</tr>
+<tr>
+<td>DD_LIVE_FRAME_SECOND_STREAM</td>
+<td>0x80</td>
+<td>the frame is live sub code stream</td>
+</tr>
+<tr>
+<td>DD_LIVE_FRAME_JPEG</td>
+<td>0x100</td>
+<td>the frame is JPEG image</td>
+</tr>
+<tr>
+<td>DD_LIVE_FRAME_TALK</td>
+<td>0x200</td>
+<td>the frame is talkback audio data</td>
+</tr>
+</table>
+</dd>
+<dt><i>streamID</i></dt>
+<dd>data stream ID</dd>
+<dt><i>time</i></dt>
+<dd>absolute time,calculate from 00:00:00 on Jan.1st in 1970,in microsecond,it changes when change device time</dd>
+<dt><i>relativeTime</i></dt>
+<dd>relative time,in microsecond,it won't change when change device time,because it is continuous</dd>
+<dt><i>localTime</i></dt>
+<dd>device local time, later fill in</dd>
+</dl>
+<br/>
+<hr/>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

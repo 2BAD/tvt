@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>DD_SMTP_CONFIG</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_SMTP_CONFIG</h1>
+<p>struct of SMTP configuration</p>
+<pre class ="syntax"> struct _dd_smtp_config_{
+ unsigned long              iSize;				
+ unsigned short             port;				
+ unsigned short             enableSSL;			
+ char                       server [DD_MAX_URL_BUF_LEN];	
+ char                       sendAddress [DD_MAX_URL_BUF_LEN];	
+ char                       password [DD_MAX_PASSWORD_BUF_LEN];
+ unsigned long              enableRecvAddrNum;		）
+ char                       receiveAddress [DD_MAX_EMAIL_RECEIVE_ADDR_NUM][DD_MAX_URL_BUF_LEN];
+ }DD_SMTP_CONFIG;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>iSize</i></dt>
+<dd>size of the struct</dd>
+<dt><i>port</i></dt>
+<dd>SMTP server port</dd>
+<dt><i>enableSSL</i></dt>
+<dd>whether enable SSL check</dd>
+<dt><i>server [DD_MAX_URL_BUF_LEN]</i></dt>
+<dd>send server address</dd>
+<dt><i>sendAddress [DD_MAX_URL_BUF_LEN]</i></dt>
+<dd>send SMTP address</dd>
+<dt><i>password [DD_MAX_PASSWORD_BUF_LEN]</i></dt>
+<dd>password</dd>
+<dt><i>enableRecvAddrNum</i></dt>
+<dd>available address number for receiving(read only)</dd>
+<dt><i>receiveAddress [DD_MAX_EMAIL_RECEIVE_ADDR_NUM][DD_MAX_URL_BUF_LEN]</i></dt>
+<dd>list of acception address</dd>
+</dl>
+<br/>
+<hr/>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_PlayBackSaveData</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.10570.1001"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_PlayBackSaveData</H1>
+<P>capture record data of playback and store them into file</P><PRE class=syntax> BOOL NET_SDK_PlayBackSaveData(
+ LONG<I>    lPlayHandle</I>,
+ LONG<I>    lChannel</I>,
+ char<I>    *sFileName</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lPlayHandle</I> 
+  <DD>[in] play handle,return value of NET_SDK_PlayBackByTime 
+  <DT><I>lChannel</I> 
+  <DD>[in] channel number,start from 0 
+  <DT><I>*sFileName</I> 
+  <DD>[in] directory of storing data </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please call 
+<A href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_PlayBackByTime.htm">NET_SDK_PlayBackByTime</A></P><BR>
+<HR>
+</BODY></HTML>

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_FRAME_INFO</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 9.00.8112.16684"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_IPC_DEVICE_INFO</H1>
+<P>struct of IPC in device management</P><PRE class=syntax>_net_sdk_ipc_device_info_{
+unsigned long	deviceID;
+unsigned short	channel;
+unsigned short	status;
+char		szEtherName[16];
+char		szServer[64];
+unsigned short	nPort;
+unsigned short	nHttpPort;
+unsigned short	nCtrlPort;
+char		szID[64];
+char		username[36];
+unsigned long	manufacturerId;
+char		manufacturerName[36];
+char		productModel[36];
+unsigned char	bUseDefaultCfg;
+unsigned char	bPOEDevice;
+unsigned char	resv[2];
+ }NET_SDK_IPC_DEVICE_INFO;
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT><I>deviceID</I> 
+  <DD>device ID(reserved) 
+  <DT><I>channel</I> 
+  <DD>Channel number of IPC(Start from 0) 
+  <DT><I>status</I> 
+  <DD>Connection status(1 means online,0 means offline) 
+  <DT><I>szEtherName[16]</I> 
+  <DD>If it is null,default is eth0 
+  <DT><I>szServer[64]</I> 
+  <DD>IP address of IPC 
+  <DT><I>nPort</I> 
+  <DD>Port of IPC 
+  <DT><I>nHttpPort</I> 
+  <DD>http port 
+  <DT><I>nCtrlPort</I> 
+  <DD>Control ports, generally the same as the nPort 
+  <DT><I>szID[64]</I> 
+  <DD>Device identification (or MAC address) 
+  <DT><I>username[36]</I> 
+  <DD>username 
+  <DT><I>manufacturerId</I> 
+  <DD>(reserved) 
+  <DT><I>manufacturerName[36]</I> 
+  <DD>(reserved) 
+  <DT><I>productModel[36]</I> 
+  <DD>(reserved) 
+  <DT><I>bUseDefaultCfg</I> 
+  <DD>(reserved) 
+  <DT><I>bPOEDevice</I> 
+  <DD>(reserved) 
+  <DT><I>resv[2]</I> 
+  <DD>(reserved)</DD></DL><BR>
+<HR>
+</BODY></HTML>

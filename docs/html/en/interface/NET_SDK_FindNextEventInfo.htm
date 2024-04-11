@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET SDK FindNextEventInfo</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_FindNextEventInfo</H1>
+<P>find event info one by one(only support 3.0DVR)</P><PRE class=syntax> LONG NET_SDK_FindNextEventInfo(
+ LONG<I>                     lEventHandle</I>,
+ <A href="struct/NET_SDK_EVENT.htm">LPNET_SDK_EVENT </A><I>       lpEventData</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lEventHandle</I> 
+  <DD>[in] handle of searching event info, the return value of 
+  NET_SDK_FindEventInfo() 
+  <DT><I>lpEventData</I> 
+  <DD>[out] pointer of saving event info </DD></DL>
+<H3>Return Values</H3>
+<P>-1 means failure and&nbsp;other values&nbsp;are event info. To get error 
+code, please call <A 
+href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>Before call this interface to search event info, please call 
+NET_SDK_FindEventInfo() to get the search handle.</P>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_FindEventInfo.htm">NET_SDK_FindEventInfo</A>&nbsp;&nbsp;&nbsp;<A 
+href="NET_SDK_FindEventInfoClose.htm">NET_SDK_FindEventInfoClose</A></P><BR>
+<HR>
+</BODY></HTML>

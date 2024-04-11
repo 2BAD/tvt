@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>SUBSCRIBE_CALLBACK</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.10570.1001"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>Client SDK Instructions</BIG></P>
+<H1>SUBSCRIBE_CALLBACK</H1>
+<P>When the subscribed smart alarm event happens, the uploading analytic 
+data&nbsp;is called back</P><PRE class=syntax>  void *SUBSCRIBE_CALLBACK(
+ LONG <I>         lUserID</I>,
+ DWORD<I>         dwCommand</I>, 
+ char <I>         *pBuf</I>, 
+ DWORD<I>         dwBufLen</I>, 
+ void<I>          *pUser</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] the return value of NET_SDK_Login() 
+  <DT><I>dwCommand</I> 
+  <DD>[in] the configuration command of the device. Refer to configuration 
+  command. 
+  <DT><I>pBuf</I> 
+  <DD>[in] the return data （different data types have different structures） 
+  <DT>dwBufLen 
+  <DD>[out] the reture data length （different data types have different data 
+  length） 
+  <DT><I>pUser</I> 
+  <DD>[in] user data </DD></DL>
+<H3>Remarks</H3>
+<P>The dwCommand is as follows:</P>
+<P>
+<TABLE style="WIDTH: 905.25pt; BORDER-COLLAPSE: collapse" height=416 
+  width=1207><COLGROUP>
+  <COL width=267>
+  <COL width=88>
+  <COL width=318>
+  <COL width=534>
+  <TBODY>
+  <TR height=19>
+    <TD class=et6 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 14.25pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 200.25pt; VERTICAL-ALIGN: middle; BACKGROUND: #ffffff; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 700; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: center; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=19 width=267>dwCommand<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>enum</TD>
+    <TD class=et6 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 14.25pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 66pt; VERTICAL-ALIGN: middle; BACKGROUND: #ffffff; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 700; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: center; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=19 width=88>value</TD>
+    <TD class=et6 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 14.25pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 238.5pt; VERTICAL-ALIGN: middle; BACKGROUND: #ffffff; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 700; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: center; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=19 width=318>meanings</TD>
+    <TD class=et6 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 14.25pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 400.5pt; VERTICAL-ALIGN: middle; BACKGROUND: #ffffff; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 700; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: center; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=19 width=534>pBuf</TD></TR>
+  <TR height=19>
+    <TD class=et5 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; HEIGHT: 14.25pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 200.25pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=19 width=267>NET_SDK_SMART_EVENT_TYPE_AVD</TD>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 14.25pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 66pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=19 width=88 x:num="6">6</TD>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 14.25pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 238.5pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=19 width=318>Abnoral<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>video<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>signal<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>detection</TD>
+    <TD class=et4 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: underline; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 14.25pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 400.5pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #0000ff; FONT-STYLE: normal; TEXT-ALIGN: center; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=19 width=534><A 
+      href="/interface/struct/NET_SDK_IVE_AVD_T.htm"><U><FONT 
+      color=#0000ff>NET_SDK_IVE_AVD_T</FONT></U></A></TD></TR>
+  <TR height=78>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 58.5pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 200.25pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=78 width=267>NET_SDK_SMART_EVENT_TYPE_VFD</TD>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 58.5pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 66pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=78 width=88 x:num="12">12</TD>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 58.5pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 238.5pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=78 width=318>Face<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>detection</TD>
+    <TD class=et4 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: underline; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 58.5pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 400.5pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #0000ff; FONT-STYLE: normal; TEXT-ALIGN: center; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=78 width=534>NET_DVR_IVE_VFD_RESULT_HEAD_T<SPAN class=font1><FONT 
+      color=#000000>+[</FONT></SPAN><SPAN 
+      class=font2>NET_DVR_IVE_VFD_RESULT_DATA_INFO_T</SPAN><SPAN 
+      class=font1><FONT color=#000000>+source<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>data(byte<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>array)]+[</FONT></SPAN><SPAN 
+      class=font2>NET_DVR_IVE_VFD_RESULT_FACE_DATA_INFO_T</SPAN><SPAN 
+      class=font1><FONT color=#000000>+face<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>data(byte<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>array)+face<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>feature<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>value]+...+[</FONT></SPAN><SPAN 
+      class=font2>NET_DVR_IVE_VFD_RESULT_FACE_DATA_INFO_T</SPAN><SPAN 
+      class=font1><FONT color=#000000>+face<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>data(byte<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>array)+face<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>feature<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>value</FONT></SPAN></TD></TR>
+  <TR height=84>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 63pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 200.25pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=84 width=267>NET_SDK_SMART_EVENT_TYPE_FACE_MATCH</TD>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 63pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 66pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=84 width=88 x:num="16">16</TD>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 63pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 238.5pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=84 width=318>Face<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>comparison<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>NVR</TD>
+    <TD class=et4 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: underline; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 63pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 400.5pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #0000ff; FONT-STYLE: normal; TEXT-ALIGN: center; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=84 width=534>NET_SDK_IVE_FACE_MATCH_T<SPAN class=font1><FONT 
+      color=#000000>+<SPAN style="mso-spacerun: yes">&nbsp;</SPAN>snap<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>face<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>data(byte<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>array)<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>+<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN></FONT></SPAN><SPAN 
+      class=font2>NET_SDK_AVPSTORE_FACE_ABSTRACT_INFO</SPAN><SPAN 
+      class=font1><FONT color=#000000><SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>+<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN></FONT></SPAN><SPAN 
+      class=font2>NET_DVR_IVE_VFD_RESULT_FACE_DATA_INFO_T</SPAN><SPAN 
+      class=font1><FONT color=#000000>+<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>target<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>face<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>data(byte<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>array)<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>+<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN></FONT></SPAN><SPAN 
+      class=font2>NET_SDK_TLV_BUFFER_DESC</SPAN><SPAN class=font1><FONT 
+      color=#000000>+<SPAN style="mso-spacerun: yes">&nbsp;</SPAN>source<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>image<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>data(byte<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>array)</FONT></SPAN></TD></TR>
+  <TR height=52>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 39pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 200.25pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=52 width=267>NET_SDK_SMART_EVENT_TYPE_FACE_MATCH_FOR_IPC</TD>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 39pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 66pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=52 width=88 x:num="17">17</TD>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 39pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 238.5pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=52 width=318>Face<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>comparison<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>IPC</TD>
+    <TD class=et4 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: underline; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 39pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 400.5pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #0000ff; FONT-STYLE: normal; TEXT-ALIGN: center; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=52 width=534>NET_SDK_IVE_BASE_INFO<SPAN class=font1><FONT 
+      color=#000000>+<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN></FONT></SPAN><SPAN 
+      class=font2>NET_SDK_IVE_PICTURE_INFO</SPAN><SPAN class=font1><FONT 
+      color=#000000>+image<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>data(byte<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>array)+<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN></FONT></SPAN><SPAN 
+      class=font2>NET_SDK_IVE_PICTURE_INFO</SPAN><SPAN class=font1><FONT 
+      color=#000000>+image<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>data(album,byte<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>array)</FONT></SPAN></TD></TR>
+  <TR height=44>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 33pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 200.25pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=44 width=267>NET_SDK_SMART_EVENT_TYPE_PEA_FOR_IPC</TD>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 33pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 66pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=44 width=88 x:num="18">18</TD>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 33pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 238.5pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=44 width=318>Line<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>crossing<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>and<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>region<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>intrusion</TD>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 33pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 400.5pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=44 width=534>CMD_REPLY_PEA</TD></TR>
+  <TR height=68>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 51pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 200.25pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=68 width=267>NET_SDK_SMART_EVENT_TYPE_VEHICE</TD>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 51pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 66pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=68 width=88 x:num="20">20</TD>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 51pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 238.5pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=68 width=318>Vehicle<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>number<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>detection</TD>
+    <TD class=et4 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: underline; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 51pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 400.5pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #0000ff; FONT-STYLE: normal; TEXT-ALIGN: center; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=68 width=534>NET_SDK_IVE_VEHICE_HEAD_INFO<SPAN class=font1><FONT 
+      color=#000000>+[</FONT></SPAN><SPAN 
+      class=font2>NET_SDK_IVE_VEHICE_ITEM_INFO</SPAN><SPAN class=font1><FONT 
+      color=#000000>+source<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>image<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>data]+[</FONT></SPAN><SPAN 
+      class=font2>NET_SDK_IVE_VEHICE_ITEM_INFO</SPAN><SPAN class=font1><FONT 
+      color=#000000>+vehicle<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>number<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>image<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>data]+...+[</FONT></SPAN><SPAN 
+      class=font2>NET_SDK_IVE_VEHICE_ITEM_INFO</SPAN><SPAN class=font1><FONT 
+      color=#000000>+vehicle<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>number<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>image<SPAN 
+      style="mso-spacerun: yes">&nbsp;</SPAN>data]</FONT></SPAN></TD></TR>
+  <TR height=52>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 39pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 200.25pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=52 width=267>NET_SDK_SMART_EVENT_TYPE_PASSLINE</TD>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 39pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 66pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=52 width=88 x:num="23">23</TD>
+    <TD class=et3 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: none; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 39pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 238.5pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #000000; FONT-STYLE: normal; TEXT-ALIGN: left; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=52 width=318>pass<SPAN 
+    style="mso-spacerun: yes">&nbsp;</SPAN>line</TD>
+    <TD class=et4 
+    style="FONT-SIZE: 12pt; TEXT-DECORATION: underline; BORDER-TOP: #000000 0.5pt solid; HEIGHT: 39pt; BORDER-RIGHT: #000000 0.5pt solid; WIDTH: 400.5pt; VERTICAL-ALIGN: bottom; BACKGROUND: #ffffff; WHITE-SPACE: normal; BORDER-BOTTOM: #000000 0.5pt solid; FONT-WEIGHT: 400; COLOR: #0000ff; FONT-STYLE: normal; TEXT-ALIGN: center; BORDER-LEFT: #000000 0.5pt solid; mso-pattern: #FFFFFF none; mso-protection: locked visible" 
+    height=52 width=534><A 
+      href="/interface/struct/NET_SDK_IVE_PASSLINECOUNT_T.htm"><U><FONT 
+      color=#0000ff>NET_SDK_IVE_PASSLINECOUNT_T</FONT></U></A></TD></TR></TBODY></TABLE><BR></P>
+<H3>See Also</H3>
+<P>NET_SDK_UnSmartSubscrib&nbsp;&nbsp;&nbsp;<A 
+href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P><BR>
+<HR>
+</BODY></HTML>

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_FishEyeAdjustMove</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.10570.1001"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG><FONT size=4>&nbsp;</FONT><FONT 
+size=4>Client SDK Instructions</FONT></BIG></P>
+<H1>NET_SDK_FishEyeAdjustMove</H1><SPAN 
+style="FONT-SIZE: 9.5pt; FONT-FAMILY: 'Verdana'; mso-spacerun: 'yes'">
+<P>(windows only)E-cloud platform movement,the segmentation belong to the 
+e-cloud platform can be moved only when it's under the fisheye correction 
+mode</P>
+<P>&nbsp;BOOL NET_SDK_FishEyeAdjustMove(<BR>&nbsp; POINTERHANDLE 
+lPlayHandle,<BR>&nbsp; int nMoveX,<BR>&nbsp; int nMoveY<BR>);</P></SPAN>
+<H3>Parameters</H3>
+<DT><I>lPlayHandle</I> 
+<DD>[in] the&nbsp;handel&nbsp;of play video&nbsp; 
+<DT>nMoveX&nbsp; 
+<DD>[in] the left mouse button drags horizontally against the X axis of the 
+starting point,positive to the right and negative to the left,with the starting 
+point as the origin 
+<DD><!--EndFragment-->&nbsp;nMoveY 
+<DD>[in] the left mouse button drags&nbsp;vertically against the&nbsp;Y axis of 
+the starting point,positive&nbsp;up and negative down,with the starting point as 
+the origin<!--EndFragment-->&nbsp;&nbsp;&nbsp;&nbsp; 
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information, please 
+call<A 
+href="NET_SDK_GetlastError.htm"><U>NET_SDK_GetLastError</U></A></P></DD></BODY></HTML>

@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET SDK StartDVRRecord</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_StartDVRRecord</H1>
+<P>start device to record manually and remotely(only support N9000)</P><PRE class=syntax> BOOL NET_SDK_StartDVRRecord(
+ LONG<I>     lUserID</I>,
+ LONG<I>     lChannel</I>,
+ LONG<I>     lRecordType</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] return value of NET_SDK_Login 
+  <DT><I>lChannel </I>
+  <DD>[in] channel number,start from 0,0x00ff means all analog channels,0xff00 
+  means all digital channels,0xffff means all analog channels and digital 
+  channels 
+  <DT><I>lRecordType</I> 
+  <DD>[in] record type </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure.&nbsp;To get error information,please 
+call <A href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_StopDVRRecord.htm">NET_SDK_StopDVRRecord</A>&nbsp;&nbsp;</P><BR>
+<HR>
+</BODY></HTML>

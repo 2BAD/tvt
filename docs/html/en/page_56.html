@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET SDK SEARCH IMAGE BY IMAGE LIST</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_SEARCH_IMAGE_BY_IMAGE_LIST</H1>
+<P>&nbsp;the return information of search image by image</P><PRE class=syntax> 
+typedef struct _net_sdk_search_image_by_image_list_
+{
+    unsigned int    bEnd; //1 indicates finishing searching images; 0 means there are still images behind.</PRE><PRE class=syntax>    unsigned int    listNum;//return NET_SDK_SEARCH_IMAGE_ITEM num
+    NET_SDK_SEARCH_IMAGE_ITEM *pSearchImageItem;
+}NET_SDK_SEARCH_IMAGE_BY_IMAGE_LIST;
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT>bEnd 
+  <DD>Whether all return or not? 
+  <DT>listNum 
+  <DD>the number of return data 
+  <DT>pSearchImageItem 
+  <DD>return the searched face information</DD></DL><BR>
+<HR>
+</BODY></HTML>

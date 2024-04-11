@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET SDK FindEventInfo</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_FindEventInfo</H1>
+<P>find event info(only support 3.0DVR)</P><PRE class=syntax> LONG NET_SDK_FindEvent(
+ LONG<I>               lUserID</I>,
+ DWORD<I>              dwType</I>
+ ULONGLONG<I>          channlMask</I>,
+ <A href="struct/DD_TIME.htm">DD_TIME</A><I>            *lpStartTime</I>,
+ <A href="struct/DD_TIME.htm">DD_TIME</A><I>            *lpStopTime</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] returned value of NET_SDK_Login() 
+  <DT><I>dwType</I> 
+  <DD>[in] event type,refer to DD_EVENT_TYPE: 
+  <TABLE>
+    <TBODY>
+    <TR>
+      <TH>Type</TH>
+      <TH>Value</TH></TR>
+    <TR>
+      <TD>DD_EVENT_TYPE_MOTION</TD>
+      <TD>0x0001</TD></TR>
+    <TR>
+      <TD>DD_EVENT_TYPE_SENSOR</TD>
+      <TD>0x0002</TD></TR>
+    <TR>
+      <TD>DD_EVENT_TYPE_V_LOSS</TD>
+      <TD>0x0004</TD></TR>
+    <TR>
+      <TD>DD_EVENT_TYPE_V_COVER</TD>
+      <TD>0x0008</TD></TR></TBODY></TABLE>
+  <DT><I>channlMask</I> 
+  <DD>[in] event happend in which channel,((ULONGLONG)0x1 &lt;&lt; N) N is 
+  search channel. 
+  <DT><I>*lpStartTime</I> 
+  <DD>[in] event starting time 
+  <DT><I>*lpStopTime</I> 
+  <DD>[in] event ending time </DD></DL>
+<H3>Return Values</H3>
+<P>-1 means failure and other values&nbsp;are parameter of 
+NET_SDK_FindNextEventInfo. To get error code, please call <A 
+href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_FindNextEventInfo.htm">NET_SDK_FindNextEventInfo</A>&nbsp;&nbsp;&nbsp;<A 
+href="NET_SDK_FindEventInfoClose.htm">NET_SDK_FindEventInfoClose</A></P><BR>
+<HR>
+</BODY></HTML>

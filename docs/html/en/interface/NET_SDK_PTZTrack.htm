@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_PTZTrack</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_PTZTrack</H1>
+<P>PTZ track operation,need to open preview</P><PRE class=syntax> BOOL NET_SDK_PTZTrack(
+ LONG<I>     lLiveHandle</I>,
+ DWORD<I>    dwPTZTrackCmd</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lLiveHandle</I> 
+  <DD>[in] return value of NET_SDK_LivePlay 
+  <DT><I>dwPTZTrackCmd</I> 
+  <DD>[in] operate PTZ track command,list as follows: </DD></DL>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TH>macro definition</TH>
+    <TH>value of macro definition</TH>
+    <TH>meaning</TH></TR>
+  <TR>
+    <TD>PTZ_CMD_TRACK_START</TD>
+    <TD>26</TD>
+    <TD>start track</TD></TR>
+  <TR>
+    <TD>PTZ_CMD_TRACK_STOP</TD>
+    <TD>27</TD>
+    <TD>stop track</TD></TR>
+  <TR>
+    <TD>PTZ_CMD_TRACK_START_RECORD</TD>
+    <TD>28</TD>
+    <TD>start to store track</TD></TR>
+  <TR>
+    <TD>PTZ_CMD_TRACK_STOP_RECORD</TD>
+    <TD>29</TD>
+    <TD>stop storing track</TD></TR></TBODY></TABLE>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please call 
+<A href="NET_SDK_GetLastError.htm">NET_DVR_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>Each operation on PTZ is corresponding to each control code between device 
+and PTZ,device sends control code to PTZ according to current decoder type and 
+decoder address. If current decoder doesnot match PTZ ,reconfig decoder is 
+necessary.</P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_LivePlay.htm">NET_SDK_LivePlay</A>&nbsp;&nbsp;</P><BR>
+<HR>
+</BODY></HTML>

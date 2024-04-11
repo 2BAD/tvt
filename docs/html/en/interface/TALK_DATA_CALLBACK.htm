@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>TALK_DATA_CALLBACK</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>TALK_DATA_CALLBACK</H1>
+<P>data callback in talkback</P><PRE class=syntax> void *TALK_DATA_CALLBACK(
+ LONG <I>         lVoiceComHandle</I>, 
+ char <I>         *pRecvDataBuffer</I>, 
+ DWORD <I>        dwBufSize</I>, 
+ BYTE <I>         byAudioFlag</I>, 
+ void<I>          * pUser</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lVoiceComHandle</I> 
+  <DD>[in] interface handle of talkback 
+  <DT><I>*pRecvDataBuffer</I> 
+  <DD>[in] buffer pointer to receive talkback data,received talkback data is PCM 
+  data without encoding 
+  <DT><I>dwBufSize</I> 
+  <DD>[in] size of buffer area 
+  <DT><I>byAudioFlag</I> 
+  <DD>[in] audio mark,the only value is 1,and it means the talkback data from 
+  device 
+  <DT><I>pUser</I> 
+  <DD>[in] pointer to user information </DD></DL>
+<H3>Return Values</H3>
+<P>None. To get error information, please call <A 
+href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P><BR>
+<HR>
+</BODY></HTML>

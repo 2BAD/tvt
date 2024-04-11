@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_LOG</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 9.00.8112.16446"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_LOG</H1>
+<P>struct of device log information.</P><PRE class=syntax> struct{
+ <A href="DD_TIME.htm">DD_TIME</A>	       strLogTime;
+ DWORD			dwMajorType;
+ DWORD			dwMinorType;
+ char			sNetUser[MAX_NAMELEN];
+ DWORD			dwRemoteHostAddr;
+ char			sContent[MAX_CONTENTLEN];
+ }NET_SDK_LOG,*LPNET_SDK_LOG;
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT><I>strLogTime</I> 
+  <DD>time of log. 
+  <DT><I>dwMajorType</I> 
+  <DD>main type. 
+  <DT><I>dwMinorType</I> 
+  <DD>minor type. 
+  <DT><I>sNetUser[MAX_NAMELEN]</I> 
+  <DD>network user. 
+  <DT><I>dwRemoteHostAddr</I> 
+  <DD>remote host address. 
+  <DT><I>sContent[MAX_CONTENTLEN]</I> 
+  <DD>Details. </DD></DL><BR>
+<HR>
+</BODY></HTML>

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>DD NETWORK PLATFORM</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>DD_NETWORK_PLATFORM</H1>
+<P>Reigster the upper-level platform</P><PRE class=syntax>typedef struct _network_platform
+{
+	//N9000 supports two platforms: national standard platform and platform software </PRE><PRE class=syntax>	unsigned int CurrentPlat;	//the current platform. default: 1 (it indicates platform software)，2 (it indicates national standard platform)
+
+	//platform software</PRE><PRE class=syntax>	unsigned int Switcher;	//1 indicates "Enable"，0 indicates "Disable"
+	unsigned int Port;			//port
+	unsigned int ReportId;	//device ID
+	char szAddress[16];			//ip address
+	//national standard platform，ipc unavailable，N9000 available</PRE><PRE class=syntax>	unsigned int SwitchGB;	//11 indicates "Enable"，0 indicates "Disable"
+	unsigned int PortGB;		//port</PRE><PRE class=syntax>	unsigned int uLocalPort;	//local port
+	char szRelm[16];				//sip server domain</PRE><PRE class=syntax>	char szAddressGB[16];	// address</PRE><PRE class=syntax>	char szUserName[16];		//username</PRE><PRE class=syntax>	char szPassword[16];		//password</PRE><PRE class=syntax>	char szDeviceIdGB[32];	//device ID
+	char szServerIdGB[32];	//sip server ID
+}DD_NETWORK_PLATFORM;
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT>CurrentPlat 
+  <DD>the current platform. default: 1 (it indicates platform software)，2 (it 
+  indicates national standard platform)<BR><BR>&nbsp;Switcher 
+  <DD>platform software; 1 indicates "Enable"，0 indicates "Disable"<BR>Port 
+  <DD>platform software; port&nbsp;
+  <DT>ReportId 
+  <DD>platform software; device ID</DD>
+  <DD>szAddress </DD>
+  <DD>platform software;&nbsp;ip address&nbsp;
+  <DT>SwitchGB 
+  <DD>national standard platform; 1 indicates "Enable"，0 indicates "Disable
+  <DD>PortGB 
+  <DD>national standard platform; port&nbsp;
+  <DT>uLocalPort 
+  <DD>national standard platform; local port&nbsp;</DD>
+  <DD>&nbsp;
+  <DT>szRelm 
+  <DD>national standard platform; sip server domain&nbsp;
+  <DT>szAddressGB 
+  <DD>national standard platform;&nbsp;address&nbsp;</DD>
+  <DT>szUserName 
+  <DD>national standard platform;&nbsp; username
+  <DD>szPassword 
+  <DD>national standard platform;&nbsp;&nbsp;password 
+  <DT>szDeviceIdGB 
+  <DD>national standard platform;&nbsp; device ID 
+  <DT>szServerIdGB 
+  <DD>national standard platform;&nbsp; sip server ID </DD></DL><BR>
+<HR>
+</BODY></HTML>

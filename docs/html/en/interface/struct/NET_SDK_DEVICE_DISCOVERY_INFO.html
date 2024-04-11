@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  /> 
+<title>NET_SDK_DEVICE_DISCOVERY_INFO</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>NET_SDK_DEVICE_DISCOVERY_INFO</h1>
+<p>discover device automatically on LAN</p>
+<pre class ="syntax"> struct  _net_sdk_device_discovery_info{
+ unsigned long		deviceType;
+ char				productType[16];
+ char				strIP[16];
+ char				strNetMask[16];
+ char				 strGateWay[16];
+ unsigned char	byMac[8];
+ unsigned short		netPort;
+ unsigned short		httpPort;
+ unsigned long		softVer;
+ unsigned long		softBuildDate;
+ }NET_SDK_DEVICE_DISCOVERY_INFO;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>deviceType</i></dt>
+<dd>device type,refer to the follow:</dd>
+<table>
+<tr><th>Type</th><th>Description</th></tr>
+<tr><td>NET_SDK_DVR</td><td>Digital video record</td></tr>
+<tr><td>NET_SDK_DVS</td><td>Network Video Server </td></tr>
+<tr><td>NET_SDK_IPCAMERA</td><td>IP camera</td></tr>
+<tr><td>NET_SDK_SUPERDVR</td><td>board card</td></tr>
+<tr><td>NET_SDK_DECODER</td><td>decoder</td></tr>
+</table>
+<dt><i>productType[16]</i></dt>
+<dd>product type</dd>
+<dt><i>strIP[16]</i></dt>
+<dd>IP</dd>
+<dt><i>strNetMask[16]</i></dt>
+<dd>subnet mask</dd>
+<dt><i>strGateWay[16]</i></dt>
+<dd>gateway</dd>
+<dt><i>byMac[8]</i></dt>
+<dd>MAC address</dd>
+<dt><i>netPort</i></dt>
+<dd>network port</dd>
+<dt><i>httpPort</i></dt>
+<dd>http port</dd>
+<dt><i>softVer</i></dt>
+<dd>software version</dd>
+<dt><i>softBuildDate</i></dt>
+<dd>software build date</dd>
+</dl>
+<br />
+ <hr />
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

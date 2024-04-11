@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>DD ENCODE CONFIG EX</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>DD_ENCODE_CONFIG_EX</H1>
+<P>struct of encoding configuration</P><PRE class=syntax> struct _dd_encode_config_{
+ unsigned long       iSize;		
+ unsigned short      resolution;	
+ unsigned short      rate;		
+ unsigned short      encodeType;	
+ unsigned short      quality;		
+ unsigned short      minBitrate;	
+ unsigned short      maxBitrate;
+ unsigned short bitrate; //bitrate</PRE><PRE class=syntax> unsigned short encodeFormat;  //H264or265 coding DD_VIDEO_ENCODE_FORMAT
+ char recv[14];			//reserved bytes	
+ }DD_ENCODE_CONFIG;
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT><I>iSize</I> 
+  <DD>&nbsp;
+  <DD>struct size
+  <DT><I>resolution</I> 
+  <DD>resolution. Refer to DD_VIDEO_SIZE_N9000： 
+  <DT><I>rate</I> 
+  <DD>Frame rate&nbsp;
+  <DT><I>encodeType</I> 
+  <DD>encoding type. Refer to the following table. 
+  <TABLE>
+    <TBODY>
+    <TR>
+      <TH>Type</TH>
+      <TH>Value</TH>
+      <TH>Description</TH></TR>
+    <TR>
+      <TD>DD_VIDEO_ENCODE_MODE_VBR</TD>
+      <TD>0x01</TD>
+      <TD>VBR</TD></TR>
+    <TR>
+      <TD>DD_VIDEO_ENCODE_MODE_CBR</TD>
+      <TD>0x02</TD>
+      <TD>BR</TD></TR></TBODY></TABLE>
+  <DT><I>quality</I> 
+  <DD>Refer to the following table.&nbsp;
+  <TABLE>
+    <TBODY>
+    <TR>
+      <TH>Type</TH>
+      <TH>Value</TH>
+      <TH>Description</TH></TR>
+    <TR>
+      <TD>DD_IMAGE_QUALITY_LOWEST</TD>
+      <TD>0x01</TD>
+      <TD>lowest quality</TD></TR>
+    <TR>
+      <TD>DD_IMAGE_QUALITY_LOWER</TD>
+      <TD>0x02</TD>
+      <TD>lower quality</TD></TR>
+    <TR>
+      <TD>DD_IMAGE_QUALITY_LOW</TD>
+      <TD>0x03</TD>
+      <TD>low quality</TD></TR>
+    <TR>
+      <TD>DD_IMAGE_QUALITY_MEDIUM</TD>
+      <TD>0x04</TD>
+      <TD>middle quality</TD></TR>
+    <TR>
+      <TD>DD_IMAGE_QUALITY_HEIGHTER</TD>
+      <TD>0x05</TD>
+      <TD>higher quality</TD></TR>
+    <TR>
+      <TD>DD_IMAGE_QUALITY_HEIGHTEST</TD>
+      <TD>0x06</TD>
+      <TD>highest quality</TD></TR></TBODY></TABLE>
+  <DT><I>minBitrate</I> 
+  <DD>lower limit of bitrate; unit:kbps 
+  <DT><I>maxBitrate</I> 
+  <DD>upper limit of bitrate; unit: kbps 
+  <DT><I>bitrate</I> 
+  <DD>bitrate; unit: kbps 
+  <DT><I>encodeFormat</I> 
+  <DD>Encoding type: H264or265. Refer to DD_VIDEO_ENCODE_FORMAT </DD></DL><BR>
+<HR>
+</BODY></HTML>

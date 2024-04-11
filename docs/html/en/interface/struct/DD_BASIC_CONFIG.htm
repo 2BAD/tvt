@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+    <title>DD_BASIC_CONFIG</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_BASIC_CONFIG</h1>
+<p>struct of basic configuration information</p>
+<pre class ="syntax"> struct _dd_basic_config_{
+ unsigned long iSize;				
+ unsigned long videoFormat;			
+ unsigned long videoOut;				
+ unsigned long videoOutResolution;	
+ unsigned long VGARefresh;			
+ unsigned long screensaver;			
+ unsigned long deviceLanguage;		
+ unsigned long passwordCheck;		
+ unsigned long RecycleRecord;		
+ unsigned long videoFormatMask;			
+ unsigned long videoOutMask;				
+ unsigned long videoOutResolutionMask;	
+ unsigned long languageMask;				
+ }DD_BASIC_CONFIG;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>iSize</i></dt>
+<dd>size of the struct</dd>
+<dt><i>videoFormat</i></dt>
+<dd>video format, refer to DD_VIDEO_FORMAT:
+<table>
+<tr >
+<th>Type</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>DD_VIDEO_FORMAT_NTSC</td>
+<td>0x01</td>
+</tr>
+<tr>
+<td>DD_VIDEO_FORMAT_PAL</td>
+<td>0x02</td>
+</tr>
+</table>
+</dd>
+<dt><i>videoOut</i></dt>
+<dd>video output device(reserved)</dd>
+<dt><i>videoOutResolution</i></dt>
+<dd>video output resolution,refer to DD_VGA_RESOLUTION:
+<table>
+<tr >
+<th>Type</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>DD_VGA_640X480</td>
+<td>0x0001</td>
+</tr>
+<tr>
+<td>DD_VGA_720X480</td>
+<td>0x0002</td>
+</tr>
+<tr>
+<td>DD_VGA_720X576</td>
+<td>0x0004</td>
+</tr>
+<tr>
+<td>DD_VGA_800X600</td>
+<td>0x0008</td>
+</tr>
+<tr>
+<td>DD_VGA_1024X768</td>
+<td>0x0010</td>
+</tr>
+<tr>
+<td>DD_VGA_1280X960</td>
+<td>0x0020</td>
+</tr>
+<tr>
+<td>DD_VGA_1280X1024</td>
+<td>0x0040</td>
+</tr>
+<tr>
+<td>DD_VGA_1920X1080</td>
+<td>0x0080</td>
+</tr>
+</table>
+</dd>
+<dt><i>VGARefresh</i></dt>
+<dd>VGA refresh rate(reserved)</dd>
+<dt><i>screensaver</i></dt>
+<dd>screensaver time(0 means close)</dd>
+<dt><i>deviceLanguage</i></dt>
+<dd>device language</dd>
+<dt><i>passwordCheck</i></dt>
+<dd>whether to open password check</dd>
+<dt><i>RecycleRecord</i></dt>
+<dd>whether permit overlap record</dd>
+<dt><i>videoFormatMask</i></dt>
+<dd>supportive video format mask(read only)</dd>
+<dt><i>videoOutMask</i></dt>
+<dd>supportive video output device mask(read only)</dd>
+<dt><i>videoOutResolutionMask</i></dt>
+<dd>supportive video output device resolution mask(read only)</dd>
+<dt><i>languageMask</i></dt>
+<dd>language mask group supported by device(read only),refer to the list below:</dd>
+<table>
+<tr >
+<th>类型</th>
+<th>对应值</th>
+</tr>
+<tr>
+<td>LANGUAGE_ENGLISH</td>
+<td>0x0000001</td>
+</tr>
+<tr>
+<td>LANGUAGE_CHINESE_S</td>
+<td>0x0000002</td>
+</tr>
+<tr>
+<td>LANGUAGE_CHINESE_B</td>
+<td>0x0000004</td>
+</tr>
+<tr>
+<td>LANGUAGE_PORTUGUESE</td>
+<td>0x0000008</td>
+</tr>
+<tr>
+<td>LANGUAGE_GREECE</td>
+<td>0x0000010</td>
+</tr>
+<tr>
+<td>LANGUAGE_SPAISH</td>
+<td>0x0000020</td>
+</tr>
+<tr>
+<td>LANGUAGE_RUSSIAN</td>
+<td>0x0000040</td>
+</tr>
+<tr>
+<td>LANGUAGE_NORWAY</td>
+<td>0x0000080</td>
+</tr>
+<tr>
+<td>LANGUAGE_TURKEY </td>
+<td>0x0000100</td>
+</tr>
+<tr>
+<td>LANGUAGE_ITALY</td>
+<td>0x0000200</td>
+</tr>
+<tr>
+<td>LANGUAGE_CZECH</td>
+<td>0x0000400</td>
+<tr>
+<td>LANGUAGE_GERMAN </td>
+<td>0x0000800</td>
+</tr>
+<tr>
+<td>LANGUAGE_HEBREW</td>
+<td>0x0001000</td>
+</tr>
+<tr>
+<td>LANGUAGE_JAPANESE</td>
+<td>0x0002000</td>
+</tr>
+</tr>
+<tr>
+<td>LANGUAGE_FRENCH</td>
+<td>0x0004000</td>
+</tr>
+<tr>
+<td>LANGUAGE_POLISH </td>
+<td>0x0008000</td>
+</tr>		    
+<tr>
+<td>LANGUAGE_BULGARIAN</td>
+<td>0x0010000</td>
+</tr>
+<tr>
+<td>LANGUAGE_INDONESIA</td>
+<td>0x0020000</td>
+</tr>
+<tr>
+<td>LANGUAGE_RUSSIAN_D</td>
+<td>0x0040000</td>
+</tr>
+<tr>
+<td>LANGUAGE_THAI</td>
+<td>0x0080000</td>
+</tr>
+<tr>
+<td>LANGUAGE_HUNGARY</td>
+<td>0x0100000</td>
+</tr>
+<tr>
+<td>LANGUAGE_LITHUANIA</td>
+<td>0x0200000</td>
+</tr>
+</table>
+</dl>
+<br />
+<hr />
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET_SDK_UnSmartSubscrib</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;<FONT size=4>Client SDK 
+Instructions</FONT></BIG></P>
+<H1>NET_SDK_UnSmartSubscrib</H1>
+<P>Cancel the subscription of smart alarm events(only support IPC).</P><PRE class=syntax> BOOL NET_SDK_UnSmartSubscrib(
+ LONG<I>     lUserID</I>,
+ DWORD<I>    dwCommand</I>,
+ LONG<I>     lChannel</I>,
+ char <I> *pInServerAddress</I>,
+ int  <I>*dwResult</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] the return value of NET_SDK_Login() 
+  <DT><I>dwCommand</I> 
+  <DD>[in] the configuration command of the device. Refer to configuration 
+  command. 
+  <DT><I>lChannel</I> 
+  <DD>[in]the channel number starts from 0 
+  <DT>pInServerAddress 
+  <DD>[in] a pointer to the buffer of input data 
+  <DT>dwResult 
+  <DD>[out] the length of  output data </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information, please 
+call<A href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>The structures and commands are as follows:<BR></P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TH>
+      <P>enum definition</P></TH>
+    <TH>
+      <P><FONT style="BACKGROUND-COLOR: #eeeeee">value</FONT></P></TH>
+    <TH>
+      <P><FONT style="BACKGROUND-COLOR: #eeeeee">meanings</FONT></P></TH>
+</TR>
+  <TR>
+    <TD><SPAN style="COLOR: #800080">NET_DVR_SMART_AVD</SPAN></TD>
+    <TD>0x0</TD>
+    <TD><SPAN style="COLOR: #008000">Abnormal video signal diagnosis</SPAN></TD>
+   </TR>
+  <TR>
+    <TD><SPAN style="COLOR: #800080">NET_DVR_SMART_VFD</SPAN></TD>
+    <TD>0x1</TD>
+    <TD><SPAN style="COLOR: #008000">Face detection</SPAN></TD>
+    </TR>
+  <TR>
+    <TD>NET_DVR_SMART_VFD_MATCH</TD>
+    <TD>0x2</TD>
+    <TD>Face comparison</TD>
+    </TR>
+  <TR>
+    <TD>NET_DVR_SMART_PEA</TD>
+    <TD>0x3</TD>
+    <TD>Region intrusion</TD>
+   </TR>
+  <TR>
+    <TD>NET_DVR_SMART_OSC</TD>
+    <TD>0x4</TD>
+    <TD>Object removal</TD>
+    </TR>
+  <TR>
+    <TD>NET_DVR_SMART_CPC(obsolete)</TD>
+    <TD>0x5</TD>
+    <TD>People counting</TD>
+    </TR>
+  <TR>
+    <TD>NET_DVR_SMART_CDD</TD>
+    <TD>0x6</TD>
+    <TD>Crowd density detection</TD>
+    </TR>
+<TR>
+    <TD>NET_DVR_SMART_IPD</TD>
+    <TD>0x7</TD>
+    <TD>People intrusion</TD>
+    </TR>
+  <TR>
+    <TD>NET_DVR_SMART_VIHICLE</TD>
+    <TD>0x8</TD>
+    <TD>Vehicle detection</TD>
+    </TR>
+ <TR>
+    <TD>NET_IPC_SMART_AOIENTRY</TD>
+    <TD>0x9</TD>
+    <TD>Enter region</TD>
+   </TR>
+ <TR>
+    <TD>NET_IPC_SMART_AOILEAVE</TD>
+    <TD>0xA</TD>
+    <TD>Leave region</TD>
+    </TR>
+<TR>
+    <TD>NET_DVR_SMART_VFD_MATCH_FAILED</TD>
+    <TD>0xB</TD>
+    <TD>Face match failed, for stranger</TD>
+    </TR>
+<TR>
+    <TD>NET_IPC_SMART_PASSLINE</TD>
+    <TD>0xC</TD>
+    <TD>pass line</TD>
+    </TR></TBODY></TABLE>
+<H3>See Also</H3>
+<P>NET_SDK_SmartSubscrib&nbsp;&nbsp;&nbsp;<A 
+href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P><BR>
+<HR>
+</BODY></HTML>

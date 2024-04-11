@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_PlayBackByTime</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_PlayBackByTime</H1>
+<P>Play back the record file by time and the main stream is requested.</P><PRE class=syntax> LONG NET_SDK_PlayBackByTime(   
+ LONG<I>              lUserID</I>,
+ LONG<I>              *pChannels</I>,
+ LONG<I>              channelNum</I>,
+ <A href="struct/DD_TIME.htm">DD_TIME</A><I>           *lpStartTime</I>,
+ <A href="struct/DD_TIME.htm">DD_TIME</A><I>           *lpStopTime</I>,
+ HWND<I>              *hWnd</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] return value of NET_SDK_Login 
+  <DT><I>pChannels</I> 
+  <DD>[in] channel number,start from 0 array for playback 
+  <DT><I>channelNum</I> 
+  <DD>[in] quatity of channels in array <STRONG>pChannels</STRONG> 
+  <DT><I>*lpStartTime</I> 
+  <DD>[in] pointer to the start time of the file 
+  <DT><I>*lpStopTime</I> 
+  <DD>[in] pointer to the stop time of the file 
+  <DT><I>*hWnd</I> 
+  <DD>[in] window handle for playback,if null,SDK still can receive code stream 
+  data,but can't decode to display. </DD></DL>
+<H3>Return Values</H3>
+<P>-1 means failure and other value is parameter of NET_SDK_StopPlayBack. To get 
+error information,please call <A 
+href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>This interface specifies which record file to play,after finishing calling 
+this interface,call NET_SDK_SetPlayDataCallBack to register callback function 
+and dispose the captured code stream data by itself.</P>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_PlayBackControl.htm">NET_SDK_PlayBackControl</A>&nbsp;&nbsp;&nbsp;<A 
+href="NET_SDK_StopPlayBack.htm">NET_SDK_StopPlayBack</A>&nbsp;&nbsp;&nbsp;<A 
+href="NET_SDK_SetLiveDataCallBack.htm">NET_SDK_SetLiveDataCallBack</A>&nbsp;&nbsp;&nbsp; 
+<A href="NET_SDK_Login.htm">NET_SDK_Login</A>&nbsp;&nbsp;&nbsp;</P><BR>
+<HR>
+</BODY></HTML>

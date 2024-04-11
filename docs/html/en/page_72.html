@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET SDK FACE MATCH ALARM TRIGGER</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_FACE_MATCH_ALARM_TRIGGER</H1>
+<P>Alarm linkage information of face match alarm for target groups</P><PRE class=syntax>   typedef struct _net_sdk_face_match_alarm_trigger_
+{
+    unsigned char	guid[48];	//GROUP GUID
+    unsigned int    groupId;    //group ID
+    unsigned char    groupSwitch;//enable
+    unsigned char    alarmOutSwitch;//trigger alarm output
+    unsigned char    alarmOut[16];//trigger a maximum of 16 alarm outputs. The index starts from 1.
+    unsigned char    recSwitch;//recording
+    unsigned int    recCH[128];//trigger recording channels/cameras. The index starts from 1.
+    unsigned char    snapSwitch;//snapshot</PRE><PRE class=syntax>    unsigned int    snapCH[128];//trigger snapshot channels/camera. The index starts from 1.
+    unsigned int    popVideo;//pop up window</PRE><PRE class=syntax>    unsigned char    msgPushSwitch;
+    unsigned char    buzzerSwitch;
+    unsigned char    popMsgSwitch;
+    unsigned char    emailSwitch;
+
+}NET_SDK_FACE_MATCH_ALARM_TRIGGER;
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT>guid 
+  <DD>Group GUID 
+  <DT>groupId 
+  <DD>Group ID 
+  <DT>groupSwitch 
+  <DD>Whether to enable alarm for the group. 
+  <DT>alarmOutSwitch 
+  <DD>trigger alarmOut 
+  <DT>alarmOut 
+  <DD>Trigger the channels of alarm out. The index of channels starts from 
+  1.&nbsp; 
+  <DT>recSwitch 
+  <DD>Trigger recording 
+  <DT>recCH 
+  <DD>Trigger the recording channels. The index of channels starts from 1. 
+  <DT>snapSwitch 
+  <DD>Trigger snapshot 
+  <DT>snapCH 
+  <DD>Trigger snapshot channels. The index of channels starts from 1.&nbsp; 
+  <DT>popVideo 
+  <DD>Trigger pop-up video. 0 menas no video pops up. Other number means the 
+  video pops up. 
+  <DT>msgPushSwitch 
+  <DD>Trigger message push 
+  <DT>buzzerSwitch 
+  <DD>Trigger buzzer 
+  <DT>popMsgSwitch 
+  <DD>Trigger pop-up message 
+  <DT>emailSwitch 
+  <DD>Trigger email&nbsp; 
+  <DD>
+  <HR>
+  </DD></DL></BODY></HTML>

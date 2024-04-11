@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_GetVideoEffect</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;<FONT size=4>Client SDK 
+Instructions</FONT></BIG></P>
+<H1><SPAN style="COLOR: #800080"><SPAN 
+style="COLOR: #808000">typedef</SPAN><SPAN style="COLOR: #c0c0c0"> </SPAN><SPAN 
+style="COLOR: #808000">struct</SPAN><PRE style="TEXT-INDENT: 0px; MARGIN: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #000000">{</SPAN></PRE><PRE style="TEXT-INDENT: 0px; MARGIN: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #808000">unsigned</SPAN><SPAN style="COLOR: #c0c0c0"> </SPAN><SPAN style="COLOR: #808000">int</SPAN><SPAN style="COLOR: #c0c0c0">          </SPAN><SPAN style="COLOR: #800000">minValue</SPAN><SPAN style="COLOR: #000000">;</SPAN><SPAN style="COLOR: #c0c0c0">             </SPAN><SPAN style="COLOR: #008000">// the minimum value</SPAN></PRE><PRE style="TEXT-INDENT: 0px; MARGIN: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #808000">unsigned</SPAN><SPAN style="COLOR: #c0c0c0"> </SPAN><SPAN style="COLOR: #808000">int</SPAN><SPAN style="COLOR: #c0c0c0">          </SPAN><SPAN style="COLOR: #800000">maxValue</SPAN><SPAN style="COLOR: #000000">;</SPAN><SPAN style="COLOR: #c0c0c0">             </SPAN><SPAN style="COLOR: #008000">// the maximum value</SPAN></PRE><PRE style="TEXT-INDENT: 0px; MARGIN: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #808000">unsigned</SPAN><SPAN style="COLOR: #c0c0c0"> </SPAN><SPAN style="COLOR: #808000">int</SPAN><SPAN style="COLOR: #c0c0c0">          </SPAN><SPAN style="COLOR: #800000">curValue</SPAN><SPAN style="COLOR: #000000">;</SPAN><SPAN style="COLOR: #c0c0c0">             </SPAN><SPAN style="COLOR: #008000">// the current value</SPAN></PRE><PRE style="TEXT-INDENT: 0px; MARGIN: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #808000">unsigned</SPAN><SPAN style="COLOR: #c0c0c0"> </SPAN><SPAN style="COLOR: #808000">int</SPAN><SPAN style="COLOR: #c0c0c0">          </SPAN><SPAN style="COLOR: #800000">defaultValue</SPAN><SPAN style="COLOR: #000000">;</SPAN><SPAN style="COLOR: #c0c0c0">             </SPAN><SPAN style="COLOR: #008000">// the default value<BR></SPAN></PRE><PRE style="TEXT-INDENT: 0px; MARGIN: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #000000">}</SPAN><SPAN style="COLOR: #800080">NET_SDK_IMAGE_EFFECT_T</SPAN><SPAN style="COLOR: #000000">;</SPAN></PRE></SPAN></H1>
+<H1>NET_SDK_GetVideoEffect_Ex</H1>
+<P>Get the display parameter of video.</P><PRE class=syntax> BOOL NET_SDK_GetVideoEffect_Ex(
+ LONG<I>      lUserID</I>,
+ LONG<I>      lChannel</I>,
+ NET_SDK_IMAGE_EFFECT_T<I>     *pBrightValue</I>,
+ NET_SDK_IMAGE_EFFECT_T<I>     *pContrastValue</I>,
+ NET_SDK_IMAGE_EFFECT_T<I>     *pSaturationValue</I>,
+ NET_SDK_IMAGE_EFFECT_T<I>     *pHueValue</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] the return value of NET_SDK_Login(). 
+  <DT><I>lChannel</I> 
+  <DD>[in] the return value of NET_SDK_CLIENTINFO. The channel number starts 
+  from 0. 
+  <DT><I>pBrightValue</I> 
+  <DD>[out]&nbsp;a pointer to brightness 
+  <DT><I>pContrastValue</I> 
+  <DD>[out]&nbsp;a pointer to contrast 
+  <DT><I>pSaturationValue</I> 
+  <DD>[out]&nbsp;a pointer to saturation 
+  <DT><I>pHueValue</I> 
+  <DD>[out] a&nbsp;pointer to hue</DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please 
+call<A href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_LivePlay.htm">NET_SDK_LivePlay</A>&nbsp;&nbsp;</P>
+<H1>Android Interface</H1>
+<P>The corresponding Android interface：NO</P><BR><BR>
+<HR>
+</BODY></HTML>

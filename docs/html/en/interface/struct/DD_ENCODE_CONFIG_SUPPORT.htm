@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>DD_ENCODE_CONFIG_SUPPORT</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_ENCODE_CONFIG_SUPPORT</h1>
+<p>struct of encode config supported by device</p>
+<pre class ="syntax"> struct   _dd_encode_config_support_
+{
+       <a href="DD_ENCODE_CONFIG.htm">DD_ENCODE_CONFIG</a> encodeConfig[DD_MAX_SUPPORT_RESOLUTION];
+	unsigned long      num;
+}DD_ENCODE_CONFIG_SUPPORT;
+
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>encodeConfig[DD_MAX_SUPPORT_RESOLUTION]</i></dt>
+<dd>DD_MAX_SUPPORT_RESOLUTION equals 7, which is the max supported resolution type num, encodeConfig includes main stream(sub stream) resolution, fps, max and min bitrate.</dd>
+<dt><i>num</i></dt>
+<dd>the real supported resolution num by device</dd>
+</dl>
+<br />
+ <hr />
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

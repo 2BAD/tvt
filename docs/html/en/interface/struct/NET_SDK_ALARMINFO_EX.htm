@@ -1,0 +1,632 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml" xmlns:o = 
+"urn:schemas-microsoft-com:office:office"><HEAD><TITLE>NET_SDK_ALARMINFO_EX</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.10570.1001"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_ALARMINFO_EX</H1>
+<P>struct of alarm information</P><PRE class=syntax> struct _net_sdk_alarminfo_ex{
+ DWORD		dwAlarmType;
+ DWORD		dwSensorIn;		
+ DWORD		dwChannel;		
+ DWORD		dwDisk;	
+ char	                     sensorName[36];
+ char                                 alarmTime[20];
+ char		resv[128];			
+ }NET_SDK_ALARMINFO_EX;
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT><I>dwAlarmType</I> 
+  <DD>alarm type,refer to the following list: 
+  <DD>
+  <TABLE 
+  style="BORDER-COLLAPSE: collapse; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; PADDING-RIGHT: 5.4pt; mso-table-layout-alt: fixed" 
+  align=center>
+    <TBODY>
+    <TR>
+      <TD 
+      style="BORDER-TOP: rgb(0,0,0) 0.75pt inset; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: center"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: bold; mso-shading: rgb(238,238,238)">T</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: bold; mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">ype</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: bold; mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: rgb(0,0,0) 0.75pt inset; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: center"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: bold; mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Description</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); FONT-WEIGHT: bold; mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">_TYPE_MOTION</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Motion</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">&nbsp;detec</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">tion&nbsp;alarm</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">_TYPE_SENSOR</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Sensor&nbsp;alarm&nbsp;input</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">_TYPE_VLOSS</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Video&nbsp;loss&nbsp;alarm</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">_TYPE_</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">FRONT_OFFLINE</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Front-end&nbsp;</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">device</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)">&nbsp;</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">offline</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">&nbsp;alarm</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">_TYPE_</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">OSC</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Object&nbsp;Abandoned/Missing&nbsp;</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">alarm</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">_TYPE_</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">AVD</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Exception&nbsp;</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">alarm</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">_TYPE_</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">AVD_SECENE</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)">E</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">xception&nbsp;detection-Scene&nbsp;change,&nbsp;for&nbsp;IPC&nbsp;only</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">_TYPE_</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">AVD_CLARITY</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)">E</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">xception&nbsp;detection-video&nbsp;</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">blurred</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">,&nbsp;for&nbsp;IPC&nbsp;only</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">_TYPE_</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">AVD_COLOR</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)">E</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">xception&nbsp;detection-video&nbsp;</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">color&nbsp;cast</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">,&nbsp;for&nbsp;IPC&nbsp;only</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">_TYPE_</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">PEA_TRIPWIRE</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Tripwire&nbsp;</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">alarm</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_PEA_PERIMETER</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Intrusion&nbsp;</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">alarm</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_VFD</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Face&nbsp;Detection&nbsp;(currently&nbsp;IPC&nbsp;only)</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">CDD</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Crowd</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">&nbsp;density&nbsp;detection</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">IPD</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Intrusion&nbsp;person</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">&nbsp;detection</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">CPC</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">People&nbsp;counting</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">FACE_MATCH</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Face&nbsp;</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">match</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">&nbsp;alarm(NVR)</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">FACE_MATCH_FOR_IPC</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Face&nbsp;</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">match</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">&nbsp;alarm(IPC)</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_TRAJECT</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Target&nbsp;tracking&nbsp;trajectory</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">VEHICE</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">li</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)">c</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">en</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)">s</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">e&nbsp;plate(IPC)</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_AOIENTRY</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Enter&nbsp;the&nbsp;area(IPC)</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_AOI</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">LEAVE</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Leave&nbsp;the&nbsp;area(IPC)</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">PASSLINE</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Tripwire</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">&nbsp;counting</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_IP_CONFLICT</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">IP&nbsp;address&nbsp;conflict</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_DISK_IO_ERROR</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Disk&nbsp;IO&nbsp;error</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_DISK_FULL</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Full&nbsp;disk</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_RAID_SUBHEALTH</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Array&nbsp;sub-health</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_RAID_UNAVAILABLE</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Array</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">&nbsp;un</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">available</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_ILLEIGAL_ACCESS</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Illegal&nbsp;</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">access</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_NET_DISCONNECT</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Network&nbsp;disconnect</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_NO_DISK</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">No&nbsp;disk</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">&nbsp;in&nbsp;disk&nbsp;group</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_SIGNAL_SHELTER</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Signal</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">&nbsp;shelter</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR>
+    <TR>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: rgb(0,0,0) 0.75pt inset; PADDING-RIGHT: 5.4pt; mso-border-left-alt: 0.7500pt inset rgb(0,0,0); mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">NET_SDK_N9000_ALARM_TYPE_HDD_PULL_OUT</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD>
+      <TD 
+      style="BORDER-TOP: medium none; BORDER-RIGHT: rgb(0,0,0) 0.75pt inset; WIDTH: 216.15pt; BACKGROUND: rgb(238,238,238); BORDER-BOTTOM: rgb(0,0,0) 0.75pt inset; PADDING-BOTTOM: 0pt; PADDING-TOP: 0pt; PADDING-LEFT: 5.4pt; BORDER-LEFT: medium none; PADDING-RIGHT: 5.4pt; mso-border-left-alt: none; mso-border-right-alt: 0.7500pt inset rgb(0,0,0); mso-border-top-alt: 0.7500pt inset rgb(0,0,0); mso-border-bottom-alt: 0.7500pt inset rgb(0,0,0)" 
+      vAlign=bottom width=288>
+        <P class=p0 
+        style="MARGIN-BOTTOM: 0pt; BACKGROUND: rgb(238,238,238); MARGIN-TOP: 0pt; TEXT-ALIGN: left"><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">Front&nbsp;panel&nbsp;</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: 'Verdana'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">HDD</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-spacerun: 'yes'; mso-shading: rgb(238,238,238)">&nbsp;pull&nbsp;out</SPAN><SPAN 
+        style="FONT-SIZE: 10pt; FONT-FAMILY: '宋体'; BACKGROUND: rgb(238,238,238); mso-shading: rgb(238,238,238)"><o:p></o:p></SPAN></P></TD></TR></TBODY></TABLE><!--EndFragment-->
+  <DD>the alarmtype NET_SDK_ALARM_TYPE(refer to the following&nbsp;list) is not 
+  be used now,it is invalid 
+  <DD><!--EndFragment-->&nbsp; 
+  <TABLE>
+    <TBODY>
+    <TR>
+      <TH>Type</TH>
+      <TH>Description</TH></TR>
+    <TR>
+      <TD>NET_SDK_ALARM_TYPE_MOTION</TD>
+      <TD>motion detection</TD></TR>
+    <TR>
+      <TD>NET_SDK_ALARM_TYPE_SENSOR</TD>
+      <TD>sensor alarm</TD></TR>
+    <TR>
+      <TD>NET_SDK_ALARM_TYPE_VLOSS</TD>
+      <TD>single loss</TD></TR>
+    <TR>
+      <TD>NET_SDK_ALARM_TYPE_SHELTER</TD>
+      <TD>shelter alarm</TD></TR>
+    <TR>
+      <TD>NET_SDK_ALARM_TYPE_DISK_FULL</TD>
+      <TD>full harddisk</TD></TR>
+    <TR>
+      <TD>NET_SDK_ALARM_TYPE_DISK_UNFORMATTED</TD>
+      <TD>disc unformatted</TD></TR>
+    <TR>
+      <TD>NET_SDK_ALARM_TYPE_DISK_WRITE_FAIL</TD>
+      <TD>harddisk read-write error</TD></TR>
+    <TR>
+      <TD>NET_SDK_ALARM_TYPE_EXCEPTION</TD>
+      <TD>exception alarm</TD></TR></TBODY></TABLE>
+  <DT><I>dwSensorIn</I> 
+  <DD>sensor alarm input port number 
+  <DT><I>dwChannel</I> 
+  <DD>when alarm is relative to channel,dwChannel means alarm channel 
+  <DT><I>dwDisk</I> 
+  <DD>in disc alarming, it means disc number which alarms 
+  <DT><I>sensorName</I> 
+  <DD>in sensor alarming, it means the alarming sensor's name 
+  <DT><I>alarmTime</I> 
+  <DD>alarm time 
+  <DT><I>resv</I> 
+  <DD>preserve </DD></DL><BR>
+<HR>
+</BODY></HTML>

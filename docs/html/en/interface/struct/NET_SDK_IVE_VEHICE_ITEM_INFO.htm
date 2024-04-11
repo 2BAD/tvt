@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET_SDK_IVE_VEHICE_ITEM_INFO</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-CN http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18978"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>Client SDK Instructions</BIG></P>
+<H1>NET_SDK_IVE_VEHICE_ITEM_INFO</H1>
+<P>Vehicle number information</P><PRE class=syntax> 
+ 
+typedef struct
+{ 
+  unsigned int  begin_flag;
+  unsigned int  data_type;                            
+  unsigned int  image_type;                         
+  unsigned int plateId;                                    
+  unsigned int plateCharCount;                
+  char plate[32];                                              
+  char plateCharConfid[32];                       
+  <A href="NET_SDK_IVE_RECT_T.htm">NET_SDK_IVE_RECT_T</A> ptPlateCharRect[32]; 
+  unsigned in ptWidth;                                 
+  unsigned int ptHeight;                             
+  <A href="NET_SDK_IVE_POINT_T.htm">NET_SDK_IVE_POINT_T</A> ptLeftTop; 
+  <A href="NET_SDK_IVE_POINT_T.htm">NET_SDK_IVE_POINT_T</A> ptRightTop;  
+  <A href="NET_SDK_IVE_POINT_T.htm">NET_SDK_IVE_POINT_T</A> ptLeftBottom;
+  <A href="NET_SDK_IVE_POINT_T.htm">NET_SDK_IVE_POINT_T</A> ptRightBottom;
+  unsigned short plateWidth;  
+  unsigned short plateHeight; 
+  unsigned int plateConfidence;
+  unsigned int plateIntensity;
+  unsigned char      plateColor; 
+  unsigned char plateStyle;
+  unsigned char PlateColorRate; 
+  unsigned char vehicleColor;  
+  unsigned int plateAngleH;
+  unsigned int plateAngleV; 
+  unsigned in jpeg_len; 
+  unsigned int  jpeg_vir_len;  
+  char owner[32];  
+  int listType; 
+  unsigned long long beginTime;
+  unsigned long long  endTime;  
+  unsigned char      iVehicleDirect;   
+  unsigned char resrv[11];
+  unsigned  int  end_flag; 
+}NET_SDK_IVE_VEHICE_ITEM_INFO;
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT><SPAN style="COLOR: #800000"><FONT color=#800000>begin_flag</FONT></SPAN> 
+  <DD>start identification，0x5a5a5a5a 
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>data_type</FONT></SPAN> 
+  <DD> 0：JPG,1:YUV
+  <DT><SPAN style="COLOR: #800000"><FONT color=#800000>image_type</FONT></SPAN> 
+  <DD> 0:source image，1：vehicle number
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>plateId</FONT></SPAN> 
+  <DD> ID，just for identification
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>plateCharCount</FONT></SPAN> 
+  <DD>the number of the characters of the vehicle number
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>plate</FONT></SPAN> 
+  <DD>the vehicle number, utf8 codec
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>plateCharConfid</FONT></SPAN> 
+  <DD>the confidence of the vehicle number
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>ptPlateCharRect</FONT></SPAN> 
+  <DD>the coordinate of the upleft of the vehicle number
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>ptWidth</FONT></SPAN> 
+  <DD>the width of the vehicle number（for drawing rectangle to following the vehicle number plate）
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>ptHeight</FONT></SPAN> 
+  <DD>the height of the vehicle number
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>ptLeftTop</FONT></SPAN> 
+  <DD> coordinate of the upleft of the plate
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>ptRightTop</FONT></SPAN> 
+  <DD>coordinate of the upright of the plate
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>ptLeftBottom</FONT></SPAN> 
+  <DD>coordinate of the downleft of the plate
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>ptRightBottom</FONT></SPAN> 
+  <DD>coordinate of the downright of the plate
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>plateWidth</FONT></SPAN> 
+  <DD>width of the plate
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>plateHeight</FONT></SPAN> 
+  <DD>height of the plate
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>plateConfidence</FONT></SPAN> 
+  <DD>plate confidence
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>plateIntensity</FONT></SPAN> 
+  <DD>plate intensity
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>plateColor</FONT></SPAN> 
+  <DD>the color of the vehicle number plate // 0-blue 1-black 2-yellow 3-white 4-green 5-red 6-gray 7-purple(KISE)
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>plateStyle</FONT></SPAN> 
+  <DD>plate style
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>PlateColorRate</FONT></SPAN> 
+  <DD>the similarity of the plate color
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>vehicleColor</FONT></SPAN> 
+  <DD>color of the vehicle
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>plateAngleH</FONT></SPAN> 
+  <DD>horizen angle of the plate
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>plateAngleV</FONT></SPAN> 
+  <DD>vertical angle of the plate
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>jpeg_len</FONT></SPAN> 
+  <DD>the lenth of the jpeg image data
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000> jpeg_vir_len </FONT></SPAN> 
+  <DD>the total lenth of the jpeg image data
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000> owner </FONT></SPAN> 
+  <DD>the name of the vehicle's owner
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000> listType </FONT></SPAN> 
+  <DD>list type,0-comparision failed，1-strange，2-white list，3-black list，
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000> beginTime </FONT></SPAN> 
+  <DD>start time
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000> endTime </FONT></SPAN> 
+  <DD>end time
+<DT><SPAN style="COLOR: #800000"><FONT color=#800000> iVehicleDirect</FONT></SPAN> 
+  <DD> vehicle's direction, 1 unknown 2 near 3 far 
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000> resrv</FONT></SPAN> 
+  <DD>preserve
+ <DT><SPAN style="COLOR: #800000"><FONT color=#800000>end_flag</FONT></SPAN> 
+  <DD>end identification，0xa5a5a5a5
+
+  <HR>
+  </DD></DL>
+<HR>
+<PRE></PRE>
+</BODY></HTML>

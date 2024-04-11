@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET SDK FACE INFO GROUP ITEM</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_FACE_INFO_GROUP_ITEM</H1>
+<P>struct of the group of face comarison</P><PRE class=syntax> typedef struct _net_sdk_face_info_group_item_
+{
+    unsigned char	guid[48];				//GROUP GUID
+    char	         name[DD_MAX_NAME_LEN];//GROUP NAME
+    unsigned int	property;		//NET_SDK_FACE_INFO_GROUP_PROPERTY_TYPE
+    unsigned int    groupId;               //
+    unsigned int    enableAlarmSwitch;
+
+}NET_SDK_FACE_INFO_GROUP_ITEM;
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT><SPAN style="COLOR: #800000">guid</SPAN> 
+  <DD>group GUID 
+  <DT><SPAN style="COLOR: #800000">name</SPAN> 
+  <DD>group name 
+  <DT><SPAN style="COLOR: #800000"><SPAN 
+  style="COLOR: #800000">property</SPAN></SPAN> 
+  <DD>type of the group; refer to <FONT 
+  color=#008000>NET_SDK_FACE_INFO_GROUP_PROPERTY_TYPE.</FONT> 
+  <DT><SPAN style="COLOR: #800000">groupId</SPAN> 
+  <DD>group id 
+  <DT><SPAN style="COLOR: #800000">enableAlarmSwitch</SPAN> 
+  <DD>Support face match alarm </DD></DL></BODY></HTML>

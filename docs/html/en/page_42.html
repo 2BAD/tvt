@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_GetPTZConfig</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG><FONT size=4>&nbsp;Client SDK 
+Instructions</FONT></BIG></P>
+<H1>NET_SDK_GetPTZConfig</H1>
+<P>Get the related configuration of PTZ (only for N9000).</P><PRE class=syntax> BOOL NET_SDK_GetPTZConfig(
+ LONG<I>     lUserID</I>,
+ LONG<I>     lChannel</I>,
+ DWORD<I>    dwCommand</I>,
+ LPVOID<I>   lpInBuffer</I>,
+ DWORD<I>    dwInBufferSize</I>,
+ LPVOID<I>   lpOutBuffer</I>,
+ DWORD<I>    dwOutBufferSize</I>,
+ LPDWORD<I>  lpBytesReturned</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] the return value of NET_SDK_Login() 
+  <DT><I>lChannel</I> 
+  <DD>[in] channel number starts from 0. -1 means all channels.If the command 
+  don't need channel number, this parameter is invalid. 
+  <DT><I>dwCommand</I> 
+  <DD>[in] device configuration command, see Configuration Commands 
+  <DT>lpInBuffer 
+  <DD>[in] buffer pointer to sending data. it is can not be NULL .
+  <DT><I>dwInBufferSize</I> 
+  <DD>[in] the buffer length of sending data (in byte). It is can not be&nbsp;0.
+  <DT><I>lpOutBuffer</I> 
+  <DD>[out] the buffer pointer&nbsp;to receiving data. 
+  <DT><I>dwOutBufferSize</I> 
+  <DD>[in] the buffer length of receiving data (in byte). It is can not 
+  be&nbsp;0 
+  <DT><I>lpBytesReturned</I> 
+  <DD>[out] the length pointer to the data actually received. it is can not be 
+  null
+  <DT>
+  <DD></DD></DL>
+<H3>Remarks</H3>
+<P>&nbsp;</P>
+<P>Different functions has different structures and commands as shown 
+below.<BR></P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TH>
+      <P>dwCommand</P>
+      <P><FONT style="BACKGROUND-COLOR: #eeeeee">Macro Definition</FONT></P></TH>
+    <TH>
+      <P>dwCommand</P>
+      <P><FONT style="BACKGROUND-COLOR: #eeeeee">Meanings</FONT></P></TH>
+    <TH>
+      <P>Sending Structure</P></TH>
+    <TH>
+      <P>Receiving Structure</P></TH></TR>
+  <TR>
+  <TR>
+    <TD>DD_PTZ_CONFIG_PRESET</TD>
+    <TD>Get preset</TD>
+    <TD>NULL</TD>
+    <TD>DD_PTZ_PRESET_CONFIG_Ex</TD></TR>
+  <TR>
+    <TD>DD_PTZ_CONFIG_CRUISE</TD>
+    <TD>
+      <P>Get cruise</P></TD>
+    <TD>NULL</TD>
+    <TD>DD_CH_CRUISE</TD></TR>
+  <TR>
+    <TD>DD_PTZ_CONFIG_CRUISE_POINT</TD>
+    <TD>&nbsp;Get presets f the curise</TD>
+    <TD>unsigned int(cruiseIndex)</TD>
+    <TD>DD_CRUISE_POINT_INFO</TD></TR></TBODY></TABLE>
+<H3>See Also</H3>
+<P><A href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P><BR>
+<HR>
+</BODY></HTML>

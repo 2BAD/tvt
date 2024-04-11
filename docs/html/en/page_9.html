@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_DownLoadPicture</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY><BIG><SPAN style="COLOR: #008000"><FONT size=2>
+<H1 style="BACKGROUND-COLOR: #abcdef" align=left><BIG><FONT size=4>&nbsp;<FONT 
+color=#000000>Client SDK Instructions</FONT></FONT></BIG></H1></FONT></SPAN>
+<H1><SPAN style="COLOR: #008000"><FONT size=2>//Image Type</FONT></SPAN></H1><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><FONT size=2><SPAN style="COLOR: #808000">enum</SPAN><SPAN style="COLOR: #c0c0c0"> </SPAN><SPAN style="COLOR: #800080">IMAGE_MODE</SPAN></FONT></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #000000"><FONT size=2>{</FONT></SPAN></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><FONT size=2><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #800080">IMAGE_MODE_JPG</SPAN><SPAN style="COLOR: #000000">,</SPAN></FONT></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><FONT size=2><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #800080">IMAGE_MODE_PNG</SPAN><SPAN style="COLOR: #000000">,</SPAN></FONT></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><FONT size=2><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #800080">IMAGE_MODE_BMP</SPAN><SPAN style="COLOR: #000000">,</SPAN></FONT></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #000000"><FONT size=2>};</FONT></SPAN></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><FONT size=2><SPAN style="COLOR: #808000">typedef</SPAN><SPAN style="COLOR: #c0c0c0"> </SPAN><SPAN style="COLOR: #808000">struct</SPAN><SPAN style="COLOR: #c0c0c0"> </SPAN><SPAN style="COLOR: #800080">_net_sdk_image_info</SPAN></FONT></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #000000"><FONT size=2>{</FONT></SPAN></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><FONT size=2><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #808000">unsigned</SPAN><SPAN style="COLOR: #c0c0c0"> </SPAN><SPAN style="COLOR: #808000">int</SPAN><SPAN style="COLOR: #c0c0c0">	</SPAN><SPAN style="COLOR: #800000">imageSize</SPAN><SPAN style="COLOR: #000000">;</SPAN></FONT></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><FONT size=2><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #800080">IMAGE_MODE</SPAN><SPAN style="COLOR: #c0c0c0">		</SPAN><SPAN style="COLOR: #800000">imageMode</SPAN><SPAN style="COLOR: #000000">;</SPAN><SPAN style="COLOR: #c0c0c0"> </SPAN><SPAN style="COLOR: #008000">//Image format</SPAN></FONT></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><FONT size=2><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #808000">unsigned</SPAN><SPAN style="COLOR: #c0c0c0"> </SPAN><SPAN style="COLOR: #808000">char</SPAN><SPAN style="COLOR: #c0c0c0">	</SPAN><SPAN style="COLOR: #800000">resv</SPAN><SPAN style="COLOR: #000000">[</SPAN><SPAN style="COLOR: #000080">8</SPAN><SPAN style="COLOR: #000000">];</SPAN></FONT></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><FONT size=2><SPAN style="COLOR: #000000">}</SPAN><SPAN style="COLOR: #800080">NET_SDK_IMAGE_INFO</SPAN><SPAN style="COLOR: #000000">;</SPAN></FONT></PRE>
+<H1>NET_SDK_DownLoadPicture</H1>
+<P>Uploading remote images（only N9000 devices availabe）</P><PRE class=syntax> BOOL NET_SDK_DownLoadPicture(
+LONG lUserID, 
+NET_SDK_IMAGE captureImage, 
+NET_SDK_IMAGE_INFO *pOutImageInfo, 
+char* pOutBuffer, 
+int outBufferSize
+);</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] return value of NET_SDK_Login() 
+  <DT>captureImage 
+  <DD>[in] NET_SDK_SearchPictures returns a data of the searched image list 
+  <DT>pOutImageInfo 
+  <DD>[out]&nbsp; return the uploaded image information
+  <DT>pOutBuffer 
+  <DD>[out]&nbsp;return the image data（when the current image exists and the 
+  space requested is&nbsp;larger than or equal to the image size, it takes 
+  effect) 
+  <DT>outBufferSize 
+  <DD>[int]&nbsp;buffer area size of pOutBuffer requesting&nbsp; 
+  <DT></DT></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information, please 
+call<A 
+href="mk:@MSITStore:C:\Users\Administrator\Desktop\设备网络SDK开发手册.CHM::/NET_SDK_GetlastError.htm"><U>NET_SDK_GetLastError</U></A></P>
+<P>Two conditions to return successfully：</P>
+<P>1、When the image exsits and the size of outBufferSize is less than the image 
+size，the return will be successful and the upper application can decode the 
+image size from pOutImageInfo parameters.<BR>2、When the image exsits and the 
+size of outBufferSize is larger than&nbsp; or equal to the downloaded image 
+size, the return value of pOutBuffer is image data.</P>
+<P style="BACKGROUND-COLOR: #abcdef"><BR></BIG>&nbsp;</P></BODY></HTML>

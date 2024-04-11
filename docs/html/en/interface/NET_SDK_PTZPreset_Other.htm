@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_PTZPreset_Other</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_PTZPreset_Other</H1>
+<P>PTZ preset point operation</P><PRE class=syntax> BOOL NET_SDK_PTZPreset_Other(
+ LONG<I>     lUserID</I>,
+ LONG<I>     lChannel</I>,
+ DWORD<I>    dwPTZPresetCmd</I>,
+ DWORD<I>    dwPresetIndex</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] return value of NET_SDK_Login 
+  <DT><I>lChannel</I> 
+  <DD>[in] channel number,start from 0 
+  <DT><I>dwPTZPresetCmd</I> 
+  <DD>[in] operate PTZ preset point command,list as follows: </DD></DL>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TH>macro definition</TH>
+    <TH>value of macro definition</TH>
+    <TH>meaning</TH></TR>
+  <TR>
+    <TD>PTZ_CMD_PRESET_SET</TD>
+    <TD>16</TD>
+    <TD>PTZ sets preset points</TD></TR>
+  <TR>
+    <TD>PTZ_CMD_PRESET_GO</TD>
+    <TD>17</TD>
+    <TD>to appointed preset point</TD></TR>
+  <TR>
+    <TD>PTZ_CMD_PRESET_DEL</TD>
+    <TD>18</TD>
+    <TD>delete preset points</TD></TR></TBODY></TABLE>
+<DL>
+  <DT><I>dwPresetIndex</I> 
+  <DD>[in] serial number of preset point,at most support 255 points </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please call 
+<A href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>Each operation on PTZ is corresponding to each control code between device 
+and PTZ,device sends control code to PTZ according to current decoder type and 
+decoder address. If current decoder doesnot match PTZ ,reconfig decoder is 
+necessary.</P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_Login.htm">NET_SDK_Login</A>&nbsp;&nbsp;</P><BR>
+<HR>
+</BODY></HTML>

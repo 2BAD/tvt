@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_FormatTime</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content="Client SDK Instructions" http-equiv=Content-Language><LINK 
+rel=Stylesheet type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_FormatTime</H1>
+<P>Transform inter time to format time</P><PRE class=syntax> void NET_SDK_FormatTime(
+ LONGLONG<I>               intTime</I>,
+<A href="struct/DD_TIME.htm"> DD_TIME</A><I>           *pFormatTime</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>intTime</I> 
+  <DD>[in] inter time form NET_SDK_FRAME_INFO, from 1970-01-01,00:00:00,unit is 
+  microsecond 
+  <DT><I>*pFormatTime</I> 
+  <DD>[in] DD_TIME format time </DD></DL>
+<H3>Return Values</H3>
+<P>None.This interface transforms the <I>time</I> parameter of <A 
+href="struct/NET_SDK_FRAME_INFO.htm">NET_SDK_FRAME_INFO</A><I> to <A 
+href="struct/DD_TIME.htm">DD_TIME</A><I>format time. To get error code, please 
+call <A href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P><BR>
+<HR>
+</I></I></BODY></HTML>

@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_SetNat2Addr</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.10570.1001"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG><FONT size=4>&nbsp;Client SDK 
+Instructions</FONT></BIG></P>
+<H1>NET_SDK_SetNat2Addr</H1>
+<P>set the p2p2.0 address</P><PRE class=syntax> LONG NET_SDK_SetNat2Addr(
+ char<EM>                   *</EM>sServerAddr,
+ WORD<I>                   wDVRPort</I>,
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT>sServerAddr 
+  <DD>[in] device IP address （it is the p2p server 
+  address（c2020.autonat.com））&nbsp; 
+  <DT>wDVRPort 
+  <DD>[in] p2p port </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure.To get error information, please call 
+<A 
+href="interface/NET_SDK_GetLastError.htm"><U>NET_SDK_GetLastError</U></A></P>
+<H3>See Also</H3>
+<P><U>NET_SDK_LoginEx</U>&nbsp;&nbsp;</P></BODY></HTML>

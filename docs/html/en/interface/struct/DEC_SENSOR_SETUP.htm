@@ -1,0 +1,57 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>DEC_SENSOR_SETUP</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DEC_SENSOR_SETUP</h1>
+<p>struct of decoder sensor setting</p>
+<pre class ="syntax"> struct _dec_sensor_setup_{
+ unsigned long              iSize;		
+ unsigned char	              enable;		
+ unsigned char	              bNO;		
+ unsigned short	       holdTime;	
+ char                       name [DEC_MAX_BUF_LEN];	
+ unsigned long              toBuzzer;			
+ unsigned long              toAlarmOut;			
+ }DEC_SENSOR_SETUP;
+
+ </pre>
+<h3>Members</h3>
+<dl>
+<dt><i>iSize</i></dt>
+<dd>size of the struct</dd>
+<dt><i>enable</i></dt>
+<dd>whether enable detection</dd>
+<dt><i>bNO</i></dt>
+<dd>device type:normal open or normal close</dd>
+<dt><i>holdTime</i></dt>
+<dd>delay time</dd>
+<dt><i>name [DEC_MAX_BUF_LEN]</i></dt>
+<dd>device name</dd>
+<dt><i>toBuzzer</i></dt>
+<dd>trigger buzzer alarm</dd>
+<dt><i>toAlarmOut</i></dt>
+<dd>alarm output(bit matches output device)</dd>
+</dl>
+<br />
+<hr />
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

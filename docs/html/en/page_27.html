@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_LivePlay</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;<FONT size=4>Client SDK 
+Instructions</FONT></BIG></P>
+<H1>NET_SDK_LivePlay_Ex</H1>
+<P>Real-time Preview</P><PRE class=syntax> LONG NET_SDK_LivePlayEx(
+ LONG<I>                     lUserID</I>,
+ <A href="struct/LPNET_SDK_CLIENTINFO.htm">LPNET_SDK_CLIENTINFO</A><I>     lpClientInfo</I>,
+ LIVE_DATA_CALLBACK_EX<I>      fLiveDataCallBack</I>, 
+ void<I>                     * pUser</I>
+ );</PRE>
+<H4>Parameters</H4>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] the return value of NET_SDK_Login() 
+  <DT><I>lpClientInfo</I> 
+  <DD>[in]&nbsp;preview parameters&nbsp; 
+  <DT><I>fLiveDataCallBack</I> 
+  <DD>[in] preview&nbsp;data callback parameters, the default value is NULL . 
+  <DT><I>* pUser</I> 
+  <DD>[in] user pointer, the default value is NULL.</DD></DL>
+<H3>Return Values</H3>
+<P>-1 means failure; other values is the handles of the functions, like 
+NET_SDK_StopLivePlay. To get&nbsp;error information, please call<A 
+href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>Having&nbsp;sucessfully called up this interface, call up the callback 
+function of stream data captured through the registeration of the interface 
+(NET_SDK_SetLiveDataCallBackEx) to get the real-time stream data. </P>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_StopLivePlay.htm">NET_SDK_StopLivePlay</A>&nbsp;&nbsp;&nbsp;<A 
+href="NET_SDK_GetLivePlayerIndex.htm">NET_SDK_GetLivePlayerIndex</A>&nbsp;&nbsp;&nbsp;</P><BR>
+<HR>
+</BODY></HTML>

@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+    <title>DD_DATE_TIME_CONFIG</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_DATE_TIME_CONFIG</h1>
+<p>struct of data and time schedule configuration</p>
+<pre class ="syntax"> struct _dd_date_time_config{
+ unsigned long           iSize;		
+ unsigned char           dateFormat;	
+ unsigned char           timeFormat;	
+ unsigned char           timeZone;		
+ unsigned char           enableNTP;	
+ unsigned short	    ntpPort;	
+ unsigned short	    recv;
+ char	                  ntpServerAddr[DD_MAX_URL_BUF_LEN];	
+ }DD_DATE_TIME_CONFIG;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>iSize</i></dt>
+<dd>size of the struct</dd>
+<dt><i>dateFormat</i></dt>
+<dd>data format, refer to DD_DATE_MODE:
+<table>
+<tr >
+<th>Type</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>DD_DATE_MODE_YMD</td>
+<td>0x01</td>
+<td>YMD format</td>
+</tr>
+<tr>
+<td>DD_DATE_MODE_MDY</td>
+<td>0x02</td>
+<td>MDY format</td>
+</tr>
+<tr>
+<td>DD_DATE_MODE_DMY</td>
+<td>0x03</td>
+<td>DMY format</td>
+</tr>
+</table>
+</dd>
+<dt><i>timeFormat</i></dt>
+<dd>time format,refer to the list below:</dd>
+<table>
+<tr>
+<th>Type</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>TIME_MODE_12</td>
+<td>0x01</td>
+<td>12 hours</td>
+</tr>
+<tr>
+<td>TIME_MODE_24</td>
+<td>0x02</td>
+<td>24 hours</td>
+</tr>
+</table>
+<dt><i>timeZone</i></dt>
+<dd>time zone, refer to DD_TIME_ZOME_NAME:
+<table>
+<tr >
+<th>Type</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D12</td>
+<td>0</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D11</td>
+<td>1</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D10</td>
+<td>2</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D9</td>
+<td>3</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D8</td>
+<td>4</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D7</td>
+<td>5</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D6</td>
+<td>6</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D5</td>
+<td>7</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D4_30</td>
+<td>8</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D4</td>
+<td>9</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D3_30</td>
+<td>10</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D3</td>
+<td>11</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D2</td>
+<td>12</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_D1</td>
+<td>13</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT</td>
+<td>14</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A1</td>
+<td>15</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A2</td>
+<td>16</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A3</td>
+<td>17</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A3_30</td>
+<td>18</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A4</td>
+<td>19</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A4_30</td>
+<td>20</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A5</td>
+<td>21</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A5_30</td>
+<td>22</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A5_45</td>
+<td>23</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A6</td>
+<td>24</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A6_30</td>
+<td>25</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A7</td>
+<td>26</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A8</td>
+<td>27</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A9</td>
+<td>28</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A9_30</td>
+<td>29</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A10</td>
+<td>30</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A11</td>
+<td>31</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A12</td>
+<td>32</td>
+</tr>
+<tr>
+<td>DD_TIME_ZONE_GMT_A13</td>
+<td>33</td>
+</tr>
+</table>
+</dd>
+<dt><i>enableNTP</i></dt>
+<dd>whether open NTP synchronization service</dd>
+<dt><i>ntpPort</i></dt>
+<dd>NTP port </dd>
+<dt><i>ntpServerAddr[DD_MAX_URL_BUF_LEN]</i></dt>
+<dd>NTP service address</dd>
+</dl>
+<br />
+ <hr />
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_DiscoverDevice</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_DiscoverDevice</H1>
+<P>discover device automatically on LAN</P><PRE class=syntax> long NET_SDK_DiscoverDevice(
+ <A href="struct/NET_SDK_DEVICE_DISCOVERY_INFO.html">NET_SDK_DEVICE_DISCOVERY_INFO</A><I>            *pDeviceInfo</I>,             
+ long<I>   bufNum</I>;
+ long<I>   waitSeconds</I>;
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>*pDeviceInfo</I> 
+  <DD>[in] an array witch is needed to asign values,its size is<STRONG> 
+  bufNum</STRONG> ,if descovered device num is more than,the returned size is 
+  just <STRONG>bufNUm</STRONG> 
+  <DT><I>bufNum</I> 
+  <DD>[in] size of the array 
+  <DT><I>waitSeconds</I> 
+  <DD>[in] time to discover devices, unit is second,this interface will be 
+  returned after <STRONG>waitSeconds</STRONG> </DD></DL>
+<H3>Return Values</H3>
+<P>Returned value is the num of discovered devices,if&nbsp;no deivce&nbsp; is 
+found or discovering device gets error,the value is 0. Get error info refer to 
+<A href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_GetDeviceInfo.htm">NET_SDK_GetDeviceInfo</A>&nbsp;&nbsp;</P><BR>
+<HR>
+</BODY></HTML>

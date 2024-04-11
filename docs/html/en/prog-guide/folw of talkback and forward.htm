@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css"rel="Stylesheet"type="text/css"  /> 
+<title>flow of talkback and forward module</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>flow of talkback and forward module</h1>
+<img src="pic/flow%20chart%20of%20voice%20talkback%20and%20forward.jpg"/>
+<ul>
+    <li>
+Talkback function sends and receives audio between PC and device.Call NET_SDK_StartVoiceCom after device register,meanwhile user can get data which is sent by device or collected by PC through setting callback function.
+</li>
+<li >
+Firstly call NET_SDK_StartVoiceCom_MR to start talkback(connection with device has been done and wait for sending data).
+Second,prepare which data to send(need to encode),flow of encoding is the part in purple,if data has been compressed in appointed method omit the encoding part.Data resource can be from PC sound card or read from file,but must be compressed with our compression algorithm.
+After encoding operation we can get encoded data in fixed size,then call NET_SDK_VoiceComSendData to send the data to device.
+After sending all data,call NET_SDK_StopVoiceCom to stop forward connection with device.
+</li>
+</ul>
+<br />
+<hr /> 
+</body>
+</html>
+
+
+
+
+
+
+
+
+

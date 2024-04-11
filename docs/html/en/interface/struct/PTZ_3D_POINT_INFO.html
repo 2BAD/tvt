@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_REC_TIME</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 9.00.8112.16684"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>PTZ_3D_POINT_INFO</H1>
+<P>information about PTZ 3D control</P><PRE class=syntax> struct PTZ_3D_POINT_INFO{
+ int      selBeginX;		
+ int      selBeginY;	
+ int      selEndX;		
+ int      selEndY;	
+ int      displayWidth;		
+ int      displayHeight;	
+ int      reserve[2];	
+ }PTZ_3D_POINT_INFO;
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT><I>selBeginX</I> 
+  <DD>X coordinates of the starting point 
+  <DT><I>selBeginY</I> 
+  <DD>Y coordinates of the starting point 
+  <DT><I>selEndX</I> 
+  <DD>End point X coordinates 
+  <DT><I>selEndY</I> 
+  <DD>End point Y coordinates 
+  <DT><I>displayWidth</I> 
+  <DD>Image width 
+  <DT><I>displayHeight</I> 
+  <DD>Image height 
+  <DT><I>reserve[2]</I> 
+  <DD>Retention value,not enable</DD></DL>
+<H3>Remarks</H3>
+<P>4 coordinate variable is the mouse position relative to the current window of 
+the upper left corner of the screen. enlarge:selBeginX &lt; selEndX, 
+narrow:selBeginX &gt; selEndX</P><BR>
+<HR>
+</BODY></HTML>

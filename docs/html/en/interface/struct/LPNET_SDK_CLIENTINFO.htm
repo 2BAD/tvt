@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />  
+<title>NET SDK CLIENTINFO</title>
+</head>
+<body>
+<p style ="BACKGROUND-COLOR: #abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>NET_SDK_CLIENTINFO</h1>
+<p>struct of log information</p>
+<pre class ="syntax">
+struct _net_sdk_clientinfo{ 
+LONG lChannel; 
+LONG streamType; 
+HWND hPlayWnd; 
+int bNoDecode;
+}NET_SDK_CLIENTINFO, *LPNET_SDK_CLIENTINFO;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>lChannel</i>
+<dd>channel number,start from 0 
+  
+<dt><i>streamType</i>
+<dd>data stream type,two types:NET_SDK_MAIN_STREAM and 
+  NET_SDK_SUB_STREAM 
+  
+<dt><i>hPlayWnd</i>
+<dd>   play window 
+  handle 
+  
+<dt>bNoDecode
+  
+<dd>0:decode,1:not decode.only for windows os,default 
+  value is 0</dd>
+</dl>
+<br>
+<hr>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

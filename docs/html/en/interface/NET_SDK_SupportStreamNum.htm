@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET_SDK_SupportStreamNum</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18978"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_SupportStreamNum</H1>
+<P>get the number of streams which support live</P><PRE class=syntax> unsigned int NET_SDK_SupportStreamNum(
+ LONG<I>                     lUserID</I>,
+ LONG<I>                     lChannel</I>
+ );</PRE>
+<H4>Parameters</H4>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] the return value of NET_SDK_Login()
+  <DT><I>lChannel</I> 
+  <DD>[in] the index of channel，from 0</DD></DL>
+<H3>Return Values</H3>
+<P> return  the number of streams which support live。To get&nbsp;error information, please call<A 
+href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+
+
+<HR>
+</BODY></HTML>

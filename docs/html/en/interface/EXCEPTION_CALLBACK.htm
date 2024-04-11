@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>EXCEPTION_CALLBACK</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>EXCEPTION_CALLBACK</H1>
+<P>data callback during SDK exception</P><PRE class=syntax> void *EXCEPTION_CALLBACK(
+ DWORD<I>         dwType</I>, 
+ LONG <I>         lUserID</I>, 
+ LONG <I>         lHandle</I>, 
+ void<I>          *pUser</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>dwType</I> 
+  <DD>[in] type of exception or reconnection message,refer to 
+  NET_SDK_EXCEPTION_TYPE: 
+  <TABLE>
+    <TBODY>
+    <TR>
+      <TH>Type</TH>
+      <TH>Value</TH>
+      <TH>Description</TH></TR>
+    <TR>
+      <TD>NETWORK_DISCONNECT</TD>
+      <TD>0</TD>
+      <TD>Disconnection</TD></TR>
+    <TR>
+      <TD>NETWORK_RECONNECT</TD>
+      <TD>1</TD>
+      <TD>Reconnection</TD>
+    <TR>
+      <TD>NETWORK_CH_DISCONNECT</TD>
+      <TD>2</TD>
+      <TD>Channel Disconnection</TD>
+    <TR>
+      <TD>NETWORK_CH_RECONNECT</TD>
+      <TD>3</TD>
+      <TD>Channel Reconnection</TD>
+      <DT></DT></TR></TBODY></TABLE><I>lUserID</I> 
+  <DD>[in] login ID 
+  <DT><I>lHandle</I> 
+  <DD>[in] corresponding type handle when exception 
+  <DT><I>* pUser</I> 
+  <DD>[in] pointer to user data </DD></DL>
+<H3>Return Values</H3>
+<P>None. To get error code, please call <A 
+href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P><BR>
+<HR>
+</BODY></HTML>

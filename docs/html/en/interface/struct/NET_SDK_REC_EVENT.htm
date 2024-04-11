@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>NET_SDK_REC_EVENT</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>NET_SDK_REC_EVENT</h1>
+<p>struct of record file information according to event.</p>
+<pre class ="syntax"> struct _net_sdk_rec_event{
+ DWORD			dwChannel;
+ DD_TIME	       startTime;
+ DD_TIME		stopTime;
+ DWORD			dwRecType;	
+ }NET_SDK_REC_EVENT;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>dwChannel</i></dt>
+<dd>channel number. </dd>
+<dt><i>startTime</i></dt>
+<dd>start time. </dd>
+<dt><i>stopTime</i></dt>
+<dd>stop time.</dd>
+<dt><i>dwRecType</i></dt>
+<dd>record event type,refer to DD_RECORD_TYPE:
+<table>
+<tr >
+<th>Type</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>DD_RECORD_TYPE_NONE</td>
+<td>0x0000</td>
+<td>no record type</td>
+</tr>
+<tr>
+<td>DD_RECORD_TYPE_MANUAL</td>
+<td>0x0001</td>
+<td>record manually</td>
+</tr>
+<tr>
+<td>DD_RECORD_TYPE_SCHEDULE</td>
+<td>0x0002</td>
+<td>record at regular time</td>
+</tr>
+<tr>
+<td>DD_RECORD_TYPE_MOTION</td>
+<td>0x0004</td>
+<td>motion detection record</td>
+</tr>
+<tr>
+<td>DD_RECORD_TYPE_SENSOR</td>
+<td>0x0008</td>
+<td>sensor alarm record</td>
+</tr>
+<tr>
+<td>DD_RECORD_TYPE_BEHAVIOR</td>
+<td>0x0010</td>
+<td>behaviour analysis alarm record</td>
+</tr>
+</table>
+</dd>
+</dl>
+<br />
+ <hr />
+ 
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

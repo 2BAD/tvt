@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>DD_VIDEO_COLOR_CONFIG</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_VIDEO_COLOR_CONFIG</h1>
+<p>struct of video color configuration</p>
+<pre class ="syntax"> struct  _dd_video_color_config_{
+ unsigned long	        iSize;			
+ unsigned long	        usedNum;		
+ <a href="DD_VIDEO_COLOR.htm">DD_VIDEO_COLOR</a>	 videoColor[DD_MAX_COLOR_CFG_NUM];	
+ }DD_VIDEO_COLOR_CONFIG;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>iSize</i></dt>
+<dd>size of the struct</dd>
+<dt><i>usedNum</i></dt>
+<dd>scheme number in use, default value is 1</dd>
+<dt><i>videoColor[DD_MAX_COLOR_CFG_NUM]</i></dt>
+<dd>color scheme</dd>
+</dl>
+<br/>
+<hr/>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

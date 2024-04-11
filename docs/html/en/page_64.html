@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET SDK FACE INFO LIST GET</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;<BIG><FONT size=3>Client SDK 
+Instructions</FONT></BIG></BIG></P>
+<H1>NET_SDK_FACE_INFO_LIST_GET</H1>
+<P>struct of searching face comparison target</P><PRE class=syntax> typedef struct _net_sdk_face_info_list_get_
+{
+ unsigned int	pageIndex;		// 1、2、3... (compulsory)
+    unsigned int    pageSize;   //compulsory</PRE><PRE class=syntax>    unsigned int    groupId;//1、2、3....(compulsory)
+
+    char	    name[DD_MAX_NAME_LEN];//name of NET_SDK_FACE_INFO_LIST_ITEM</PRE><PRE class=syntax>    unsigned int    itemId;	// itemID of NET_SDK_FACE_INFO_LIST_ITEM</PRE><PRE class=syntax>}NET_SDK_FACE_INFO_LIST_GET; </PRE>
+<H3>Members</H3>
+<DL>
+  <DT>pageIndex 
+  <DD>page number 
+  <DT>pageSize 
+  <DD>the number of items&nbsp;in the&nbsp;page&nbsp; 
+  <DT>groupId 
+  <DD>group Id。 
+  <DT>name 
+  <DD>target name&nbsp;(non-compulsory) 
+  <DT>itemId 
+  <DD>target ID (non-compulsory)&nbsp; </DD></DL><BR>
+<HR>
+</BODY></HTML>

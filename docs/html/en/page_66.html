@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET SDK FACE INFO LIST ITEM</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_FACE_INFO_LIST_ITEM</H1>
+<P>target face information of face comparsion</P><PRE class=syntax>typedef struct _net_sdk_face_info_list_item_
+{
+    unsigned int    itemId;				//id
+    char	        name[DD_MAX_NAME_LEN];		//compulsory</PRE><PRE class=syntax>    unsigned int    sex; //0:male 1:female
+    unsigned int    birthday;//eg:19900707
+    char	        nativePlace[DD_MAX_NAME_LEN];		//
+    unsigned int    certificateType; //0:idCard
+    char	        certificateNum[DD_MAX_CERTIFICATE_NUM];		//
+    char	        mobile[20];		//
+    char	        number[20];		//
+    unsigned int    faceImgCount;
+    NET_SDK_FACE_INFO_LIST_ITEM_GROUPS    groups[DD_MAX_FACE_INFO_GROUPS];
+
+}NET_SDK_FACE_INFO_LIST_ITEM;
+ </PRE>
+<H3>Members</H3>
+<DL>
+  <DT>itemId :target face Id 
+  <DD>name: name
+  <DT>sex : gender
+  <DT>birthday :date of birth
+  <DD>nativePlace: native place
+  <DT>certificateType : certifcate type; 0:idCard 
+  <DT>certificateNum : certificate number
+  <DD>mobile:&nbsp;phone number&nbsp;
+  <DD>number: nuber&nbsp;
+  <DD>faceImgCount: number of face pictures&nbsp;
+  <DT>groups :group information; one face&nbsp;picture can be added to&nbsp;a 
+  maximum of&nbsp;16 groups.
+  <DD>
+  <HR>
+  </DD></DL><BR>
+<HR>
+</BODY></HTML>

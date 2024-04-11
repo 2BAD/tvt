@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>LIVE_DATA_CALLBACK</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;<FONT size=4>Client SDK 
+Instructions</FONT></BIG></P>
+<H1>LIVE_DATA_CALLBACK_Ex</H1>
+<P>Data callback when capturing the real-time preview data.</P><PRE class=syntax> void LIVE_DATA_CALLBACK_Ex(
+ LONG <I>                       lLiveHandle</I>, 
+ UINT <I>                       dataType</I>, 
+ BYTE<I>                        *pBuffer</I>, 
+ UINT <I>                       dataLen</I>, 
+ void<I>                        * pUser</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lLiveHandle</I> 
+  <DD>[in] real-time preview handle 
+  <DT>dataType 
+  <DD>[out] data frame type, see&nbsp;<SPAN 
+  style="COLOR: #800080">DD_FRAME_TYPE</SPAN> 
+  <DT><I>*pBuffer</I> 
+  <DD>[out] a pointer to the buffer, the contents is <SPAN 
+  style="COLOR: #800080">NET_SDK_FRAME_INFO + <SPAN 
+  style="COLOR: #800000">FrameData</SPAN></SPAN> 
+  <DD><SPAN style="COLOR: #800080"><SPAN style="COLOR: #800000"><FONT 
+  color=#000000><EM>dataLen</EM></FONT> 
+  <DD>[out]&nbsp;</SPAN></SPAN> the data length of the buffer
+  <DD><SPAN style="COLOR: #800080"><SPAN style="COLOR: #800000"></SPAN></SPAN>
+  <DT><I>*pUser</I> 
+  <DD>[out]&nbsp;a pointer to a user&nbsp;</DD></DL>
+<H3>Return Values</H3>
+<P>No return value. To get error information, please call<A 
+href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P><BR>
+<HR>
+</BODY></HTML>

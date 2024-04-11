@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET_DVR_IVE_VFD_RESULT_FACE_DATA_INFO_T</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-CN http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18978"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>Client SDK Instructions</BIG></P>
+<H1>NET_DVR_IVE_VFD_RESULT_FACE_DATA_INFO_T</H1>
+<P>face data information</P><PRE class=syntax> 
+    typedef struct
+{
+    int                      faceId;        
+    unsigned int                     ptWidth;       
+    unsigned int                     ptHeight;      
+     <A href="NET_SDK_IVE_POINT_T.htm">NET_SDK_IVE_POINT_T</A> ptLeftTop; 
+    <A href="NET_SDK_IVE_POINT_T.htm">NET_SDK_IVE_POINT_T</A> ptRightTop;    
+   <A href="NET_SDK_IVE_POINT_T.htm">NET_SDK_IVE_POINT_T</A> ptLeftBottom;   
+    <A href="NET_SDK_IVE_POINT_T.htm">NET_SDK_IVE_POINT_T</A> ptRightBottom;
+    int                      nPose;          
+    int                      nConfidence;   
+    int                      age;
+    int                      sex;
+    int                      dtFrames;
+    int                         featureSize;
+    <A href="NET_SDK_IVE_POINT_T.htm">NET_SDK_IVE_POINT_T</A> stPosFaceImg;  
+
+	
+	float                       feature_score;      
+
+	
+	short                       eye_dist;          
+	short                       blur;               
+
+	char                        pose_est_score;    
+	char                        detect_score;       
+	char                        illumination;       
+	char                        faceliveness;       
+
+	char                        completeness;      
+	char                        glasses;           
+	char                        wearmask;          
+	char                        reserved1[1];
+
+	float                       comprehensive_score;   
+	int                      temperature;        
+
+	int                      foreheadX;         
+	int                      foreheadY;         
+
+	<A href="NET_SDK_IVE_POINT_T.htm">NET_SDK_IVE_POINT_T</A>      stHotLeftTop;       
+	<A href="NET_SDK_IVE_POINT_T.htm">NET_SDK_IVE_POINT_T</A>      stHotRightBottom;  
+	char                     cTemperatureMode;  
+	char                     tempUnitsType;      
+	char                     cTemperatureStatus; 
+	char                      reserved[5];
+    <A href="NET_DVR_IVE_VFD_RESULT_DATA_INFO_T.htm">NET_DVR_IVE_VFD_RESULT_DATA_INFO_T</A> stFaceImgData;
+}NET_DVR_IVE_VFD_RESULT_FACE_DATA_INFO_T;
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT>faceId 
+  <DD>face ID Number
+  <DT>ptWidth
+  <DD>width
+  <DT>ptHeight
+  <DD>height
+  <DT>ptLeftTop
+  <DD>Left-Top     Face Coordinates 
+  <DT>ptRightTop
+  <DD>Right-Top    Face Coordinates
+  <DT>ptLeftBottom
+  <DD>Left-Bottom  Face Coordinates
+  <DT>ptRightBottom
+  <DD>Right-Bottom Face Coordinates
+  <DT>nPose
+  <DD>Face Pose
+  <DT>nConfidence
+  <DD>Confidence Degree
+  <DT>age
+  <DD>age
+  <DT>sex
+  <DD>sex
+  <DT>dtFrames
+  <DD>dtFrames
+  <DT>featureSize
+  <DD>feature size
+  <DT>stPosFaceImg
+  <DD>the coodinate of the image left top
+  <DT>feature_score
+  <DD>feature score 0-100
+  <DT>eye_dist
+  <DD>distance of the eyes
+  <DT>blur
+  <DD>blur
+  <DT>pose_est_score
+  <DD>pose est_score 0-100
+  <DT>detect_score
+  <DD>detect score 0-100
+  <DT>illumination
+  <DD>illumination
+  <DT>faceliveness
+  <DD>faceliveness0~100
+  <DT>completeness
+  <DD>completeness 0~100
+  <DT>glasses
+  <DD>if wear glasses
+  <DT>wearmask
+  <DD>if wear mask
+  <DT>reserved1
+  <DD>reserved1
+  <DT>comprehensive_score
+  <DD>comprehensive score [90,100)best， [80,90)better，[70,80)good，[60,70)normal，[50,60)medium，[0,50)bad。
+  <DT>temperature
+  <DD>temperature
+  <DT>foreheadX
+  <DD>forehead X coordinate
+  <DT>foreheadY
+  <DD>forehead Y coordinate
+  <DT>stHotLeftTop
+  <DD>hot left top Coordinates
+  <DT>stHotRightBottom
+  <DD>hot right top Coordinates
+  <DT>cTemperatureMode
+  <DD>0:normal 1:validate
+  <DT>tempUnitsType
+  <DD>0:Celsius 1: Fahrenheit 
+  <DT>cTemperatureStatus
+  <DD>0:normal，1:temperature too low，2:temperature too high
+  <DT>reserved
+  <DD>reserved
+  <DT>stFaceImgData
+  <DD>face image data
+
+
+  <HR>
+  </DD></DL>
+<HR>
+<PRE></PRE>
+</BODY></HTML>

@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+ <meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css"rel="Stylesheet"type="text/css"  /> 
+<title>flow of alarm module</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>flow of alarm module</h1>
+<img src="pic/flow%20chart%20of%20alarm%20module.jpg"/>
+<ul>
+    <li>Alarm method in this version is arming:SDK connects device actively, sends command of uploading alarm,then device alarms and sends to SDK.
+From the flow chart we can know that arming method needs user register first.The part in purple is a necessary conditon for realizing alarm information upload,
+mainly finishes relative alarm condition and process configuration,the interface of parameter configuration is NET_SDK_GetDVRConfig
+and NET_SDK_SetDVRConfig.Configurated struct for single quantity alarm is NET_SDK_AlarmInfo,if these parameters configuration has been done,
+next step is setting alarm callback function NET_SDK_SetDVRMessageCallBack,after above steps,set arming alarm NET_SDK_SetupAlarmChan.
+Cancel arming interface should be called after the whole alarm uploading progress.
+</li></ul>
+<br />
+<hr /> 
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

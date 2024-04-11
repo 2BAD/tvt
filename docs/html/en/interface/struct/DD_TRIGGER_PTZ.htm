@@ -1,0 +1,63 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>DD_TRIGGER_PTZ</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_TRIGGER_PTZ</h1>
+<p>struct of triggering PTZ</p>
+<pre class ="syntax"> struct _dd_trigger_ptz_{
+ unsigned char              toPTZType;	
+ unsigned char              toIndex;		
+ unsigned char              backIndex;	
+ unsigned char              recv;			
+ }DD_TRIGGER_PTZ;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>toPTZType</i></dt>
+<dd>linkage type，refer to the list below:</dd>
+<table>
+<tr>
+<th>Type</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>DD_PTZ_TYPE_PRESET</td>
+<td>1</td>
+</tr>
+<tr>
+<td>DD_PTZ_TYPE_CRUISE</td>
+<td>2</td>
+</tr>
+<tr>
+<td>DD_PTZ_TYPE_TRACE</td>
+<td>3</td>
+</tr>
+</table>
+<dt><i>toIndex</i></dt>
+<dd>linkage number(preset point, cruise line, track)</dd>
+<dt><i>backIndex</i></dt>
+<dd>linkage returned number(preset point, cruise line, track)</dd>
+<dt><i>recv</i></dt>
+<dd>reserved byte</dd>
+</dl>
+<br />
+<hr />
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

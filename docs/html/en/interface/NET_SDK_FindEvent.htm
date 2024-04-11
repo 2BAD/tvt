@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_FindEvent</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_FindEvent</H1>
+<P>find record file by event</P><PRE class=syntax> LONG NET_SDK_FindEvent(
+ LONG<I>               lUserID</I>,
+ LONG<I>               lChannel</I>,
+ DWORD<I>              dwRecType</I>,
+ <A href="struct/DD_TIME.htm">DD_TIME</A><I>            lpStartTime</I>,
+ <A href="struct/DD_TIME.htm">DD_TIME</A><I>            lpStopTime</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] return value of NET_SDK_Login() 
+  <DT><I>lChannel</I> 
+  <DD>[in] channel number,start from 0 
+  <DT><I>dwRecType</I> 
+  <DD>[in] type of event 
+  <DT><I>lpStartTime</I> 
+  <DD>[in] pointer to the start time of file 
+  <DT><I>lpStopTime</I> 
+  <DD>[in] pointer to the stop time of file </DD></DL>
+<H3>Return Values</H3>
+<P>-1 means failure and other value is parameter of function 
+NET_SDK_FindNextEvent. To get error information,please call <A 
+href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>This interface specifies information of finding record file(by event),after 
+calling the interface,call NET_SDK_FindNextEvent to get file information. The 
+record file which is found by event aims at the start time and stop time,so it 
+only supports playback by time.</P>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_FindNextEvent.htm">NET_SDK_FindNextEvent</A>&nbsp;&nbsp;&nbsp;<A 
+href="NET_SDK_FindEventClose.htm">NET_SDK_FindEventClose</A></P><BR>
+<HR>
+</BODY></HTML>

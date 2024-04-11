@@ -1,0 +1,67 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>DD_RECORD_CONFIG_MASK</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_RECORD_CONFIG_MASK</h1>
+<p>struct of record configuration mask</p>
+<pre class ="syntax"> struct  _dd_record_config_mask_{
+ unsigned long              iSize;
+ unsigned char              bindAudioChannel;	
+ unsigned char              bRedundancy;		
+ unsigned char              recv1;
+ unsigned char              recv2;
+ unsigned short             minPreAlarmTime;	
+ unsigned short             maxPreAlarmTime;	
+ unsigned short             minPostAlarmTime;	
+ unsigned short             maxPostAlarmTime;	
+ unsigned short             minExpired;		
+ unsigned short             maxExpired;		
+ }DD_RECORD_CONFIG_MASK;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>iSize</i></dt>
+<dd>size of the struct</dd>
+<dt><i>bindAudioChannel</i></dt>
+<dd>whether support to bind audio and video channel</dd>
+<dt><i>bRedundancy</i></dt>
+<dd>whether support redundant record</dd>
+<dt><i>recv1</i></dt>
+<dd>reserved byte</dd>
+<dt><i>recv2</i></dt>
+<dd>reserved byte</dd>
+<dt><i>minPreAlarmTime</i></dt>
+<dd>the minimum time of record before alarm</dd>
+<dt><i>maxPreAlarmTime</i></dt>
+<dd>the maximum time of record before alarm</dd>
+<dt><i>minPostAlarmTime</i></dt>
+<dd>the minimum time of record after alarm</dd>
+<dt><i>maxPostAlarmTime</i></dt>
+<dd>the maximum time of record after alarm</dd>
+<dt><i>minExpired</i></dt>
+<dd>the minimum record data expiry time</dd>
+<dt><i>maxExpired</i></dt>
+<dd>the maximum record data expiry time</dd>
+</dl>
+<br/>
+<hr/>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_GetDeviceIPByName</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;<FONT size=4>Client SDK 
+Instructions</FONT></BIG></P>
+<H1>NET_SDK_GetDeviceIPByName</H1>
+<P>Get the device Ip by the device&nbsp;name</P><PRE class=syntax> BOOL NET_SDK_GetDeviceIPByName(
+ char<I>            *sSerIP</I>,             
+ DWORD<I>           wSerPort</I>;
+ char<I>            *sDvrName</I>;
+ char<I>            *sDvrIP</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>*sSerIP</I> 
+  <DD>[in] the IP address of IPSever 
+  <DT><I>wSerPort</I> 
+  <DD>[in] the port of IPSever 
+  <DT><I>*sDvrName</I> 
+  <DD>[in] the device name automatically reported to IP Server 
+  <DT><I>*sDvrIP</I> 
+  <DD>[in] the device&nbsp;port automatically reported to IP Server&nbsp; 
+</DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please call 
+<A href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_DiscoverDevice.html">NET_SDK_DiscoverDevice</A>&nbsp;&nbsp;</P><BR>
+<HR>
+</BODY></HTML>

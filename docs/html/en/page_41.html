@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_PlayBackByTime</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;<FONT size=4>Client SDK 
+Instructions</FONT></BIG></P>
+<H1>NET_SDK_PlayBackByTimeEx</H1>
+<P>Play back the record files by time.</P><PRE class=syntax> LONG NET_SDK_PlayBackByTimeEx(   
+ LONG<I>              lUserID</I>,
+ LONG<I>              *pChannels</I>,
+ LONG<I>              channelNum</I>,
+ <A href="struct/DD_TIME.htm">DD_TIME</A><I>           *lpStartTime</I>,
+ <A href="struct/DD_TIME.htm">DD_TIME</A><I>           *lpStopTime</I>,
+ HWND<I>              *hWnds</I>
+ BOOL<I>              bFirstStream</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] the return value of NET_SDK_Login() 
+  <DT><I>pChannels</I> 
+  <DD>[in]&nbsp;&nbsp;&nbsp;the channel number group of playback 
+  <DT><I>channelNum</I> 
+  <DD>[in] the channel quantities of pChannels 
+  <DT><I>*lpStartTime</I> 
+  <DD>[in] a pointer to start time of the file 
+  <DT><I>*lpStopTime</I> 
+  <DD>[in] a pointer to&nbsp;end time of the file&nbsp; 
+  <DT><I>*hWnds</I> 
+  <DD>[in]&nbsp; the handle of playback window, if it is null, SDK still can 
+  receive the stream data but not decoding. 
+  <DT><I>bFirstStream</I> 
+  <DD>[in]&nbsp; Whether to play back the main stream. false is 
+sub-stream.</DD></DL>
+<H3>Return Values</H3>
+<P>-1 means failure; other vallues is the parameters of the functions, like 
+NET_SDK_StopPlayBack. To get error information, please call<A 
+href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P><STRONG>This interface specifies the record files needed to play. After 
+successfully call up this interface, please register callback function by the 
+interface of NET_SDK_SetPlayDataCallBack to capture the recording stream data 
+and </STRONG>dispose the captured code stream data by itself.</P>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_PlayBackControl.htm">NET_SDK_PlayBackControl</A>&nbsp;&nbsp;&nbsp;<A 
+href="NET_SDK_StopPlayBack.htm">NET_SDK_StopPlayBack</A>&nbsp;&nbsp;&nbsp;<A 
+href="NET_SDK_SetLiveDataCallBack.htm">NET_SDK_SetLiveDataCallBack</A>&nbsp;&nbsp;&nbsp; 
+<A href="NET_SDK_Login.htm">NET_SDK_Login</A>&nbsp;&nbsp;&nbsp;</P><BR>
+<HR>
+</BODY></HTML>

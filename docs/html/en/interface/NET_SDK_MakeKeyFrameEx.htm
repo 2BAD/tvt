@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET_SDK_MakeKeyFrameEx</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18978"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_MakeKeyFrameEx</H1>
+<P>one key frame from main code stream dynamically</P><PRE class=syntax> BOOL NET_SDK_MakeKeyFrameEx(
+ LONG<I>     lUserID</I>,
+ LONG<I>     lChannel</I>，
+ unsigned int<I>     streamType</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] return value of NET_SDK_Login 
+  <DT><I>lChannel</I> 
+  <DD>[in] channel number,start from 0 </DD></DL>
+  <DT><I>streamType</I> 
+  <DD>[in] stream type 
+<DL></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please call <A 
+href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>This interface is set to reset I frame.According to the preview 
+parameter(NET_SDK_CLIENTINFO) type main code stream or sub code stream calls 
+NET_SDK_MakeKeyFrame or NET_SDK_MakeKeyFrameSub to realize resetting I 
+frame.</P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_MakeKeyFrameSub.htm">NET_SDK_MakeKeyFrameSub</A></P>
+
+<HR>  </DD>
+</BODY></HTML>

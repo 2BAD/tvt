@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET_SDK_DiscoverDeviceStart</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_DiscoverDeviceStart</H1>
+<P>start discover device on LAN(asynchronous, only for windows)</P><PRE class=syntax> unsigned int NET_SDK_DiscoverDeviceStart(
+ <A href="IPTool_SearchDataCallBack.htm">IPTool_SearchDataCallBack</A><I>            SearchCallBack</I>,          
+ <A href="IPTool_SearchDataCallBackEx.htm">IPTool_SearchDataCallBackEx</A><I>            SearchCallBackEx</I>,      
+ void <I>   *pParam</I>,
+ unsigned int<I>   SearchTypeMask</I>,
+ int <l> nMaxRecordCount</L>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>SearchCallBack</I> 
+  <DD>search result callback during searching, result format is xml
+ <DT><I>SearchCallBackEx</I> 
+  <DD>[in] search result callback during searching, result format is <A href="struct/SEARCHED_DEVICE_INFO.html">SEARCHED_DEVICE_INFO</A> struct 
+  <DT><I>*pParam</I> 
+  <DD>pointer to user data
+  <DT><I>SearchTypeMask</I> 
+  <DD>search type，refer to the table： 
+<table>
+<tr><th>type</th><th>value</th><th>meanning</th></tr>
+<tr><td>_SEARCH_STANDARD</td><td>0x001</td><td>standard device</td></tr>
+<tr><td> _SEARCH_ONVIF </td><td> 0x002 </td><td> onvif device </td></tr>
+<tr><td> _SEARCH_UPNP</td><td> 0x004 </td><td> upnp device </td></tr>
+<tr><td> _SEARCH_AIPSTAR</td><td> 0x008</td><td> AIPSTAR device </td></tr>
+<tr><td> _SEARCH_DAHUA</td><td> 0x010</td><td>DAHUA device </td></tr>
+<tr><td> _SEARCH_HIK</td><td> 0x020</td><td> HIK device </td></tr>
+<tr><td> _SEARCH_UNIVIEW</td><td> 0x040</td><td> UNIVIEW device </td></tr>
+<tr><td> _SEARCH_YCX</td><td> 0x080</td><td> YCX device </td></tr>
+<tr><td> _SEARCH_SPECO</td><td> 0x100</td><td> SPECO device </td></tr>
+<tr><td> _SEARCH_ALL</td><td> 0xffff</td><td> all type </td></tr>
+</table>
+<DT><I>nMaxRecordCount</I> 
+  <DD>max number of searched devices</DD></DL>
+<H3>Return Values</H3>
+<P>Returned value is the handle of searching. To get error information, 
+please&nbsp;refer to <A 
+href="NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<BR>
+<HR>
+</BODY></HTML>

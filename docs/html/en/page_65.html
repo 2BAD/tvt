@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET SDK FACE INFO LIST ITEM GROUPS</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_FACE_INFO_LIST_ITEM_GROUPS</H1>
+<P>The group the face picture belongs to and the terms of validity the face 
+picture&nbsp;lasts in this group</P><PRE class=syntax>  typedef struct _net_sdk_face_info_list_item_groups_
+{
+    unsigned int    groupId;        //There is no guid when GROUP id gets target list.
+    unsigned char	guid[48];				//Add GROUP GUID. when target information is edited, guid must be used.
+    DD_TIME_EX    validStartTime;//when the property state is "limited", the validStartTime and validEndTime are shown.
+    DD_TIME_EX    validEndTime;//when the property state is "limited", the validStartTime and validEndTime are shown.
+}NET_SDK_FACE_INFO_LIST_ITEM_GROUPS;
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT>groupId 
+  <DD>group Id 
+  <DT>guid 
+  <DD>GUID of the group。 
+  <DT>validStartTime 
+  <DD>valid start time of the group; when the type of&nbsp;the group 
+  is&nbsp;"limited", it takes effect.</DD></DL>
+<P>validEndTime </P>
+<DL>
+  <DD>valid&nbsp;end time of the group; when the type of&nbsp;the group 
+  is&nbsp;"limited", it takes effect.</DD>
+  <DD>
+  <HR>
+  </DD></DL></BODY></HTML>

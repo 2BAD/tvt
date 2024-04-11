@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_SetPlayerBufNumber</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_SetPlayerBufNumber</H1>
+<P>set frame buffer area count of broadcast library</P><PRE class=syntax> BOOL NET_SDK_SetPlayerBufNumber(
+ LONG<I>      lLiveHandle</I>,
+ DWORD<I>     dwBufNum</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lLiveHandle</I> 
+  <DD>[in] return value of NET_SDK_LivePlay 
+  <DT><I>dwBufNum</I> 
+  <DD>[in] the maximum frame count in buffer area when playing one frame by one 
+  frame,range[1,50],default value is 15 in SDK </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please call 
+<A href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>This interface is called to adjust network delay and play fluency.value of 
+dwBufNum more large,fluency more well,relative delay more large and vice versa. 
+But when network isn't enough well,lost frame makes effect on fluency of 
+broadcast.If current stream is complex,assign buffer frame count equal to or 
+greater than 6 to ensure audio and video effect. This function follows 
+NET_SDK_LivePlay closely,because it's invalid after playing image . </P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_LivePlay.htm">NET_SDK_LivePlay</A>&nbsp;&nbsp;</P><BR>
+<HR>
+</BODY></HTML>

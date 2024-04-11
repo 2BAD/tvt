@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_GetDefaultVideoEffect</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_GetDefaultVideoEffect</H1>
+<P>get default video effect</P><PRE class=syntax> BOOL NET_SDK_GetDefaultVideoEffect(
+ LONG <I>       lUserID</I>,
+ DWORD<I>       *pBrightValue</I>,
+ DWORD<I>       *pContrastValue</I>,
+ DWORD<I>       *pSaturationValue</I>,
+ DWORD<I>       *pHueValue</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] user ID 
+  <DT><I>*pBrightValue</I> 
+  <DD>[in] pointer to brightness value 
+  <DT><I>*pContrastValue</I> 
+  <DD>[in] pointer to color contrast 
+  <DT><I>*pSaturationValue</I> 
+  <DD>[in] pointer to color saturation 
+  <DT><I>*pHueValue</I> 
+  <DD>[in] pointer to gray scale </DD></DL>
+<H3>Return Values</H3>
+<P>TURE means success; FALSE means failure. To get error information,please call 
+<A href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_GetVideoEffect.htm">NET_SDK_GetVideoEffect</A>&nbsp;&nbsp;&nbsp;<A 
+href="NET_SDK_SaveVideoEffect.htm">NET_SDK_SaveVideoEffect</A>&nbsp;&nbsp;&nbsp;<A 
+href="NET_SDK_SetVideoEffect.htm">NET_SDK_SetVideoEffect</A></P><BR>
+<HR>
+</BODY></HTML>

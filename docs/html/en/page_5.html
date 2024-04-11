@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET SDK GetPTZCameraType</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<H1>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG><FONT size=4>&nbsp;Client SDK 
+Instructions</FONT></BIG></P></H1>
+<H1>NET_SDK_GetPTZCameraType</H1>
+<P>Get camera type</P><PRE class=syntax> BOOL NET_SDK_GetPTZCameraType(
+ LONG<I>     lUserID</I>,
+ NET_SDK_CAMERA_TYPE *pCameraType<I> ,
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] the return value of NET_SDK_Login() 
+  <DD><I>pCameraType</I> 
+  <DD>[in] Camera type&nbsp;as&nbsp;shown below:&nbsp; 
+  <TABLE>
+    <TBODY>
+    <TR>
+      <TH>Camera type </TH>
+      <TH>Camera type value</TH>
+      <TH>Meanings</TH></TR>
+    <TR>
+      <TD>NET_SDK_NOT_SUPPORT_PTZ</TD>
+      <TD>0</TD>
+      <TD>The camera don't support PTZ</TD></TR>
+    <TR>
+      <TD>NET_SDK_DOME_SUPPORT_PTZ</TD>
+      <TD>1</TD>
+      <TD>The camera supports PTZ</TD></TR>
+    <TR>
+      <TD>NET_SDK_SUPPORT_PTZ</TD>
+      <TD>2</TD>
+      <TD>The camera supports PTZ</TD></TR>
+    <TR>
+      <TD>NET_SDK_PTZ_END</TD>
+      <TD></TD>
+      <H3>Return Values</H3>
+      <P>TRUE means sucess; FALSE means failure. To get error information, 
+      please call<A 
+      href="mk:@MSITStore:C:\Users\Administrator\Desktop\Device Net SDK manual.CHM::/NET_SDK_GetlastError.htm"><U>NET_SDK_GetLastError</U></A></P>
+      <H3>Remarks</H3>NET_SDK_CAMERA_TYPE is an example. Please refer to the 
+      corresponding type of the libary function. 
+      <P></P>
+      <H3>See Also</H3>
+      <P><A 
+      href="mk:@MSITStore:C:\Users\Administrator\Desktop\Device Net SDK manual.CHM::/NET_SDK_LivePlay.htm"><U>NET 
+      SDK GetDVRConfig</U></A>&nbsp;&nbsp;</P><BR>
+      <HR>
+      </I></TR></TBODY>
+    <DL></DL>
+    <DL></DL>
+    <DL></DL>
+    <DL></DL>
+    <DL></DL>
+    <DL></DL>
+    <DL></DL>
+    <DL></DL>
+    <DL></DL>
+    <DL></DL>
+    <DL></DL>
+    <DL></DL>
+    <DL></DL>
+    <DL></DL></DD></DL></BODY></HTML>

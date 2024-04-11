@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_SetUnRegisterCallback</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.10570.1001"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG><FONT size=4>&nbsp;Client SDK 
+Instructions</FONT></BIG></P>
+<H1>NET_SDK_SetUnRegisterCallback</H1>
+<P>the function is a callback for the unregistered device,calls 
+NET_SDK_AddRegisterDeviceInfo to notify SDK after receiving callback</P><PRE class=syntax> BOOL NET_SDK_SetUnRegisterCallback(
+<A href="interface/ACCEPT_REGISTER_CALLBACK.html"><U>ACCEPT_UNREGISTER_CALLBACK </U></A><I>          fUnRegisterCBFun</I>
+ void<I>                 *pUser</I> 
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT>fUnRegisterCBFun 
+  <DD>[in] callback information when device receives DVR registered local port 
+  <DT><I>*pUser</I> 
+  <DD>[in] custom parameter passed by user </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means sccess; FALSE means failure. To get error code, please call <A 
+href="interface/NET_SDK_GetlastError.htm"><U>NET_SDK_GetLastError</U></A></P>
+<H3>See Also</H3>
+<P><A 
+href="interface/NET_SDK_SetRegisterPort.html"><U>NET_SDK_SetRegisterPort</U></A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A 
+href="interface/ACCEPT_REGISTER_CALLBACK.html"><U>ACCEPT_REGISTER_CALLBACK</U></A></P><!--EndFragment--></BODY></HTML>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>111</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.10570.1001"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG><FONT size=4>&nbsp;Client SDK 
+Instructions</FONT></BIG></P>
+<H1>NET_SDK_SetPlayYUVCallBack</H1>
+<P>(only in windows now)register callback function,capture record data.it can 
+receive YUV data from the callback function,you&nbsp;should return quickly if 
+you need to process the data.</P><PRE class=syntax> BOOL NET_SDK_SetPlayYUVCallBack(
+ LONG<I>                lPlayHandle</I>,
+ <A href="interface/PLAY_DATA_CALLBACK.htm"><U>PLAY_YUV_DATA_CALLBACK</U></A>  <I>fYuvDataCallBack</I>,
+ void<I>                *pUser </I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lPlayHandle</I> 
+  <DD>[in] play handle,return value of NET_SDK_PlayBackByTime 
+  <DT><I>fYuvDataCallBack</I> 
+  <DD>[in] callback function of record data 
+  <DT><I>pUser</I> 
+  <DD>[in] user data </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please call 
+<A href="interface/NET_SDK_GetLastError.htm"><U>NET_SDK_GetLastError</U></A></P>
+<H3>Remarks</H3>
+<P>This function includes start and stop operation on user dispose captured data 
+by SDK,when assigning callback function <EM>fYuvDataCallBack </EM>other value 
+except NULL, start callback and disposing data,if assign NULL,stop callback and 
+disposing data. </P>
+<H3>See Also</H3>
+<P><A 
+href="interface/NET_SDK_PlayBackByTime.htm"><U>NET_SDK_PlayBackByTime</U></A></P></BODY></HTML>

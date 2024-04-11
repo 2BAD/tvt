@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET SDK FindDVRLog</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_FindDVRLog</H1>
+<P>find log information of device(not support IPC)</P><PRE class=syntax> LONG NET_SDK_FindDVRLog(
+ LONG<I>              lUserID</I>,
+ DWORD<I>             dwType</I>,
+ <A href="struct/DD_TIME.htm">DD_TIME</A><I>           *lpStartTime</I>,
+ <A href="struct/DD_TIME.htm">DD_TIME</A><I>           *lpStopTime</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] return value of NET_SDK_Login() 
+  <DT><I>dwType</I> 
+  <DD>[in]&nbsp; type of log(examples see <SPAN 
+  style="COLOR: #800080">N9000_LOG_MAJOR_TYPE</SPAN>&nbsp;)
+  <DT><I>*lpStartTime</I> 
+  <DD>[in] the start time of file 
+  <DT><I>*lpStopTime</I> 
+  <DD>[in] the stop time of file </DD></DL>
+<H3>Return Values</H3>
+<P>-1 means failure and other values are&nbsp;part of parameters in function 
+NET_DVR_FindNextLog. To get error information, please call <A 
+href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>This interface is used to search normal log information,and the maximum 
+capacity is 2000. </P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_Login.htm">NET_SDK_Login</A>&nbsp;&nbsp;<A 
+href="NET_SDK_FindNextLog.htm">NET_SDK_FindNextLog</A>&nbsp;&nbsp;<A 
+href="NET_SDK_FindLogClose.htm">NET_SDK_FindLogClose</A></P><BR>
+<HR>
+</BODY></HTML>

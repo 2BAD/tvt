@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_CapturePicture_Other</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_CaptureJPEGData_V2</H1>
+<P>Capture data in JPEG format.</P><PRE class=syntax> BOOL NET_SDK_CaptureJPEGData_V2(
+ LONG<I>          lUserID</I>,
+ LONG<I>          lChannel</I>,
+ char<I>          *sJpegPicBuffer</I>,
+ DWORD<I>       dwPicSize</I>,
+ LPDWORD<I>    lpSizeReturned</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lUserID</I> 
+  <DD>[in] user ID 
+  <DT><I>lChannel</I> 
+  <DD>[in] channel number 
+  <DT><I>sJpegPicBuffer</I> 
+  <DD>[out] JPEG data buffer 
+  <DT><I>dwPicSize</I> 
+  <DD>[in] sJpegPicBuffer buffer size 
+  <DT><I>lpSizeReturned</I> 
+  <DD>[out] JPEG data size </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please call 
+<A href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>This interface is used to capture jpeg data,do not need to open the stream. 
+Only applicable to specific firmware. </P>
+<H3>See Also</H3>
+<P><A 
+href="NET_SDK_CaptureJPEGFile_V2.htm">NET_SDK_CaptureJPEGFile_V2</A></P><BR>
+<HR>
+</BODY></HTML>

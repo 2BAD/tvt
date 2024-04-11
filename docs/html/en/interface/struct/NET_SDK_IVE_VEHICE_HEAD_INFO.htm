@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET_SDK_IVE_VEHICE_HEAD_INFO</title>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-CN http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18978"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR:  #abcdef"><BIG> Client SDK Instructions</BIG></P>
+<H1>NET_SDK_IVE_VEHICE_HEAD_INFO</H1>
+<P>Vehicle number detection alarm call back information header</P><PRE class=syntax> 
+typedef struct
+{ 
+  unsigned int begin_flag;
+  unsigned int item_cnt;
+  unsigned int plate_cnt;
+  long long relativeTime;
+  long long absoluteTime;
+  unsigned int softwareVersion;
+  unsigned int softwareBuildDate;
+  unsigned int resver[2];
+  unsigned int  end_flag;
+}NET_SDK_IVE_VEHICE_HEAD_INFO;
+
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT><SPAN style="COLOR: #800000"><FONT color=#800000>begin_flag</FONT></SPAN> 
+  <DD>start identification，0x5a5a5a5a 
+  <DT><FONT color=#800000><SPAN style="COLOR: #800000">item_cnt</SPAN> </FONT> 
+  <DD>the number of NET_SDK_IVE_VEHICE_ITEM_INFO
+  <DT><SPAN style="COLOR: #800000"><FONT color=#800000>plate_cnt</FONT></SPAN> 
+  <DD>the number of  vihicle number has detected 
+  <DT><SPAN style="COLOR: #800000"><FONT color=#800000>relativeTime</FONT></SPAN> 
+  <DD>the relative time of the detected happened  
+  <DD><FONT color=#800000><EM>absoluteTime</EM></FONT> 
+  <DD>the absolute time of the detected happened  
+  <DD><FONT color=#800000><EM>softwareVersion</EM></FONT> 
+  <DD>the version of the software, 0xABCDEFGH,AB：Brand  CD：main version EFGH：sub version Brand 1:OMRON 
+version:V5.00 
+  <DD><FONT color=#800000><EM>softwareBuildDate</EM></FONT> 
+  <DD>the build time of the software,0xYYYYMMDD 
+  <DD><FONT color=#800000><EM>resver</EM></FONT> 
+  <DD>Preserve 
+  <DD><FONT color=#800000><EM>end_flag</EM></FONT> 
+  <DD>end identification，0xa5a5a5a5 
+  <DD>
+  <HR>
+  </DD></DL>
+<HR>
+</BODY></HTML>

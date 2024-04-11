@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_GetSupportPtzList</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=zh-cn http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #888888"><BIG><FONT size=4>&nbsp;Client SDK 
+Instructions</FONT></BIG></P>
+<H1><SPAN style="COLOR: #808000">typedef</SPAN><SPAN style="COLOR: #c0c0c0"> 
+</SPAN><SPAN style="COLOR: #808000">enum</SPAN><SPAN style="COLOR: #c0c0c0"> 
+</SPAN><SPAN style="COLOR: #800080">__Channel_type__</SPAN><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #000000">{</SPAN></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #800080">E_NULL_CHL_TYPE</SPAN><SPAN style="COLOR: #000000">,</SPAN></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #800080">E_DIGITAL_CHL_TYPE</SPAN><SPAN style="COLOR: #000000">,</SPAN><SPAN style="COLOR: #c0c0c0">     </SPAN><SPAN style="COLOR: #008000">//Digital Channel</SPAN></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #008000"><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #800080">E_ANALOG_CHL_TYPE</SPAN><SPAN style="COLOR: #000000">,</SPAN><SPAN style="COLOR: #c0c0c0">      </SPAN><SPAN style="COLOR: #008000">//Analog Channel</SPAN></SPAN></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #800080">E_ALARMOUT_CHL_TYPE</SPAN><SPAN style="COLOR: #000000">,</SPAN><SPAN style="COLOR: #c0c0c0">	  </SPAN><SPAN style="COLOR: #008000">//Alarm Output Channel</SPAN></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #800080">E_SENSOR_CHL_TYPE</SPAN><SPAN style="COLOR: #000000">,</SPAN><SPAN style="COLOR: #c0c0c0">	  </SPAN><SPAN style="COLOR: #008000">//Sensor Channel</SPAN></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #000000">}</SPAN><SPAN style="COLOR: #800080">CHANNEL_TYPE</SPAN><SPAN style="COLOR: #000000">;</SPAN></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0; -qt-paragraph-type: empty"><BR></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #808000">typedef</SPAN><SPAN style="COLOR: #c0c0c0"> </SPAN><SPAN style="COLOR: #808000">struct</SPAN><SPAN style="COLOR: #c0c0c0"> </SPAN><SPAN style="COLOR: #800080">_net_sdk_channel_ptz</SPAN></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #000000">{</SPAN></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #808000">unsigned</SPAN><SPAN style="COLOR: #c0c0c0"> </SPAN><SPAN style="COLOR: #808000">int</SPAN><SPAN style="COLOR: #c0c0c0">	</SPAN><SPAN style="COLOR: #800000">dwChannel</SPAN><SPAN style="COLOR: #000000">;//Channel No.(starting with zero)</SPAN></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #800080">CHANNEL_TYPE</SPAN><SPAN style="COLOR: #c0c0c0">      </SPAN><SPAN style="COLOR: #800000">eChanneltype</SPAN><SPAN style="COLOR: #000000">;//Channel Type</SPAN></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #000000"><SPAN style="COLOR: #c0c0c0">    </SPAN><SPAN style="COLOR: #808000">unsigned</SPAN><SPAN style="COLOR: #c0c0c0"> </SPAN><SPAN style="COLOR: #808000">char</SPAN><SPAN style="COLOR: #c0c0c0">	</SPAN><SPAN style="COLOR: #800000">resv</SPAN><SPAN style="COLOR: #000000">[</SPAN><SPAN style="COLOR: #000080">8</SPAN><SPAN style="COLOR: #000000">];</SPAN></SPAN></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0"><SPAN style="COLOR: #000000">}</SPAN><SPAN style="COLOR: #800080">NET_SDK_CHANNEL_PTZ</SPAN><SPAN style="COLOR: #000000">;</SPAN></PRE><PRE style="MARGIN: 0px; TEXT-INDENT: 0px; -qt-block-indent: 0; -qt-paragraph-type: empty"><BR></PRE></H1>
+<H1>NET_SDK_GetSupportPtzList</H1>
+<P>Get the channel of NVR in favor of PTZ list（only for N9000 device）</P><PRE class=syntax> BOOL NET_SDK_GetSupportPtzList(
+ LONG<EM>     </EM>lUserID,
+ int<EM>     </EM>listNum,
+ NET_SDK_CHANNEL_PTZ<EM>     </EM>*pOutChannelPtz,
+ int<EM>     </EM>*returnListNum,
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT>lUserID 
+  <DD>[in] the return value of NET_SDK_Login() 
+  <DT>listNum 
+  <DD>[in] the number of NET_SDK_CHANNEL_PTZ supported by the request memory of 
+  pOutChannelPtz
+  <DT>*pOutChannelPtz 
+  <DD>[out] Return PTZ information list&nbsp;
+  <DT>*returnListNum 
+  <DD>[out] the effective number of returning PTZ information list</DD></DL>
+<DL>Return Values</DL>
+<P>TRUE means success; FALSE means failure. To get error information, call<A 
+href="file:///C:/Users/Administrator/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册3_43120.7263751968/interface/NET_SDK_GetlastError.htm"><U>NET_SDK_GetLastError<BR></U></A></P></BODY></HTML>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_PlayBackControl</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_PlayBackControl</H1>
+<P>control the state of playback</P><PRE class=syntax> BOOL NET_SDK_PlayBackControl(
+ LONG<I>     lPlayHandle</I>,
+ DWORD<I>    dwControlCode</I>,
+ DWORD<I>    dwInValue</I>,
+ DWORD<I>    *lpOutValue</I>
+ );</PRE>
+<H3>Parameters</H3>
+<DL>
+  <DT><I>lPlayHandle</I> 
+  <DD>[in] play handle,return value of NET_SDK_PlayBackByTime 
+  <DT><I>dwControlCode</I> 
+  <DD>[in] command of controlling the state of playback,refer to 
+  NET_SDK_PLAYCTRL_TYPE: 
+  <TABLE>
+    <TBODY>
+    <TR>
+      <TH>Type</TH>
+      <TH>Description</TH></TR>
+    <TR>
+      <TD>NET_SDK_PLAYCTRL_PAUSE</TD>
+      <TD>pause</TD></TR>
+    <TR>
+      <TD>NET_SDK_PLAYCTRL_FF</TD>
+      <TD>fast forward</TD></TR>
+    <TR>
+      <TD>NET_SDK_PLAYCTRL_REW</TD>
+      <TD>rewind</TD></TR>
+    <TR>
+      <TD>NET_SDK_PLAYCTRL_RESUME</TD>
+      <TD>resume</TD></TR>
+    <TR>
+      <TD>NET_SDK_PLAYCTRL_STOP</TD>
+      <TD>stop</TD></TR>
+    <TR>
+      <TD>NET_SDK_PLAYCTRL_FRAME</TD>
+      <TD>play one frame</TD></TR>
+    <TR>
+      <TD>NET_SDK_PLAYCTRL_NORMAL</TD>
+      <TD>normal play</TD></TR>
+    <TR>
+      <TD>NET_SDK_PLAYCTRL_STARTAUDIO</TD>
+      <TD>enable audio,choose channel by parameter <I>dwInValue</I> of 
+        function NET_SDK_PlayBackControl</TD></TR>
+    <TR>
+      <TD>NET_SDK_PLAYCTRL_STOPAUDIO</TD>
+      <TD>stop audio</TD></TR>
+    <TR>
+      <TD>NET_SDK_PLAYCTRL_AUDIOVOLUME</TD>
+      <TD>adjust audio volume,realize by parameter <I>dwInValue</I> of 
+        function NET_SDK_PlayBackControl</TD></TR>
+    <TR>
+      <TD>NET_SDK_PLAYCTRL_SETPOS</TD>
+      <TD>play progress,calculate seconds from January 1st in 
+    1970</TD></TR></TBODY></TABLE>
+  <DT><I>dwInValue</I> 
+  <DD>[in] parameter setting,when setting playback progress this parameter means 
+  progress value; when playing this parameter means file location of resuming 
+  from break point. 
+  <DT><I>lpOutValue</I> 
+  <DD>[out] got parameter,if need to get total time of current play file,this 
+  parameter meets. </DD></DL>
+<H3>Return Values</H3>
+<P>TRUE means success; FALSE means failure. To get error information,please call 
+<A href="NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
+<H3>Remarks</H3>
+<P>Whether assign the third parameter of this interface depends on the control 
+command,under NET_SDK_PLAYSETPOS command this parameter means the playback 
+progress; when starting the control command it means offset of current file;when 
+its value is 0 it means to play from the starting location,if not 0 ,it means 
+the file location of resuming from break point.<BR>The fourth parameter means 
+the parameter got from current control command operation.</P>
+<H3>See Also</H3>
+<P><A href="NET_SDK_PlayBackByTime.htm">NET_SDK_PlayBackByTime</A></P><BR>
+<HR>
+</BODY></HTML>

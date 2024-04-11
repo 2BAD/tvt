@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>DD_DDNS_CONFIG</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_DDNS_CONFIG</h1>
+<p>struct of DDNS configuration</p>
+<pre class ="syntax"> struct _dd_ddns_config_{
+ unsigned long            iSize;			
+ unsigned short           enable;			
+ unsigned short           interval;		
+ unsigned long            useDDNSServer;	
+ unsigned long            userHostDomain;	
+ char                     userName [DD_MAX_DDNS_ACCOUNT_BUF_LEN];	
+ char                     password [DD_MAX_PASSWORD_BUF_LEN];		
+ char                     hostDomain [DD_MAX_URL_BUF_LEN];			
+ }DD_DDNS_CONFIG;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>iSize</i></dt>
+<dd>size of the struct</dd>
+<dt><i>enable</i></dt>
+<dd>whether enable DDNS</dd>
+<dt><i>interval</i></dt>
+<dd>report upgrade interval</dd>
+<dt><i>useDDNSServer</i></dt>
+<dd>type or address of DDNS server in use</dd>
+<dt><i>userHostDomain</i></dt>
+<dd>whether enable host domain name</dd>
+<dt><i>userName [DD_MAX_DDNS_ACCOUNT_BUF_LEN]</i></dt>
+<dd>DDNS account</dd>
+<dt><i>password [DD_MAX_PASSWORD_BUF_LEN]</i></dt>
+<dd>DDNS password</dd>
+<dt><i>hostDomain [DD_MAX_URL_BUF_LEN]</i></dt>
+<dd>host domain name(correspond to a certain protocol,specifying server is permitted)</dd>
+</dl>
+<br />
+<hr />
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

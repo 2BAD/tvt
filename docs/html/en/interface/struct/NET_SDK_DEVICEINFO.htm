@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET_SDK_DEVICEINFO</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+type=text/css href="mystyle.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18860"></HEAD>
+<BODY>
+<P style="BACKGROUND-COLOR: #abcdef"><BIG>&nbsp;Client SDK 
+Instructions</BIG></P>
+<H1>NET_SDK_DEVICEINFO</H1>
+<P>structure of device login</P><PRE class=syntax>struct _net_sdk_deviceinfo{
+ unsigned char	localVideoInputNum;		
+ unsigned char	audioInputNum;			
+ unsigned char	sensorInputNum;			
+ unsigned char	sensorOutputNum;		
+ unsigned long    displayResolutionMask;  
+ unsigned char	videoOuputNum;			
+ unsigned char	netVideoOutputNum;		
+ unsigned char	netVideoInputNum;		
+ unsigned char	IVSNum;					
+ unsigned char	presetNumOneCH;			
+ unsigned char	cruiseNumOneCH;			
+ unsigned char	presetNumOneCruise;		
+ unsigned char	trackNumOneCH;			
+ unsigned char	userNum;				
+ unsigned char	netClientNum;			
+ unsigned char	netFirstStreamNum;		
+ unsigned char	deviceType;				
+ unsigned char	doblueStream;			
+ unsigned char	audioStream;			
+ unsigned char	talkAudio;				
+ unsigned char	bPasswordCheck;			
+ unsigned char	defBrightness;			
+ unsigned char	defContrast;			
+ unsigned char	defSaturation;			
+ unsigned char	defHue;					
+ unsigned short	videoInputNum;			
+ unsigned short   deviceID;				
+ unsigned long    videoFormat;           
+ unsigned long	function[8];			
+ unsigned long	deviceIP;				
+ unsigned char	deviceMAC[8];			
+ unsigned long	buildDate;				
+ unsigned long	buildTime;				
+ char		deviceName[36];			
+ char	         firmwareVersion[36];			
+ char	         kernelVersion[64];			
+ char	         hardwareVersion[36];			
+ char	         MCUVersion[36];
+ char	firmwareVersionEx[100];			//firmware version extension for new product
+ char	deviceProduct[28];			//Device model					
+ }NET_SDK_DEVICEINFO, *LPNET_SDK_DEVICEINFO;
+</PRE>
+<H3>Members</H3>
+<DL>
+  <DT><I>localVideoInputNum</I> 
+  <DD>number of local video input channel 
+  <DT><I>audioInputNum</I> 
+  <DD>number of audio input channel 
+  <DT><I>sensorInputNum</I> 
+  <DD>number of sensor input channel 
+  <DT><I>sensorOutputNum</I> 
+  <DD>number of relay output 
+  <DT><I>displayResolutionMask</I> 
+  <DD>monitor optional resolution 
+  <DT><I>videoOuputNum</I> 
+  <DD>number of video output(supportable maximum playback channel number) 
+  <DT><I>netVideoOutputNum</I> 
+  <DD>maximum channel number of network playback 
+  <DT><I>netVideoInputNum</I> 
+  <DD>channel number of digital single input 
+  <DT><I>IVSNum</I> 
+  <DD>number of smart analytics channel 
+  <DT><I>presetNumOneCH</I> 
+  <DD>number of preset point in each channel 
+  <DT><I>cruiseNumOneCH</I> 
+  <DD>number of cruise line in each channel 
+  <DT><I>presetNumOneCruise</I> 
+  <DD>number of preset point in each cruise line 
+  <DT><I>trackNumOneCH</I> 
+  <DD>track number in each channel 
+  <DT><I>userNum</I> 
+  <DD>user number 
+  <DT><I>netClientNum</I> 
+  <DD>maximum client number 
+  <DT><I>netFirstStreamNum</I> 
+  <DD>channel maximum number of main code stream transmission,namely how many 
+  clients check main code stream meanwhile 
+  <DT><I>deviceType</I> 
+  <DD>device type 
+  <DT><I>doblueStream</I> 
+  <DD>whether provide dual stream 
+  <DT><I>audioStream</I> 
+  <DD>whether provide audio stream 
+  <DT><I>talkAudio</I> 
+  <DD>whether enable talkback function:1 means yes;0 means no 
+  <DT><I>bPasswordCheck</I> 
+  <DD>whether need to input password 
+  <DT><I>defBrightness</I> 
+  <DD>default brightness 
+  <DT><I>defContrast</I> 
+  <DD>default contrast 
+  <DT><I>defSaturation</I> 
+  <DD>default saturation 
+  <DT><I>defHue</I> 
+  <DD>default hue 
+  <DT><I>videoInputNum</I> 
+  <DD>channel number of video input(add network channel number if local video 
+  input) 
+  <DT><I>deviceID</I> 
+  <DD>device ID 
+  <DT><I>videoFormat</I> 
+  <DD>video format,refer to the following list: 
+  <TABLE>
+    <TBODY>
+    <TR>
+      <TH>Type</TH>
+      <TH>Value</TH></TR>
+    <TR>
+      <TD>DD_VIDEO_FORMAT_NTSC</TD>
+      <TD>0x01</TD></TR>
+    <TR>
+      <TD>DD_VIDEO_FORMAT_PAL</TD>
+      <TD>0x02</TD></TR></TBODY></TABLE>
+  <DT><I>function[8]</I> 
+  <DD>function description 
+  <DT><I>deviceIP</I> 
+  <DD>device network address 
+  <DT><I>deviceMAC[8]</I> 
+  <DD>device MAC 
+  <DT><I>buildDate</I> 
+  <DD>building date:year&lt;&lt;16 + month&lt;&lt;8 + mday 
+  <DT><I>buildTime</I> 
+  <DD>building time:hour&lt;&lt;16 + min&lt;&lt;8 + sec 
+  <DT><I>deviceName[36]</I> 
+  <DD>device name 
+  <DT><I>firmwareVersion[36]</I> 
+  <DD>firmware version 
+  <DT><I>kernelVersion[64]</I> 
+  <DD>kernel version 
+  <DT><I>hardwareVersion[36]</I> 
+  <DD>hardware version 
+  <DT><I>MCUVersion[36]</I> 
+  <DD>MCU version 
+  <DD>firmwareVersionEx[100] 
+  <DD>&nbsp;Reserved characters
+  <DD>deviceProduct[28] 
+  <DD>Device model&nbsp;</DD></DL><BR>
+<HR>
+</BODY></HTML>

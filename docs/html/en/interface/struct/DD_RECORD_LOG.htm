@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+    <title>DD_RECORD_LOG</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_RECORD_LOG</h1>
+<p>struct of record log information</p>
+<pre class ="syntax"> struct_dd_record_log_{
+ unsigned char	bLocked;		
+ unsigned char	bUnofficial;	
+ unsigned char	enableCard;		
+ unsigned char	recv1;			
+ unsigned short	diskIndex;		
+ unsigned short	fileIndex;		
+ unsigned short	logIndex;		
+ unsigned short	recv2;			
+ unsigned short	deviceID;		
+ unsigned short	cameraID;		
+ unsigned long	channel;		
+ unsigned long	type;			
+ unsigned long	size;			
+ DD_TIME	         startTime;		
+ DD_TIME		endTime;		
+ char		cardNo[32];		
+ }DD_RECORD_LOG, *LP_DD_RECORD_LOG;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>bLocked</i></dt>
+<dd>0 means unlocked,1 means locked</dd>
+<dt><i>bUnofficial</i></dt>
+<dd>0 means official record,1 means unofficial record(overlap record after modifying time)</dd>
+<dt><i>enableCard</i></dt>
+<dd>whether enable card</dd>
+<dt><i>recv1</i></dt>
+<dd>reserved byte</dd>
+<dt><i>diskIndex</i></dt>
+<dd>disk number</dd>
+<dt><i>fileIndex</i></dt>
+<dd>file index</dd>
+<dt><i>logIndex</i></dt>
+<dd>log index</dd>
+<dt><i>recv2</i></dt>
+<dd>reserved byte</dd>
+<dt><i>deviceID</i></dt>
+<dd>device ID</dd>
+<dt><i>cameraID</i></dt>
+<dd>camera ID</dd>
+<dt><i>channel</i></dt>
+<dd>virtual channel number</dd>
+<dt><i>type</i></dt>
+<dd>record type</dd>
+<dt><i>size</i></dt>
+<dd>size of the record data</dd>
+<dt><i>startTime</i></dt>
+<dd>start time</dd>
+<dt><i>endTime</i></dt>
+<dd>end time</dd>
+<dt><i>cardNo[32]</i></dt>
+<dd>card number</dd>
+</dl>
+<br />
+ <hr />
+ 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

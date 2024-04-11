@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html";charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css"rel="Stylesheet"type="text/css"  />
+<title>FAQ</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>FAQ</h1>
+<br />
+
+
+<h3><pre class="syntax"><b>Q1  How to get alarm means & invoking method?</b>
+</pre></h3>
+
+<h4>A1</h4>
+<p>What is called protection is SDK connects device actively,device starts loading alarm,once alarm happens alarm information is uploaded to SDK as soon as possible.So except that alarm inputs information & device invokes callback function,the interface NET_SDK_SetupAlarmChan also should be invoked to setup connection between SDK and device.
+</p>
+
+<h3><pre class="syntax"><b>Q2  Alarm configuration has succeed and alarm signal can be received locally,but why  can't client  receive alarm signal?</b>
+</pre></h3>
+
+<h4>A2</h4>
+<p>Reasons as follows:1)whether network connection is normal 2)when alarm type is protection,whether setup protection correctly.
+</p>
+
+
+
+<h3><pre class="syntax"><b>Q3  Why is it that returned value is failure when calling NET_SDK_SetDVRConfig()?</b>
+</pre></h3>
+
+<h4>A3</h4>
+<p>NET_SDK_EnterDVRConfig() must be called to lock config before calling NET_SDK_SetDVRConfig().
+</p>
+
+
+<h3><pre class="syntax"><b>Q4  Why is it that the start time of playback and downloading is different from the setting start time?</b>
+</pre></h3>
+
+<h4>A4</h4><p>Playback & download start from the nearby key frame of the setting start time.</p>
+
+<h3><pre class="syntax"><b>Q5  Why need to pass a group of channel numbers to NET_SDK_PlayBackByTime()?</b>
+</pre></h3>
+
+<h4>A5</h4>
+<p>The passed group channels  realize autosynchronous play, at the same time divide channels into groups to play but not play by itself, these can save device-side performance.
+</p>
+
+<h3><pre class="syntax"><b>Q6  Why the time of record data index,playback and download is different from the time of device-side?</b>
+</pre></h3>
+
+<h4>A6</h4>
+<p>If this problem appears,first check that whether device timezone and PC timezone is the same,and then check that the time of the two machines is the same.
+</p>
+
+
+
+<h3><pre class="syntax"><b>Q7  What to notice when using configurated parameters in NET_SDK_SetDVRConfig()?</b>
+</pre></h3>
+
+<h4>A7</h4>
+<p>Because NET_SDK_SetDVRConfig() needs struct with complete assignment,otherwise setting error comes out. So for fear of this error,
+popularly invoke NET_SDK_GetDVRConfig() to assign initial values to the struct which is needed modification before invoking NET_SDK_SetDVRConfig().
+</p>
+
+<h3><pre class="syntax"><b>Q8 Why does control command of NET_SDK_PTZControl have no effect on some certain PTZ?</b>
+</pre></h3>
+
+<h4>A8</h4>
+<p>Device sends control code to PTZ according to decoder type and decoder address.If current decoder unmatchable,matching decoder setup is needed;
+if device doesnot support the decoder, control command from device has no effect on the PTZ.
+</p>
+
+
+<h3><pre class="syntax"><b>Q9  Do audio talkback & forward aim at device or channel?</b>
+</pre></h3>
+
+<h4>A9</h4>
+<p>Aim at device ,not channel.
+</p>
+
+
+
+<h3><pre class="syntax"><b>Q10  Whether the callback function of audio talkback can set be null or not. </b>
+</pre></h3>
+
+<h4>A10</h4>
+<p>Yes,if be null,vioce is still normal but user can't access data.
+</p>
+
+<h3><pre class="syntax"><b>Q11 How to save record data into files?</b>
+</pre></h3>
+
+<h4>A11</h4>
+<p>Get data through callback function LIVE_DATA_CALLBACK of NET_SDK_SetLiveDataCallBack,and then save the data into files,refer to the example in livedlg.cpp of SDKdemo,see L1170.You can play the saved files by Player.
+</p>
+<h3><pre class="syntax"><b>Q12 How to get play progress?</b>
+</pre></h3>
+
+<h4>A12</h4>
+<p>Get start time and end time by NET_SDK_PlayBackByTime,and then get current playing time by NET_SDK_GetPlayBackOsdTime.Play progress=current playing time/(end time-start time).
+</p>
+<h3><pre class="syntax"><b>Q13  How to do when PlayerDemo gets error code 0XC0150002?</b>
+</pre></h3>
+
+<h4>A13</h4>
+<p>Solution:install Microsoft Visual C++ 2005 SP1 Redistributable Package4,download the module in MSDN.
+</p>
+<h3><pre class="syntax"><b>Q14 Why some function are invalid when palyback?</b>
+</pre></h3>
+
+<h4>A14</h4>
+<p>2X and 4X speed is invalid in SDKDemo and SDK when backward,but other speed is OK.When forward all speed is OK except 1X.Before starting playback one frame by one frame,<i>Pause</i> should be enabled,and then one frame can be played by click <i>Next frame</i> button one time.
+</p>
+
+<h3><pre class="syntax"><b>Q15  What is <i> wday</i> in DD_TIME struct?</b>
+</pre></h3>
+
+<h4>A15</h4>
+<p>Start time is DD_TIME type in  NET_SDK_FindFile,but <i>wday</i> is invalid in DD_TIME.<i>wday</i> can be empty but can not be cleared.You can search by <i>mday</i> or write a function to convert time into wday.</p>
+
+<h3><pre class="syntax"><b>Q16  How to do when play file gets E_PLAYER_BAD_FORMAT_FILE error?</b>
+</pre></h3>
+
+<h4>A16</h4>
+<p>Check the following four qustions:</p>
+	<p>1the first frame is format frame when save record file,</p>
+	<p>2all structs in SDK are 4 bytes alignment,</p>
+	<p>3check interface calling order,</p>
+	<p>4the file in PlayerSDK should be :</p>
+<p>*frame info SDK_FRAME_INFO valid data in frame</p>
+<p>*frame info SDK_FRAME_INFO valid data in frame</p>
+<p>* ......</p>
+<p>*frame info SDK_FRAME_INFO valid data in frame</p>
+<p>* ......</p>
+<p>* video info frame should be before video frame,audio info frame should be before audio frame too</p>
+
+
+<br />
+<hr />
+
+</body>
+</html>

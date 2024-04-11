@@ -1,0 +1,46 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
+<meta http-equiv ="Content-Language"content="en-US"/>
+<link href="mystyle.css" rel="Stylesheet"type="text/css"  />   
+<title>DD_MOTION_AREA</title>
+</head>
+<body>
+<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+<h1>DD_MOTION_AREA</h1>
+<p>struct of motion area</p>
+<pre class ="syntax"> struct _dd_motion_area_{
+ unsigned long           sensitivity;		
+ unsigned short          widthNum;		
+ unsigned short          hightNum;		
+ unsigned char           area [DD_MAX_MOTION_AREA_HIGHT_NUM][DD_MAX_MOTION_AREA_WIDTH_NUM];
+ }DD_MOTION_AREA;
+</pre>
+<h3>Members</h3>
+<dl>
+<dt><i>sensitivity</i></dt>
+<dd>sensitivity(0-7),high number means high sensitivity</dd>
+<dt><i>widthNum</i></dt>
+<dd>width grid number of area</dd>
+<dt><i>hightNum</i></dt>
+<dd>height grid number of area</dd>
+<dt><i>area [DD_MAX_MOTION_AREA_HIGHT_NUM][DD_MAX_MOTION_AREA_WIDTH_NUM]</i></dt>
+<dd>grid mask data of area,compatible 1920x1080,each size is 8X8</dd>
+</dl>
+<br/>
+<hr/>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
