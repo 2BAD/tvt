@@ -1,122 +1,108 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head>
-<meta http-equiv="Content-Type"content="text/html"charset=gb2312"UTF-8"/>
-<meta http-equiv ="Content-Language"content="en-US"/>
-<link href="mystyle.css" rel="Stylesheet"type="text/css"  /> 
-<title>Summary</title>
-</head>
-<body>
-<p style ="background-color:#abcdef"><big>&nbsp;Client SDK Instructions</big></p>
-<h1>Summary</h1>
-<p>Client SDK is a matching product of embedded hard disk video recorder(DVR), network hard disk video recorder(NVR), video server(DVS) and IPCamera, mostly used in remote device access and remote control software development.All functions below is mainly for DVR and NVR, when you integrate IPC with SDK ,just take IPC as one channel DVR device, and IPC SDK instruction page lists which functions are supported for IPC integration.
-The version of this product is 1.0,and its main function as the list below:</p>
-<table>
-<tr>
-<th>Function Module</th>
-<th>Function Details</th>
-</tr>
-<tr><td>Device basic info/Parameters config</td><td >device serial number,firmware version number,firmware version compiling date,core version number,hardware version number.</td></tr>
-<tr><td></td><td>video formats,device ID,device name</td> </tr>               
-<tr><td></td><td>device interface language,start password protection,screen protection,VGA parameters setting</td> </tr>             
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Summary</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css" />
+  </head>
+  <body>
+    <p style="background-color: #abcdef"><big>&nbsp;Client SDK Instructions</big></p>
+    <h1>Summary</h1>
+    <p>
+      Client SDK is a matching product of embedded hard disk video recorder (DVR), network hard disk video recorder
+      (NVR), video server (DVS) and IPCamera, mostly used in remote device access and remote control software
+      development. The version of this product is 1.0, and its main functions are:
+    </p>
 
-<tr><td>Living preview</td><td >local preview,remote preview,channel hidden,picture segmentation,picture polling</td></tr>
-<tr><td></td><td>channel name,record state,alarm state(sensor alarm,network address conflict,harddisk error,disk full,system time)</td> </tr>               
-<tr><td></td><td>electronic zoom in,picture in picture</td> </tr>  
-<tr><td></td><td>living sound,volume adjust,mute control</td> </tr> 
-
-<tr><td>Preview video/Parameters setting</td><td >color adjust,adapt color to different time slot</td></tr>
-<tr><td></td><td>character overlay:channel name,timestamp,user-defined information</td> </tr>               
-<tr><td></td><td>area keep out</td> </tr>  
-
-<tr><td>Video & Audio record/Parameters settings</td><td >video&audio record/parameters settings</td></tr>
-<tr><td></td><td>record of alarming:record time before alarming,record time after alarming,different encoding parameters setting</td> </tr>               
-<tr><td></td><td>record switch:video switch,audio switch,video & audio binding relationship</td> </tr>  
-<tr><td></td><td >data expiration,redundancy record,group record,whether circulation cover</td></tr>
-<tr><td></td><td>record plan:record on time, record when sensor alarming,record when motion detection,record when video kept out alarming</td> </tr>               
-<tr><td></td><td>manual record,remote control of manual record</td> </tr> 
-
-          
-<tr><td>Capture/Parameters setting</td><td >picture measurement,picture quality,capture interval, capture numbers</td></tr>
-<tr><td></td><td>manual capture,picture retrieval,picture diaplay</td> </tr> 
- 
-<tr><td>Alarm handle/Parameters setting</td><td >alarm type:sensor alarm,motion detection alarm,video kept out alarm,video lost alarm,smart analytics alarm</td></tr>
-<tr><td></td><td>detection plant, detection time-lag,sensor device type,sensor device name, motion detection area & sensitivity</td> </tr>               
-<tr><td></td><td>alarm output:relay alarm,buzzer alarm,large picture caution,send emails,send up to center</td> </tr>  
-<tr><td></td><td >alarm record:trigger record(specify channel),record log(alarm starts information,alarm ends information)</td></tr>
-<tr><td></td><td>action with alarm:PTZ preset positions,PTZ cruise line, PTZ track</td> </tr>               
-<tr><td></td><td>alarm from email:channel information,alarm type,attached picture(specify channel,picture numbers & time interval)</td> </tr>  
-
-<tr><td>Alarm output/Parameters setting</td><td >alarm from relay:switch,response schedule,response time-lag,alarm name</td></tr>
-<tr><td></td><td>alarm from buzzer:switch,response schedule,response time-lag</td> </tr>               
-<tr><td></td><td>manual alarm,remotely manual alarm</td> </tr>
-
-<tr><td>Past video retrieval/Playback/Backup</td><td >search by time:data distribution charter, distinguish different record types</td></tr>
-<tr><td></td><td>search by event:event list, filter event type</td> </tr>               
-<tr><td></td><td>search by file :file list(no partitioning record segment),lock/delete file</td> </tr>  
-<tr><td></td><td>search by picture:picture diaplaydisplay, locked/delete pictures, picture backup(save as)</td></tr>
-<tr><td></td><td>start playback:specify the start time(specify a group of channels) specify event,specify file</td> </tr>               
-<tr><td></td><td>playback control:stop ,speed,fast backward,single frame play,reposition,exist playback,store capture(harddisk),select area for backup</td> </tr>  
-<tr><td></td><td>manual backup:backup by start time & stop time,backup by the specified file,montage backup,DVR & AVI formats,combination backup(multi-channels backup in one file)</td> </tr>               
-<tr><td></td><td>automatically backup:specify time and condition,backup in external memory,backup in network service</td> </tr>  
-
-
-<tr><td>Network/Parameters setting</td><td >network address setting:static address,dynamic address,PPPoE</td></tr>
-<tr><td></td><td>ports-settings:HTTP port,data port,alarm port,etc.</td> </tr>               
-<tr><td></td><td>multicast address setting</td> </tr>  
-<tr><td></td><td >DDNS setting:customization demand,send up the period setting,etc.</td></tr>
-<tr><td></td><td>parameters setting of network substream encoding:resolution,frame rate,encoded mode,picture quality,code stream limit,whether self-adaption(picture quality & fluency)</td> </tr>               
-<tr><td></td><td>network linking setting:register user number limit,video channel number limit,whether release mainstream,black and white list</td> </tr>  
-<tr><td></td><td>check network state,prompt network state live(normal connection,no connection,conflict),check users online,push-off users online</td> </tr>
-
-<tr><td>Mail functionary/Config</td><td >send emails when alarm,combine emails in a while,emails whether with attachment,specify to send emails, send emails manually</td></tr>
-
-<tr><td>PTZ control/Parameters setting</td><td >parameters setting of serial port ,preset position setting,cruise line setting,track setting</td></tr>
-<tr><td></td><td>PTZ control:eight directions,stop,aperture,focus,zoom in,rate(128),lamplight,windshield wiper,automatically scan line</td> </tr>               
-<tr><td></td><td>control mode:mouse 3D control,mouse control through dialog box,front panel,remote-controller,professional keyboard,remote control</td> </tr>  
-<tr><td></td><td >protocol</td></tr>
-
-<tr><td>Configuration management</td><td >local configure,remote configuration,configuration import & export,recover default configuration</td></tr>
-
-<tr><td>Disc management/Health check</td><td >format disc,delete data,specify disc group,set disc attribute(read only, read-write,redundancy,backup)</td></tr>
-
-
-<tr><td>System maintain</td><td >firmware upgrade,device health checked, remote upgrade,FTP upgrade</td></tr>
-
-<tr><td>Other function</td><td >user management,permission setting</td></tr>
-<tr><td></td><td >log record/retrieval/export</td></tr>
-<tr><td></td><td >FTP setting</td></tr>
-</table>
-<br />
-<hr />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</body>
+    <table>
+      <tr>
+        <th>Function Module</th>
+        <th>Function Details</th>
+      </tr>
+      <tr>
+        <td>Capture/Parameters setting</td>
+        <td>
+          picture measurement, picture quality, capture interval, capture numbers<br />manual capture, picture
+          retrieval, picture display
+        </td>
+      </tr>
+      <tr>
+        <td>Alarm handle/Parameters setting</td>
+        <td>
+          alarm type: sensor alarm, motion detection alarm, video kept out alarm, video lost alarm, smart analytics
+          alarm<br />detection plan, detection time-lag, sensor device type, sensor device name, motion detection area &
+          sensitivity<br />alarm output: relay alarm, buzzer alarm, large picture caution, send emails, send up to
+          center<br />alarm record: trigger record (specify channel), record log (alarm starts information, alarm ends
+          information)<br />action with alarm: PTZ preset positions, PTZ cruise line, PTZ track<br />alarm from email:
+          channel information, alarm type, attached picture (specify channel, picture numbers & time interval)
+        </td>
+      </tr>
+      <tr>
+        <td>Alarm output/Parameters setting</td>
+        <td>
+          alarm from relay: switch, response schedule, response time-lag, alarm name<br />alarm from buzzer: switch,
+          response schedule, response time-lag<br />manual alarm, remotely manual alarm
+        </td>
+      </tr>
+      <tr>
+        <td>Past video retrieval/Playback/Backup</td>
+        <td>
+          search by time: data distribution charter, distinguish different record types<br />search by event: event
+          list, filter event type<br />search by file: file list (no partitioning record segment), lock/delete file<br />search
+          by picture: picture display, locked/delete pictures, picture backup (save as)<br />start playback: specify the
+          start time (specify a group of channels), specify event, specify file<br />playback control: stop, speed, fast
+          backward, single frame play, reposition, exit playback, store capture (hard disk), select area for backup<br />manual
+          backup: backup by start time & stop time, backup by the specified file, montage backup, DVR & AVI formats,
+          combination backup (multi-channels backup in one file)<br />automatically backup: specify time and condition,
+          backup in external memory, backup in network service
+        </td>
+      </tr>
+      <tr>
+        <td>Network/Parameters setting</td>
+        <td>
+          network address setting: static address, dynamic address, PPPoE<br />ports-settings: HTTP port, data port,
+          alarm port, etc.<br />multicast address setting<br />DDNS setting: customization demand, send up the period
+          setting, etc.<br />parameters setting of network substream encoding: resolution, frame rate, encoded mode,
+          picture quality, code stream limit, whether self-adaption (picture quality & fluency)<br />network linking
+          setting: register user number limit, video channel number limit, whether release mainstream, black and white
+          list<br />check network state, prompt network state live (normal connection, no connection, conflict), check
+          users online, push-off users online
+        </td>
+      </tr>
+      <tr>
+        <td>Mail functionary/Config</td>
+        <td>
+          send emails when alarm, combine emails in a while, emails whether with attachment, specify to send emails,
+          send emails manually
+        </td>
+      </tr>
+      <tr>
+        <td>PTZ control/Parameters setting</td>
+        <td>
+          parameters setting of serial port, preset position setting, cruise line setting, track setting<br />PTZ
+          control: eight directions, stop, aperture, focus, zoom in, rate (128), lamplight, windshield wiper,
+          automatically scan line<br />control mode: mouse 3D control, mouse control through dialog box, front panel,
+          remote-controller, professional keyboard, remote control<br />protocol
+        </td>
+      </tr>
+      <tr>
+        <td>Configuration management</td>
+        <td>local configure, remote configuration, configuration import & export, recover default configuration</td>
+      </tr>
+      <tr>
+        <td>Disc management/Health check</td>
+        <td>
+          format disc, delete data, specify disc group, set disc attribute (read only, read-write, redundancy, backup)
+        </td>
+      </tr>
+      <tr>
+        <td>System maintain</td>
+        <td>firmware upgrade, device health checked, remote upgrade, FTP upgrade</td>
+      </tr>
+      <tr>
+        <td>Other function</td>
+        <td>user management, permission setting<br />log record/retrieval/export<br />FTP setting</td>
+      </tr>
+    </table>
+  </body>
 </html>
-
-
-
-
-
-
-
-
-

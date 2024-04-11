@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sitemap</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css" />
+  </head>
+  <body>
+    <div style="margin-left: 3%">
+      <ul>
+        <li><a href="preface.html">Preface</a></li>
+        <li>
+          <a href="summary.htm">Summary</a>
+          <ul>
+            <li><a href="IPC%20SDK%20instruction.htm">IPC SDK instruction</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="programming%20guide.htm">Programming Guide</a>
+          <ul>
+            <li>
+              <a href="prog-guide/main%20flow%20of%20calling%20SDK%20interface%20.htm"
+                >main flow of calling SDK interface</a
+              >
+            </li>
+            <li><a href="prog-guide/flow%20of%20preview.htm">flow of preview module</a></li>
+            <li>
+              <a href="prog-guide/folw%20of%20talkback%20and%20forward.htm">flow of talkback and forward module</a>
+            </li>
+            <li><a href="prog-guide/flow%20of%20alarm%20module.htm">flow of alarm module</a></li>
+            <li>
+              <a href="prog-guide/flow%20of%20playback%20and%20download.htm"
+                >flow of playback and download by time module</a
+              >
+            </li>
+            <li>
+              <a href="prog-guide/flow%20of%20remote%20device%20maintenance.htm"
+                >flow of remote device maintainance module</a
+              >
+            </li>
+            <li><a href="prog-guide/flow%20of%20intelligent%20alarm.htm">flow of intelligent alarm</a></li>
+            <li><a href="prog-guide/flow%20of%20exception.htm">flow of exception</a></li>
+            <li>
+              <a href="prog-guide/flow%20of%20config%20N9000's%20face%20album%20target.htm"
+                >flow of config N9000's face album target</a
+              >
+            </li>
+            <li>
+              <a href="prog-guide/flow%20of%20config%20IPC's%20face%20album%20target.htm"
+                >flow of config IPC's face album target</a
+              >
+            </li>
+            <li>
+              <a href="prog-guide/flow%20of%20accept%20device's%20register.htm">flow of accept device's register</a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="interface%20definition.htm">Interface Definition</a>
+          <ul>
+            <li>
+              macro defintion
+              <ul>
+                <li><a href="interface/struct/macro%20definition.htm">macro definition</a></li>
+              </ul>
+            </li>
+
+            <li>
+              initialization of SDK
+              <ul>
+                <li><a href="interface/NET_SDK_Init.html">NET SDK Init</a></li>
+                <li><a href="interface/NET_SDK_SetConnectTime.htm">NET SDK SetConnectTime</a></li>
+                <li><a href="interface/NET_SDK_SetReconnect.htm">NET SDK SetReconnect</a></li>
+                <li><a href="interface/NET_SDK_Cleanup.htm">NET SDK Cleanup</a></li>
+              </ul>
+            </li>
+
+            <li>
+              discover devices automatically on LAN
+              <ul>
+                <li><a href="interface/NET_SDK_DiscoverDevice.html">NET SDK DiscoverDevice</a></li>
+                <li><a href="interface/NET_SDK_DiscoverDeviceStart.html">NET_SDK_DiscoverDeviceStart</a></li>
+                <li><a href="interface/NET_SDK_DiscoverDeviceStop.html">NET_SDK_DiscoverDeviceStop</a></li>
+                <li><a href="interface/IPTool_SearchDataCallBack.htm">IPTool_SearchDataCallBack</a></li>
+                <li><a href="interface/IPTool_SearchDataCallBackEx.htm">IPTool_SearchDataCallBackEx</a></li>
+              </ul>
+            </li>
+
+            <li>
+              passive receive DVR register
+              <ul>
+                <li><a href="interface/NET_SDK_SetRegisterCallback.html">NET SDK SetRegisterCallback</a></li>
+                <li><a href="page_21.html">NET_SDK_SetUnRegisterCallback</a></li>
+                <li><a href="interface/NET_SDK_SetRegisterPort.html">NET SDK SetRegisterPort</a></li>
+                <li><a href="interface/NET_SDK_AddRegisterDeviceInfo.html">NET_SDK_AddRegisterDeviceInfo</a></li>
+                <li><a href="interface/ACCEPT_REGISTER_CALLBACK.html">ACCEPT REGISTER CALLBACK</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="page_39.html">get device IP by name</a>
+              <ul>
+                <li><a href="page_40.html">NET SDK GetDeviceIPByName</a></li>
+              </ul>
+            </li>
+
+            <li>
+              exception message callback
+              <ul>
+                <li><a href="interface/NET_SDK_SetSDKMessageCallBack.htm">NET SDK SetSDKMessageCallBack</a></li>
+                <li><a href="interface/EXCEPTION_CALLBACK.htm">EXCEPTION CALLBACK</a></li>
+              </ul>
+            </li>
+
+            <li>
+              parameter configuration of preview and display
+              <ul>
+                <li><a href="interface/NET_SDK_SetVideoEffect.htm">NET SDK SetVideoEffect</a></li>
+                <li><a href="interface/NET_SDK_GetVideoEffect.htm">NET SDK GetVideoEffect</a></li>
+                <li><a href="page_25.html">NET_SDK_SetVideoEffect_Ex</a></li>
+                <li><a href="page_26.html">NET_SDK_GetVideoEffect_Ex</a></li>
+              </ul>
+            </li>
+
+            <li>
+              SDK information and log
+              <ul>
+                <li><a href="interface/NET_SDK_GetSDKBuildVersion.htm">NET SDK GetSDKBuildVersion</a></li>
+                <li><a href="interface/NET_SDK_GetSDKVersion.htm">NET SDK GetSDKVersion</a></li>
+                <li><a href="interface/NET_SDK_SetLogToFile.htm">NET SDK SetLogToFile</a></li>
+              </ul>
+            </li>
+
+            <li>
+              get error message
+              <ul>
+                <li><a href="interface/NET_SDK_GetErrorMsg.htm">NET SDK GetErrorMsg</a></li>
+                <li><a href="interface/NET_SDK_GetlastError.htm">NET SDK GetLastError</a></li>
+              </ul>
+            </li>
+
+            <li>
+              user register
+              <ul>
+                <li><a href="interface/NET_SDK_Login.htm">NET SDK Login</a></li>
+                <li><a href="interface/NET_SDK_Logout.htm">NET SDK Logout</a></li>
+                <li><a href="interface/NET_SDK_LoginEx.html">NET SDK LoginEx</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="page_47.html">p2p2.0 login</a>
+              <ul>
+                <li><a href="page_48.html">NET_SDK_SetNat2Addr</a></li>
+              </ul>
+            </li>
+
+            <li>
+              real time preview
+              <ul>
+                <li><a href="interface/NET_SDK_MakeKeyFrame.htm">NET SDK MakeKeyFrame</a></li>
+                <li><a href="interface/NET_SDK_MakeKeyFrameEx.htm">NET_SDK_MakeKeyFrameEx</a></li>
+                <li><a href="interface/NET_SDK_MakeKeyFrameSub.htm">NET SDK MakeKeyFrameSub</a></li>
+                <li><a href="interface/NET_SDK_LivePlay.htm">NET SDK LivePlay</a></li>
+                <li><a href="interface/NET_SDK_StopLivePlay.htm">NET SDK StopLivePlay</a></li>
+                <li><a href="interface/DRAW_FUN_CALLBACK.htm">DRAW FUN CALLBACK</a></li>
+                <li><a href="page_27.html">NET_SDK_LivePlayEx</a></li>
+                <li><a href="interface/NET_SDK_SupportStreamNum.htm">NET_SDK_SupportStreamNum</a></li>
+              </ul>
+            </li>
+
+            <li>
+              overlapping character and image preview
+              <ul>
+                <li><a href="interface/NET_SDK_RegisterDrawFun.htm">NET SDK RegisterDrawFun</a></li>
+              </ul>
+            </li>
+
+            <li>
+              decoding effect parameter control in preview
+              <ul>
+                <li><a href="interface/NET_SDK_SetPlayerBufNumber.htm">NET SDK SetPlayerBufNumber</a></li>
+              </ul>
+            </li>
+
+            <li>
+              play volume control in preview
+              <ul>
+                <li><a href="interface/NET_SDK_OpenSound.htm">NET SDK OpenSound</a></li>
+                <li><a href="interface/NET_SDK_Volume.htm">NET SDK Volume</a></li>
+                <li><a href="interface/NET_SDK_CloseSound.htm">NET SDK CloseSound</a></li>
+              </ul>
+            </li>
+
+            <li>
+              capture data in real time preview
+              <ul>
+                <li><a href="interface/NET_SDK_SetLiveDataCallBack.htm">NET SDK SetLiveDataCallBack</a></li>
+                <li><a href="interface/NET_SDK_SaveLiveData.htm">NET SDK SaveLiveData</a></li>
+                <li><a href="page_28.html">NET_SDK_SetLiveDataCallBackEx</a></li>
+                <li><a href="interface/NET_SDK_StopSaveLiveData.htm">NET SDK StopSaveLiveData</a></li>
+                <li><a href="page_52.html">YUV_DATA_CALLBACK</a></li>
+                <li><a href="page_51.html">NET_SDK_SetYUVCallBack</a></li>
+                <li><a href="interface/LIVE_DATA_CALLBACK.htm">LIVE DATA CALLBACK</a></li>
+                <li><a href="page_32.html">Live_DATA_CALLBACK_EX</a></li>
+              </ul>
+            </li>
+
+            <li>
+              video capture
+              <ul>
+                <li><a href="interface/NET_SDK_CapturePicture.htm">NET SDK CapturePicture</a></li>
+                <li><a href="interface/NET_SDK_CapturePicture_Other.htm">NET SDK CapturePicture Other</a></li>
+                <li><a href="interface/NET_SDK_CaptureJPEGData_V2.htm">NET_SDK_CaptureJPEGData_V2</a></li>
+                <li><a href="interface/NET_SDK_CaptureJPEGFile_V2.htm">NET_SDK_CaptureJPEGFile_V2</a></li>
+                <li><a href="NET_SDK_CaptureJPEGPicture.htm">NET_SDK_CaptureJPEGPicture</a></li>
+                <li><a href="page_7.html">NET_SDK_RemoteSnap</a></li>
+                <li><a href="page_8.html">NET_SDK_SearchPicture</a></li>
+                <li><a href="page_9.html">NET_SDK_DownLoadPicture</a></li>
+              </ul>
+            </li>
+
+            <li>
+              record file playback download and lock
+              <ul>
+                <li>
+                  find record file
+                  <ul>
+                    <li><a href="interface/NET_SDK_FindFile.htm">NET SDK FindFile</a></li>
+                    <li><a href="interface/NET_SDK_FindNextFile.htm">NET SDK FindNextFile</a></li>
+                    <li><a href="interface/NET_SDK_FindClose.htm">NET SDK FindClose</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  find record data
+                  <ul>
+                    <li><a href="interface/NET_SDK_FindRecDate.htm">NET SDK FindRecDate</a></li>
+                    <li><a href="interface/NET_SDK_FindNextRecDate.htm">NET SDK FindNextRecDate</a></li>
+                    <li><a href="interface/NET_SDK_FindRecDateClose.htm">NET SDK FindRecDateClose</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  find file by event
+                  <ul>
+                    <li><a href="interface/NET_SDK_FindEvent.htm">NET SDK FindEvent</a></li>
+                    <li><a href="interface/NET_SDK_FindNextEvent.htm">NET SDK FindNextEvent</a></li>
+                    <li><a href="interface/NET_SDK_FindEventClose.htm">NET SDK FindEventClose</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  find file by time
+                  <ul>
+                    <li><a href="interface/NET_SDK_FindTime.htm">NET SDK FindTime</a></li>
+                    <li><a href="interface/NET_SDK_FindNextTime.htm">NET SDK FindNextTime</a></li>
+                    <li><a href="interface/NET_SDK_FindTimeClose.htm">NET SDK FindTimeClose</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  playback record file
+                  <ul>
+                    <li><a href="interface/NET_SDK_PlayBackByTime.htm">NET SDK PlayBackByTime</a></li>
+                    <li><a href="interface/NET_SDK_PlayBackControl.htm">NET SDK PlayBackControl</a></li>
+                    <li><a href="interface/NET_SDK_StopPlayBack.htm">NET SDK StopPlayBack</a></li>
+                    <li><a href="interface/PLAY_DATA_CALLBACK.htm">PLAY DATA CALLBACK</a></li>
+                    <li><a href="page_41.html">NET_SDK_PlayBackByTimeEx</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  capture data when playback record file
+                  <ul>
+                    <li><a href="interface/NET_SDK_SetPlayDataCallBack.htm">NET_SDK_SetPlayDataCallBack</a></li>
+                    <li><a href="page_46.html">NET_SDK_SetPlayYUVCallBack</a></li>
+                    <li><a href="interface/NET_SDK_PlayBackSaveData.htm">NET_SDK_PlayBackSaveData</a></li>
+                    <li><a href="interface/NET_SDK_StopPlayBackSave.htm">NET_SDK_StopPlayBackSave</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  other operation of playback
+                  <ul>
+                    <li><a href="interface/NET_SDK_GetPlayBackOsdTime.htm">NET SDK GetPlayBackOsdTime</a></li>
+                    <li><a href="interface/NET_SDK_RefreshPlay.htm">NET SDK RefreshPlay</a></li>
+                    <li><a href="interface/NET_SDK_PlayBackCaptureFile.htm">NET SDK PlayBackCaptureFile</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  download record file
+                  <ul>
+                    <li><a href="interface/NET_SDK_GetFileByTime.htm">NET SDK GetFileByTime</a></li>
+                    <li><a href="interface/NET_SDK_GetDownloadPos.htm">NET SDK GetDownloadPos</a></li>
+                    <li><a href="interface/NET_SDK_StopGetFile.htm">NET SDK StopGetFile</a></li>
+                    <li><a href="interface/NET_SDK_GetFileByTimeEx.htm">NET SDK GetFileByTimeEx</a></li>
+                    <li><a href="interface/NET_SDK_GetFileByTimeExV2.html">NET_SDK_GetFileByTimeExV2</a></li>
+                    <li><a href="interface/BACKUP_DATA_CALLBACK.html">BACKUP_DATA_CALLBACK</a></li>
+                    <li><a href="interface/NET_SDK_SaveFileToUsbByTime.htm">NET_SDK_SaveFileToUsbByTime</a></li>
+                    <li><a href="interface/NET_SDK_GetSaveFileToUsbProcess.htm">NET_SDK_GetSaveFileToUsbProcess</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  lock and unlock record file
+                  <ul>
+                    <li><a href="interface/NET_SDK_LockFile.htm">NET SDK LockFile</a></li>
+                    <li><a href="interface/NET_SDK_UnlockFile.htm">NET SDK UnlockFile</a></li>
+                    <li><a href="interface/NET_SDK_DeleteRecFile.htm">NET SDK DeleteRecFile</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              record manually
+              <ul>
+                <li><a href="interface/NET_SDK_StartDVRRecord.htm">NET SDK StartDVRRecord</a></li>
+                <li><a href="interface/NET_SDK_StopDVRRecord.htm">NET SDK StopDVRRecord</a></li>
+              </ul>
+            </li>
+
+            <li>
+              arming and cancel arming
+              <ul>
+                <li>
+                  upload callback function of alarm message
+                  <ul>
+                    <li><a href="interface/NET_SDK_SetDVRMessageCallBack.htm">NET SDK SetDVRMessageCallBack</a></li>
+                    <li><a href="interface/NET_MESSAGE_CALLBACK.htm">NET MESSAGE CALLBACK</a></li>
+                    <li><a href="interface/NET_SDK_SetDVRMessageCallBackEx.htm">NET_SDK_SetDVRMessageCallBackEx</a></li>
+                    <li><a href="interface/NET_MESSAGE_CALLBACK_EX.htm">NET_MESSAGE_CALLBACK_EX</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  arming and cancel arming
+                  <ul>
+                    <li><a href="interface/NET_SDK_SetupAlarmChan.htm">NET SDK SetupAlarmChan</a></li>
+                    <li><a href="interface/NET_SDK_CloseAlarmChan.htm">NET SDK CloseAlarmChan</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              PTZ control
+              <ul>
+                <li>
+                  PTZ control operation
+                  <ul>
+                    <li><a href="interface/NET_SDK_PTZControl.htm">NET SDK PTZControl</a></li>
+                    <li><a href="interface/NET_SDK_PTZControl_Other.htm">NET SDK PTZControl Other</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  PTZ preset point operation
+                  <ul>
+                    <li><a href="interface/NET_SDK_PTZPreset.htm">NET SDK PTZPreset</a></li>
+                    <li><a href="interface/NET_SDK_PTZPreset_Other.htm">NET SDK PTZPreset Other</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  PTZ cruise operation
+                  <ul>
+                    <li><a href="interface/NET_SDK_PTZSetCruise.htm">NET SDK PTZSetCruise</a></li>
+                    <li><a href="interface/NET_SDK_PTZSetCruise_Other.htm">NET SDK PTZSetCruise Other</a></li>
+                    <li><a href="interface/NET_SDK_PTZCruise.htm">NET SDK PTZCruise</a></li>
+                    <li><a href="interface/NET_SDK_PTZCruise_Other.htm">NET SDK PTZCruise Other</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  PTZ track operation
+                  <ul>
+                    <li><a href="interface/NET_SDK_PTZTrack.htm">NET SDK PTZTrack</a></li>
+                    <li><a href="interface/NET_SDK_PTZTrack_Other.htm">NET SDK PTZTrack Other</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  PTZ automatic scan
+                  <ul>
+                    <li><a href="interface/NET_SDK_PTZAutoScan.htm">NET SDK PTZAutoScan</a></li>
+                    <li><a href="interface/NET_SDK_PTZAutoScan_Other.htm">NET SDK PTZAutoScan Other</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  3D control
+                  <ul>
+                    <li><a href="interface/NET_SDK_PTZControl_3D.html">NET SDK PTZControl 3D</a></li>
+                    <li><a href="interface/NET_SDK_PTZControl_3D_Ex.htm">NET_SDK_PTZControl_3D_Ex</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <a href="page_1.html">Others</a>
+                  <ul>
+                    <li><a href="NET_SDK_GetPTZCameraType.htm">NET_SDK_GetPTZCameraType</a></li>
+                    <li><a href="page_10.html">NET_SDK_GetSupportPtzList</a></li>
+                    <li><a href="page_42.html">NET_SDK_GetPTZConfig</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              voice talkback and forward
+              <ul>
+                <li>
+                  voice talkback
+                  <ul>
+                    <li><a href="interface/NET_SDK_StartVoiceCom.htm">NET SDK StartVoiceCom</a></li>
+                    <li><a href="interface/NET_SDK_SetVoiceComClientVolume.htm">NET SDK SetVoiceComClientVolume</a></li>
+                    <li><a href="interface/TALK_DATA_CALLBACK.htm">TALK DATA CALLBACK</a></li>
+                    <li><a href="page_29.html">NET SDK GetAudio Info</a></li>
+                    <li><a href="interface/NET_SDK_StopVoiceCom.htm">NET SDK StopVoiceCom</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  voice forward
+                  <ul>
+                    <li><a href="interface/NET_SDK_StartVoiceCom_MR.htm">NET SDK StartVoiceCom MR</a></li>
+                    <li><a href="interface/NET_SDK_VoiceComSendData.htm">NET SDK VoiceComSendData</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  audio encoding and decoding
+                  <ul>
+                    <li><a href="interface/NET_SDK_EncodeAudioFrame.htm">NET SDK EncodeAudioFrame</a></li>
+                    <li><a href="interface/NET_SDK_InitAudioEncoder.htm">NET SDK InitAudioEncoder</a></li>
+                    <li><a href="interface/NET_SDK_ReleaseAudioEncoder.htm">NET SDK ReleaseAudioEncoder</a></li>
+                    <li><a href="interface/NET_SDK_DecodeAudioFrame.htm">NET SDK DecodeAudioFrame</a></li>
+                    <li><a href="interface/NET_SDK_InitAudioDecoder.htm">NET SDK InitAudioDecoder</a></li>
+                    <li><a href="interface/NET_SDK_ReleaseAudioDecoder.htm">NET SDK ReleaseAudioDecoder</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              harddisk management
+              <ul>
+                <li><a href="interface/NET_SDK_FormatDisk.htm">NET SDK FormatDisk</a></li>
+                <li><a href="interface/NET_SDK_GetFormatProgress.htm">NET SDK GetFormatProgress</a></li>
+                <li><a href="interface/NET_SDK_CloseFormatHandle.htm">NET SDK CloseFormatHandle</a></li>
+                <li><a href="page_33.html">NET_SDK_FindDisk</a></li>
+                <li><a href="page_34.html">NET_SDK_GetNexDiskInfo</a></li>
+                <li><a href="page_35.html">NET_SDK_FindDiskClose</a></li>
+              </ul>
+            </li>
+
+            <li>
+              device maintenance and management
+              <ul>
+                <li>
+                  <a href="page_37.html">active device</a>
+                  <ul>
+                    <li><a href="page_38.html">NET_SDK_ActiveDevice</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  remote upgrade
+                  <ul>
+                    <li><a href="interface/NET_SDK_Upgrade.htm">NET SDK Upgrade</a></li>
+                    <li><a href="interface/NET_SDK_GetUpgradeState.htm">NET SDK GetUpgradeState</a></li>
+                    <li><a href="interface/NET_SDK_GetUpgradeProgress.htm">NET SDK GetUpgradeProgress</a></li>
+                    <li><a href="interface/NET_SDK_CloseUpgradeHandle.htm">NET SDK CloseUpgradeHandle</a></li>
+                    <li><a href="interface/NET_SDK_UpgradeIPC.htm">NET_SDK_UpgradeIPC</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  find log
+                  <ul>
+                    <li><a href="interface/NET_SDK_FindDVRLog.htm">NET SDK FindDVRLog</a></li>
+                    <li><a href="interface/NET_SDK_FindNextLog.htm">NET SDK FindNextLog</a></li>
+                    <li><a href="interface/NET_SDK_FindLogClose.htm">NET SDK FindLogClose</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  find event log
+                  <ul>
+                    <li><a href="interface/NET_SDK_FindEventInfo.htm">NET SDK FindEventInfo</a></li>
+                    <li><a href="interface/NET_SDK_FindNextEventInfo.htm">NET SDK FindNextEventInfo</a></li>
+                    <li><a href="interface/NET_SDK_FindEventInfoClose.htm">NET SDK FindEventInfoClose</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  recover device default parameter
+                  <ul>
+                    <li><a href="interface/NET_SDK_GetDefaultVideoEffect.htm">NET SDK GetDefaultVideoEffect</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  import and export configuration file
+                  <ul>
+                    <li><a href="interface/NET_SDK_SetConfigFile.htm">NET SDK SetConfigFile</a></li>
+                    <li><a href="interface/NET_SDK_GetConfigFile.htm">NET SDK GetConfigFile</a></li>
+                  </ul>
+                </li>
+
+                <li>
+                  <a href="page_24.html">get nvr record days</a>
+                  <ul>
+                    <li><a href="page_36.html">NET_SDK_GetNvrRecordDays</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              close and reboot
+              <ul>
+                <li><a href="interface/NET_SDK_ShutDownDVR.htm">NET SDK ShutDownDVR</a></li>
+                <li><a href="interface/NET_SDK_RebootDVR.htm">NET SDK RebootDVR</a></li>
+              </ul>
+            </li>
+
+            <li>
+              remote parameter configuration
+              <ul>
+                <li><a href="interface/NET_SDK_ChangTime.htm">NET SDK ChangTime</a></li>
+                <li><a href="interface/NET_SDK_FormatTime.htm">NET SDK FormatTime</a></li>
+                <li><a href="interface/NET_SDK_SaveVideoEffect.htm">NET SDK SaveVideoEffect</a></li>
+                <li><a href="page_30.html">NET_SDK_ModifyDeviceNetInfo</a></li>
+                <li><a href="interface/NET_SDK_TransparentConfig.htm">NET_SDK_TransparentConfig</a></li>
+              </ul>
+            </li>
+
+            <li>
+              get device informatoin
+              <ul>
+                <li><a href="interface/NET_SDK_GetDeviceInfo.htm">NET SDK GetDeviceInfo</a></li>
+                <li><a href="$2">$1</a></li>
+                <li><a href="interface/NET_SDK_GetDeviceTime.htm">NET SDK GetDeviceTime</a></li>
+                <li><a href="page_5.html">NET SDK GetPTZCameraType</a></li>
+                <li><a href="page_6.html">NET SDK GetAlarmStatus</a></li>
+                <li><a href="NET_SDK_GetAlarmStatusEx.htm">NET SDK GetAlarmStatusEx</a></li>
+                <li><a href="interface/NET_SDK_GetDeviceSupportFunction.htm">NET_SDK_GetDeviceSupportFunction</a></li>
+              </ul>
+            </li>
+
+            <li>
+              get device management information
+              <ul>
+                <li><a href="interface/NET_SDK_GetDeviceIPCInfo.html">NET SDK GetDeviceIPCInfo</a></li>
+                <li><a href="page_31.html">NET_SDK_GetDeviceCHStatus</a></li>
+              </ul>
+            </li>
+
+            <li>
+              alarm manually
+              <ul>
+                <li><a href="interface/NET_SDK_SetDeviceManualAlarm.html">NET SDK SetDeviceManualAlarm</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="page_22.html">Smart Analytics</a>
+              <ul>
+                <li><a href="page_16.html">NET_SDK_GetIVMRuleConfig</a></li>
+                <li><a href="page_17.html">NET_SDK_SetIVMRuleConfig</a></li>
+                <li><a href="page_18.html">NET_SDK_SmartSubscrib</a></li>
+                <li><a href="page_19.html">NET_SDK_UnSmartSubscrib</a></li>
+                <li><a href="page_23.html">NET_SDK_SetSubscribCallBack</a></li>
+                <li><a href="interface/SUBSCRIBE_CALLBACK.html">SUBSCRIBE_CALLBACK</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="page_49.html">Face Recognition</a>
+              <ul>
+                <li><a href="page_50.html">NET_SDK_FaceMatchOperate</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="page_2.html">FishEye Correction</a>
+              <ul>
+                <li><a href="page_3.html">NET_SDK_SetFishEyeAdjust</a></li>
+                <li><a href="page_11.html">NET_SDK_FishEyeAdjustFocus</a></li>
+                <li><a href="page_13.html">NET_SDK_FishEyeAdjustFocusEx</a></li>
+                <li><a href="page_14.html">NET_SDK_FishEyeAdjustMove</a></li>
+                <li><a href="page_15.html">NET_SDK_FishEyeAdjustGetArea</a></li>
+                <li><a href="page_20.html">NET_SDK_FishEyeAdjustZoom</a></li>
+              </ul>
+            </li>
+
+            <li>
+              structure
+              <ul>
+                <li><a href="interface/struct/DD_ACCOUNT_CONFIG.htm">DD ACCOUNT CONFIG</a></li>
+                <li><a href="interface/struct/DD_AREA.htm">DD AREA</a></li>
+                <li><a href="page_53.html">DD AUTO REPORT</a></li>
+                <li><a href="interface/struct/DD_BASIC_CONFIG.htm">DD BASIC CONFIG</a></li>
+                <li><a href="interface/struct/DD_BUZZER_CONFIG.htm">DD BUZZER CONFIG</a></li>
+                <li><a href="interface/struct/DD_CHANNEL_CONFIG.htm">DD CHANNEL CONFIG</a></li>
+                <li><a href="interface/struct/DD_CRUISE_POINT_INFO.htm">DD CRUISE POINT INFO</a></li>
+                <li><a href="interface/struct/DD_DATE.htm">DD DATE</a></li>
+                <li><a href="interface/struct/DD_DATE_SCHEDULE.htm">DD DATE SCHEDULE</a></li>
+                <li><a href="interface/struct/DD_DATE_TIME_CONFIG.htm">DD DATE TIME CONFIG</a></li>
+                <li><a href="interface/struct/DD_DAYLIGHT_INFO.htm">DD DAYLIGHT INFO</a></li>
+                <li><a href="interface/struct/DD_DDNS_CONFIG.htm">DD DDNS CONFIG</a></li>
+                <li><a href="interface/struct/DD_DDNS_SERVER_INFO.htm">DD DDNS SERVER INFO</a></li>
+                <li><a href="interface/struct/DD_DEVICEINFO.htm">DD DEVICEINFO</a></li>
+                <li><a href="interface/struct/DD_ENCODE_CONFIG.htm">DD ENCODE CONFIG</a></li>
+                <li><a href="interface/struct/DD_ENCODE_CONFIG_SUPPORT.htm">DD ENCODE CONFIG SUPPORT</a></li>
+                <li><a href="interface/struct/DD_FRAME_INFO.htm">DD FRAME INFO</a></li>
+                <li><a href="interface/struct/DD_LIVE_AUDIO_GROUP.htm">DD LIVE AUDIO GROUP</a></li>
+                <li><a href="interface/struct/DD_LIVE_DISPLAY.htm">DD LIVE DISPLAY</a></li>
+                <li><a href="interface/struct/DD_LIVE_VIDEO_GROUP.htm">DD LIVE VIDEO GROUP</a></li>
+                <li><a href="interface/struct/DD_LOG_INFO.htm">DD LOG INFO</a></li>
+                <li><a href="interface/struct/DD_MOTION_AREA.htm">DD MOTION AREA</a></li>
+                <li><a href="interface/struct/DD_MOTION_CONFIG.htm">DD MOTION CONFIG</a></li>
+                <li><a href="interface/struct/DD_NETWORK_ADVANCE_CONFIG.htm">DD NETWORK ADVANCE CONFIG</a></li>
+                <li><a href="interface/struct/DD_NETWORK_IP_CONFIG.htm">DD NETWORK IP CONFIG</a></li>
+                <li><a href="interface/struct/DD_POSITION.htm">DD POSITION</a></li>
+                <li><a href="interface/struct/DD_PTZ_CONFIG.htm">DD PTZ CONFIG</a></li>
+                <li><a href="interface/struct/DD_PTZ_PRESET_CONFIG.htm">DD PTZ PRESET CONFIG</a></li>
+                <li><a href="interface/struct/DD_PTZ_PROTOCOL_INFO.htm">DD PTZ PROTOCOL INFO</a></li>
+                <li><a href="interface/struct/DD_RECORD_CONFIG.htm">DD RECORD CONFIG</a></li>
+                <li><a href="interface/struct/DD_RECORD_CONFIG_MASK.htm">DD RECORD CONFIG MASK</a></li>
+                <li><a href="interface/struct/DD_RECORD_LOG.htm">DD RECORD LOG</a></li>
+                <li><a href="interface/struct/DD_RELAY_CONFIG.htm">DD RELAY CONFIG</a></li>
+                <li><a href="interface/struct/DD_SENSOR_CONFIG.htm">DD SENSOR CONFIG</a></li>
+                <li><a href="interface/struct/DD_SERIAL_CONFIG.htm">DD SERIAL CONFIG</a></li>
+                <li><a href="interface/struct/DD_SMTP_CONFIG.htm">DD SMTP CONFIG</a></li>
+                <li><a href="interface/struct/DD_TIME.htm">DD TIME</a></li>
+                <li><a href="interface/struct/DD_TRIGGER_ALARM_OUT.htm">DD TRIGGER ALARM OUT</a></li>
+                <li><a href="interface/struct/DD_TRIGGER_PTZ.htm">DD TRIGGER PTZ</a></li>
+                <li><a href="interface/struct/DD_TRIGGER_RECORD.htm">DD TRIGGER RECORD</a></li>
+                <li><a href="interface/struct/DD_VIDEO_COLOR.htm">DD VIDEO COLOR</a></li>
+                <li><a href="interface/struct/DD_VIDEO_COLOR_CONFIG.htm">DD VIDEO COLOR CONFIG</a></li>
+                <li><a href="interface/struct/DD_VIDEO_OSD_CONFIG.htm">DD VIDEO OSD CONFIG</a></li>
+                <li><a href="interface/struct/DD_WEEK_SCHEDULE.htm">DD WEEK SCHEDULE</a></li>
+                <li><a href="interface/struct/DEC_ADVANCE_NETWORK.htm">DEC ADVANCE NETWORK</a></li>
+                <li><a href="interface/struct/DEC_DATE_SCHEDULE.htm">DEC DATE SCHEDULE</a></li>
+                <li><a href="interface/struct/DEC_DEVICE_CONFIG.htm">DEC DEVICE CONFIG</a></li>
+                <li><a href="interface/struct/DEC_NETWORK_CONFIG.htm">DEC NETWORK CONFIG</a></li>
+                <li><a href="interface/struct/DEC_OTHER_ALARM.htm">DEC OTHER ALARM</a></li>
+                <li><a href="interface/struct/DEC_SENSOR_SETUP.htm">DEC SENSOR SETUP</a></li>
+                <li><a href="interface/struct/DEC_WEEK_SCHEDULE.htm">DEC WEEK SCHEDULE</a></li>
+                <li><a href="interface/struct/NET_SDK_ALARMINFO.htm">NET SDK ALARMINFO</a></li>
+                <li><a href="interface/struct/NET_SDK_ALARMINFO_EX.htm">NET_SDK_ALARMINFO_EX</a></li>
+                <li><a href="interface/struct/LPNET_SDK_CLIENTINFO.htm">NET SDK CLIENTINFO</a></li>
+                <li><a href="interface/struct/NET_SDK_DEVICE_DISCOVERY_INFO.html">NET SDK DEVICE DISCOVERY INFO</a></li>
+                <li><a href="interface/struct/NET_SDK_DEVICEINFO.htm">NET SDK DEVICEINFO</a></li>
+                <li><a href="interface/struct/NET_SDK_EVENT.htm">NET SDK EVENT</a></li>
+                <li><a href="interface/struct/NET_SDK_FRAME_INFO.htm">NET SDK FRAME INFO</a></li>
+                <li><a href="page_54.html">NET SDK JPEGPARA</a></li>
+                <li><a href="interface/struct/NET_SDK_LOG.htm">NET SDK LOG</a></li>
+                <li><a href="interface/struct/NET_SDK_REC_EVENT.htm">NET SDK REC EVENT</a></li>
+                <li><a href="interface/struct/NET_SDK_REC_FILE.htm">NET SDK REC FILE</a></li>
+                <li><a href="interface/struct/NET_SDK_REC_TIME.htm">NET SDK REC TIME</a></li>
+                <li><a href="interface/struct/NET_SDK_RECORD_STATUS.htm">NET SDK RECORD STATUS</a></li>
+                <li><a href="interface/struct/NET_SDK_RECORD_STATUS_EX.htm">NET_SDK_RECORD_STATUS_EX</a></li>
+                <li><a href="interface/struct/PTZ_3D_POINT_INFO.html">PTZ 3D POINT INFO</a></li>
+                <li><a href="interface/struct/NET_SDK_IPC_DEVICE_INFO.html">NET SDK IPC DEVICE INFO</a></li>
+                <li><a href="page_55.html">NET SDK SEARCH IMAGE ITEM</a></li>
+                <li><a href="page_56.html">NET SDK SEARCH IMAGE BY IMAGE LIST</a></li>
+                <li><a href="page_57.html">NET SDK CH SNAP FACE IMG LIST</a></li>
+                <li><a href="interface/struct/DD_TIME_EX.html">DD TIME EX</a></li>
+                <li><a href="page_59.html">DD NETWORK PLATFORM</a></li>
+                <li><a href="page_60.html">DD SMART VFD CONFIG</a></li>
+                <li><a href="page_61.html">NET SDK FACE INFO GROUP ITEM</a></li>
+                <li><a href="page_62.html">NET SDK FACE INFO GROUP ADD</a></li>
+                <li><a href="page_63.html">NET SDK FACE INFO GROUP DEL</a></li>
+                <li><a href="page_64.html">NET SDK FACE INFO LIST GET</a></li>
+                <li><a href="page_65.html">NET SDK FACE INFO LIST ITEM GROUPS</a></li>
+                <li><a href="page_66.html">NET SDK FACE INFO LIST ITEM</a></li>
+                <li><a href="page_67.html">NET SDK FACE INFO LIST</a></li>
+                <li><a href="page_68.html">NET SDK FACE IMG INFO CH</a></li>
+                <li><a href="page_69.html">NET SDK FACE INFO ADD</a></li>
+                <li><a href="page_70.html">NET SDK FACE INFO EDIT</a></li>
+                <li><a href="page_71.html">NET SDK FACE INFO DEL</a></li>
+                <li><a href="page_72.html">NET SDK FACE MATCH ALARM TRIGGER</a></li>
+                <li><a href="page_73.html">NET SDK FACE MATCH ALARM</a></li>
+                <li><a href="page_74.html">NET SDK FACE INFO IMG DATA</a></li>
+                <li><a href="page_75.html">NET SDK FACE INFO IMG GET</a></li>
+                <li><a href="page_76.html">DD ENCODE CONFIG EX</a></li>
+                <li><a href="page_77.html">NET SDK CH SNAP FACE IMG LIST SEARCH</a></li>
+                <li><a href="page_78.html">NET SDK SEARCH IMAGE BY IMAGE</a></li>
+                <li><a href="page_79.html">DECODE FRAME INFO</a></li>
+                <li><a href="interface/struct/NET_SDK_USB_BACKUP_PROCESS_EX.htm">NET_SDK_USB_BACKUP_PROCESS_EX</a></li>
+                <li><a href="interface/struct/NET_SDK_IVE_VEHICE_ITEM_INFO.htm">NET_SDK_IVE_VEHICE_ITEM_INFO</a></li>
+                <li><a href="interface/struct/NET_SDK_IVE_VEHICE_HEAD_INFO.htm">NET_SDK_IVE_VEHICE_HEAD_INFO</a></li>
+                <li><a href="interface/struct/NET_SDK_DEV_SUPPORT.htm">NET_SDK_DEV_SUPPORT</a></li>
+                <li><a href="interface/struct/REG_LOGIN_INFO.html">REG_LOGIN_INFO</a></li>
+                <li><a href="interface/struct/SEARCHED_DEVICE_INFO.html">SEARCHED_DEVICE_INFO</a></li>
+                <li>
+                  <a href="interface/struct/NET_SDK_IVE_FACE_MATCH_ADD_FACE_REPLY_T.htm"
+                    >NET_SDK_IVE_FACE_MATCH_ADD_FACE_REPLY_T</a
+                  >
+                </li>
+                <li><a href="interface/struct/NET_SDK_IVE_PASSLINECOUNT_T.htm">NET_SDK_IVE_PASSLINECOUNT_T</a></li>
+                <li>
+                  <a href="interface/struct/NET_SDK_IVE_PASSLINECOUNT_INFO_T.htm">NET_SDK_IVE_PASSLINECOUNT_INFO_T</a>
+                </li>
+                <li><a href="interface/struct/NET_SDK_IVE_LINE_T.htm">NET_SDK_IVE_LINE_T</a></li>
+                <li><a href="interface/struct/NET_SDK_IVE_RECT_T.htm">NET_SDK_IVE_RECT_T</a></li>
+                <li><a href="interface/struct/NET_SDK_IVE_AVD_T.htm">NET_SDK_IVE_AVD_T</a></li>
+                <li><a href="interface/struct/NET_SDK_IVE_AVD_INFO_T.htm">NET_SDK_IVE_AVD_INFO_T</a></li>
+                <li><a href="interface/struct/NET_DVR_IVE_VFD_RESULT_HEAD_T.htm">NET_DVR_IVE_VFD_RESULT_HEAD_T</a></li>
+                <li>
+                  <a href="interface/struct/NET_DVR_IVE_VFD_RESULT_DATA_INFO_T.htm"
+                    >NET_DVR_IVE_VFD_RESULT_DATA_INFO_T</a
+                  >
+                </li>
+                <li>
+                  <a href="interface/struct/NET_DVR_IVE_VFD_RESULT_FACE_DATA_INFO_T.htm"
+                    >NET_DVR_IVE_VFD_RESULT_FACE_DATA_INFO_T</a
+                  >
+                </li>
+                <li><a href="interface/struct/NET_SDK_IVE_FACE_MATCH_T.htm">NET_SDK_IVE_FACE_MATCH_T</a></li>
+                <li>
+                  <a href="interface/struct/NET_SDK_AVPSTORE_FACE_ABSTRACT_INFO.htm"
+                    >NET_SDK_AVPSTORE_FACE_ABSTRACT_INFO</a
+                  >
+                </li>
+                <li><a href="interface/struct/NET_SDK_TLV_BUFFER_DESC.htm">NET_SDK_TLV_BUFFER_DESC</a></li>
+                <li><a href="interface/struct/NET_SDK_IVE_BASE_INFO.htm">NET_SDK_IVE_BASE_INFO</a></li>
+                <li><a href="interface/struct/NET_SDK_IVE_PICTURE_INFO.htm">NET_SDK_IVE_PICTURE_INFO</a></li>
+                <li><a href="interface/struct/NET_SDK_IVE_POINT_T.htm">NET_SDK_IVE_POINT_T</a></li>
+                <li><a href="page_45.html">NET_SDK_NVR_DISKREC_DATE_ITEM</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="page_4.html">get device IP by name</a>
+              <ul>
+                <li><a href="NET_SDK_GetDeviceIPByName.html">get device ip by name</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li><a href="FAQ.htm">FAQ</a></li>
+      </ul>
+    </div>
+  </body>
+</html>
