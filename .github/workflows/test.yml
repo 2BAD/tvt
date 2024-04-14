@@ -5,8 +5,6 @@ on:
     paths-ignore:
       - 'docs/**'
       - '*.md'
-  schedule:
-    - cron: 0 20 * * *
 
 jobs:
   test:
