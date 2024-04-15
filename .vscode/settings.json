@@ -6,5 +6,5 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "cSpell.words": ["ipc"]
+  "cSpell.words": ["DEVICEINFO", "DVRIP", "ipc", "koffi", "libdvrnetsdk", "LPNET"]
 }
