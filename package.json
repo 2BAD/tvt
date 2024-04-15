@@ -90,6 +90,7 @@
   },
   "dependencies": {
     "debug": "4.3.4",
-    "easy-buffer": "1.2.0"
+    "easy-buffer": "1.2.0",
+    "koffi": "2.8.5"
   }
 }
