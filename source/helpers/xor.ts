@@ -1,3 +1,11 @@
+/**
+ * Performs a bitwise XOR operation on two buffers of equal length.
+ * The length of the buffers must be a multiple of 4.
+ *
+ * @param {Buffer} a - The first buffer.
+ * @param {Buffer} b - The second buffer.
+ * @throws {Error} If the lengths of the buffers are not equal or if they are not a multiple of 4.
+ */
 export const xor = (a: Buffer, b: Buffer): Buffer => {
   if (a.length !== b.length) {
     throw new Error('Buffer sizes are different. Buffer A length: ' + a.length + ', Buffer B length: ' + b.length)
