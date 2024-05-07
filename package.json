@@ -35,7 +35,7 @@
     "build:swc": "swc ./source -d ./build --strip-leading-paths",
     "build:types": "tsc --project tsconfig.build.json",
     "check": "run-p check:*",
-    "check:code": "eslint . --ext .ts --report-unused-disable-directives --max-warnings 0",
+    "check:code": "eslint . --report-unused-disable-directives --max-warnings 0",
     "check:format": "prettier --check 'source/**/*.ts'",
     "fix": "run-s fix:code fix:format",
     "fix:alias": "tsc-alias -p tsconfig.build.json",
@@ -57,15 +57,15 @@
   "dependencies": {
     "debug": "4.3.4",
     "easy-buffer": "1.2.0",
-    "koffi": "2.8.5"
+    "koffi": "2.8.8"
   },
   "devDependencies": {
-    "@2bad/tsconfig": "3.0.0",
+    "@2bad/tsconfig": "3.0.1",
     "@swc/cli": "0.3.12",
-    "@swc/core": "1.4.17",
-    "@types/node": "20.12.8",
+    "@swc/core": "1.5.3",
+    "@types/node": "20.12.10",
     "@vitest/coverage-v8": "1.6.0",
-    "eslint-config-love": "46.0.0",
+    "eslint-config-love": "47.0.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-import-resolver-typescript": "3.6.1",
     "eslint-plugin-jsdoc": "48.2.3",
@@ -84,7 +84,7 @@
     "node": ">=20"
   },
   "volta": {
-    "node": "20.12.2",
+    "node": "22.1.0",
     "npm": "10.7.0"
   }
 }
