@@ -6,6 +6,7 @@ import { NET_SDK_IPC_DEVICE_INFO } from './struct/NET_SDK_IPC_DEVICE_INFO.ts'
 import { type LOG_LEVEL } from './types.ts'
 
 const path = resolve('bin/linux/libdvrnetsdk.so')
+console.log(path)
 const lib = koffi.load(path)
 
 // koffi.alias('DWORD', 'uint32_t')

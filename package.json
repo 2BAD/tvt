@@ -1,17 +1,19 @@
 {
-  "name": "@2bad/ipc",
+  "name": "@2bad/tvt",
   "version": "1.0.0",
   "description": "",
   "keywords": [
-    "ipc"
+    "tvt",
+    "ipc",
+    "cctv"
   ],
-  "homepage": "https://github.com/2BAD/ipc#readme",
+  "homepage": "https://github.com/2BAD/tvt#readme",
   "bugs": {
-    "url": "https://github.com/2BAD/ipc/issues"
+    "url": "https://github.com/2BAD/tvt/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/2BAD/ipc.git"
+    "url": "https://github.com/2BAD/tvt.git"
   },
   "license": "MIT",
   "author": "2BAD (https://github.com/2BAD)",
