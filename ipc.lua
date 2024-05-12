@@ -1,16 +1,5 @@
 -- Declare the protocol
-local protocol = Proto("IPC", "IPC Protocol")
-
--- Define lookup table for packet types
-local vs_packet_type = {
-  [1] = "Login",
-  [6] = "Session",
-  [11] = "Alarm",
-  [5] = "5",
-  [7] = "7",
-  [21] = "21",
-  [22] = "22"
-}
+local protocol = Proto("IPC", "TVT IPC Protocol")
 
 local vs_ipc_cmd = {
   [0x100] = "CMD_BASENUM_LOGIN",
@@ -446,21 +435,28 @@ local vs_ipc_cmd = {
   [0x1010D00] = "CMD_HTTP_REQUEST",
   [0x1010D01] = "CMD_HTTP_REPLY"
 }
-}
 
 local vs_direction = {
   [0] = "Request",
   [1] = "Response"
 }
 
+local vs_version = {
+  [0] = "DVR_VER_V3",
+  [1] = "DVR_VER_V4",
+  [2] = "IPC_VER_V3",
+  [3] = "NVR_VER_N9000"
+}
+
 -- Define the fields
-local fields = {
+local f = {
     head = ProtoField.string("ipc.head", "Head"),
-    data_length = ProtoField.uint32("ipc.len", "Data Length"),
+    cmd_length = ProtoField.uint32("ipc.len", "Command Length"),
     cmd = ProtoField.uint32("ipc.cmd", "Command", base.HEX),
     cmdType = ProtoField.uint32("ipc.cmdType", "Type", base.HEX, vs_ipc_cmd, 0x0FFFFFFF),
     cmdId = ProtoField.uint8("ipc.cmdId", "Command ID", base.DEC),
     cmdVer = ProtoField.uint8("ipc.cmdVer", "Command Version", base.DEC),
+    data_length = ProtoField.uint32("ipc.len", "Data Length"),
     counter = ProtoField.uint32("ipc.counter", "Counter"),
     sdkVersion = ProtoField.uint32("ipc.sdkVersion", "SDK Version"),
     session = ProtoField.uint32("ipc.session", "Session"),
@@ -474,7 +470,7 @@ local fields = {
     unkb = ProtoField.bytes("ipc.unkb", "UnkBs", base.SPACE)
 }
 
-protocol.fields = fields
+protocol.fields = f
 
 -- Define the dissector function
 function protocol.dissector(buffer, pinfo, tree)
@@ -489,15 +485,16 @@ function protocol.dissector(buffer, pinfo, tree)
     local t_header = t_ipc:add(protocol, buffer(offset), "Header")
 
     -- Add fields to the t_header
-    t_header:add(fields.head, buffer(offset, 4))
     local p_head = buffer(offset, 4):string()
+    t_header:add(f.head, buffer(offset, 4))
     offset = offset + 4
 
-    t_header:add_le(fields.data_length, buffer(offset, 4))
+    t_header:add_le(f.cmd_length, buffer(offset, 4))
     offset = offset + 4
 
-    if p_head == '1111' and buffer:len() == offset then
-      pinfo.cols.info = 'keepalive'
+    -- Head is "1111" only for keepalive
+    if p_head == "1111" and buffer:len() == offset then
+      pinfo.cols.info = "keepalive"
     end
 
     if buffer:len() > offset then
@@ -505,94 +502,33 @@ function protocol.dissector(buffer, pinfo, tree)
       -- Create t_command subtree
       local t_command = t_ipc:add(protocol, buffer(offset), "Command")
 
-      t_command:add_le(fields.cmd, buffer(offset, 4))
-      local p_cmd = buffer(offset, 4):uint()
-      t_command:add_le(fields.cmdType, buffer(offset, 4))
-      local p_cmdType = buffer(offset, 4):uint()
+      local p_cmd = buffer(offset, 4):le_uint()
+      local p_cmdType = buffer(offset, 4):le_uint()
+      t_command:add_le(f.cmd, buffer(offset, 4))
+      t_command:add_le(f.cmdType, buffer(offset, 4))
       offset = offset + 4
 
-      t_command:add_le(fields.cmdId, buffer(offset, 4))
-      local p_cmdId = buffer(offset, 4):uint()
-      offset = offset + 4
-
-      t_command:add_le(fields.cmdVer, buffer(offset, 4))
-      local p_cmdVer = buffer(offset, 4):uint()
-      offset = offset + 4
-
-      t_command:add_le(fields.data_length, buffer(offset, 4))
-      offset = offset + 4
-
-      -- pinfo.cols.info = vs_direction[p_direction] .. "(" .. vs_cmd[p_cmd] .. " " .. vs_packet_type[p_type] .. ")"
-
-      -- Init Session
-      if p_cmd == 21 and p_type == 6 then
-        t_command:add(fields.unk8, buffer(offset, 1))
-        offset = offset + 1
-        t_command:add(fields.unk8, buffer(offset, 1))
-        offset = offset + 1
-        t_command:add(fields.unk8, buffer(offset, 1))
-        offset = offset + 1
-        t_command:add(fields.unk8, buffer(offset, 1))
-        offset = offset + 1
-        t_command:add_le(fields.unk32, buffer(offset, 4))
-        offset = offset + 4
-        t_command:add_le(fields.unk32, buffer(offset, 4))
-        offset = offset + 4
-        t_command:add_le(fields.session, buffer(offset, 4))
-        offset = offset + 4
-        t_command:add_le(fields.unk32, buffer(offset, 4))
-        offset = offset + 4
-        t_command:add_le(fields.unk32, buffer(offset, 4))
-        offset = offset + 4
-        t_command:add_le(fields.unk32, buffer(offset, 4))
-        offset = offset + 4
-
-        t_command:add(fields.unk8, buffer(offset, 1))
-        offset = offset + 1
-        t_command:add(fields.unk8, buffer(offset, 1))
-        offset = offset + 1
-        t_command:add(fields.unk8, buffer(offset, 1))
-        offset = offset + 1
-        t_command:add(fields.unk8, buffer(offset, 1))
-        offset = offset + 1
-
-        t_command:add_le(fields.unk32, buffer(offset, 4))
-        offset = offset + 4
-        t_command:add_le(fields.unk32, buffer(offset, 4))
-        offset = offset + 4
-        t_command:add_le(fields.unk32, buffer(offset, 4))
-        offset = offset + 4
-        t_command:add_le(fields.unk32, buffer(offset, 4))
-        offset = offset + 4
+      if vs_ipc_cmd[p_cmdType] then
+        pinfo.cols.info = vs_ipc_cmd[p_cmdType]
       else
-        t_command:add_le(fields.unk32, buffer(offset, 4))
-        offset = offset + 4
-        t_command:add_le(fields.data_length, buffer(offset, 4))
-        offset = offset + 4
-        local t_frame = t_command:add(protocol, buffer(offset), "Frame")
+        pinfo.cols.info = string.format("0x%X", p_cmdType)
+      end
 
-        if buffer:len() > offset then
-          if p_type == 1 and p_direction == 0 then
-            t_frame:add_le(fields.unk32, buffer(offset, 4))
-            offset = offset + 4
-            t_frame:add_le(fields.login, buffer(offset, 32))
-            offset = offset + 32
-            t_frame:add_le(fields.password, buffer(offset, 32))
-            offset = offset + 32
-            t_frame:add_le(fields.unkb, buffer(offset, 32))
-            offset = offset + 32
-            t_frame:add_le(fields.unk32, buffer(offset, 4))
-            offset = offset + 4
-            t_frame:add_le(fields.unk32, buffer(offset, 4))
-            offset = offset + 4
-            t_frame:add_le(fields.unk32, buffer(offset, 4))
-            offset = offset + 4
-          elseif p_type == 1 and p_direction == 1 and buffer:len() > 40 then
-            offset = offset + 58
-            t_ipc:add(fields.manufacturer, buffer(offset, 4))
-            offset = offset + 4
-          end
-        end
+      local p_cmdId = buffer(offset, 4):le_uint()
+      t_command:add_le(f.cmdId, buffer(offset, 4))
+      offset = offset + 4
+
+      local p_cmdVer = buffer(offset, 4):le_uint()
+      t_command:add_le(f.cmdVer, buffer(offset, 4))
+      offset = offset + 4
+
+      t_command:add_le(f.data_length, buffer(offset, 4))
+      offset = offset + 4
+
+      -- Create t_data subtree
+      local t_data = t_command:add(protocol, buffer(offset), "Data")
+      if buffer:len() > offset then
+        t_data:add_le(f.unkb, buffer(offset))
       end
     end
 end
