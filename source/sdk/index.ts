@@ -6,11 +6,7 @@ import { NET_SDK_IPC_DEVICE_INFO } from './struct/NET_SDK_IPC_DEVICE_INFO.ts'
 import { type LOG_LEVEL } from './types.ts'
 
 const path = resolve('bin/linux/libdvrnetsdk.so')
-console.log(path)
 const lib = koffi.load(path)
-
-// koffi.alias('DWORD', 'uint32_t')
-// koffi.alias('WORD', 'uint16_t')
 
 type SDK = {
   // DWORD NET_SDK_GetSDKVersion();
@@ -19,12 +15,12 @@ type SDK = {
   getSDKBuildVersion: () => number
   // int NET_SDK_DiscoverDevice(NET_SDK_DEVICE_DISCOVERY_INFO *pDeviceInfo, int bufNum, int waitSeconds = 3);
   discoverDevice: (deviceInfo: Record<string, unknown>, bufNum: number, waitSeconds: number) => number
-  // BOOL NET_SDK_GetDeviceIPCInfo(LONG lUserID, NET_SDK_IPC_DEVICE_INFO* pDeviceIPCInfo, LONG lBuffSize, LONG* pIPCCount);
+  // BOOL NET_SDK_GetDeviceIPCInfo(LONG lUserID, NET_SDK_IPC_DEVICE_INFO *pDeviceIPCInfo, LONG lBuffSize, LONG *pIPCCount);
   getDeviceIPCInfo: (
     userId: number,
     deviceIPCInfo: Record<string, unknown>,
     buffSize: number,
-    ipcCount: number
+    ipcCount: number[]
   ) => boolean
   // BOOL NET_SDK_Init();
   init: () => boolean
@@ -43,7 +39,17 @@ type SDK = {
   // BOOL NET_SDK_CloseAlarmChan(LONG lAlarmHandle);
   closeAlarmChanel: (alarmHandle: number) => boolean
   // BOOL NET_SDK_SetDeviceManualAlarm(LONG lUserID, LONG *pAramChannel, LONG *pValue, LONG lAramChannelCount, BOOL bAlarmOpen);
-  triggerAlarm: (userId: number, channel: number, value: number, channelCount: number, alarmOpen: boolean) => boolean
+  triggerAlarm: (
+    userId: number,
+    channel: number[],
+    value: number[],
+    channelCount: number,
+    alarmOpen: boolean
+  ) => boolean
+  // BOOL NET_SDK_GetConfigFile(LONG lUserID, char *sFileName);
+  getConfigFile: (userId: number, fileName: string) => boolean
+  // BOOL NET_SDK_SetConfigFile(LONG lUserID, char *sFileName);
+  setConfigFile: (userId: number, fileName: string) => boolean
   // DWORD NET_SDK_GetLastError()
   getLastError: () => number
   // BOOL NET_SDK_SetLogToFile(BOOL bLogEnable = FALSE, char *strLogDir = NULL, BOOL bAutoDel = TRUE, int logLevel = YLOG_DEBUG);
@@ -62,7 +68,7 @@ export const sdk: SDK = {
     'long',
     koffi.out(koffi.pointer(NET_SDK_IPC_DEVICE_INFO)),
     'long',
-    'long'
+    'long *'
   ]),
   init: lib.func('NET_SDK_Init', 'bool', []),
   cleanup: lib.func('NET_SDK_Cleanup', 'bool', []),
@@ -78,7 +84,9 @@ export const sdk: SDK = {
   getDeviceInfo: lib.func('NET_SDK_GetDeviceInfo', 'bool', ['long', koffi.out(koffi.pointer(LPNET_SDK_DEVICEINFO))]),
   setupAlarmChanel: lib.func('NET_SDK_SetupAlarmChan', 'long', ['long']),
   closeAlarmChanel: lib.func('NET_SDK_CloseAlarmChan', 'bool', ['long']),
-  triggerAlarm: lib.func('NET_SDK_SetDeviceManualAlarm', 'bool', ['long', 'long', 'long', 'long', 'bool']),
+  triggerAlarm: lib.func('NET_SDK_SetDeviceManualAlarm', 'bool', ['long', 'long *', 'long *', 'long', 'bool']),
+  getConfigFile: lib.func('NET_SDK_GetConfigFile', 'bool', ['long', 'string']),
+  setConfigFile: lib.func('NET_SDK_SetConfigFile', 'bool', ['long', 'string']),
   getLastError: lib.func('NET_SDK_GetLastError', 'uint32_t', []),
   setLogToFile: lib.func('NET_SDK_SetLogToFile', 'bool', ['bool', 'string', 'bool', 'int'])
 }
