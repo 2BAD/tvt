@@ -1,7 +1,6 @@
--- Declare the protocol
-local protocol = Proto("IPC", "TVT IPC Protocol")
+local valuestrings = {}
 
-local vs_ipc_cmd = {
+valuestrings.ipc_cmd = {
   -- requests
   [0x100] = "CMD_BASENUM_LOGIN",
   [0x101] = "CMD_REQUEST_LOGIN",
@@ -455,7 +454,7 @@ local vs_ipc_cmd = {
   [0x1010D01] = "CMD_HTTP_REPLY"
 }
 
-local vs_net_error = {
+valuestrings.net_error = {
   [0x0] = "NETERR_SUCCESS",
   [0x1] = "NETERR_LOGIN_FAIL_VERSION_ERR",
   [0x2] = "NETERR_LOGIN_FAIL_USERPWD_ERR",
@@ -483,257 +482,16 @@ local vs_net_error = {
   [0xFFFF] = "NETERR_FAIL"
 }
 
-local vs_direction = {
+valuestrings.direction = {
   [0] = "Request",
   [1] = "Response"
 }
 
-local vs_version = {
+valuestrings.version = {
   [0] = "DVR_VER_V3",
   [1] = "DVR_VER_V4",
   [2] = "IPC_VER_V3",
   [3] = "NVR_VER_N9000"
 }
 
--- Define the fields
-local f = {
-    -- header and command fields
-    head = ProtoField.string("ipc.head", "Head"),
-    cmd_length = ProtoField.uint32("ipc.len", "Command Length"),
-    cmd = ProtoField.uint32("ipc.cmd", "Command", base.HEX),
-    cmdType = ProtoField.uint32("ipc.cmdType", "Type", base.HEX, vs_ipc_cmd, 0x0FFFFFFF),
-    direction = ProtoField.uint8("ipc.direction", "Direction", base.DEC, vs_direction, 0x0F000000),
-    cmdId = ProtoField.uint8("ipc.cmdId", "Command ID", base.DEC),
-    cmdVer = ProtoField.uint8("ipc.cmdVer", "Command Version", base.DEC),
-    data_length = ProtoField.uint32("ipc.len", "Data Length"),
-
-    -- generic fields
-    error = ProtoField.uint32("ipc.error", "Error", base.HEX, vs_net_error),
-
-    -- login fields
-    connectType = ProtoField.uint32("ipc.login.connectType", "Connect Type"),
-    username = ProtoField.bytes("ipc.login.username", "Username", base.SPACE),
-    password = ProtoField.bytes("ipc.login.password", "Password", base.SPACE),
-    computerName = ProtoField.string("ipc.login.computerName", "Computer Name"),
-    ip = ProtoField.string("ipc.login.ip", "IP"),
-    mac = ProtoField.string("ipc.login.mac", "MAC"),
-    productType = ProtoField.uint8("ipc.login.productType", "Product Type"),
-    resv = ProtoField.uint8("ipc.login.resv", "Resv"),
-    netProtocolVer = ProtoField.uint32("ipc.login.netProtocolVer", "Net Protocol Version"),
-
-    -- config fields
-    ConfigDataLen = ProtoField.uint32("ipc.config.ConfigDataLen", "ConfigDataLen", base.DEC),
-    PTZPresetNum = ProtoField.uint32("ipc.config.PTZPresetNum", "PTZPresetNum", base.DEC),
-    PTZCruiseNum = ProtoField.uint32("ipc.config.PTZCruiseNum", "PTZCruiseNum", base.DEC),
-    PTZPresetNumForCruise = ProtoField.uint32("ipc.config.PTZPresetNumForCruise", "PTZPresetNumForCruise", base.DEC),
-    PresetNameMaxLen = ProtoField.uint32("ipc.config.PresetNameMaxLen", "PresetNameMaxLen", base.DEC),
-    CruiseNameMaxLen = ProtoField.uint32("ipc.config.CruiseNameMaxLen", "CruiseNameMaxLen", base.DEC),
-    bSupportPTZ = ProtoField.uint8("ipc.config.bSupportPTZ", "bSupportPTZ", base.DEC),
-    videoFormat = ProtoField.uint8("ipc.config.videoFormat", "videoFormat", base.DEC),
-    sensorInNum = ProtoField.uint8("ipc.config.sensorInNum", "sensorInNum", base.DEC),
-    alarmOutNum = ProtoField.uint8("ipc.config.alarmOutNum", "alarmOutNum", base.DEC),
-    ucStreamCount = ProtoField.uint8("ipc.config.ucStreamCount", "ucStreamCount", base.DEC),
-    bSupportSnap = ProtoField.uint8("ipc.config.bSupportSnap", "bSupportSnap", base.DEC),
-    noused = ProtoField.uint8("ipc.config.noused", "noused", base.DEC),
-    ucLiveAudioStream = ProtoField.uint8("ipc.config.ucLiveAudioStream", "ucLiveAudioStream", base.DEC),
-    ucTalkAudioStream = ProtoField.uint8("ipc.config.ucTalkAudioStream", "ucTalkAudioStream", base.DEC),
-    audioEncodeType = ProtoField.uint8("ipc.config.audioEncodeType", "audioEncodeType", base.DEC),
-    audioBitWidth = ProtoField.uint8("ipc.config.audioBitWidth", "audioBitWidth", base.DEC),
-    audioChannel = ProtoField.uint8("ipc.config.audioChannel", "audioChannel", base.DEC),
-    dwAudioSample = ProtoField.uint32("ipc.config.dwAudioSample", "dwAudioSample", base.DEC),
-    UserRight = ProtoField.uint32("ipc.config.UserRight", "UserRight", base.DEC),
-    softwareVer = ProtoField.uint32("ipc.config.softwareVer", "softwareVer", base.DEC),
-    buildDate = ProtoField.uint32("ipc.config.buildDate", "buildDate", base.DEC),
-    MAC = ProtoField.bytes("ipc.config.MAC", "MAC", base.COLON),
-    deviceName = ProtoField.string("ipc.config.deviceName", "deviceName"),
-    nCustomerID = ProtoField.uint32("ipc.config.nCustomerID", "nCustomerID", base.DEC),
-    defBrightness = ProtoField.uint8("ipc.config.defBrightness", "defBrightness", base.DEC),
-    defContrast = ProtoField.uint8("ipc.config.defContrast", "defContrast", base.DEC),
-    defHue = ProtoField.uint8("ipc.config.defHue", "defHue", base.DEC),
-    defSaturation = ProtoField.uint8("ipc.config.defSaturation", "defSaturation", base.DEC),
-    nosupportPTZ = ProtoField.uint8("ipc.config.nosupportPTZ", "nosupportPTZ", base.DEC),
-    bspeedDomePTZ = ProtoField.uint8("ipc.config.bspeedDomePTZ", "bspeedDomePTZ", base.DEC),
-    framerate = ProtoField.uint8("ipc.config.framerate", "framerate", base.DEC),
-    bSupportSetSubStream = ProtoField.uint8("ipc.config.bSupportSetSubStream", "bSupportSetSubStream", base.DEC),
-    _bf_68 = ProtoField.uint32("ipc.config._bf_68", "_bf_68", base.DEC),
-    supportPassThroughApi = ProtoField.uint8("ipc.config.supportPassThroughApi", "supportPassThroughApi", base.DEC),
-    bSupportMultiChannel = ProtoField.uint8("ipc.config.bSupportMultiChannel", "bSupportMultiChannel", base.DEC),
-    noused2 = ProtoField.bytes("ipc.config.noused2", "noused2"),
-    apiVersion = ProtoField.uint32("ipc.config.apiVersion", "apiVersion", base.DEC),
-    binaryVersion = ProtoField.uint32("ipc.config.binaryVersion", "binaryVersion", base.DEC),
-    _bf_78 = ProtoField.uint32("ipc.config._bf_78", "_bf_78", base.DEC),
-    noused1 = ProtoField.bytes("ipc.config.noused1", "noused1"),
-
-    -- alarm fields
-    channelId = ProtoField.uint32("ipc.alarm.channelId", "ChannelId"),
-
-
-    uint = ProtoField.uint32("ipc.uint", "Uint"),
-    unk8 = ProtoField.uint8("ipc.unk8", "Unk8"),
-    unk32 = ProtoField.uint32("ipc.unk32", "Unk32"),
-    unkb = ProtoField.bytes("ipc.unkb", "UnkBs", base.SPACE)
-}
-
-protocol.fields = f
-
--- Define the dissector function
-function protocol.dissector(buffer, pinfo, tree)
-    -- Set protocol name
-    pinfo.cols.protocol = protocol.name
-
-    -- Create t_ipc subtree
-    local t_ipc = tree:add(protocol, buffer(), "IPC")
-    local offset = 0
-
-    -- Create t_header subtree
-    local t_header = t_ipc:add(protocol, buffer(offset), "Header")
-
-    -- Add fields to the t_header
-    local p_head = buffer(offset, 4):string()
-    t_header:add(f.head, buffer(offset, 4))
-    offset = offset + 4
-
-    t_header:add_le(f.cmd_length, buffer(offset, 4))
-    offset = offset + 4
-
-    -- Head is "1111" only for keepalive
-    if p_head == "1111" and buffer:len() == offset then
-      pinfo.cols.info = "keepalive"
-    end
-
-    if buffer:len() > offset then
-
-      -- Create t_command subtree
-      local t_command = t_ipc:add(protocol, buffer(offset), "Command")
-
-      local p_cmd = buffer(offset, 4):le_uint()
-      local p_cmdType = buffer(offset, 4):le_uint()
-      t_command:add_le(f.cmd, buffer(offset, 4))
-      t_command:add_le(f.cmdType, buffer(offset, 4))
-      t_command:add_le(f.direction, buffer(offset, 4))
-      offset = offset + 4
-
-      if vs_ipc_cmd[p_cmdType] then
-        pinfo.cols.info = vs_ipc_cmd[p_cmdType]
-      else
-        pinfo.cols.info = string.format("0x%X", p_cmdType)
-      end
-
-      local p_cmdId = buffer(offset, 4):le_uint()
-      t_command:add_le(f.cmdId, buffer(offset, 4))
-      offset = offset + 4
-
-      local p_cmdVer = buffer(offset, 4):le_uint()
-      t_command:add_le(f.cmdVer, buffer(offset, 4))
-      offset = offset + 4
-
-      t_command:add_le(f.data_length, buffer(offset, 4))
-      offset = offset + 4
-
-      -- Create t_data subtree
-      local t_data = t_command:add(protocol, buffer(offset), "Data")
-      if buffer:len() > offset then
-
-
-        -- 0x101 - CMD_REQUEST_LOGIN
-        if vs_ipc_cmd[p_cmdType] == "CMD_REQUEST_LOGIN" then
-          t_data:add(f.connectType, buffer(offset, 4))
-          offset = offset + 4
-
-          t_data:add(f.username, buffer(offset, 32))
-          offset = offset + 32
-
-          t_data:add(f.password, buffer(offset, 32))
-          offset = offset + 32
-
-          t_data:add(f.computerName, buffer(offset, 28))
-          offset = offset + 28
-
-          t_data:add(f.ip, buffer(offset, 8))
-          offset = offset + 8
-
-          t_data:add(f.mac, buffer(offset, 6))
-          offset = offset + 6
-
-          t_data:add(f.productType, buffer(offset, 1))
-          offset = offset + 1
-
-          t_data:add(f.resv, buffer(offset, 1))
-          offset = offset + 1
-
-          t_data:add_le(f.netProtocolVer, buffer(offset, 4))
-          offset = offset + 4
-        end
-
-        -- 0x1000101 - CMD_REPLY_LOGIN_SUCC
-        if vs_ipc_cmd[p_cmdType] == "CMD_REPLY_LOGIN_SUCC" then
-          t_data:add_le(f.ConfigDataLen, buffer(offset, 4)); offset = offset + 4
-          t_data:add_le(f.PTZPresetNum, buffer(offset, 4)); offset = offset + 4
-          t_data:add_le(f.PTZCruiseNum, buffer(offset, 4)); offset = offset + 4
-          t_data:add_le(f.PTZPresetNumForCruise, buffer(offset, 4)); offset = offset + 4
-          t_data:add_le(f.PresetNameMaxLen, buffer(offset, 4)); offset = offset + 4
-          t_data:add_le(f.CruiseNameMaxLen, buffer(offset, 4)); offset = offset + 4
-          t_data:add_le(f.bSupportPTZ, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.videoFormat, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.sensorInNum, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.alarmOutNum, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.ucStreamCount, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.bSupportSnap, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.noused, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.ucLiveAudioStream, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.ucTalkAudioStream, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.audioEncodeType, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.audioBitWidth, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.audioChannel, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.dwAudioSample, buffer(offset, 4)); offset = offset + 4
-          t_data:add_le(f.UserRight, buffer(offset, 4)); offset = offset + 4
-          t_data:add_le(f.softwareVer, buffer(offset, 4)); offset = offset + 4
-          t_data:add_le(f.buildDate, buffer(offset, 4)); offset = offset + 4
-          t_data:add_le(f.MAC, buffer(offset, 6)); offset = offset + 6
-          t_data:add_le(f.deviceName, buffer(offset, 10)); offset = offset + 10
-          t_data:add_le(f.nCustomerID, buffer(offset, 4)); offset = offset + 4
-          t_data:add_le(f.defBrightness, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.defContrast, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.defHue, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.defSaturation, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.nosupportPTZ, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.bspeedDomePTZ, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.framerate, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.bSupportSetSubStream, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f._bf_68, buffer(offset, 4)); offset = offset + 4
-          t_data:add_le(f.supportPassThroughApi, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.bSupportMultiChannel, buffer(offset, 1)); offset = offset + 1
-          t_data:add_le(f.noused2, buffer(offset, 2)); offset = offset + 2
-          t_data:add_le(f.apiVersion, buffer(offset, 4)); offset = offset + 4
-          t_data:add_le(f.binaryVersion, buffer(offset, 4)); offset = offset + 4
-          t_data:add_le(f._bf_78, buffer(offset, 4)); offset = offset + 4
-          t_data:add_le(f.noused1, buffer(offset, 2)); offset = offset + 2
-        end
-
-        -- 0x1000102 CMD_REPLY_LOGIN_FAIL
-        if vs_ipc_cmd[p_cmdType] == "CMD_REPLY_LOGIN_FAIL" then
-          t_data:add_le(f.error, buffer(offset, 4))
-          offset = offset + 4
-        end
-
-        -- 0x0B01 - CMD_REQUEST_ALARM_OUT_START
-        if vs_ipc_cmd[p_cmdType] == "CMD_REQUEST_ALARM_OUT_START" then
-          t_data:add_le(f.channelId, buffer(offset, 4))
-          offset = offset + 4
-        end
-
-        -- 0x0B02 - CMD_REQUEST_ALARM_OUT_STOP
-        if vs_ipc_cmd[p_cmdType] == "CMD_REQUEST_ALARM_OUT_STOP" then
-          t_data:add_le(f.channelId, buffer(offset, 4))
-          offset = offset + 4
-        end
-
-        if buffer:len() > offset then
-          t_data:add_le(f.unkb, buffer(offset))
-        end
-      end
-    end
-end
-
--- Register the protocol
-DissectorTable.get("tcp.port"):add(9008, protocol)
+return valuestrings
