@@ -1,3 +1,5 @@
+local vs = require("valuestrings")
+
 local fields = {
     -- header and command fields
     head = ProtoField.string("ipc.head", "Head"),
@@ -44,7 +46,7 @@ local fields = {
     audioChannel = ProtoField.uint8("ipc.config.audioChannel", "audioChannel", base.DEC),
     dwAudioSample = ProtoField.uint32("ipc.config.dwAudioSample", "dwAudioSample", base.DEC),
     UserRight = ProtoField.uint32("ipc.config.UserRight", "UserRight", base.DEC),
-    softwareVer = ProtoField.uint32("ipc.config.softwareVer", "softwareVer", base.DEC),
+    softwareVer = ProtoField.bytes("ipc.config.softwareVer", "softwareVer", base.DOT),
     buildDate = ProtoField.uint32("ipc.config.buildDate", "buildDate", base.DEC),
     MAC = ProtoField.bytes("ipc.config.MAC", "MAC", base.COLON),
     deviceName = ProtoField.string("ipc.config.deviceName", "deviceName"),
@@ -70,10 +72,10 @@ local fields = {
     channelId = ProtoField.uint32("ipc.alarm.channelId", "ChannelId"),
 
 
-    uint = ProtoField.uint32("ipc.uint", "Uint"),
-    unk8 = ProtoField.uint8("ipc.unk8", "Unk8"),
-    unk32 = ProtoField.uint32("ipc.unk32", "Unk32"),
-    unkb = ProtoField.bytes("ipc.unkb", "UnkBs", base.SPACE)
+    uint = ProtoField.uint32("ipc.uint", "Unknown"),
+    unk8 = ProtoField.uint8("ipc.unk8", "Unknown"),
+    unk32 = ProtoField.uint32("ipc.unk32", "Unknown"),
+    unkb = ProtoField.bytes("ipc.unkb", "Unknown", base.SPACE)
 }
 
 return fields
