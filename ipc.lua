@@ -2,6 +2,7 @@
 local protocol = Proto("IPC", "TVT IPC Protocol")
 
 local vs_ipc_cmd = {
+  -- requests
   [0x100] = "CMD_BASENUM_LOGIN",
   [0x101] = "CMD_REQUEST_LOGIN",
   [0x102] = "CMD_REQUEST_LOGOUT",
@@ -209,11 +210,13 @@ local vs_ipc_cmd = {
   [0x2008] = "CMD_REQUEST_IMPORT_EXPORT_STOP",
   [0x2009] = "CMD_END_REQUEST_VFD_MATCH",
 
+  -- replies
   [0x1000100] = "CMD_BASENUM_REPLY_LOGIN",
   [0x1000101] = "CMD_REPLY_LOGIN_SUCC",
   [0x1000102] = "CMD_REPLY_LOGIN_FAIL",
   [0x1000103] = "CMD_REPLY_STREAM_BRIEF",
   [0x1000104] = "CMD_END_REPLY_LOGIN",
+
   [0x1000200] = "CMD_BASENUM_REPLY_CTRL",
   [0x1000201] = "CMD_REPLY_CLIENT_INFO",
   [0x1000202] = "CMD_REPLY_SEARCH_WIFI",
@@ -234,6 +237,7 @@ local vs_ipc_cmd = {
   [0x1000211] = "CMD_END_REPLY_CTRL",
   [0x10002F2] = "CMD_REPLY_GET_CALIBRATION_IMAGE",
   [0x10002F3] = "CMD_REPLY_SWITCH_NO_SPLICE_MODE",
+
   [0x1000300] = "CMD_BASENUM_REPLY_CHNN_CTRL",
   [0x1000301] = "CMD_REPLY_CHNN_CTRL_COLOR",
   [0x1000302] = "CMD_REPLY_BAD_PIXEL_CHECK",
@@ -242,6 +246,7 @@ local vs_ipc_cmd = {
   [0x1000305] = "CMD_REPLY_LENS_INIT",
   [0x1000306] = "CMD_REPLY_LENS_CALIB_INFO",
   [0x1000307] = "CMD_END_REPLY_CHNN_CTRL",
+
   [0x1000400] = "CMD_BASENUM_REPLY_CFG",
   [0x1000401] = "CMD_REPLY_CFG_SUCC",
   [0x1000402] = "CMD_REPLY_CFG_FAIL",
@@ -259,6 +264,7 @@ local vs_ipc_cmd = {
   [0x100040E] = "CMD_REPLY_MODIFY_CHANNEL_VIDEO_ENCODE_INFO_FAIL",
   [0x100040F] = "CMD_REPLY_API_PROTOCOL",
   [0x1000410] = "CMD_END_REPLY_CFG",
+
   [0x1000500] = "CMD_BASENUM_REPLY_SEARCH",
   [0x1000501] = "CMD_REPLY_DATA_SD_ALL_DATE",
   [0x1000502] = "CMD_REPLY_DATA_SD_SEARCH_NAME",
@@ -270,20 +276,24 @@ local vs_ipc_cmd = {
   [0x1000508] = "CMD_REPLY_POP_SDCARD_FAIL",
   [0x1000509] = "CMD_REPLY_LOGDATA",
   [0x100050A] = "CMD_END_REPLY_SEARCH",
+
   [0x1000600] = "CMD_BASENUM_REPLY_PTZ",
   [0x1000601] = "CMD_REPLY_PTZ_PRESET_INFO",
   [0x1000602] = "CMD_REPLY_PTZ_START_SUCC",
   [0x1000603] = "CMD_REPLY_PTZ_START_FAIL",
   [0x1000604] = "CMD_REPLY_PTZ_GET_POSITION",
   [0x1000605] = "CMD_END_REPLY_PTZ",
+
   [0x1000700] = "CMD_BASENUM_REPLYY_TALK",
   [0x1000701] = "CMD_REPLY_TALK_START_SUCC",
   [0x1000702] = "CMD_REPLY_TALK_START_FAIL",
   [0x1000703] = "CMD_END_REPLY_TALK",
+
   [0x1000800] = "CMD_BASENUM_REPLY_SYSTEM_UPDATE",
   [0x1000801] = "CMD_REPLY_SYSTEM_UPDATE_FAIL",
   [0x1000802] = "CMD_REPLY_SYSTEM_UPDATE_PERCENT",
   [0x1000803] = "CMD_END_REPLY_SYSTEM_UPDATE",
+
   [0x1000900] = "CMD_BASENUM_REPLY_SD_RECORD",
   [0x1000901] = "CMD_REPLY_MANUAL_RECORD_SUCC",
   [0x1000902] = "CMD_REPLY_MANUAL_RECORD_FAIL",
@@ -294,6 +304,7 @@ local vs_ipc_cmd = {
   [0x1000907] = "CMD_REPLY_EVENT_SD_ALL_DATE",
   [0x1000908] = "CMD_REPLY_PULL_ENENT_STREAM",
   [0x1000909] = "CMD_REPLY_GET_EVENT_LIST",
+
   [0x1000A00] = "CMD_BASENUM_REPLY_UPDATE",
   [0x1000A01] = "CMD_REPLY_CAN_UPDATE",
   [0x1000A02] = "CMD_REPLY_NOT_UPDATE",
@@ -301,6 +312,7 @@ local vs_ipc_cmd = {
   [0x1000A04] = "CMD_REPLY_UPDATE_PERCENT",
   [0x1000A05] = "CMD_REPLY_UPDATE_PTZ_RESULT",
   [0x1000A06] = "CMD_END_REPLY_UPDATE",
+
   [0x1000B00] = "CMD_BASENUM_REPLY_STATUS",
   [0x1000B01] = "CMD_REPLY_MOTION",
   [0x1000B02] = "CMD_REPLY_SENSOR",
@@ -353,6 +365,7 @@ local vs_ipc_cmd = {
   [0x1000B31] = "CMD_REPLY_TRAFFIC_STATUS",
   [0x1000B32] = "CMD_REPLY_PEA_TARGET",
   [0x1000B33] = "CMD_END_REPLY_STATUS",
+
   [0x1000C00] = "CMD_BASENUM_REPLY_STREAM",
   [0x1000C01] = "CMD_REPLY_LIVE_STREAM",
   [0x1000C02] = "CMD_REPLY_PLAY_STREAM",
@@ -363,6 +376,7 @@ local vs_ipc_cmd = {
   [0x1000C07] = "CMD_REPLY_FISHEYE_SET_CENTER",
   [0x1000C08] = "CMD_REPLY_FISHEYE_GET_CENTER",
   [0x1000C09] = "CMD_END_REPLY_STREAM",
+
   [0x1000D00] = "CMD_BASENUM_REPLY_LOAD",
   [0x1000D01] = "CMD_REPLY_UPLOAD_OSD_IMG_DATA",
   [0x1000D02] = "CMD_REPLY_UPLOAD_HTTPS_CERT_DATE",
@@ -370,6 +384,7 @@ local vs_ipc_cmd = {
   [0x1000D04] = "CMD_REPLY_UPLOAD_CALIBRATION_INFO_OVER",
   [0x1000D05] = "CMD_REPLY_UPLOAD_CALIBRATION_INFO_READY",
   [0x1000D06] = "CMD_END_REPLY_LOAD",
+
   [0x1000E00] = "CMD_BASENUM_REPLY_CALIB",
   [0x1000E01] = "CMD_REPLY_CALIB_AF",
   [0x1000E02] = "CMD_REPLY_CALIB_AE",
@@ -379,6 +394,7 @@ local vs_ipc_cmd = {
   [0x1000E06] = "CMD_REPLY_LENS_POS",
   [0x1000E07] = "CMD_REPLY_FUNC_TEST",
   [0x1000E08] = "CMD_END_REPLY_CALIB",
+
   [0x1000FA0] = "CMD_BASENUM_ACCESS",
   [0x1000FA1] = "CMD_REPLY_ACCESS_SD_STATUS",
   [0x1000FA2] = "CMD_REPLY_ACCESS_USB_STATUS",
@@ -415,12 +431,14 @@ local vs_ipc_cmd = {
   [0x1000FC1] = "CMD_REPLY_TABLET_CALL_STATUS",
   [0x1000FC2] = "CMD_REPLY_DOORBELL_RING_EVENT",
   [0x1000FC3] = "CMD_END_ACCESS",
+
   [0x1001000] = "CMD_BASENUM_REPLY_SMART_SUBSCRIBE",
   [0x1001001] = "CMD_REPLY_GET_SMART_STATE",
   [0x1001002] = "CMD_REPLY_SMART_SUBSCRIBE",
   [0x1001003] = "CMD_REPLY_SMART_RENEW",
   [0x1001004] = "CMD_REPLY_SMART_UNSUBSCRIBE",
   [0x1001005] = "CMD_REPLY_SMART_ALARM_MESSAGE",
+
   [0x1002000] = "CMD_BASENUM_REPLY_VFD_MATCH",
   [0x1002001] = "CMD_REPLY_VFD_MATCH_RESULT",
   [0x1002002] = "CMD_REPLY_ADD_ALBUM",
@@ -432,8 +450,37 @@ local vs_ipc_cmd = {
   [0x1002008] = "CMD_REPLY_EXPORT_ALBUM",
   [0x1002009] = "CMD_REPLY_IMPORT_EXPORT_STOP",
   [0x100200A] = "CMD_END_REPLY_VFD_MATCH",
+
   [0x1010D00] = "CMD_HTTP_REQUEST",
   [0x1010D01] = "CMD_HTTP_REPLY"
+}
+
+local vs_net_error = {
+  [0x0] = "NETERR_SUCCESS",
+  [0x1] = "NETERR_LOGIN_FAIL_VERSION_ERR",
+  [0x2] = "NETERR_LOGIN_FAIL_USERPWD_ERR",
+  [0x3] = "NETERR_LOGIN_FAIL_OVERFLOW",
+  [0x4] = "NETERR_LOGIN_FAIL_REFUSE",
+  [0x5] = "NETERR_OPERATE_FAIL_NOAUTHORITY",
+  [0x6] = "NETERR_OPERATE_FAIL_OPERATING",
+  [0x7] = "NETERR_NO_DISK",
+  [0x8] = "NETERR_NO_EVENT",
+  [0x9] = "NETERR_FORMATERR_RECORDING",
+  [0x0A] = "NETERR_NOTSUPPORT",
+  [0x0B] = "NETERR_MUST_ENTER_CFG",
+  [0x0C] = "NETERR_DISK_IO_ERR",
+  [0x0D] = "NETERR_LOGIN_FAIL_MACERR",
+  [0x0E] = "NETERR_LOGIN_FAIL_UNSUPPORT_CLIENT",
+  [0x0F] = "NETERR_ADD_IPHONE_TOKEN_DUPLICATE",
+  [0x10] = "NETERR_DEL_IPHONE_TOKEN_NONE",
+  [0x11] = "NETERR_NO_EXIST_IPHONE_TOKEN",
+  [0x12] = "NETERR_EXIST_IPHONE_TOKEN",
+  [0x13] = "NETERR_RECORD_REQUEST_FAIL",
+  [0x14] = "NETERR_RECORD_DROG_REQUEST_FAIL",
+  [0x15] = "NETERR_IMPORT_CERT_FORMAT_ERROR",
+  [0x1E] = "NETERR_LOGIN_FAIL_FORCE_MODITY_PWD",
+  [0x100] = "NETERR_FACE_MATCH_ERR_CODE_START",
+  [0xFFFF] = "NETERR_FAIL"
 }
 
 local vs_direction = {
@@ -450,21 +497,78 @@ local vs_version = {
 
 -- Define the fields
 local f = {
+    -- header and command fields
     head = ProtoField.string("ipc.head", "Head"),
     cmd_length = ProtoField.uint32("ipc.len", "Command Length"),
     cmd = ProtoField.uint32("ipc.cmd", "Command", base.HEX),
     cmdType = ProtoField.uint32("ipc.cmdType", "Type", base.HEX, vs_ipc_cmd, 0x0FFFFFFF),
+    direction = ProtoField.uint8("ipc.direction", "Direction", base.DEC, vs_direction, 0x0F000000),
     cmdId = ProtoField.uint8("ipc.cmdId", "Command ID", base.DEC),
     cmdVer = ProtoField.uint8("ipc.cmdVer", "Command Version", base.DEC),
     data_length = ProtoField.uint32("ipc.len", "Data Length"),
-    counter = ProtoField.uint32("ipc.counter", "Counter"),
-    sdkVersion = ProtoField.uint32("ipc.sdkVersion", "SDK Version"),
-    session = ProtoField.uint32("ipc.session", "Session"),
-    direction = ProtoField.uint8("ipc.direction", "Direction", base.DEC, vs_direction),
-    login = ProtoField.bytes("ipc.login", "Login", base.SPACE),
-    password = ProtoField.bytes("ipc.password", "Passw", base.SPACE),
-    manufacturer = ProtoField.string("ipc.manufacturer", "Manufacturer"),
 
+    -- generic fields
+    error = ProtoField.uint32("ipc.error", "Error", base.HEX, vs_net_error),
+
+    -- login fields
+    connectType = ProtoField.uint32("ipc.login.connectType", "Connect Type"),
+    username = ProtoField.bytes("ipc.login.username", "Username", base.SPACE),
+    password = ProtoField.bytes("ipc.login.password", "Password", base.SPACE),
+    computerName = ProtoField.string("ipc.login.computerName", "Computer Name"),
+    ip = ProtoField.string("ipc.login.ip", "IP"),
+    mac = ProtoField.string("ipc.login.mac", "MAC"),
+    productType = ProtoField.uint8("ipc.login.productType", "Product Type"),
+    resv = ProtoField.uint8("ipc.login.resv", "Resv"),
+    netProtocolVer = ProtoField.uint32("ipc.login.netProtocolVer", "Net Protocol Version"),
+
+    -- config fields
+    ConfigDataLen = ProtoField.uint32("ipc.config.ConfigDataLen", "ConfigDataLen", base.DEC),
+    PTZPresetNum = ProtoField.uint32("ipc.config.PTZPresetNum", "PTZPresetNum", base.DEC),
+    PTZCruiseNum = ProtoField.uint32("ipc.config.PTZCruiseNum", "PTZCruiseNum", base.DEC),
+    PTZPresetNumForCruise = ProtoField.uint32("ipc.config.PTZPresetNumForCruise", "PTZPresetNumForCruise", base.DEC),
+    PresetNameMaxLen = ProtoField.uint32("ipc.config.PresetNameMaxLen", "PresetNameMaxLen", base.DEC),
+    CruiseNameMaxLen = ProtoField.uint32("ipc.config.CruiseNameMaxLen", "CruiseNameMaxLen", base.DEC),
+    bSupportPTZ = ProtoField.uint8("ipc.config.bSupportPTZ", "bSupportPTZ", base.DEC),
+    videoFormat = ProtoField.uint8("ipc.config.videoFormat", "videoFormat", base.DEC),
+    sensorInNum = ProtoField.uint8("ipc.config.sensorInNum", "sensorInNum", base.DEC),
+    alarmOutNum = ProtoField.uint8("ipc.config.alarmOutNum", "alarmOutNum", base.DEC),
+    ucStreamCount = ProtoField.uint8("ipc.config.ucStreamCount", "ucStreamCount", base.DEC),
+    bSupportSnap = ProtoField.uint8("ipc.config.bSupportSnap", "bSupportSnap", base.DEC),
+    noused = ProtoField.uint8("ipc.config.noused", "noused", base.DEC),
+    ucLiveAudioStream = ProtoField.uint8("ipc.config.ucLiveAudioStream", "ucLiveAudioStream", base.DEC),
+    ucTalkAudioStream = ProtoField.uint8("ipc.config.ucTalkAudioStream", "ucTalkAudioStream", base.DEC),
+    audioEncodeType = ProtoField.uint8("ipc.config.audioEncodeType", "audioEncodeType", base.DEC),
+    audioBitWidth = ProtoField.uint8("ipc.config.audioBitWidth", "audioBitWidth", base.DEC),
+    audioChannel = ProtoField.uint8("ipc.config.audioChannel", "audioChannel", base.DEC),
+    dwAudioSample = ProtoField.uint32("ipc.config.dwAudioSample", "dwAudioSample", base.DEC),
+    UserRight = ProtoField.uint32("ipc.config.UserRight", "UserRight", base.DEC),
+    softwareVer = ProtoField.uint32("ipc.config.softwareVer", "softwareVer", base.DEC),
+    buildDate = ProtoField.uint32("ipc.config.buildDate", "buildDate", base.DEC),
+    MAC = ProtoField.bytes("ipc.config.MAC", "MAC", base.COLON),
+    deviceName = ProtoField.string("ipc.config.deviceName", "deviceName"),
+    nCustomerID = ProtoField.uint32("ipc.config.nCustomerID", "nCustomerID", base.DEC),
+    defBrightness = ProtoField.uint8("ipc.config.defBrightness", "defBrightness", base.DEC),
+    defContrast = ProtoField.uint8("ipc.config.defContrast", "defContrast", base.DEC),
+    defHue = ProtoField.uint8("ipc.config.defHue", "defHue", base.DEC),
+    defSaturation = ProtoField.uint8("ipc.config.defSaturation", "defSaturation", base.DEC),
+    nosupportPTZ = ProtoField.uint8("ipc.config.nosupportPTZ", "nosupportPTZ", base.DEC),
+    bspeedDomePTZ = ProtoField.uint8("ipc.config.bspeedDomePTZ", "bspeedDomePTZ", base.DEC),
+    framerate = ProtoField.uint8("ipc.config.framerate", "framerate", base.DEC),
+    bSupportSetSubStream = ProtoField.uint8("ipc.config.bSupportSetSubStream", "bSupportSetSubStream", base.DEC),
+    _bf_68 = ProtoField.uint32("ipc.config._bf_68", "_bf_68", base.DEC),
+    supportPassThroughApi = ProtoField.uint8("ipc.config.supportPassThroughApi", "supportPassThroughApi", base.DEC),
+    bSupportMultiChannel = ProtoField.uint8("ipc.config.bSupportMultiChannel", "bSupportMultiChannel", base.DEC),
+    noused2 = ProtoField.bytes("ipc.config.noused2", "noused2"),
+    apiVersion = ProtoField.uint32("ipc.config.apiVersion", "apiVersion", base.DEC),
+    binaryVersion = ProtoField.uint32("ipc.config.binaryVersion", "binaryVersion", base.DEC),
+    _bf_78 = ProtoField.uint32("ipc.config._bf_78", "_bf_78", base.DEC),
+    noused1 = ProtoField.bytes("ipc.config.noused1", "noused1"),
+
+    -- alarm fields
+    channelId = ProtoField.uint32("ipc.alarm.channelId", "ChannelId"),
+
+
+    uint = ProtoField.uint32("ipc.uint", "Uint"),
     unk8 = ProtoField.uint8("ipc.unk8", "Unk8"),
     unk32 = ProtoField.uint32("ipc.unk32", "Unk32"),
     unkb = ProtoField.bytes("ipc.unkb", "UnkBs", base.SPACE)
@@ -506,6 +610,7 @@ function protocol.dissector(buffer, pinfo, tree)
       local p_cmdType = buffer(offset, 4):le_uint()
       t_command:add_le(f.cmd, buffer(offset, 4))
       t_command:add_le(f.cmdType, buffer(offset, 4))
+      t_command:add_le(f.direction, buffer(offset, 4))
       offset = offset + 4
 
       if vs_ipc_cmd[p_cmdType] then
@@ -528,7 +633,104 @@ function protocol.dissector(buffer, pinfo, tree)
       -- Create t_data subtree
       local t_data = t_command:add(protocol, buffer(offset), "Data")
       if buffer:len() > offset then
-        t_data:add_le(f.unkb, buffer(offset))
+
+
+        -- 0x101 - CMD_REQUEST_LOGIN
+        if vs_ipc_cmd[p_cmdType] == "CMD_REQUEST_LOGIN" then
+          t_data:add(f.connectType, buffer(offset, 4))
+          offset = offset + 4
+
+          t_data:add(f.username, buffer(offset, 32))
+          offset = offset + 32
+
+          t_data:add(f.password, buffer(offset, 32))
+          offset = offset + 32
+
+          t_data:add(f.computerName, buffer(offset, 28))
+          offset = offset + 28
+
+          t_data:add(f.ip, buffer(offset, 8))
+          offset = offset + 8
+
+          t_data:add(f.mac, buffer(offset, 6))
+          offset = offset + 6
+
+          t_data:add(f.productType, buffer(offset, 1))
+          offset = offset + 1
+
+          t_data:add(f.resv, buffer(offset, 1))
+          offset = offset + 1
+
+          t_data:add_le(f.netProtocolVer, buffer(offset, 4))
+          offset = offset + 4
+        end
+
+        -- 0x1000101 - CMD_REPLY_LOGIN_SUCC
+        if vs_ipc_cmd[p_cmdType] == "CMD_REPLY_LOGIN_SUCC" then
+          t_data:add_le(f.ConfigDataLen, buffer(offset, 4)); offset = offset + 4
+          t_data:add_le(f.PTZPresetNum, buffer(offset, 4)); offset = offset + 4
+          t_data:add_le(f.PTZCruiseNum, buffer(offset, 4)); offset = offset + 4
+          t_data:add_le(f.PTZPresetNumForCruise, buffer(offset, 4)); offset = offset + 4
+          t_data:add_le(f.PresetNameMaxLen, buffer(offset, 4)); offset = offset + 4
+          t_data:add_le(f.CruiseNameMaxLen, buffer(offset, 4)); offset = offset + 4
+          t_data:add_le(f.bSupportPTZ, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.videoFormat, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.sensorInNum, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.alarmOutNum, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.ucStreamCount, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.bSupportSnap, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.noused, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.ucLiveAudioStream, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.ucTalkAudioStream, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.audioEncodeType, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.audioBitWidth, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.audioChannel, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.dwAudioSample, buffer(offset, 4)); offset = offset + 4
+          t_data:add_le(f.UserRight, buffer(offset, 4)); offset = offset + 4
+          t_data:add_le(f.softwareVer, buffer(offset, 4)); offset = offset + 4
+          t_data:add_le(f.buildDate, buffer(offset, 4)); offset = offset + 4
+          t_data:add_le(f.MAC, buffer(offset, 6)); offset = offset + 6
+          t_data:add_le(f.deviceName, buffer(offset, 10)); offset = offset + 10
+          t_data:add_le(f.nCustomerID, buffer(offset, 4)); offset = offset + 4
+          t_data:add_le(f.defBrightness, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.defContrast, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.defHue, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.defSaturation, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.nosupportPTZ, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.bspeedDomePTZ, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.framerate, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.bSupportSetSubStream, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f._bf_68, buffer(offset, 4)); offset = offset + 4
+          t_data:add_le(f.supportPassThroughApi, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.bSupportMultiChannel, buffer(offset, 1)); offset = offset + 1
+          t_data:add_le(f.noused2, buffer(offset, 2)); offset = offset + 2
+          t_data:add_le(f.apiVersion, buffer(offset, 4)); offset = offset + 4
+          t_data:add_le(f.binaryVersion, buffer(offset, 4)); offset = offset + 4
+          t_data:add_le(f._bf_78, buffer(offset, 4)); offset = offset + 4
+          t_data:add_le(f.noused1, buffer(offset, 2)); offset = offset + 2
+        end
+
+        -- 0x1000102 CMD_REPLY_LOGIN_FAIL
+        if vs_ipc_cmd[p_cmdType] == "CMD_REPLY_LOGIN_FAIL" then
+          t_data:add_le(f.error, buffer(offset, 4))
+          offset = offset + 4
+        end
+
+        -- 0x0B01 - CMD_REQUEST_ALARM_OUT_START
+        if vs_ipc_cmd[p_cmdType] == "CMD_REQUEST_ALARM_OUT_START" then
+          t_data:add_le(f.channelId, buffer(offset, 4))
+          offset = offset + 4
+        end
+
+        -- 0x0B02 - CMD_REQUEST_ALARM_OUT_STOP
+        if vs_ipc_cmd[p_cmdType] == "CMD_REQUEST_ALARM_OUT_STOP" then
+          t_data:add_le(f.channelId, buffer(offset, 4))
+          offset = offset + 4
+        end
+
+        if buffer:len() > offset then
+          t_data:add_le(f.unkb, buffer(offset))
+        end
       end
     end
 end
