@@ -1,4 +1,4 @@
-local vs = require("valuestrings")
+local vs = require("proto.valuestrings")
 
 local fields = {
     -- header and command fields
@@ -72,7 +72,6 @@ local fields = {
     channelId = ProtoField.uint32("ipc.alarm.channelId", "ChannelId"),
 
 
-    uint = ProtoField.uint32("ipc.uint", "Unknown"),
     unk8 = ProtoField.uint8("ipc.unk8", "Unknown"),
     unk32 = ProtoField.uint32("ipc.unk32", "Unknown"),
     unkb = ProtoField.bytes("ipc.unkb", "Unknown", base.SPACE)
