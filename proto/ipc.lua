@@ -17,8 +17,6 @@ function protocol.dissector(buffer, pinfo, tree)
   local t_ipc = tree:add(protocol, buffer(), "IPC")
   local offset = 0
 
-  -- Create t_header subtree
-  local t_header = t_ipc:add(protocol, buffer(offset), "Header")
   local p_head = buffer(offset, 4):string()
 
   -- If head is "1111" and there is no data then it's a keepalive packet
@@ -31,6 +29,9 @@ function protocol.dissector(buffer, pinfo, tree)
     pinfo.cols.info = "^^^ CHUNK ^^^"
   -- otherwise continue parsing
   else
+    -- Create t_header subtree
+    local t_header = t_ipc:add(protocol, buffer(offset), "Header")
+
     -- Add fields to the t_header
     t_header:add(fields.head, buffer(offset, 4)); offset = offset + 4
     t_header:add_le(fields.cmd_length, buffer(offset, 4)); offset = offset + 4

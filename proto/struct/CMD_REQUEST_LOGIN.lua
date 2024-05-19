@@ -1,5 +1,5 @@
 local function struct(table, fields, buffer, offset)
-  table:add(fields.connectType, buffer(offset, 4)); offset = offset + 4
+  table:add_le(fields.connectType, buffer(offset, 4)); offset = offset + 4
   table:add(fields.username, buffer(offset, 32)); offset = offset + 32
   table:add(fields.password, buffer(offset, 32)); offset = offset + 32
   table:add(fields.computerName, buffer(offset, 28)); offset = offset + 28
