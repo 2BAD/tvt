@@ -15,6 +15,8 @@ type SDK = {
   getSDKBuildVersion: () => number
   // int NET_SDK_DiscoverDevice(NET_SDK_DEVICE_DISCOVERY_INFO *pDeviceInfo, int bufNum, int waitSeconds = 3);
   discoverDevice: (deviceInfo: Record<string, unknown>, bufNum: number, waitSeconds: number) => number
+  // BOOL NET_SDK_GetDeviceInfo(LONG lUserID, LPNET_SDK_DEVICEINFO pdecviceInfo);
+  getDeviceInfo: (userId: number, deviceInfo: Record<string, unknown>) => boolean
   // BOOL NET_SDK_GetDeviceIPCInfo(LONG lUserID, NET_SDK_IPC_DEVICE_INFO *pDeviceIPCInfo, LONG lBuffSize, LONG *pIPCCount);
   getDeviceIPCInfo: (
     userId: number,
@@ -32,8 +34,6 @@ type SDK = {
   setReconnectInterval: (interval: number, enableRecon: boolean) => boolean
   // LONG NET_SDK_Login(char *sDVRIP,WORD wDVRPort,char *sUserName,char *sPassword, LPNET_SDK_DEVICEINFO lpDeviceInfo);
   login: (ip: string, port: number, username: string, password: string, deviceInfo: Record<string, unknown>) => number
-  // BOOL NET_SDK_GetDeviceInfo(LONG lUserID, LPNET_SDK_DEVICEINFO pdecviceInfo);
-  getDeviceInfo: (userId: number, deviceInfo: Record<string, unknown>) => boolean
   // LONG NET_SDK_SetupAlarmChan(LONG lUserID);
   setupAlarmChanel: (userId: number) => number
   // BOOL NET_SDK_CloseAlarmChan(LONG lAlarmHandle);
@@ -54,6 +54,12 @@ type SDK = {
   getLastError: () => number
   // BOOL NET_SDK_SetLogToFile(BOOL bLogEnable = FALSE, char *strLogDir = NULL, BOOL bAutoDel = TRUE, int logLevel = YLOG_DEBUG);
   setLogToFile: (logEnable: boolean, logDir: string, autoDel: boolean, logLevel: LOG_LEVEL) => true
+  // BOOL NET_SDK_SaveLiveData(POINTERHANDLE lLiveHandle, char *sFileName);
+  startSavingLiveStream: (liveHandle: number, fileName: string) => boolean
+  // BOOL NET_SDK_StopSaveLiveData(POINTERHANDLE lLiveHandle);
+  stopSavingLiveStream: (liveHandle: number) => boolean
+  // BOOL NET_SDK_CaptureJPEGFile_V2(LONG lUserID, LONG lChannel, char *sPicFileName);
+  captureJPEGFile_V2: (userId: number, channel: number, fileName: string) => boolean
 }
 
 export const sdk: SDK = {
@@ -64,6 +70,7 @@ export const sdk: SDK = {
     'int',
     'int'
   ]),
+  getDeviceInfo: lib.func('NET_SDK_GetDeviceInfo', 'bool', ['long', koffi.out(koffi.pointer(LPNET_SDK_DEVICEINFO))]),
   getDeviceIPCInfo: lib.func('NET_SDK_GetDeviceIPCInfo', 'bool', [
     'long',
     koffi.out(koffi.pointer(NET_SDK_IPC_DEVICE_INFO)),
@@ -81,12 +88,14 @@ export const sdk: SDK = {
     'string',
     koffi.out(koffi.pointer(LPNET_SDK_DEVICEINFO))
   ]),
-  getDeviceInfo: lib.func('NET_SDK_GetDeviceInfo', 'bool', ['long', koffi.out(koffi.pointer(LPNET_SDK_DEVICEINFO))]),
   setupAlarmChanel: lib.func('NET_SDK_SetupAlarmChan', 'long', ['long']),
   closeAlarmChanel: lib.func('NET_SDK_CloseAlarmChan', 'bool', ['long']),
   triggerAlarm: lib.func('NET_SDK_SetDeviceManualAlarm', 'bool', ['long', 'long *', 'long *', 'long', 'bool']),
   getConfigFile: lib.func('NET_SDK_GetConfigFile', 'bool', ['long', 'string']),
   setConfigFile: lib.func('NET_SDK_SetConfigFile', 'bool', ['long', 'string']),
   getLastError: lib.func('NET_SDK_GetLastError', 'uint32_t', []),
-  setLogToFile: lib.func('NET_SDK_SetLogToFile', 'bool', ['bool', 'string', 'bool', 'int'])
+  setLogToFile: lib.func('NET_SDK_SetLogToFile', 'bool', ['bool', 'string', 'bool', 'int']),
+  startSavingLiveStream: lib.func('NET_SDK_SaveLiveData', 'bool', ['long', 'string']),
+  stopSavingLiveStream: lib.func('NET_SDK_StopSaveLiveData', 'bool', ['long']),
+  captureJPEGFile_V2: lib.func('NET_SDK_CaptureJPEGFile_V2', 'bool', ['long', 'long', 'string'])
 }
