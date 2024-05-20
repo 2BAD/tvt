@@ -7,6 +7,9 @@
       "syntax": "typescript",
       "decorators": true
     },
+    "transform": {
+      "decoratorVersion": "2022-03"
+    },
     "target": "esnext",
     "baseUrl": "./source",
     "paths": {
