@@ -1,4 +1,5 @@
 /* eslint-disable jsdoc/require-jsdoc */
+import { validateIp, validatePort } from './helpers/validators.ts'
 import { sdk } from './sdk/index.ts'
 import { NET_SDK_ERROR } from './sdk/types.ts'
 
@@ -21,8 +22,8 @@ export class Device {
   isAlarmOpen = true
 
   constructor(ip: string, port = 9008, settings?: Settings) {
-    this.ip = this.#validateIp(ip)
-    this.port = this.#validatePort(port)
+    this.ip = validateIp(ip)
+    this.port = validatePort(port)
 
     if (settings) {
       this.connectionTimeoutMs = settings.connectionTimeoutMs ?? this.connectionTimeoutMs
@@ -32,21 +33,6 @@ export class Device {
     }
 
     this.init()
-  }
-
-  #validateIp(ip: string): string {
-    const ipRegex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/
-    if (!ipRegex.test(ip)) {
-      throw new Error('Invalid IP address')
-    }
-    return ip
-  }
-
-  #validatePort(port: number): number {
-    if (port < 1 || port > 65535) {
-      throw new Error('Invalid port number')
-    }
-    return port
   }
 
   init(): void {
