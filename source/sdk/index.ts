@@ -34,6 +34,8 @@ type SDK = {
   setReconnectInterval: (interval: number, enableRecon: boolean) => boolean
   // LONG NET_SDK_Login(char *sDVRIP,WORD wDVRPort,char *sUserName,char *sPassword, LPNET_SDK_DEVICEINFO lpDeviceInfo);
   login: (ip: string, port: number, username: string, password: string, deviceInfo: Record<string, unknown>) => number
+  // BOOL NET_SDK_Logout(LONG lUserID)
+  logout: (userId: number) => boolean
   // LONG NET_SDK_SetupAlarmChan(LONG lUserID);
   setupAlarmChanel: (userId: number) => number
   // BOOL NET_SDK_CloseAlarmChan(LONG lAlarmHandle);
@@ -88,6 +90,7 @@ export const sdk: SDK = {
     'string',
     koffi.out(koffi.pointer(LPNET_SDK_DEVICEINFO))
   ]),
+  logout: lib.func('NET_SDK_Logout', 'bool', ['long']),
   setupAlarmChanel: lib.func('NET_SDK_SetupAlarmChan', 'long', ['long']),
   closeAlarmChanel: lib.func('NET_SDK_CloseAlarmChan', 'bool', ['long']),
   triggerAlarm: lib.func('NET_SDK_SetDeviceManualAlarm', 'bool', ['long', 'long *', 'long *', 'long', 'bool']),
