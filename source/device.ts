@@ -1,4 +1,3 @@
-/* eslint-disable jsdoc/require-jsdoc */
 import { auth, measure } from './decorators/index.ts'
 import { validateIp, validatePort } from './helpers/validators.ts'
 import { sdk } from './sdk/index.ts'
@@ -11,6 +10,9 @@ export type Settings = {
   isReconnectEnabled?: boolean
 }
 
+/**
+ * Represents a generic TVT Device.
+ */
 export class Device {
   ip: string
   port: number
@@ -23,6 +25,13 @@ export class Device {
   isReconnectEnabled = true
   isAlarmOpen = true
 
+  /**
+   * Creates a new device.
+   *
+   * @param ip - The IP address of the device.
+   * @param port - The port of the device.
+   * @param settings - The settings for the device.
+   */
   constructor(ip: string, port = 9008, settings?: Settings) {
     this.ip = validateIp(ip)
     this.port = validatePort(port)
@@ -37,6 +46,12 @@ export class Device {
     this.init()
   }
 
+  /**
+   * Initializes the SDK.
+   *
+   * @returns A boolean indicating whether the initialization was successful.
+   * @throws An error if the initialization fails.
+   */
   init(): boolean {
     if (
       !sdk.init() ||
@@ -48,18 +63,35 @@ export class Device {
     return true
   }
 
+  /**
+   * Logout and dispose of the SDK resources.
+   *
+   * @returns A boolean indicating whether the disposal was successful.
+   */
   dispose(): boolean {
-    // do not call logout if the user is not logged in a first place
     if (this.userId) {
       this.logout()
     }
     return this.cleanup()
   }
 
+  /**
+   * Dispose of the SDK resources.
+   *
+   * @returns A boolean indicating whether the cleanup was successful.
+   */
   cleanup(): boolean {
     return sdk.cleanup()
   }
 
+  /**
+   * Logs into the device.
+   *
+   * @param user - The username.
+   * @param pass - The password.
+   * @returns A boolean indicating whether the login was successful.
+   * @throws An error if the login fails.
+   */
   @measure
   login(user: string, pass: string): boolean {
     this.userId = sdk.login(this.ip, this.port, user, pass, this.deviceInfo)
@@ -69,11 +101,22 @@ export class Device {
     return Boolean(this.userId)
   }
 
+  /**
+   * Logs out of the device.
+   *
+   * @returns A boolean indicating whether the logout was successful.
+   */
   @auth
   logout(): boolean {
     return sdk.logout(this.userId)
   }
 
+  /**
+   * Triggers an alarm on the device.
+   *
+   * @param value - A boolean indicating whether to trigger the alarm.
+   * @returns A boolean indicating whether the alarm was triggered successfully.
+   */
   @auth
   triggerAlarm(value: boolean): boolean {
     const alarmChannels = [0]
@@ -81,6 +124,11 @@ export class Device {
     return sdk.triggerAlarm(this.userId, alarmChannels, alarmValues, alarmChannels.length, this.isAlarmOpen)
   }
 
+  /**
+   * Gets the last error that occurred.
+   *
+   * @returns A string describing the last error.
+   */
   getLastError(): string {
     return NET_SDK_ERROR[sdk.getLastError()] ?? 'Unknown error'
   }
