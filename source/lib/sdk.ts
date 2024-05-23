@@ -7,9 +7,9 @@ const path = resolve('bin/linux/libdvrnetsdk.so')
 const lib = koffi.load(path)
 
 type SDK = {
-  // DWORD NET_SDK_GetSDKVersion();
+  // ✅︎ DWORD NET_SDK_GetSDKVersion();
   getSDKVersion: () => number
-  // DWORD NET_SDK_GetSDKBuildVersion();
+  // ✅︎ DWORD NET_SDK_GetSDKBuildVersion();
   getSDKBuildVersion: () => number
   // int NET_SDK_DiscoverDevice(NET_SDK_DEVICE_DISCOVERY_INFO *pDeviceInfo, int bufNum, int waitSeconds = 3);
   discoverDevice: (deviceInfo: Record<string, unknown>, bufNum: number, waitSeconds: number) => number
@@ -18,23 +18,23 @@ type SDK = {
   getDeviceInfo: (userId: number, deviceInfo: DeviceInfo) => boolean
   // BOOL NET_SDK_GetDeviceIPCInfo(LONG lUserID, NET_SDK_IPC_DEVICE_INFO *pDeviceIPCInfo, LONG lBuffSize, LONG *pIPCCount);
   getDeviceIPCInfo: (userId: number, deviceIPCInfo: DeviceInfo, buffSize: number, ipcCount: number[]) => boolean
-  // BOOL NET_SDK_Init();
+  // ✅︎ BOOL NET_SDK_Init();
   init: () => boolean
-  // BOOL NET_SDK_Cleanup();
+  // ✅︎ BOOL NET_SDK_Cleanup();
   cleanup: () => boolean
-  // BOOL NET_SDK_SetConnectTime(DWORD dwWaitTime = 5000, DWORD dwTryTimes = 3);
+  // ✅︎ BOOL NET_SDK_SetConnectTime(DWORD dwWaitTime = 5000, DWORD dwTryTimes = 3);
   setConnectTimeout: (waitTime: number, retryTimes: number) => boolean
-  // BOOL NET_SDK_SetReconnect(DWORD dwInterval = 5000, BOOL bEnableRecon = TRUE);
+  // ✅︎ BOOL NET_SDK_SetReconnect(DWORD dwInterval = 5000, BOOL bEnableRecon = TRUE);
   setReconnectInterval: (interval: number, enableRecon: boolean) => boolean
-  // LONG NET_SDK_Login(char *sDVRIP,WORD wDVRPort,char *sUserName,char *sPassword, LPNET_SDK_DEVICEINFO lpDeviceInfo);
+  // ✅︎ LONG NET_SDK_Login(char *sDVRIP,WORD wDVRPort,char *sUserName,char *sPassword, LPNET_SDK_DEVICEINFO lpDeviceInfo);
   login: (ip: string, port: number, username: string, password: string, deviceInfo: DeviceInfo) => number
-  // BOOL NET_SDK_Logout(LONG lUserID)
+  // ✅︎ BOOL NET_SDK_Logout(LONG lUserID)
   logout: (userId: number) => boolean
   // LONG NET_SDK_SetupAlarmChan(LONG lUserID);
   setupAlarmChanel: (userId: number) => number
   // BOOL NET_SDK_CloseAlarmChan(LONG lAlarmHandle);
   closeAlarmChanel: (alarmHandle: number) => boolean
-  // BOOL NET_SDK_SetDeviceManualAlarm(LONG lUserID, LONG *pAramChannel, LONG *pValue, LONG lAramChannelCount, BOOL bAlarmOpen);
+  // ✅︎ BOOL NET_SDK_SetDeviceManualAlarm(LONG lUserID, LONG *pAramChannel, LONG *pValue, LONG lAramChannelCount, BOOL bAlarmOpen);
   triggerAlarm: (
     userId: number,
     channel: number[],
@@ -46,15 +46,26 @@ type SDK = {
   getConfigFile: (userId: number, fileName: string) => boolean
   // BOOL NET_SDK_SetConfigFile(LONG lUserID, char *sFileName);
   setConfigFile: (userId: number, fileName: string) => boolean
-  // DWORD NET_SDK_GetLastError()
+  // ✅︎ DWORD NET_SDK_GetLastError()
   getLastError: () => number
+  /**
+   * Probably windows only. Based on de compiled code from the SDK:
+   * ...
+   * void __fastcall YLog4C::SetLogDir(const char *lpszDir)
+   * ...
+   * strcpy(g_strLogDir, lpszDir);
+   * nLen = strlen(g_strLogDir);
+   * v5 = g_strLogDir[nLen - 1];
+   * if ( nLen > 2 && g_strLogDir[1] == ':' && (v5 == '\\' || v5 == '/') )
+   * ...
+   */
   // BOOL NET_SDK_SetLogToFile(BOOL bLogEnable = FALSE, char *strLogDir = NULL, BOOL bAutoDel = TRUE, int logLevel = YLOG_DEBUG);
   setLogToFile: (logEnable: boolean, logDir: string, autoDel: boolean, logLevel: LOG_LEVEL) => true
   // BOOL NET_SDK_SaveLiveData(POINTERHANDLE lLiveHandle, char *sFileName);
   startSavingLiveStream: (liveHandle: number, fileName: string) => boolean
   // BOOL NET_SDK_StopSaveLiveData(POINTERHANDLE lLiveHandle);
   stopSavingLiveStream: (liveHandle: number) => boolean
-  // BOOL NET_SDK_CaptureJPEGFile_V2(LONG lUserID, LONG lChannel, char *sPicFileName);
+  // ✅︎ BOOL NET_SDK_CaptureJPEGFile_V2(LONG lUserID, LONG lChannel, char *sPicFileName);
   captureJPEGFile_V2: (userId: number, channel: number, fileName: string) => boolean
 }
 
