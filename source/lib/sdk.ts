@@ -26,7 +26,7 @@ type SDK = {
   setConnectTimeout: (waitTime: number, retryTimes: number) => boolean
   // ✅︎ BOOL NET_SDK_SetReconnect(DWORD dwInterval = 5000, BOOL bEnableRecon = TRUE);
   setReconnectInterval: (interval: number, enableRecon: boolean) => boolean
-  // ✅︎ LONG NET_SDK_Login(char *sDVRIP,WORD wDVRPort,char *sUserName,char *sPassword, LPNET_SDK_DEVICEINFO lpDeviceInfo);
+  // ✅︎ LONG NET_SDK_Login(char *sDVRIP, WORD wDVRPort, char *sUserName, char *sPassword, LPNET_SDK_DEVICEINFO lpDeviceInfo);
   login: (ip: string, port: number, username: string, password: string, deviceInfo: DeviceInfo) => number
   // ✅︎ BOOL NET_SDK_Logout(LONG lUserID)
   logout: (userId: number) => boolean

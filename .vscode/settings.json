@@ -7,6 +7,19 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "eslint.workingDirectories": [{ "mode": "auto" }],
-  "cSpell.words": ["DEVICEINFO", "DVRIP", "ipc", "koffi", "libdvrnetsdk", "LPNET", "POINTERHANDLE", "YLOG", "YMMDD"],
+  "cSpell.words": [
+    "DEVICEINFO",
+    "DVRIP",
+    "fastcall",
+    "ipc",
+    "koffi",
+    "libdvrnetsdk",
+    "LPNET",
+    "lpsz",
+    "POINTERHANDLE",
+    "rtsp",
+    "YLOG",
+    "YMMDD"
+  ],
   "Lua.diagnostics.globals": ["ProtoField", "Proto", "base", "DissectorTable"]
 }
