@@ -11,6 +11,23 @@ export type Settings = {
   isReconnectEnabled?: boolean
 }
 
+export type VersionInfo = {
+  sdk: {
+    version: string
+    build: string
+  }
+  device: {
+    name: string
+    model: string
+    SN: string
+    firmware: string
+    kernel: string
+    hardware: string
+    MCU: string
+    software: number
+  }
+}
+
 /**
  * Represents a generic TVT Device.
  */
@@ -26,6 +43,9 @@ export class Device {
   reconnectIntervalMs = 30 * 1000
   isReconnectEnabled = true
   isAlarmOpen = true
+
+  sdkVersion: string | undefined
+  sdkBuild: string | undefined
 
   /**
    * Creates a new device.
@@ -45,7 +65,15 @@ export class Device {
       this.isReconnectEnabled = settings.isReconnectEnabled ?? this.isReconnectEnabled
     }
 
-    this.init()
+    if (this.init()) {
+      console.log('Device initialized successfully!')
+
+      const sdkVersion = sdk.getSDKVersion()
+      const buildVersion = sdk.getSDKBuildVersion()
+      this.sdkVersion = `0x${sdkVersion.toString(16)} (${sdkVersion})`
+      // that's a build date actually
+      this.sdkBuild = `${parseBuildDate(buildVersion.toString())} (${buildVersion})`
+    }
   }
 
   /**
@@ -87,14 +115,39 @@ export class Device {
   }
 
   /**
-   * Gets the build and SDK version.
+   * This getter method returns the versions information of the device and sdk.
+   * If the the information is not available, it throws an error.
    */
-  version(): void {
-    const sdkVersion = sdk.getSDKVersion()
-    const buildVersion = sdk.getSDKBuildVersion()
-    console.log(`SDK version: 0x${sdkVersion.toString(16)} (${sdkVersion})`)
-    // that's a build date actually
-    console.log(`Build date: ${parseBuildDate(buildVersion.toString())} (${buildVersion})`)
+  @auth
+  get version(): VersionInfo {
+    if (this.deviceInfo === undefined) {
+      throw new Error('Device info is not available!')
+    }
+
+    return {
+      sdk: {
+        version: this.sdkVersion ?? 'Unknown',
+        build: this.sdkBuild ?? 'Unknown'
+      },
+      device: {
+        name: this.deviceInfo.deviceName,
+        model: this.deviceInfo.deviceProduct,
+        SN: this.deviceInfo.szSN,
+        firmware: this.deviceInfo.firmwareVersion,
+        kernel: this.deviceInfo.kernelVersion,
+        hardware: this.deviceInfo.hardwareVersion,
+        MCU: this.deviceInfo.MCUVersion,
+        software: this.deviceInfo.softwareVer
+      }
+    }
+  }
+
+  /**
+   * Getter for device information.
+   */
+  @auth
+  get info(): DeviceInfo {
+    return this.deviceInfo
   }
 
   /**
@@ -127,7 +180,7 @@ export class Device {
   /**
    * Triggers an alarm on the device.
    *
-   * @param value - A boolean indicating whether to trigger the alarm.
+   * @param value - A boolean indicating what state to set the alarm to.
    * @returns A boolean indicating whether the alarm was triggered successfully.
    */
   @auth
@@ -135,6 +188,11 @@ export class Device {
     const alarmChannels = [0]
     const alarmValues = [value ? 1 : 0]
     return sdk.triggerAlarm(this.userId, alarmChannels, alarmValues, alarmChannels.length, this.isAlarmOpen)
+  }
+
+  @auth
+  saveSnapshot(channel: number, fileName: string): boolean {
+    return sdk.captureJPEGFile_V2(this.userId, channel, fileName)
   }
 
   /**

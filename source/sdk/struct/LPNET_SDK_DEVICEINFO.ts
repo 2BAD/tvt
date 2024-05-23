@@ -43,7 +43,7 @@ export const LPNET_SDK_DEVICEINFO = koffi.struct('LPNET_SDK_DEVICEINFO', {
   function: koffi.array('uint', 8),
 
   deviceIP: 'uint',
-  deviceMAC: koffi.array('char', 6),
+  deviceMAC: koffi.array('uchar', 6),
   devicePort: 'ushort',
 
   buildDate: 'uint',
