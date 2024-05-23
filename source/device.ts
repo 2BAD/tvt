@@ -2,7 +2,7 @@ import { auth, measure } from './decorators/index.ts'
 import { parseBuildDate } from './helpers/date.ts'
 import { validateIp, validatePort } from './helpers/validators.ts'
 import { sdk } from './sdk/index.ts'
-import { NET_SDK_ERROR } from './sdk/types.ts'
+import { NET_SDK_ERROR, type DeviceInfo } from './sdk/types.ts'
 
 export type Settings = {
   connectionTimeoutMs?: number
@@ -19,7 +19,8 @@ export class Device {
   port: number
   // @ts-expect-error checking for userId is done inside the @auth decorator so unless the decorator is removed, userId will always be defined
   userId: number
-  deviceInfo: Record<string, unknown> = {}
+  // @ts-expect-error deviceInfo is passed as a pointer to login function and should be initialized as an empty object
+  deviceInfo: DeviceInfo = {}
   connectionTimeoutMs = 5 * 1000
   maxRetries = 3
   reconnectIntervalMs = 30 * 1000

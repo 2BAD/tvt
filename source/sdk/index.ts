@@ -1,9 +1,7 @@
 import koffi from 'koffi'
 import { resolve } from 'path'
-import { LPNET_SDK_DEVICEINFO } from './struct/LPNET_SDK_DEVICEINFO.ts'
-import { NET_SDK_DEVICE_DISCOVERY_INFO } from './struct/NET_SDK_DEVICE_DISCOVERY_INFO.ts'
-import { NET_SDK_IPC_DEVICE_INFO } from './struct/NET_SDK_IPC_DEVICE_INFO.ts'
-import { type LOG_LEVEL } from './types.ts'
+import { LPNET_SDK_DEVICEINFO, NET_SDK_DEVICE_DISCOVERY_INFO, NET_SDK_IPC_DEVICE_INFO } from './struct/index.ts'
+import { type DeviceInfo, type LOG_LEVEL } from './types.ts'
 
 const path = resolve('bin/linux/libdvrnetsdk.so')
 const lib = koffi.load(path)
@@ -15,15 +13,11 @@ type SDK = {
   getSDKBuildVersion: () => number
   // int NET_SDK_DiscoverDevice(NET_SDK_DEVICE_DISCOVERY_INFO *pDeviceInfo, int bufNum, int waitSeconds = 3);
   discoverDevice: (deviceInfo: Record<string, unknown>, bufNum: number, waitSeconds: number) => number
+  // spell-checker: disable-next-line
   // BOOL NET_SDK_GetDeviceInfo(LONG lUserID, LPNET_SDK_DEVICEINFO pdecviceInfo);
-  getDeviceInfo: (userId: number, deviceInfo: Record<string, unknown>) => boolean
+  getDeviceInfo: (userId: number, deviceInfo: DeviceInfo) => boolean
   // BOOL NET_SDK_GetDeviceIPCInfo(LONG lUserID, NET_SDK_IPC_DEVICE_INFO *pDeviceIPCInfo, LONG lBuffSize, LONG *pIPCCount);
-  getDeviceIPCInfo: (
-    userId: number,
-    deviceIPCInfo: Record<string, unknown>,
-    buffSize: number,
-    ipcCount: number[]
-  ) => boolean
+  getDeviceIPCInfo: (userId: number, deviceIPCInfo: DeviceInfo, buffSize: number, ipcCount: number[]) => boolean
   // BOOL NET_SDK_Init();
   init: () => boolean
   // BOOL NET_SDK_Cleanup();
@@ -33,7 +27,7 @@ type SDK = {
   // BOOL NET_SDK_SetReconnect(DWORD dwInterval = 5000, BOOL bEnableRecon = TRUE);
   setReconnectInterval: (interval: number, enableRecon: boolean) => boolean
   // LONG NET_SDK_Login(char *sDVRIP,WORD wDVRPort,char *sUserName,char *sPassword, LPNET_SDK_DEVICEINFO lpDeviceInfo);
-  login: (ip: string, port: number, username: string, password: string, deviceInfo: Record<string, unknown>) => number
+  login: (ip: string, port: number, username: string, password: string, deviceInfo: DeviceInfo) => number
   // BOOL NET_SDK_Logout(LONG lUserID)
   logout: (userId: number) => boolean
   // LONG NET_SDK_SetupAlarmChan(LONG lUserID);

@@ -115,3 +115,52 @@ export enum NET_SDK_ERROR {
   NET_SDK_NO_PASSWORD_STRENGTH,
   NET_SDK_FILE_NOT_MATCH_PRODUCT
 }
+// spell-checker: enable
+
+export type DeviceInfo = {
+  localVideoInputNum: number
+  audioInputNum: number
+  sensorInputNum: number
+  sensorOutputNum: number
+  displayResolutionMask: number
+  // spell-checker: disable-next-line
+  videoOuputNum: number
+  netVideoOutputNum: number
+  netVideoInputNum: number
+  IVSNum: number
+  presetNumOneCH: number
+  cruiseNumOneCH: number
+  presetNumOneCruise: number
+  trackNumOneCH: number
+  userNum: number
+  netClientNum: number
+  netFirstStreamNum: number
+  deviceType: number
+  // spell-checker: disable-next-line
+  doblueStream: number
+  audioStream: number
+  talkAudio: number
+  bPasswordCheck: number
+  defBrightness: number
+  defContrast: number
+  defSaturation: number
+  defHue: number
+  videoInputNum: number
+  deviceID: number
+  videoFormat: number
+  function: Uint32Array
+  deviceIP: number
+  deviceMAC: Uint8Array
+  devicePort: number
+  buildDate: number
+  buildTime: number
+  deviceName: string
+  firmwareVersion: string
+  kernelVersion: string
+  hardwareVersion: string
+  MCUVersion: string
+  firmwareVersionEx: string
+  softwareVer: number
+  szSN: string
+  deviceProduct: string
+}
