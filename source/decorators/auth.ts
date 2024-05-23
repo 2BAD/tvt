@@ -13,7 +13,7 @@ import { type Device } from '../device.ts'
  */
 export const auth = <This extends Device, Args extends any[], Return>(
   target: (this: This, ...args: Args) => Return,
-  _context: ClassMethodDecoratorContext<This, (this: This, ...args: Args) => Return>
+  _context: DecoratorContext
 ): any => {
   /**
    * Replacement method that checks if the user is logged in before executing the original method.

@@ -10,7 +10,7 @@ import { Roarr as log } from 'roarr'
  */
 export const measure = <This, Args extends any[], Return>(
   target: (this: This, ...args: Args) => Return,
-  context: ClassMethodDecoratorContext<This, (this: This, ...args: Args) => Return>
+  context: DecoratorContext
 ): any => {
   const methodName = String(context.name)
 
@@ -20,12 +20,12 @@ export const measure = <This, Args extends any[], Return>(
    * @param args - Arguments passed to the original method.
    * @returns The result of the original method execution.
    */
-  function replacementMethod(this: This, ...args: Args): Return {
+  function trackPerf(this: This, ...args: Args): Return {
     const start = performance.now()
     const result = target.call(this, ...args)
     const finish = performance.now()
     log(`[${methodName}] Execution time: ${finish - start} milliseconds`)
     return result
   }
-  return replacementMethod
+  return trackPerf
 }
