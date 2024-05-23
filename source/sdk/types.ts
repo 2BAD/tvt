@@ -7,6 +7,7 @@ export enum LOG_LEVEL {
   LOG_BUFF = 5
 }
 
+// spell-checker: disable
 export enum NET_SDK_ERROR {
   NET_SDK_SUCCESS,
   NET_SDK_PASSWORD_ERROR,

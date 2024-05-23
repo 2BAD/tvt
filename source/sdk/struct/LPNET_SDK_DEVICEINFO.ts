@@ -8,6 +8,7 @@ export const LPNET_SDK_DEVICEINFO = koffi.struct('LPNET_SDK_DEVICEINFO', {
   displayResolutionMask: 'uint',
 
   // preserve typo to match original code
+  // spell-checker: disable-next-line
   videoOuputNum: 'uchar',
   netVideoOutputNum: 'uchar',
   netVideoInputNum: 'uchar',
@@ -24,6 +25,7 @@ export const LPNET_SDK_DEVICEINFO = koffi.struct('LPNET_SDK_DEVICEINFO', {
   deviceType: 'uchar',
 
   // preserve typo to match original code
+  // spell-checker: disable-next-line
   doblueStream: 'uchar',
   audioStream: 'uchar',
   talkAudio: 'uchar',
@@ -41,7 +43,7 @@ export const LPNET_SDK_DEVICEINFO = koffi.struct('LPNET_SDK_DEVICEINFO', {
   function: koffi.array('uint', 8),
 
   deviceIP: 'uint',
-  deviceMAC: koffi.array('uchar', 6),
+  deviceMAC: koffi.array('char', 6),
   devicePort: 'ushort',
 
   buildDate: 'uint',
