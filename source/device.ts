@@ -3,8 +3,8 @@ import { dirname } from 'node:path'
 import { auth, measure } from './decorators/index.ts'
 import { parseBuildDate } from './helpers/date.ts'
 import { validateIp, validatePort } from './helpers/validators.ts'
-import { sdk } from './sdk/index.ts'
-import { NET_SDK_ERROR, type DeviceInfo } from './sdk/types.ts'
+import { sdk } from './lib/sdk.ts'
+import { NET_SDK_ERROR, type DeviceInfo } from './lib/types.ts'
 
 export type Settings = {
   connectionTimeoutMs?: number
