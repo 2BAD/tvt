@@ -1,3 +1,5 @@
+import { existsSync, mkdirSync } from 'node:fs'
+import { dirname } from 'node:path'
 import { auth, measure } from './decorators/index.ts'
 import { parseBuildDate } from './helpers/date.ts'
 import { validateIp, validatePort } from './helpers/validators.ts'
@@ -190,9 +192,23 @@ export class Device {
     return sdk.triggerAlarm(this.userId, alarmChannels, alarmValues, alarmChannels.length, this.isAlarmOpen)
   }
 
+  /**
+   * Saves a jpeg snapshot of a specific video channel to a file.
+   *
+   * @param channel - The channel number to save a snapshot of.
+   * @param filePath - The path where the snapshot will be saved.
+   * @returns - Returns true if the snapshot was successfully saved, false otherwise.
+   */
   @auth
-  saveSnapshot(channel: number, fileName: string): boolean {
-    return sdk.captureJPEGFile_V2(this.userId, channel, fileName)
+  saveSnapshot(channel: number, filePath: string): boolean {
+    const dirPath = dirname(filePath)
+
+    // sdk doesn't check if path is valid so we need to do it ourselves
+    if (!existsSync(dirPath)) {
+      mkdirSync(dirPath, { recursive: true })
+    }
+
+    return sdk.captureJPEGFile_V2(this.userId, channel, filePath)
   }
 
   /**
