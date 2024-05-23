@@ -1,4 +1,5 @@
 import { auth, measure } from './decorators/index.ts'
+import { parseBuildDate } from './helpers/date.ts'
 import { validateIp, validatePort } from './helpers/validators.ts'
 import { sdk } from './sdk/index.ts'
 import { NET_SDK_ERROR } from './sdk/types.ts'
@@ -82,6 +83,17 @@ export class Device {
    */
   cleanup(): boolean {
     return sdk.cleanup()
+  }
+
+  /**
+   * Gets the build and SDK version.
+   */
+  version(): void {
+    const sdkVersion = sdk.getSDKVersion()
+    const buildVersion = sdk.getSDKBuildVersion()
+    console.log(`SDK version: 0x${sdkVersion.toString(16)} (${sdkVersion})`)
+    // that's a build date actually
+    console.log(`Build date: ${parseBuildDate(buildVersion.toString())} (${buildVersion})`)
   }
 
   /**
