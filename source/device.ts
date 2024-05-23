@@ -34,20 +34,23 @@ export type VersionInfo = {
  * Represents a generic TVT Device.
  */
 export class Device {
-  ip: string
-  port: number
+  readonly #ip: string
+  readonly #port: number
+
+  readonly #connectionTimeoutMs: number = 5 * 1000
+  readonly #maxRetries: number = 3
+  readonly #reconnectIntervalMs: number = 30 * 1000
+  readonly #isReconnectEnabled: boolean = true
+  readonly #isAlarmOpen: boolean = true
+
   // @ts-expect-error checking for userId is done inside the @auth decorator so unless the decorator is removed, userId will always be defined
   userId: number
   // @ts-expect-error deviceInfo is passed as a pointer to login function and should be initialized as an empty object
-  deviceInfo: DeviceInfo = {}
-  connectionTimeoutMs = 5 * 1000
-  maxRetries = 3
-  reconnectIntervalMs = 30 * 1000
-  isReconnectEnabled = true
-  isAlarmOpen = true
+  // eslint-disable-next-line @typescript-eslint/prefer-readonly
+  #deviceInfo: DeviceInfo = {}
 
-  sdkVersion: string | undefined
-  sdkBuild: string | undefined
+  readonly #sdkVersion: string | undefined
+  readonly #sdkBuild: string | undefined
 
   /**
    * Creates a new device.
@@ -57,14 +60,14 @@ export class Device {
    * @param settings - The settings for the device.
    */
   constructor(ip: string, port = 9008, settings?: Settings) {
-    this.ip = validateIp(ip)
-    this.port = validatePort(port)
+    this.#ip = validateIp(ip)
+    this.#port = validatePort(port)
 
     if (settings) {
-      this.connectionTimeoutMs = settings.connectionTimeoutMs ?? this.connectionTimeoutMs
-      this.maxRetries = settings.maxRetries ?? this.maxRetries
-      this.reconnectIntervalMs = settings.reconnectIntervalMs ?? this.reconnectIntervalMs
-      this.isReconnectEnabled = settings.isReconnectEnabled ?? this.isReconnectEnabled
+      this.#connectionTimeoutMs = settings.connectionTimeoutMs ?? this.#connectionTimeoutMs
+      this.#maxRetries = settings.maxRetries ?? this.#maxRetries
+      this.#reconnectIntervalMs = settings.reconnectIntervalMs ?? this.#reconnectIntervalMs
+      this.#isReconnectEnabled = settings.isReconnectEnabled ?? this.#isReconnectEnabled
     }
 
     if (this.init()) {
@@ -72,9 +75,9 @@ export class Device {
 
       const sdkVersion = sdk.getSDKVersion()
       const buildVersion = sdk.getSDKBuildVersion()
-      this.sdkVersion = `0x${sdkVersion.toString(16)} (${sdkVersion})`
+      this.#sdkVersion = `0x${sdkVersion.toString(16)} (${sdkVersion})`
       // that's a build date actually
-      this.sdkBuild = `${parseBuildDate(buildVersion.toString())} (${buildVersion})`
+      this.#sdkBuild = `${parseBuildDate(buildVersion.toString())} (${buildVersion})`
     }
   }
 
@@ -87,8 +90,8 @@ export class Device {
   init(): boolean {
     if (
       !sdk.init() ||
-      !sdk.setConnectTimeout(this.connectionTimeoutMs, this.maxRetries) ||
-      !sdk.setReconnectInterval(this.reconnectIntervalMs, this.isReconnectEnabled)
+      !sdk.setConnectTimeout(this.#connectionTimeoutMs, this.#maxRetries) ||
+      !sdk.setReconnectInterval(this.#reconnectIntervalMs, this.#isReconnectEnabled)
     ) {
       throw new Error(this.getLastError())
     }
@@ -122,24 +125,24 @@ export class Device {
    */
   @auth
   get version(): VersionInfo {
-    if (this.deviceInfo === undefined) {
+    if (this.#deviceInfo === undefined) {
       throw new Error('Device info is not available!')
     }
 
     return {
       sdk: {
-        version: this.sdkVersion ?? 'Unknown',
-        build: this.sdkBuild ?? 'Unknown'
+        version: this.#sdkVersion ?? 'Unknown',
+        build: this.#sdkBuild ?? 'Unknown'
       },
       device: {
-        name: this.deviceInfo.deviceName,
-        model: this.deviceInfo.deviceProduct,
-        SN: this.deviceInfo.szSN,
-        firmware: this.deviceInfo.firmwareVersion,
-        kernel: this.deviceInfo.kernelVersion,
-        hardware: this.deviceInfo.hardwareVersion,
-        MCU: this.deviceInfo.MCUVersion,
-        software: this.deviceInfo.softwareVer
+        name: this.#deviceInfo.deviceName,
+        model: this.#deviceInfo.deviceProduct,
+        SN: this.#deviceInfo.szSN,
+        firmware: this.#deviceInfo.firmwareVersion,
+        kernel: this.#deviceInfo.kernelVersion,
+        hardware: this.#deviceInfo.hardwareVersion,
+        MCU: this.#deviceInfo.MCUVersion,
+        software: this.#deviceInfo.softwareVer
       }
     }
   }
@@ -149,7 +152,7 @@ export class Device {
    */
   @auth
   get info(): DeviceInfo {
-    return this.deviceInfo
+    return this.#deviceInfo
   }
 
   /**
@@ -162,7 +165,7 @@ export class Device {
    */
   @measure
   login(user: string, pass: string): boolean {
-    this.userId = sdk.login(this.ip, this.port, user, pass, this.deviceInfo)
+    this.userId = sdk.login(this.#ip, this.#port, user, pass, this.#deviceInfo)
     if (this.userId === -1) {
       throw new Error(this.getLastError())
     }
@@ -189,7 +192,7 @@ export class Device {
   triggerAlarm(value: boolean): boolean {
     const alarmChannels = [0]
     const alarmValues = [value ? 1 : 0]
-    return sdk.triggerAlarm(this.userId, alarmChannels, alarmValues, alarmChannels.length, this.isAlarmOpen)
+    return sdk.triggerAlarm(this.userId, alarmChannels, alarmValues, alarmChannels.length, this.#isAlarmOpen)
   }
 
   /**
