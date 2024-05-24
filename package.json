@@ -59,7 +59,8 @@
   "dependencies": {
     "debug": "4.3.4",
     "easy-buffer": "1.2.0",
-    "koffi": "2.8.8"
+    "koffi": "2.8.8",
+    "roarr": "7.21.1"
   },
   "devDependencies": {
     "@2bad/tsconfig": "3.0.1",
