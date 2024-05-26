@@ -1,17 +1,17 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML 
+<HTML
 xmlns="http://www.w3.org/1999/xhtml"><HEAD><title>NET_SDK_FaceMatchOperate</title>
 <META content="text/html; charset=gb2312" http-equiv=Content-Type>
-<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet
 type=text/css href="mystyle.css">
 <META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
 <BODY>
 <P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;</P>
-<P style="BACKGROUND-COLOR: #abcdef"><BIG><FONT size=3>&nbsp;Client SDK 
+<P style="BACKGROUND-COLOR: #abcdef"><BIG><FONT size=3>&nbsp;Client SDK
 Instructions</FONT></BIG></P></BIG>
 <H1>NET_SDK_FaceMatchOperate</H1>
-<P>(only support N9000,  not support IPC,   IPC refer to NET_SDK_TransparentConfig)The relevant operation of face comparison: whether to support face 
-comparison, face picture database management, face match alarm, getting the data 
+<P>(only support N9000,  not support IPC,   IPC refer to NET_SDK_TransparentConfig)The relevant operation of face comparison: whether to support face
+comparison, face picture database management, face match alarm, getting the data
 of target.&nbsp;</P><PRE class=syntax> BOOL NET_SDK_FaceMatchOperate(
  LONG<I>     lUserID</I>,
  DWORD<I>    dwCommand</I>,
@@ -23,27 +23,27 @@ of target.&nbsp;</P><PRE class=syntax> BOOL NET_SDK_FaceMatchOperate(
 );</PRE>
 <H3>Parameters</H3>
 <DL>
-  <DT><I>lUserID</I> 
-  <DD>[in] the return value of NET_SDK_Login() 
-  <DD><I>dwCommand</I> 
-  <DD>[in] Command types refer to configuration command 
-  <DT><I>lpInBuffer</I> 
-  <DD>[in] a buffer pointer to send data 
-  <DT><I>dwInBufferSize</I> 
-  <DD>[in] the buffer size of sending data (in bytes) 
-  <DT><I>lpOutBuffer</I> 
-  <DD>[out] a buffer pointer to receive data 
-  <DT><I>dwOutBufferSize</I> 
-  <DD>[in] the buffer size of receiving data (in bytes) 
-  <DT><I>lpBytesReturned</I> 
-  <DD>[out] the data length pointer that actually receives can not larger than 
+  <DT><I>lUserID</I>
+  <DD>[in] the return value of NET_SDK_Login()
+  <DD><I>dwCommand</I>
+  <DD>[in] Command types refer to configuration command
+  <DT><I>lpInBuffer</I>
+  <DD>[in] a buffer pointer to send data
+  <DT><I>dwInBufferSize</I>
+  <DD>[in] the buffer size of sending data (in bytes)
+  <DT><I>lpOutBuffer</I>
+  <DD>[out] a buffer pointer to receive data
+  <DT><I>dwOutBufferSize</I>
+  <DD>[in] the buffer size of receiving data (in bytes)
+  <DT><I>lpBytesReturned</I>
+  <DD>[out] the data length pointer that actually receives can not larger than
   dwOutBufferSize </DD></DL>
 <H3>Return Values</H3>
-<P>TRUE means success; FALSE means failure. To get error information, please 
-call<A 
-href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/NET_SDK_GetlastError.htm">NET_SDK_GetLastError</A></P>
+<P>TRUE means success; FALSE means failure. To get error information, please
+call<A
+href="interface/NET_SDK_GetLastError.htm">NET_SDK_GetLastError</A></P>
 <H3>Remarks</H3>
-<P>Different functions have different structure and commands as shown 
+<P>Different functions have different structure and commands as shown
 below.<BR></P>
 <TABLE>
   <TBODY>
@@ -70,57 +70,57 @@ below.<BR></P>
     <TD>0x02</TD>
     <TD>Get group list</TD>
     <TD>NULL</TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_FACE_INFO_GROUP_ITEM.htm">NET_SDK_FACE_INFO_GROUP_ITEM*num</A></TD></TR>
+    <TD><A
+      href="interface/struct/NET_SDK_FACE_INFO_GROUP_ITEM.htm">NET_SDK_FACE_INFO_GROUP_ITEM*num</A></TD></TR>
   <TR>
     <TD>NET_SDK_ADD_FACE_INFO_GROUP</TD>
     <TD>0x03</TD>
     <TD>Add group</TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_FACE_INFO_GROUP_ADD.htm">NET_SDK_FACE_INFO_GROUP_ADD</A></TD>
+    <TD><A
+      href="interface/struct/NET_SDK_FACE_INFO_GROUP_ADD.htm">NET_SDK_FACE_INFO_GROUP_ADD</A></TD>
     <TD>NULL</TD></TR>
   <TR>
     <TD>NET_SDK_SET_FACE_INFO_GROUP</TD>
     <TD>0x04</TD>
     <TD>Edit group</TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_FACE_INFO_GROUP_ITEM.htm">NET_SDK_FACE_INFO_GROUP_ITEM</A></TD>
+    <TD><A
+      href="interface/struct/NET_SDK_FACE_INFO_GROUP_ITEM.htm">NET_SDK_FACE_INFO_GROUP_ITEM</A></TD>
     <TD>NULL</TD></TR>
   <TR>
     <TD>NET_SDK_DEL_FACE_INFO_GROUP</TD>
     <TD>0x05</TD>
     <TD>Delete group</TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_FACE_INFO_GROUP_DEL.htm">NET_SDK_FACE_INFO_GROUP_DEL</A></TD>
+    <TD><A
+      href="interface/struct/NET_SDK_FACE_INFO_GROUP_DEL.htm">NET_SDK_FACE_INFO_GROUP_DEL</A></TD>
     <TD>NULL</TD></TR>
   <TR>
     <TD>NET_SDK_GET_FACE_INFO_LIST</TD>
     <TD>0x06</TD>
     <TD>Get target face list</TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_FACE_INFO_LIST_GET.htm">NET_SDK_FACE_INFO_LIST_GET</A></TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_FACE_INFO_LIST.htm">NET_SDK_FACE_INFO_LIST</A></TD></TR>
+    <TD><A
+      href="interface/struct/NET_SDK_FACE_INFO_LIST_GET.htm">NET_SDK_FACE_INFO_LIST_GET</A></TD>
+    <TD><A
+      href="interface/struct/NET_SDK_FACE_INFO_LIST.htm">NET_SDK_FACE_INFO_LIST</A></TD></TR>
   <TR>
     <TD>NET_SDK_ADD_FACE_INFO</TD>
     <TD>0x07</TD>
     <TD>Add target face</TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_FACE_INFO_ADD.htm">NET_SDK_FACE_INFO_ADD</A></TD>
+    <TD><A
+      href="interface/struct/NET_SDK_FACE_INFO_ADD.htm">NET_SDK_FACE_INFO_ADD</A></TD>
     <TD>NULL</TD></TR>
   <TR>
     <TD>NET_SDK_SET_FACE_INFO</TD>
     <TD>0x08</TD>
     <TD>Edit face information</TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_FACE_INFO_EDIT.htm">NET_SDK_FACE_INFO_EDIT</A></TD>
+    <TD><A
+      href="interface/struct/NET_SDK_FACE_INFO_EDIT.htm">NET_SDK_FACE_INFO_EDIT</A></TD>
     <TD>NULL</TD></TR>
   <TR>
     <TD>NET_SDK_DEL_FACE_INFO</TD>
     <TD>0x09</TD>
     <TD>Delete face picture</TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_FACE_INFO_DEL.htm">NET_SDK_FACE_INFO_DEL</A></TD>
+    <TD><A
+      href="interface/struct/NET_SDK_FACE_INFO_DEL.htm">NET_SDK_FACE_INFO_DEL</A></TD>
     <TD>NULL</TD></TR>
   <TR>
     <TD>NET_SDK_GET_FACE_MATCH_ALARM</TD>
@@ -128,45 +128,45 @@ below.<BR></P>
     <TD>
       <P>Get face match alarm linkage</P></TD>
     <TD>NULL</TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_FACE_MATCH_ALARM.htm">NET_SDK_FACE_MATCH_ALARM</A></TD></TR>
+    <TD><A
+      href="interface/struct/NET_SDK_FACE_MATCH_ALARM.htm">NET_SDK_FACE_MATCH_ALARM</A></TD></TR>
   <TR>
     <TD>NET_SDK_SET_FACE_MATCH_ALARM</TD>
     <TD>0x0B</TD>
     <TD>Set face match alarm linkage</TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_FACE_MATCH_ALARM.htm">NET_SDK_FACE_MATCH_ALARM</A></TD>
+    <TD><A
+      href="interface/struct/NET_SDK_FACE_MATCH_ALARM.htm">NET_SDK_FACE_MATCH_ALARM</A></TD>
     <TD>NULL</TD></TR>
   <TR>
     <TD>NET_SDK_GET_FACE_INFO_IMG</TD>
     <TD>0x0C</TD>
     <TD>Get target face data</TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_FACE_INFO_IMG_GET.htm">NET_SDK_FACE_INFO_IMG_GET</A></TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_FACE_INFO_IMG_DATA.htm">NET_SDK_FACE_INFO_IMG_DATA</A></TD></TR>
+    <TD><A
+      href="interface/struct/NET_SDK_FACE_INFO_IMG_GET.htm">NET_SDK_FACE_INFO_IMG_GET</A></TD>
+    <TD><A
+      href="interface/struct/NET_SDK_FACE_INFO_IMG_DATA.htm">NET_SDK_FACE_INFO_IMG_DATA</A></TD></TR>
   <TR>
     <TD>NET_SDK_SEARCH_IMAGE_BY_IMG</TD>
     <TD>0x0D</TD>
     <TD>Search image&nbsp;by image</TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_SEARCH_IMAGE_BY_IMAGE.htm">NET_SDK_SEARCH_IMAGE_BY_IMAGE</A></TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_SEARCH_IMAGE_BY_IMAGE_LIST.htm">NET_SDK_SEARCH_IMAGE_BY_IMAGE_LIST</A></TD></TR>
+    <TD><A
+      href="interface/struct/NET_SDK_SEARCH_IMAGE_BY_IMAGE.htm">NET_SDK_SEARCH_IMAGE_BY_IMAGE</A></TD>
+    <TD><A
+      href="interface/struct/NET_SDK_SEARCH_IMAGE_BY_IMAGE_LIST.htm">NET_SDK_SEARCH_IMAGE_BY_IMAGE_LIST</A></TD></TR>
   <TR>
     <TD>NET_SDK_SEARCH_CH_SNAP_FACE_IMG_LIST</TD>
     <TD>0x0E</TD>
     <TD>Search faces of the camera</TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_CH_SNAP_FACE_IMG_LIST_SEARCH.htm">NET_SDK_CH_SNAP_FACE_IMG_LIST_SEARCH</A></TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_CH_SNAP_FACE_IMG_LIST.htm">NET_SDK_CH_SNAP_FACE_IMG_LIST</A></TD></TR>
+    <TD><A
+      href="interface/struct/NET_SDK_CH_SNAP_FACE_IMG_LIST_SEARCH.htm">NET_SDK_CH_SNAP_FACE_IMG_LIST_SEARCH</A></TD>
+    <TD><A
+      href="interface/struct/NET_SDK_CH_SNAP_FACE_IMG_LIST.htm">NET_SDK_CH_SNAP_FACE_IMG_LIST</A></TD></TR>
   <TR>
     <TD>NET_SDK_SEARCH_CH_SNAP_FACE_IMG</TD>
     <TD>0x0F</TD>
     <TD>Search the face information of the camera</TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_FACE_IMG_INFO_CH.htm">NET_SDK_FACE_IMG_INFO_CH</A></TD>
-    <TD><A 
-      href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43440.705677338/interface/struct/NET_SDK_FACE_INFO_IMG_DATA.htm">NET_SDK_FACE_INFO_IMG_DATA</A></TD></TR></TBODY></TABLE>
+    <TD><A
+      href="interface/struct/NET_SDK_FACE_IMG_INFO_CH.htm">NET_SDK_FACE_IMG_INFO_CH</A></TD>
+    <TD><A
+      href="interface/struct/NET_SDK_FACE_INFO_IMG_DATA.htm">NET_SDK_FACE_INFO_IMG_DATA</A></TD></TR></TBODY></TABLE>
 <H3>&nbsp;</H3><BR></BODY></HTML>

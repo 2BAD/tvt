@@ -1,20 +1,20 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML 
+<HTML
 xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>NET SDK FACE INFO ADD</TITLE>
 <META content="text/html; charset=gb2312" http-equiv=Content-Type>
-<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet 
+<META content=en-US http-equiv=Content-Language><LINK rel=Stylesheet
 type=text/css href="mystyle.css">
 <META name=GENERATOR content="MSHTML 8.00.7601.19104"></HEAD>
 <BODY>
-<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;Client SDK 
+<P style="BACKGROUND-COLOR: #888888"><BIG>&nbsp;Client SDK
 Instructions</BIG></P>
 <H1>NET_SDK_FACE_INFO_ADD</H1>
 <P>Add&nbsp;the face picture you want to compare.</P><PRE class=syntax> typedef struct _net_sdk_face_info_add_
 {
-    <A href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43441.5957271065/interface/struct/NET_SDK_FACE_INFO_LIST_ITEM.htm">NET_SDK_FACE_INFO_LIST_ITEM</A> sFaceInfoItem;
+    <A href="interface/struct/NET_SDK_FACE_INFO_LIST_ITEM.htm">NET_SDK_FACE_INFO_LIST_ITEM</A> sFaceInfoItem;
     unsigned int                imgNum;
-    <A href="file:///C:/Users/hj/AppData/Local/Temp/CHM%20Editor/设备网络SDK开发手册_new_43441.5957271065/interface/struct/NET_SDK_FACE_IMG_INFO_CH.htm">NET_SDK_FACE_IMG_INFO_CH</A>       sFaceImgInfo[DD_MAX_FACE_INFO_IMG];//最大5张
-    unsigned int                haveImgData;//0、1
+    <A href="interface/struct/NET_SDK_FACE_IMG_INFO_CH.htm">NET_SDK_FACE_IMG_INFO_CH</A>       sFaceImgInfo[DD_MAX_FACE_INFO_IMG];//锟斤拷锟�5锟斤拷
+    unsigned int                haveImgData;//0锟斤拷1
     unsigned int                imgWidth;//haveImgData ==1  Valid</PRE><PRE class=syntax>    unsigned int                imgHeight;//haveImgData ==1 Valid
     unsigned int                imgLen;//haveImgData ==1 Valid
     unsigned char               *imgData;//haveImgData ==1 Valid
@@ -22,24 +22,24 @@ Instructions</BIG></P>
 </PRE>
 <H3>Members</H3>
 <DL>
-  <DT>sFaceInfoItem 
-  <DD>Face feature information 
-  <DT>imgNum 
-  <DD>the number of images in sFaceImgInfo 
-  <DT>sFaceImgInfo 
-  <DD>image information 
-  <DT>haveImgData 
+  <DT>sFaceInfoItem
+  <DD>Face feature information
+  <DT>imgNum
+  <DD>the number of images in sFaceImgInfo
+  <DT>sFaceImgInfo
+  <DD>image information
+  <DT>haveImgData
   <DD>Picture&nbsp;data of the external importing picture&nbsp;
-  <DT>imgWidth 
-  <DD>picture width of the external importing picture. haveImgData==1 
+  <DT>imgWidth
+  <DD>picture width of the external importing picture. haveImgData==1
 valid&nbsp;
-  <DT>imgHeight 
-  <DD>picture height of&nbsp;the&nbsp;external importing picture. 
-  haveImgData==1valid 
-  <DT>&gt;imgLen&lt; 
-  <DD>picture size of the external importing picture.haveImgData==1valid 
-  <DT>imgData 
-  <DD>picture data.&nbsp;haveImgData==1valid 
+  <DT>imgHeight
+  <DD>picture height of&nbsp;the&nbsp;external importing picture.
+  haveImgData==1valid
+  <DT>&gt;imgLen&lt;
+  <DD>picture size of the external importing picture.haveImgData==1valid
+  <DT>imgData
+  <DD>picture data.&nbsp;haveImgData==1valid
   <DD>
   <HR>
   </DD></DL><BR>
