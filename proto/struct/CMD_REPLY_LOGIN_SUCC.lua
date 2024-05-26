@@ -19,7 +19,7 @@ local function struct(table, fields, buffer, offset)
   table:add_le(fields.audioChannel, buffer(offset, 1)); offset = offset + 1
   table:add_le(fields.dwAudioSample, buffer(offset, 4)); offset = offset + 4
   table:add_le(fields.UserRight, buffer(offset, 4)); offset = offset + 4
-  table:add_le(fields.softwareVer, buffer(offset, 4)); offset = offset + 4
+  table:add(fields.softwareVer, buffer(offset, 4)); offset = offset + 4
   table:add_le(fields.buildDate, buffer(offset, 4)); offset = offset + 4
   table:add_le(fields.MAC, buffer(offset, 6)); offset = offset + 6
   table:add_le(fields.deviceName, buffer(offset, 34)); offset = offset + 34
