@@ -482,6 +482,28 @@ valuestrings.net_error = {
   [0xFFFF] = "NETERR_FAIL"
 }
 
+valuestrings.smart_alarm = {
+  [0x1] = "NET_SMART_ALARM_MOTION",
+  [0x2] = "NET_SMART_ALARM_SENIOR",
+  [0x3] = "NET_SMART_ALARM_PERIMETER",
+  [0x4] = "NET_SMART_ALARM_TRIPWIRE",
+  [0x5] = "NET_SMART_ALARM_SCENECHG",
+  [0x6] = "NET_SMART_ALARM_CLARITYABNML",
+  [0x7] = "NET_SMART_ALARM_COLORABNML",
+  [0x8] = "NET_SMART_ALARM_OSC",
+  [0x9] = "NET_SMART_ALARM_CPC",
+  [0x0A] = "NET_SMART_ALARM_CDD",
+  [0x0B] = "NET_SMART_ALARM_IPD",
+  [0x0C] = "NET_SMART_ALARM_VFD",
+  [0x0D] = "NET_SMART_ALARM_VFD_MATCH",
+  [0x0E] = "NET_SMART_ALARM_VEHICE",
+  [0x0F] = "NET_SMART_ALARM_AOIENTRY",
+  [0x10] = "NET_SMART_ALARM_AOILEAVE",
+  [0x11] = "NET_SMART_ALARM_PASSLINECOUNT",
+  [0x12] = "NET_SMART_ALARM_TRAFFIC",
+  [0x13] = "NET_SMART_ALARM_MAX"
+}
+
 valuestrings.direction = {
   [0] = "Request",
   [1] = "Response"
