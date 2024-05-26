@@ -14,7 +14,7 @@ type SDK = {
   // int NET_SDK_DiscoverDevice(NET_SDK_DEVICE_DISCOVERY_INFO *pDeviceInfo, int bufNum, int waitSeconds = 3);
   discoverDevice: (deviceInfo: Record<string, unknown>, bufNum: number, waitSeconds: number) => number
   // spell-checker: disable-next-line
-  // BOOL NET_SDK_GetDeviceInfo(LONG lUserID, LPNET_SDK_DEVICEINFO pdecviceInfo);
+  // ✅︎ BOOL NET_SDK_GetDeviceInfo(LONG lUserID, LPNET_SDK_DEVICEINFO pdecviceInfo);
   getDeviceInfo: (userId: number, deviceInfo: DeviceInfo) => boolean
   // BOOL NET_SDK_GetDeviceIPCInfo(LONG lUserID, NET_SDK_IPC_DEVICE_INFO *pDeviceIPCInfo, LONG lBuffSize, LONG *pIPCCount);
   getDeviceIPCInfo: (userId: number, deviceIPCInfo: DeviceInfo, buffSize: number, ipcCount: number[]) => boolean

@@ -153,6 +153,7 @@ export class Device {
    */
   @auth
   get info(): DeviceInfo {
+    sdk.getDeviceInfo(this.userId, this.#deviceInfo)
     return this.#deviceInfo
   }
 
