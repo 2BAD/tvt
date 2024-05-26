@@ -71,6 +71,12 @@ local fields = {
     -- alarm fields
     channelId = ProtoField.uint32("ipc.alarm.channelId", "ChannelId"),
 
+    -- http fields
+    httpDataLen = ProtoField.uint32("ipc.http.dataLen", "HTTP Data Length"),
+    httpSeq = ProtoField.uint32("ipc.http.seq", "Sequence"),
+    httpReverse = ProtoField.bytes("ipc.http.reverse", "Reverse"),
+    httpContent = ProtoField.string("ipc.http.content", "Content"),
+    httpEndByte = ProtoField.uint8("ipc.http.endByte", "End Byte"),
 
     unk8 = ProtoField.uint8("ipc.unk8", "Unknown"),
     unk32 = ProtoField.uint32("ipc.unk32", "Unknown"),

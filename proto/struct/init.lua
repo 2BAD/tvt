@@ -5,7 +5,9 @@ local files = {
   "CMD_REPLY_LOGIN_SUCC",
   "CMD_REPLY_LOGIN_FAIL",
   "CMD_REQUEST_ALARM_OUT_START",
-  "CMD_REQUEST_ALARM_OUT_STOP"
+  "CMD_REQUEST_ALARM_OUT_STOP",
+  "CMD_HTTP_REQUEST",
+  "CMD_HTTP_REPLY"
 }
 
 for _, file in ipairs(files) do
