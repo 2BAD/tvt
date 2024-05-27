@@ -1,4 +1,27 @@
 {
+  "[lua]": {
+    "editor.defaultFormatter": "sumneko.lua"
+  },
+  "cSpell.enableFiletypes": ["lua"],
+  "cSpell.words": [
+    "CIPC",
+    "DEVICEINFO",
+    "DVRIP",
+    "fastcall",
+    "ipc",
+    "keepalive",
+    "koffi",
+    "libdvrnetsdk",
+    "LPNET",
+    "lpsz",
+    "pinfo",
+    "POINTERHANDLE",
+    "proto",
+    "rtsp",
+    "valuestrings",
+    "YLOG",
+    "YMMDD"
+  ],
   "editor.codeActionsOnSave": {
     "source.fixAll": "always",
     "source.organizeImports": "always"
@@ -6,20 +29,10 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "eslint.workingDirectories": [{ "mode": "auto" }],
-  "cSpell.words": [
-    "DEVICEINFO",
-    "DVRIP",
-    "fastcall",
-    "ipc",
-    "koffi",
-    "libdvrnetsdk",
-    "LPNET",
-    "lpsz",
-    "POINTERHANDLE",
-    "rtsp",
-    "YLOG",
-    "YMMDD"
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
   ],
   "Lua.diagnostics.globals": ["ProtoField", "Proto", "base", "DissectorTable"]
 }
