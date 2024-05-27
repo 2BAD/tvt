@@ -6,8 +6,8 @@ local function struct(table, fields, buffer, offset)
   table:add(fields.ip, buffer(offset, 8)); offset = offset + 8
   table:add(fields.mac, buffer(offset, 6)); offset = offset + 6
   table:add(fields.productType, buffer(offset, 1)); offset = offset + 1
-  table:add(fields.resv, buffer(offset, 1)); offset = offset + 1
-  table:add_le(fields.netProtocolVer, buffer(offset, 4)); offset = offset + 4
+  table:add(fields.reservedBytes, buffer(offset, 1)); offset = offset + 1
+  table:add_le(fields.protocolVer, buffer(offset, 4)); offset = offset + 4
   return offset
 end
 

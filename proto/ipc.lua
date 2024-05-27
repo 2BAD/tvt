@@ -78,7 +78,7 @@ function protocol.dissector(buffer, pinfo, root)
         -- handle the rest of the data if any
         if buffer:len() > offset then
           local t_unknown = t_command:add(protocol, buffer(offset), "Unknown")
-          t_unknown:add_le(fields.unkb, buffer(offset))
+          t_unknown:add_le(fields.unknownBytes, buffer(offset))
         end
       end
     end
