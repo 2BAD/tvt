@@ -20,8 +20,18 @@ function protocol.dissector(buffer, pinfo, root)
     pinfo.cols.info = "keepalive"
   end
 
-  -- If head is not "1111" nor "head" then it's a part of a chunked packet and should be skipped
-  if p_head ~= "1111" and p_head ~= "head" then
+  -- Init packet is a special case and should be handled differently
+  if p_head == 'head' then
+    pinfo.cols.info = "CMD_INIT"
+
+    -- Create top level t_ipc subtree
+    local t_ipc = root:add(protocol, buffer(), "IPC")
+
+    local process = struct["CMD_INIT"]
+    offset = process(t_ipc, fields, buffer, offset)
+
+    -- If head is not "1111" nor "head" then it's a part of a chunked packet and should be skipped
+  elseif p_head ~= "1111" and p_head ~= "head" then
     -- TODO: try to combine chunks in a global function
     -- see https://ask.wireshark.org/question/11650/lua-wireshark-dissector-combine-data-from-2-udp-packets/
     pinfo.cols.info = "^^^ CHUNK ^^^"

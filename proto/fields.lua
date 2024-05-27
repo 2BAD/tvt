@@ -13,6 +13,19 @@ local fields = {
 
     -- generic fields
     error = ProtoField.uint32("ipc.error", "Error", base.HEX, vs.net_error),
+  -- init fields
+  flag = ProtoField.string("ipc.init.flag", "Flag"),
+  devType = ProtoField.uint32("ipc.init.devType", "Device Type", base.DEC),
+  initProductType = ProtoField.uint32("ipc.init.productType", "Product Type", base.DEC),
+  configVer = ProtoField.uint32("ipc.init.ConfigVer", "Config Version", base.DEC),
+  id = ProtoField.uint32("ipc.init.ID", "ID", base.DEC),
+  encryptType = ProtoField.uint32("ipc.init.EncryptType", "Encrypt Type", base.DEC),
+  encryptParam = ProtoField.bytes("ipc.init.EncryptParam", "Encrypt Param", base.SPACE),
+  initSoftwareVer = ProtoField.uint32("ipc.init.SoftwareVer", "Software Version", base.DEC),
+  loginEncrypt = ProtoField.uint8("ipc.init.loginEncrypt", "Login Encryption", base.DEC),
+  loginNonce = ProtoField.bytes("ipc.init.loginNonce", "Login Nonce", base.SPACE),
+  supportSoftEncrypt = ProtoField.uint32("ipc.init.supportSoftEncrypt", "Support Soft Encryption", base.DEC),
+  transportEncryptType = ProtoField.uint8("ipc.init.transportEncryptType", "Transport Encryption Type", base.DEC),
 
     -- login fields
     connectType = ProtoField.uint32("ipc.login.connectType", "Connect Type"),
