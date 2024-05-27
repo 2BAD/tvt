@@ -9,14 +9,10 @@ local protocol = Proto("IPC", "TVT IPC Protocol")
 protocol.fields = fields
 
 -- Define the dissector function
-function protocol.dissector(buffer, pinfo, tree)
+function protocol.dissector(buffer, pinfo, root)
   -- Set protocol name
   pinfo.cols.protocol = protocol.name
-
-  -- Create t_ipc subtree
-  local t_ipc = tree:add(protocol, buffer(), "IPC")
   local offset = 0
-
   local p_head = buffer(offset, 4):string()
 
   -- If head is "1111" and there is no data then it's a keepalive packet
@@ -24,11 +20,15 @@ function protocol.dissector(buffer, pinfo, tree)
     pinfo.cols.info = "keepalive"
   end
 
-  -- If head is not "1111" nor "head" then it's a part of  chunked packet and should be skipped
+  -- If head is not "1111" nor "head" then it's a part of a chunked packet and should be skipped
   if p_head ~= "1111" and p_head ~= "head" then
+    -- TODO: try to combine chunks in a global function
+    -- see https://ask.wireshark.org/question/11650/lua-wireshark-dissector-combine-data-from-2-udp-packets/
     pinfo.cols.info = "^^^ CHUNK ^^^"
-  -- otherwise continue parsing
+    -- otherwise continue parsing
   else
+    -- Create top level t_ipc subtree
+    local t_ipc = root:add(protocol, buffer(), "IPC")
     -- Create t_header subtree
     local t_header = t_ipc:add(protocol, buffer(offset), "Header")
 
@@ -38,7 +38,6 @@ function protocol.dissector(buffer, pinfo, tree)
 
     -- continue parsing if there is more data
     if buffer:len() > offset then
-
       -- Create t_command subtree
       local t_command = t_ipc:add(protocol, buffer(offset), "Command")
 
@@ -63,7 +62,7 @@ function protocol.dissector(buffer, pinfo, tree)
 
         local process = struct[vs.ipc_cmd[p_cmdType]]
         if process then
-            offset = process(t_data, fields, buffer, offset)
+          offset = process(t_data, fields, buffer, offset)
         end
 
         -- handle the rest of the data if any
