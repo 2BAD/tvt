@@ -43,8 +43,8 @@ function protocol.dissector(buffer, pinfo, root)
     local t_header = t_ipc:add(protocol, buffer(offset), "Header")
 
     -- Add fields to the t_header
-    t_header:add(fields.head, buffer(offset, 4)); offset = offset + 4
-    t_header:add_le(fields.cmd_length, buffer(offset, 4)); offset = offset + 4
+    t_header:add(fields.flag, buffer(offset, 4)); offset = offset + 4
+    t_header:add_le(fields.cmdLen, buffer(offset, 4)); offset = offset + 4
 
     -- continue parsing if there is more data
     if buffer:len() > offset then
@@ -64,7 +64,7 @@ function protocol.dissector(buffer, pinfo, root)
 
       t_command:add_le(fields.cmdId, buffer(offset, 4)); offset = offset + 4
       t_command:add_le(fields.cmdVer, buffer(offset, 4)); offset = offset + 4
-      t_command:add_le(fields.data_length, buffer(offset, 4)); offset = offset + 4
+      t_command:add_le(fields.dataLen, buffer(offset, 4)); offset = offset + 4
 
       if buffer:len() > offset then
         -- Create t_data subtree

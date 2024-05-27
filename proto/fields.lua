@@ -2,26 +2,26 @@ local vs = require("proto.valuestrings")
 
 local fields = {
   -- header and command fields
-  head = ProtoField.string("ipc.head", "Head"),
-  cmd_length = ProtoField.uint32("ipc.len", "Command Length"),
+  flag = ProtoField.string("ipc.flag", "Flag"),
+  cmdLen = ProtoField.uint32("ipc.cmd.len", "Command Length"),
   cmd = ProtoField.uint32("ipc.cmd", "Command", base.HEX),
   cmdType = ProtoField.uint32("ipc.cmdType", "Type", base.HEX, vs.ipc_cmd, 0x0FFFFFFF),
   direction = ProtoField.uint8("ipc.direction", "Direction", base.DEC, vs.direction, 0x0F000000),
   cmdId = ProtoField.uint8("ipc.cmdId", "Command ID", base.DEC),
   cmdVer = ProtoField.uint8("ipc.cmdVer", "Command Version", base.DEC),
-  data_length = ProtoField.uint32("ipc.len", "Data Length"),
+  dataLen = ProtoField.uint32("ipc.data.len", "Data Length"),
 
   -- generic fields
   error = ProtoField.uint32("ipc.error", "Error", base.HEX, vs.net_error),
+  ip = ProtoField.string("ipc.device.ip", "IP"),
   mac = ProtoField.bytes("ipc.device.mac", "MAC", base.COLON),
-  protocolVer = ProtoField.uint32("ipc.device.protocolVer", "Protocol Version", base.DEC, vs.version),
+  protocolVer = ProtoField.uint32("ipc.device.protocolVer", "Protocol Version", base.DEC),
 
   -- init fields
-  flag = ProtoField.string("ipc.init.flag", "Flag"),
   devType = ProtoField.uint32("ipc.init.devType", "Device Type", base.DEC),
   initProductType = ProtoField.uint32("ipc.init.productType", "Product Type", base.DEC),
   configVer = ProtoField.uint32("ipc.init.ConfigVer", "Config Version", base.DEC),
-  id = ProtoField.uint32("ipc.init.ID", "ID", base.DEC),
+  id = ProtoField.uint32("ipc.init.id", "ID", base.DEC),
   encryptType = ProtoField.uint32("ipc.init.EncryptType", "Encrypt Type", base.DEC),
   encryptParam = ProtoField.bytes("ipc.init.EncryptParam", "Encrypt Param", base.SPACE),
   initSoftwareVer = ProtoField.uint32("ipc.init.SoftwareVer", "Software Version", base.DEC),
@@ -35,7 +35,6 @@ local fields = {
   username = ProtoField.bytes("ipc.login.username", "Username", base.SPACE),
   password = ProtoField.bytes("ipc.login.password", "Password", base.SPACE),
   computerName = ProtoField.string("ipc.login.computerName", "Computer Name"),
-  ip = ProtoField.string("ipc.login.ip", "IP"),
   productType = ProtoField.uint8("ipc.login.productType", "Product Type"),
 
   -- config fields
@@ -81,7 +80,7 @@ local fields = {
   channelId = ProtoField.uint32("ipc.alarm.channelId", "Channel ID"),
 
   -- http fields
-  httpDataLen = ProtoField.uint32("ipc.http.dataLen", "HTTP Data Length"),
+  httpContentLen = ProtoField.uint32("ipc.http.content.len", "HTTP Content Length"),
   httpSeq = ProtoField.uint32("ipc.http.seq", "Sequence"),
   httpReverse = ProtoField.bytes("ipc.http.reverse", "Reverse"),
   httpContent = ProtoField.string("ipc.http.content", "Content"),
