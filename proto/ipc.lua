@@ -15,9 +15,9 @@ function protocol.dissector(buffer, pinfo, root)
   local offset = 0
   local p_head = buffer(offset, 4):string()
 
-  -- If head is "1111" and there is no data then it's a keepalive packet
+  -- If head is "1111" and there is no data then it's a heartbeat packet
   if p_head == "1111" and buffer:len() == offset + 8 then
-    pinfo.cols.info = "keepalive"
+    pinfo.cols.info = "heartbeat"
   end
 
   -- Init packet is a special case and should be handled differently
@@ -56,7 +56,7 @@ function protocol.dissector(buffer, pinfo, root)
       t_command:add_le(fields.cmdType, buffer(offset, 4))
       t_command:add_le(fields.direction, buffer(offset, 4)); offset = offset + 4
 
-      if vs.ipc_cmd[p_cmdType] and pinfo.cols.info ~= "keepalive" then
+      if vs.ipc_cmd[p_cmdType] and pinfo.cols.info ~= "heartbeat" then
         pinfo.cols.info = vs.ipc_cmd[p_cmdType]
       else
         pinfo.cols.info = string.format("0x%X", p_cmdType)
