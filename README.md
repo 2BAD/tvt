@@ -15,7 +15,6 @@ This directory holds comprehensive documentation provided by TVT. It includes:
 - The original SDK manual
 - Header files
 - A variety of demo projects implemented in multiple programming languages
-- These resources are invaluable for understanding the capabilities and proper usage of the TVT SDK.
 
 ### `proto`
 
