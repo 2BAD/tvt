@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/2BAD/tvt.git"
+    "url": "git+https://github.com/2BAD/tvt.git"
   },
   "license": "MIT",
   "author": "2BAD (https://github.com/2BAD)",
