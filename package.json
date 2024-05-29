@@ -28,6 +28,7 @@
   "exports": "./build/device.js",
   "typings": "./build/device.d.ts",
   "files": [
+    "bin",
     "build"
   ],
   "scripts": {
