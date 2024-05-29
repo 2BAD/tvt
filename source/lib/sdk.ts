@@ -3,7 +3,7 @@ import { resolve } from 'node:path'
 import { LPNET_SDK_DEVICEINFO, NET_SDK_DEVICE_DISCOVERY_INFO, NET_SDK_IPC_DEVICE_INFO } from './struct/index.ts'
 import { type DeviceInfo, type LOG_LEVEL } from './types.ts'
 
-const path = resolve('bin/linux/libdvrnetsdk.so')
+const path = resolve(import.meta.dirname, '../../', 'bin/linux/libdvrnetsdk.so')
 const lib = koffi.load(path)
 
 type SDK = {
