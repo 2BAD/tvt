@@ -10,7 +10,7 @@
     "transform": {
       "decoratorVersion": "2022-03"
     },
-    "target": "esnext",
+    "target": "es2022",
     "baseUrl": "./source",
     "paths": {
       "~/*": ["./*"]
