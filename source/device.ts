@@ -34,8 +34,8 @@ export type VersionInfo = {
  * Represents a generic TVT Device.
  */
 export class Device {
-  readonly #ip: string
-  readonly #port: number
+  readonly ip: string
+  readonly port: number
 
   readonly #connectionTimeoutMs: number = 5 * 1000
   readonly #maxRetries: number = 3
@@ -61,8 +61,8 @@ export class Device {
    * @param settings - The settings for the device.
    */
   constructor(ip: string, port = 9008, settings?: Settings) {
-    this.#ip = validateIp(ip)
-    this.#port = validatePort(port)
+    this.ip = validateIp(ip)
+    this.port = validatePort(port)
 
     if (settings) {
       this.#connectionTimeoutMs = settings.connectionTimeoutMs ?? this.#connectionTimeoutMs
@@ -167,7 +167,7 @@ export class Device {
    */
   @measure
   login(user: string, pass: string): boolean {
-    this.userId = sdk.login(this.#ip, this.#port, user, pass, this.#deviceInfo)
+    this.userId = sdk.login(this.ip, this.port, user, pass, this.#deviceInfo)
     if (this.userId === -1) {
       throw new Error(this.getLastError())
     }
