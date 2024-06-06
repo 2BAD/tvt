@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto'
 import { existsSync, mkdirSync } from 'node:fs'
 import { dirname } from 'node:path'
 import { auth, measure } from './decorators/index.ts'
@@ -34,6 +35,7 @@ export type VersionInfo = {
  * Represents a generic TVT Device.
  */
 export class Device {
+  readonly uuid: `${string}-${string}-${string}-${string}-${string}`
   readonly ip: string
   readonly port: number
 
@@ -61,6 +63,7 @@ export class Device {
    * @param settings - The settings for the device.
    */
   constructor(ip: string, port = 9008, settings?: Settings) {
+    this.uuid = randomUUID()
     this.ip = validateIp(ip)
     this.port = validatePort(port)
 
