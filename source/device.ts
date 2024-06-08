@@ -8,6 +8,7 @@ import { sdk } from './lib/sdk.ts'
 import { NET_SDK_ERROR, type DeviceInfo } from './lib/types.ts'
 
 export type Settings = {
+  uuid?: `${string}-${string}-${string}-${string}-${string}`
   connectionTimeoutMs?: number
   maxRetries?: number
   reconnectIntervalMs?: number
@@ -63,9 +64,9 @@ export class Device {
    * @param settings - The settings for the device.
    */
   constructor(ip: string, port = 9008, settings?: Settings) {
-    this.uuid = randomUUID()
     this.ip = validateIp(ip)
     this.port = validatePort(port)
+    this.uuid = settings?.uuid ?? randomUUID()
 
     if (settings) {
       this.#connectionTimeoutMs = settings.connectionTimeoutMs ?? this.#connectionTimeoutMs
