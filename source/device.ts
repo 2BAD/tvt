@@ -1,3 +1,4 @@
+import debug from 'debug'
 import { randomUUID } from 'node:crypto'
 import { existsSync, mkdirSync } from 'node:fs'
 import { dirname } from 'node:path'
@@ -7,30 +8,8 @@ import { validateIp, validatePort } from './helpers/validators.ts'
 import { sdk } from './lib/sdk.ts'
 import { NET_SDK_ERROR, type DeviceInfo } from './lib/types.ts'
 import type { Settings, VersionInfo } from './types.ts'
-export type Settings = {
-  uuid?: `${string}-${string}-${string}-${string}-${string}`
-  connectionTimeoutMs?: number
-  maxRetries?: number
-  reconnectIntervalMs?: number
-  isReconnectEnabled?: boolean
-}
 
-export type VersionInfo = {
-  sdk: {
-    version: string
-    build: string
-  }
-  device: {
-    name: string
-    model: string
-    SN: string
-    firmware: string
-    kernel: string
-    hardware: string
-    MCU: string
-    software: number
-  }
-}
+const log = debug('tvt:device')
 
 /**
  * Represents a generic TVT Device.
@@ -76,7 +55,7 @@ export class Device {
     }
 
     if (this.init()) {
-      console.log('Device initialized successfully!')
+      log(`${this.uuid} device initialized successfully!`)
 
       const sdkVersion = sdk.getSDKVersion()
       const buildVersion = sdk.getSDKBuildVersion()
@@ -196,6 +175,7 @@ export class Device {
    */
   @auth
   triggerAlarm(value: boolean): boolean {
+    // @TODO: get alarm channels from device info
     const alarmChannels = [0]
     const alarmValues = [value ? 1 : 0]
     return sdk.triggerAlarm(this.userId, alarmChannels, alarmValues, alarmChannels.length, this.#isAlarmOpen)

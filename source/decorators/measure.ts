@@ -1,5 +1,7 @@
+import debug from 'debug'
 import { performance } from 'node:perf_hooks'
-import { Roarr as log } from 'roarr'
+
+const log = debug('tvt:perf')
 
 /**
  * A method decorator that measures the execution time of the decorated method.
@@ -24,7 +26,7 @@ export const measure = <This, Args extends any[], Return>(
     const start = performance.now()
     const result = target.call(this, ...args)
     const finish = performance.now()
-    log(`[${methodName}] Execution time: ${finish - start} milliseconds`)
+    log(`[${methodName}] execution time: ${finish - start} ms`)
     return result
   }
   return trackPerf
