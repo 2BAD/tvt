@@ -6,7 +6,7 @@ import { parseBuildDate } from './helpers/date.ts'
 import { validateIp, validatePort } from './helpers/validators.ts'
 import { sdk } from './lib/sdk.ts'
 import { NET_SDK_ERROR, type DeviceInfo } from './lib/types.ts'
-
+import type { Settings, VersionInfo } from './types.ts'
 export type Settings = {
   uuid?: `${string}-${string}-${string}-${string}-${string}`
   connectionTimeoutMs?: number
