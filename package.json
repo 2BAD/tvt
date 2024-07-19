@@ -70,7 +70,7 @@
     "@types/debug": "4.1.12",
     "@types/node": "20.14.10",
     "@vitest/coverage-v8": "2.0.3",
-    "eslint-config-love": "52.0.0",
+    "eslint-config-love": "56.0.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-import-resolver-typescript": "3.6.1",
     "eslint-plugin-jsdoc": "48.7.0",
