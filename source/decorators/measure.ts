@@ -10,10 +10,10 @@ const log = debug('tvt:perf')
  * @param context - The context in which the method is executed, providing metadata such as the method name.
  * @returns A replacement method that includes execution time measurement.
  */
-export const measure = <This, Args extends any[], Return>(
+export const measure = <This, Args extends unknown[], Return>(
   target: (this: This, ...args: Args) => Return,
   context: DecoratorContext
-): any => {
+): unknown => {
   const methodName = String(context.name)
 
   /**
