@@ -1,4 +1,4 @@
-import { type Device } from '../device.ts'
+import type { Device } from '../device.ts'
 
 /**
  * A method decorator that checks if the user is logged in (userId is defined) before executing the decorated method.
@@ -11,10 +11,10 @@ import { type Device } from '../device.ts'
  * @param _context - The context in which the method is executed, providing metadata.
  * @returns A replacement method that includes the login check.
  */
-export const auth = <This extends Device, Args extends any[], Return>(
+export const auth = <This extends Device, Args extends unknown[], Return>(
   target: (this: This, ...args: Args) => Return,
   _context: DecoratorContext
-): any => {
+): unknown => {
   /**
    * Replacement method that checks if the user is logged in before executing the original method.
    *

@@ -91,15 +91,6 @@ export class Device {
     if (this.userId) {
       this.logout()
     }
-    return this.cleanup()
-  }
-
-  /**
-   * Dispose of the SDK resources.
-   *
-   * @returns A boolean indicating whether the cleanup was successful.
-   */
-  cleanup(): boolean {
     return sdk.cleanup()
   }
 
@@ -205,6 +196,7 @@ export class Device {
    *
    * @returns A string describing the last error.
    */
+  // eslint-disable-next-line @typescript-eslint/class-methods-use-this
   getLastError(): string {
     return NET_SDK_ERROR[sdk.getLastError()] ?? 'Unknown error'
   }
