@@ -13,7 +13,8 @@ const log = debug('tvt:perf')
 export const measure = <This, Args extends unknown[], Return>(
   target: (this: This, ...args: Args) => Return,
   context: DecoratorContext
-): unknown => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+): any => {
   const methodName = String(context.name)
 
   /**
