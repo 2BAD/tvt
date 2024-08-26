@@ -66,11 +66,11 @@
   "devDependencies": {
     "@2bad/tsconfig": "3.0.1",
     "@swc/cli": "0.4.0",
-    "@swc/core": "1.7.12",
+    "@swc/core": "1.7.18",
     "@types/debug": "4.1.12",
     "@types/node": "20.16.1",
     "@vitest/coverage-v8": "2.0.5",
-    "eslint-config-love": "62.0.0",
+    "eslint-config-love": "62.0.1",
     "eslint-config-prettier": "9.1.0",
     "eslint-import-resolver-typescript": "3.6.1",
     "eslint-plugin-jsdoc": "50.2.2",
@@ -89,7 +89,7 @@
     "node": ">=20"
   },
   "volta": {
-    "node": "22.6.0",
+    "node": "22.7.0",
     "npm": "10.8.2"
   }
 }
