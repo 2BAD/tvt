@@ -22,3 +22,5 @@ export type VersionInfo = {
     software: number
   }
 }
+
+export type * from './lib/types.ts'
