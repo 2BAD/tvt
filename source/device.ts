@@ -29,7 +29,6 @@ export class Device {
   // @ts-expect-error checking for userId is done inside the @auth decorator so unless the decorator is removed, userId will always be defined
   userId: number
   // @ts-expect-error deviceInfo is passed as a pointer to login function and should be initialized as an empty object
-  // eslint-disable-next-line @typescript-eslint/prefer-readonly
   #deviceInfo: DeviceInfo = {}
 
   readonly #sdkVersion: string | undefined
@@ -196,7 +195,7 @@ export class Device {
    *
    * @returns A string describing the last error.
    */
-  // eslint-disable-next-line @typescript-eslint/class-methods-use-this
+
   getLastError(): string {
     return NET_SDK_ERROR[sdk.getLastError()] ?? 'Unknown error'
   }

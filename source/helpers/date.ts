@@ -12,7 +12,7 @@ export const parseBuildDate = (dateString: string): string => {
 
   const [year, month, day] = [+dateString.charAt(0) + 2017, dateString.slice(1, 3), dateString.slice(3, 5)]
 
-  if (isNaN(year) || isNaN(Number(month)) || isNaN(Number(day))) {
+  if (Number.isNaN(year) || Number.isNaN(Number(month)) || Number.isNaN(Number(day))) {
     throw new Error('Invalid date string format. Expected format is YMMDD.')
   }
 

@@ -14,8 +14,7 @@ import type { Device } from '../device.ts'
 export const auth = <This extends Device, Args extends unknown[], Return>(
   target: (this: This, ...args: Args) => Return,
   _context: DecoratorContext
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-): any => {
+) => {
   /**
    * Replacement method that checks if the user is logged in before executing the original method.
    *

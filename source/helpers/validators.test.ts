@@ -23,17 +23,17 @@ describe('validateIp', () => {
       '173.194.34.134'
     ]
 
-    validIps.forEach((ip) => {
+    for (const ip of validIps) {
       expect(validateIp(ip)).toBe(ip)
-    })
+    }
   })
 
   it('should throw an error if the IP address is invalid', () => {
     expect.assertions(5)
     const invalidIps = ['999.999.999.999', '256.256.256.256', 'abc.def.ghi.jkl', '123.456.78.90.12', '']
-    invalidIps.forEach((ip) => {
+    for (const ip of invalidIps) {
       expect(() => validateIp(ip)).toThrow('Invalid IP address')
-    })
+    }
   })
 })
 
