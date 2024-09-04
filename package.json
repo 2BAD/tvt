@@ -26,7 +26,7 @@
   ],
   "type": "module",
   "exports": "./build/device.js",
-  "typings": "./build/device.d.ts",
+  "types": "./build/device.d.ts",
   "files": [
     "bin",
     "build"

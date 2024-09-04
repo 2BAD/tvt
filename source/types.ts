@@ -1,3 +1,5 @@
+export type * from './lib/types.ts'
+
 export type Settings = {
   uuid?: `${string}-${string}-${string}-${string}-${string}`
   connectionTimeoutMs?: number
@@ -22,5 +24,3 @@ export type VersionInfo = {
     software: number
   }
 }
-
-export type * from './lib/types.ts'
