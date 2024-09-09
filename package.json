@@ -52,7 +52,7 @@
     "test:unit": "vitest run unit --coverage"
   },
   "dependencies": {
-    "debug": "4.3.6",
+    "debug": "4.3.7",
     "easy-buffer": "1.2.0",
     "koffi": "2.9.0",
     "roarr": "7.21.1"
@@ -63,9 +63,9 @@
     "@2bad/tsfix": "0.1.0",
     "@biomejs/biome": "1.8.3",
     "@swc/cli": "0.4.0",
-    "@swc/core": "1.7.23",
+    "@swc/core": "1.7.24",
     "@types/debug": "4.1.12",
-    "@types/node": "22.5.3",
+    "@types/node": "22.5.4",
     "@vitest/coverage-v8": "2.0.5",
     "npm-run-all2": "6.2.2",
     "rimraf": "6.0.1",
@@ -79,7 +79,7 @@
     "node": ">=20"
   },
   "volta": {
-    "node": "22.7.0",
+    "node": "22.8.0",
     "npm": "10.8.3"
   }
 }
