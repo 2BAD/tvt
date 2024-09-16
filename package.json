@@ -58,21 +58,21 @@
     "roarr": "7.21.1"
   },
   "devDependencies": {
-    "@2bad/axiom": "1.0.0-beta.5",
+    "@2bad/axiom": "1.0.0-beta.8",
     "@2bad/tsconfig": "3.0.1",
     "@2bad/tsfix": "0.1.0",
-    "@biomejs/biome": "1.8.3",
+    "@biomejs/biome": "1.9.1",
     "@swc/cli": "0.4.0",
-    "@swc/core": "1.7.24",
+    "@swc/core": "1.7.26",
     "@types/debug": "4.1.12",
-    "@types/node": "22.5.4",
-    "@vitest/coverage-v8": "2.0.5",
-    "npm-run-all2": "6.2.2",
+    "@types/node": "22.5.5",
+    "@vitest/coverage-v8": "2.1.1",
+    "npm-run-all2": "6.2.3",
     "rimraf": "6.0.1",
     "tsc-alias": "1.8.10",
-    "typescript": "5.5.4",
+    "typescript": "5.6.2",
     "vite-tsconfig-paths": "5.0.1",
-    "vitest": "2.0.5"
+    "vitest": "2.1.1"
   },
   "packageManager": "npm@10.8.3",
   "engines": {
