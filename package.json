@@ -54,14 +54,14 @@
   "dependencies": {
     "debug": "4.3.7",
     "easy-buffer": "1.2.0",
-    "koffi": "2.9.0",
+    "koffi": "2.9.1",
     "roarr": "7.21.1"
   },
   "devDependencies": {
     "@2bad/axiom": "1.0.0-beta.8",
     "@2bad/tsconfig": "3.0.1",
     "@2bad/tsfix": "0.1.0",
-    "@biomejs/biome": "1.9.1",
+    "@biomejs/biome": "1.9.2",
     "@swc/cli": "0.4.0",
     "@swc/core": "1.7.26",
     "@types/debug": "4.1.12",
@@ -79,7 +79,7 @@
     "node": ">=20"
   },
   "volta": {
-    "node": "22.8.0",
+    "node": "22.9.0",
     "npm": "10.8.3"
   }
 }
