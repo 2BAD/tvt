@@ -3,6 +3,7 @@ import { randomUUID } from 'node:crypto'
 import { existsSync, mkdirSync } from 'node:fs'
 import { platform } from 'node:os'
 import { dirname } from 'node:path'
+import pSeries from 'p-series'
 import { auth, measure } from './decorators/index.ts'
 import { parseBuildDate } from './helpers/date.ts'
 import { validateIp, validatePort } from './helpers/validators.ts'
@@ -36,21 +37,9 @@ export class Device {
   readonly #sdkVersion: string
   readonly #sdkBuild: string
 
-  /**
-   * Creates a new device.
-   *
-   * @param ip - The IP address of the device.
-   * @param port - The port of the device.
-   * @param settings - The settings for the device.
-   * @throws {Error} If not running on Linux or initialization fails
-   */
-  constructor(ip: string, port = 9008, settings?: Settings) {
-    if (platform() !== 'linux') {
-      throw new Error('This SDK is only supported on Linux platforms')
-    }
-
-    this.ip = validateIp(ip)
-    this.port = validatePort(port)
+  private constructor(ip: string, port: number, settings: Settings | undefined, sdkVersion: string, sdkBuild: string) {
+    this.ip = ip
+    this.port = port
     this.uuid = settings?.uuid ?? randomUUID()
 
     if (settings) {
@@ -60,47 +49,52 @@ export class Device {
       this.#isReconnectEnabled = settings.isReconnectEnabled ?? this.#isReconnectEnabled
     }
 
-    log(`Initializing device ${this.uuid} with IP: ${this.ip}:${this.port}`)
+    this.#sdkVersion = sdkVersion
+    this.#sdkBuild = sdkBuild
+
+    log(`Device ${this.uuid} created with IP: ${this.ip}:${this.port}`)
+  }
+
+  /**
+   * Creates and initializes a new Device instance.
+   *
+   * @param ip - The IP address of the device.
+   * @param port - The port of the device.
+   * @param settings - Optional settings for the device.
+   * @returns A promise that resolves to an initialized Device instance
+   * @throws {Error} If not running on Linux or initialization fails
+   */
+  public static async create(ip: string, port = 9008, settings?: Settings): Promise<Device> {
+    if (platform() !== 'linux') {
+      throw new Error('This SDK is only supported on Linux platforms')
+    }
+
+    const validatedIp = validateIp(ip)
+    const validatedPort = validatePort(port)
+
+    log(`Initializing device with IP: ${validatedIp}:${validatedPort}`)
 
     // Initialize the SDK
-    if (
-      !sdk.init() ||
-      !sdk.setConnectTimeout(this.#connectionTimeoutMs, this.#maxRetries) ||
-      !sdk.setReconnectInterval(this.#reconnectIntervalMs, this.#isReconnectEnabled)
-    ) {
-      const error = this.getLastError()
-      log(`Failed to initialize device ${this.uuid}: ${error}`)
+    const [initResult, timeoutResult, reconnectResult] = await pSeries([
+      () => sdk.init(),
+      () => sdk.setConnectTimeout(settings?.connectionTimeoutMs ?? 5000, settings?.maxRetries ?? 3),
+      () => sdk.setReconnectInterval(settings?.reconnectIntervalMs ?? 30000, settings?.isReconnectEnabled ?? true)
+    ])
+
+    if (!initResult || !timeoutResult || !reconnectResult) {
+      const errorCode = await sdk.getLastError()
+      const error = NET_SDK_ERROR[errorCode] ?? 'Unknown error'
+      log(`Failed to initialize device: ${error}`)
       throw new Error(error)
     }
 
     // Get SDK version information
-    const sdkVersion = sdk.getSDKVersion()
-    const buildVersion = sdk.getSDKBuildVersion()
-    this.#sdkVersion = `0x${sdkVersion.toString(16)} (${sdkVersion})`
-    this.#sdkBuild = `${parseBuildDate(buildVersion.toString())} (${buildVersion})`
+    const [sdkVersion, buildVersion] = await Promise.all([sdk.getSDKVersion(), sdk.getSDKBuildVersion()])
 
-    log(`${this.uuid} device initialized successfully!`)
-  }
+    const formattedSdkVersion = `0x${sdkVersion.toString(16)} (${sdkVersion})`
+    const formattedSdkBuild = `${parseBuildDate(buildVersion.toString())} (${buildVersion})`
 
-  /**
-   * Logout and dispose of the SDK resources.
-   *
-   * @returns A boolean indicating whether the disposal was successful.
-   */
-  dispose(): boolean {
-    log(`Disposing device ${this.uuid}...`)
-
-    try {
-      if (this.userId) {
-        this.logout()
-      }
-      const result = sdk.cleanup()
-      log(`Device ${this.uuid} disposed successfully`)
-      return result
-    } catch (error) {
-      log(`Failed to dispose device ${this.uuid}: ${error}`)
-      return false
-    }
+    return new Device(validatedIp, validatedPort, settings, formattedSdkVersion, formattedSdkBuild)
   }
 
   /**
@@ -132,11 +126,13 @@ export class Device {
   }
 
   /**
-   * Getter for device information.
+   * Gets the device information.
+   *
+   * @returns A promise that resolves to the device information
    */
   @auth
-  get info(): DeviceInfo {
-    sdk.getDeviceInfo(this.userId, this.#deviceInfo)
+  async getInfo(): Promise<DeviceInfo> {
+    await sdk.getDeviceInfo(this.userId, this.#deviceInfo)
     return this.#deviceInfo
   }
 
@@ -145,17 +141,17 @@ export class Device {
    *
    * @param user - The username.
    * @param pass - The password.
-   * @returns A boolean indicating whether the login was successful.
+   * @returns A promise that resolves to a boolean indicating whether the login was successful.
    * @throws An error if the login fails.
    */
   @measure
-  login(user: string, pass: string): boolean {
+  async login(user: string, pass: string): Promise<boolean> {
     log(`Logging in to device ${this.uuid} with user: ${user}`)
 
     try {
-      this.userId = sdk.login(this.ip, this.port, user, pass, this.#deviceInfo)
+      this.userId = await sdk.login(this.ip, this.port, user, pass, this.#deviceInfo)
       if (this.userId === -1) {
-        throw new Error(this.getLastError())
+        throw new Error(await this.getLastError())
       }
       log(`Successfully logged in to device ${this.uuid}`)
       return Boolean(this.userId)
@@ -168,13 +164,13 @@ export class Device {
   /**
    * Logs out of the device.
    *
-   * @returns A boolean indicating whether the logout was successful.
+   * @returns A promise that resolves to a boolean indicating whether the logout was successful.
    */
   @auth
-  logout(): boolean {
+  async logout(): Promise<boolean> {
     log(`Logging out from device ${this.uuid}`)
     try {
-      const result = sdk.logout(this.userId)
+      const result = await sdk.logout(this.userId)
       if (result) {
         log(`Successfully logged out from device ${this.uuid}`)
       } else {
@@ -191,17 +187,23 @@ export class Device {
    * Triggers an alarm on the device.
    *
    * @param value - A boolean indicating what state to set the alarm to.
-   * @returns A boolean indicating whether the alarm was triggered successfully.
+   * @returns A promise that resolves to a boolean indicating whether the alarm was triggered successfully.
    */
   @auth
-  triggerAlarm(value: boolean): boolean {
+  async triggerAlarm(value: boolean): Promise<boolean> {
     log(`Triggering alarm on device ${this.uuid} with value: ${value}`)
 
     try {
       // @TODO: get alarm channels from device info
       const alarmChannels = [0]
       const alarmValues = [value ? 1 : 0]
-      const result = sdk.triggerAlarm(this.userId, alarmChannels, alarmValues, alarmChannels.length, this.#isAlarmOpen)
+      const result = await sdk.triggerAlarm(
+        this.userId,
+        alarmChannels,
+        alarmValues,
+        alarmChannels.length,
+        this.#isAlarmOpen
+      )
 
       if (result) {
         log(`Successfully triggered alarm on device ${this.uuid}`)
@@ -221,10 +223,10 @@ export class Device {
    *
    * @param channel - The channel number to save a snapshot of.
    * @param filePath - The path where the snapshot will be saved.
-   * @returns - Returns true if the snapshot was successfully saved, false otherwise.
+   * @returns A promise that resolves to a boolean indicating if the snapshot was successfully saved.
    */
   @auth
-  saveSnapshot(channel: number, filePath: string): boolean {
+  async saveSnapshot(channel: number, filePath: string): Promise<boolean> {
     log(`Saving snapshot from device ${this.uuid} channel ${channel} to ${filePath}`)
 
     try {
@@ -235,7 +237,7 @@ export class Device {
         mkdirSync(dirPath, { recursive: true })
       }
 
-      const result = sdk.captureJPEGFile_V2(this.userId, channel, filePath)
+      const result = await sdk.captureJPEGFile_V2(this.userId, channel, filePath)
 
       if (result) {
         log(`Successfully saved snapshot from device ${this.uuid}`)
@@ -253,9 +255,31 @@ export class Device {
   /**
    * Gets the last error that occurred.
    *
-   * @returns A string describing the last error.
+   * @returns A promise that resolves to a string describing the last error.
    */
-  getLastError(): string {
-    return NET_SDK_ERROR[sdk.getLastError()] ?? 'Unknown error'
+  async getLastError(): Promise<string> {
+    const errorCode = await sdk.getLastError()
+    return NET_SDK_ERROR[errorCode] ?? 'Unknown error'
+  }
+
+  /**
+   * Logout and dispose of the SDK resources.
+   *
+   * @returns A promise that resolves to a boolean indicating whether the disposal was successful.
+   */
+  async dispose(): Promise<boolean> {
+    log(`Disposing device ${this.uuid}...`)
+
+    try {
+      if (this.userId) {
+        await this.logout()
+      }
+      const result = await sdk.cleanup()
+      log(`Device ${this.uuid} disposed successfully`)
+      return result
+    } catch (error) {
+      log(`Failed to dispose device ${this.uuid}: ${error}`)
+      return false
+    }
   }
 }
