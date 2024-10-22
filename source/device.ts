@@ -1,6 +1,7 @@
 import debug from 'debug'
 import { randomUUID } from 'node:crypto'
 import { existsSync, mkdirSync } from 'node:fs'
+import { platform } from 'node:os'
 import { dirname } from 'node:path'
 import { auth, measure } from './decorators/index.ts'
 import { parseBuildDate } from './helpers/date.ts'
@@ -32,8 +33,8 @@ export class Device {
   // @ts-expect-error deviceInfo is passed as a pointer to login function and should be initialized as an empty object
   #deviceInfo: DeviceInfo = {}
 
-  readonly #sdkVersion: string | undefined
-  readonly #sdkBuild: string | undefined
+  readonly #sdkVersion: string
+  readonly #sdkBuild: string
 
   /**
    * Creates a new device.
@@ -41,8 +42,13 @@ export class Device {
    * @param ip - The IP address of the device.
    * @param port - The port of the device.
    * @param settings - The settings for the device.
+   * @throws {Error} If not running on Linux or initialization fails
    */
   constructor(ip: string, port = 9008, settings?: Settings) {
+    if (platform() !== 'linux') {
+      throw new Error('This SDK is only supported on Linux platforms')
+    }
+
     this.ip = validateIp(ip)
     this.port = validatePort(port)
     this.uuid = settings?.uuid ?? randomUUID()
@@ -54,32 +60,26 @@ export class Device {
       this.#isReconnectEnabled = settings.isReconnectEnabled ?? this.#isReconnectEnabled
     }
 
-    if (this.init()) {
-      log(`${this.uuid} device initialized successfully!`)
+    log(`Initializing device ${this.uuid} with IP: ${this.ip}:${this.port}`)
 
-      const sdkVersion = sdk.getSDKVersion()
-      const buildVersion = sdk.getSDKBuildVersion()
-      this.#sdkVersion = `0x${sdkVersion.toString(16)} (${sdkVersion})`
-      // that's a build date actually
-      this.#sdkBuild = `${parseBuildDate(buildVersion.toString())} (${buildVersion})`
-    }
-  }
-
-  /**
-   * Initializes the SDK.
-   *
-   * @returns A boolean indicating whether the initialization was successful.
-   * @throws An error if the initialization fails.
-   */
-  init(): boolean {
+    // Initialize the SDK
     if (
       !sdk.init() ||
       !sdk.setConnectTimeout(this.#connectionTimeoutMs, this.#maxRetries) ||
       !sdk.setReconnectInterval(this.#reconnectIntervalMs, this.#isReconnectEnabled)
     ) {
-      throw new Error(this.getLastError())
+      const error = this.getLastError()
+      log(`Failed to initialize device ${this.uuid}: ${error}`)
+      throw new Error(error)
     }
-    return true
+
+    // Get SDK version information
+    const sdkVersion = sdk.getSDKVersion()
+    const buildVersion = sdk.getSDKBuildVersion()
+    this.#sdkVersion = `0x${sdkVersion.toString(16)} (${sdkVersion})`
+    this.#sdkBuild = `${parseBuildDate(buildVersion.toString())} (${buildVersion})`
+
+    log(`${this.uuid} device initialized successfully!`)
   }
 
   /**
@@ -88,15 +88,24 @@ export class Device {
    * @returns A boolean indicating whether the disposal was successful.
    */
   dispose(): boolean {
-    if (this.userId) {
-      this.logout()
+    log(`Disposing device ${this.uuid}...`)
+
+    try {
+      if (this.userId) {
+        this.logout()
+      }
+      const result = sdk.cleanup()
+      log(`Device ${this.uuid} disposed successfully`)
+      return result
+    } catch (error) {
+      log(`Failed to dispose device ${this.uuid}: ${error}`)
+      return false
     }
-    return sdk.cleanup()
   }
 
   /**
    * This getter method returns the versions information of the device and sdk.
-   * If the the information is not available, it throws an error.
+   * If the information is not available, it throws an error.
    */
   @auth
   get version(): VersionInfo {
@@ -106,8 +115,8 @@ export class Device {
 
     return {
       sdk: {
-        version: this.#sdkVersion ?? 'Unknown',
-        build: this.#sdkBuild ?? 'Unknown'
+        version: this.#sdkVersion,
+        build: this.#sdkBuild
       },
       device: {
         name: this.#deviceInfo.deviceName,
@@ -141,11 +150,19 @@ export class Device {
    */
   @measure
   login(user: string, pass: string): boolean {
-    this.userId = sdk.login(this.ip, this.port, user, pass, this.#deviceInfo)
-    if (this.userId === -1) {
-      throw new Error(this.getLastError())
+    log(`Logging in to device ${this.uuid} with user: ${user}`)
+
+    try {
+      this.userId = sdk.login(this.ip, this.port, user, pass, this.#deviceInfo)
+      if (this.userId === -1) {
+        throw new Error(this.getLastError())
+      }
+      log(`Successfully logged in to device ${this.uuid}`)
+      return Boolean(this.userId)
+    } catch (error) {
+      log(`Failed to log in to device ${this.uuid}: ${error}`)
+      throw error
     }
-    return Boolean(this.userId)
   }
 
   /**
@@ -155,7 +172,19 @@ export class Device {
    */
   @auth
   logout(): boolean {
-    return sdk.logout(this.userId)
+    log(`Logging out from device ${this.uuid}`)
+    try {
+      const result = sdk.logout(this.userId)
+      if (result) {
+        log(`Successfully logged out from device ${this.uuid}`)
+      } else {
+        log(`Failed to log out from device ${this.uuid}`)
+      }
+      return result
+    } catch (error) {
+      log(`Error logging out from device ${this.uuid}: ${error}`)
+      return false
+    }
   }
 
   /**
@@ -166,10 +195,31 @@ export class Device {
    */
   @auth
   triggerAlarm(value: boolean): boolean {
-    // @TODO: get alarm channels from device info
-    const alarmChannels = [0]
-    const alarmValues = [value ? 1 : 0]
-    return sdk.triggerAlarm(this.userId, alarmChannels, alarmValues, alarmChannels.length, this.#isAlarmOpen)
+    log(`Triggering alarm on device ${this.uuid} with value: ${value}`)
+
+    try {
+      // @TODO: get alarm channels from device info
+      const alarmChannels = [0]
+      const alarmValues = [value ? 1 : 0]
+      const result = sdk.triggerAlarm(
+        this.userId,
+        alarmChannels,
+        alarmValues,
+        alarmChannels.length,
+        this.#isAlarmOpen
+      )
+
+      if (result) {
+        log(`Successfully triggered alarm on device ${this.uuid}`)
+      } else {
+        log(`Failed to trigger alarm on device ${this.uuid}`)
+      }
+
+      return result
+    } catch (error) {
+      log(`Error triggering alarm on device ${this.uuid}: ${error}`)
+      return false
+    }
   }
 
   /**
@@ -181,14 +231,29 @@ export class Device {
    */
   @auth
   saveSnapshot(channel: number, filePath: string): boolean {
-    const dirPath = dirname(filePath)
+    log(`Saving snapshot from device ${this.uuid} channel ${channel} to ${filePath}`)
 
-    // sdk doesn't check if path is valid so we need to do it ourselves
-    if (!existsSync(dirPath)) {
-      mkdirSync(dirPath, { recursive: true })
+    try {
+      const dirPath = dirname(filePath)
+
+      // sdk doesn't check if path is valid so we need to do it ourselves
+      if (!existsSync(dirPath)) {
+        mkdirSync(dirPath, { recursive: true })
+      }
+
+      const result = sdk.captureJPEGFile_V2(this.userId, channel, filePath)
+
+      if (result) {
+        log(`Successfully saved snapshot from device ${this.uuid}`)
+      } else {
+        log(`Failed to save snapshot from device ${this.uuid}`)
+      }
+
+      return result
+    } catch (error) {
+      log(`Error saving snapshot from device ${this.uuid}: ${error}`)
+      return false
     }
-
-    return sdk.captureJPEGFile_V2(this.userId, channel, filePath)
   }
 
   /**
@@ -196,7 +261,6 @@ export class Device {
    *
    * @returns A string describing the last error.
    */
-
   getLastError(): string {
     return NET_SDK_ERROR[sdk.getLastError()] ?? 'Unknown error'
   }
