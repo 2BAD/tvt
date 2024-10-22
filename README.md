@@ -6,12 +6,12 @@
 [![Code coverage](https://img.shields.io/codecov/c/github/2BAD/tvt)](https://codecov.io/gh/2BAD/ryanair)
 [![Written in TypeScript](https://img.shields.io/github/languages/top/2BAD/tvt)](https://www.typescriptlang.org/)
 
-
 A modern TypeScript SDK for TVT CCTV devices, providing a clean and type-safe interface for device management, monitoring, and control. This project is the result of extensive research and reverse engineering of TVT (Tongwei Video Technology) CCTV systems.
 
 ## 🌟 Features
 
 - **Type-Safe API**: Full TypeScript support with comprehensive type definitions
+- **Async/Await**: Modern promise-based API for better control flow
 - **Lazy Loading**: Efficient resource management with on-demand library loading
 - **Error Handling**: Robust error handling with detailed error messages
 - **Logging**: Built-in debug logging for easier troubleshooting
@@ -28,28 +28,33 @@ npm install tvt
 ```typescript
 import { Device } from 'tvt'
 
-// Create a new device instance
-const device = new Device('192.168.1.100', 9008)
+try {
+  // Create and initialize a new device instance
+  const device = await Device.create('192.168.1.100', 9008)
 
-// Login to the device
-device.login('admin', 'password')
+  // Login to the device
+  await device.login('admin', 'password')
 
-// Get device information
-const info = device.info
-console.log(`Connected to ${info.deviceName}`)
+  // Get device information
+  const info = await device.getInfo()
+  console.log(`Connected to ${info.deviceName}`)
 
-// Capture a snapshot
-device.saveSnapshot(0, '/path/to/snapshot.jpg')
+  // Capture a snapshot
+  await device.saveSnapshot(0, '/path/to/snapshot.jpg')
 
-// Clean up
-device.dispose()
+  // Clean up
+  await device.dispose()
+} catch (error) {
+  console.error('Error:', error)
+}
+
 ```
 
 ## 🔧 Core Features
 
 ### Device Management
 - Device discovery
-- Connection management
+- Async connection management
 - Authentication
 - Device information retrieval
 
@@ -71,11 +76,13 @@ The main interface for interacting with TVT devices.
 
 ```typescript
 class Device {
-  constructor(ip: string, port?: number, settings?: Settings)
-  login(user: string, pass: string): boolean
-  logout(): boolean
-  triggerAlarm(value: boolean): boolean
-  saveSnapshot(channel: number, filePath: string): boolean
+  static create(ip: string, port?: number, settings?: Settings): Promise<Device>
+  login(user: string, pass: string): Promise<boolean>
+  logout(): Promise<boolean>
+  getInfo(): Promise<DeviceInfo>
+  triggerAlarm(value: boolean): Promise<boolean>
+  saveSnapshot(channel: number, filePath: string): Promise<boolean>
+  dispose(): Promise<boolean>
   // ... and more
 }
 ```
@@ -87,7 +94,7 @@ See [API Documentation](source/lib/sdk.ts) for detailed method descriptions.
 ### Prerequisites
 
 - Node.js 18 or higher
-- Linux operating system
+- Linux operating system (required for SDK operations)
 
 ### Building from Source
 
@@ -115,6 +122,38 @@ tvt/
     ├── lib/        # Core SDK implementation
     ├── helpers/    # Utility functions
     └── types/      # TypeScript type definitions
+```
+
+## 🔄 Migration from v1.x to v2.x
+
+### Breaking Changes
+
+1. All SDK methods now return Promises and require `await`:
+```typescript
+// Before
+const info = device.info
+
+// After
+const info = await device.getInfo()
+```
+
+2. Device creation is now async and uses a factory method:
+```typescript
+// Before
+const device = new Device('192.168.1.100')
+
+// After
+const device = await Device.create('192.168.1.100')
+```
+
+3. Property access changes:
+```typescript
+// Before
+device.info.deviceName
+
+// After
+const info = await device.getInfo()
+info.deviceName
 ```
 
 ## 🤝 Contributing
