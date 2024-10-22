@@ -53,9 +53,7 @@
   },
   "dependencies": {
     "debug": "4.3.7",
-    "easy-buffer": "1.2.0",
-    "koffi": "2.9.1",
-    "roarr": "7.21.1"
+    "koffi": "2.9.1"
   },
   "devDependencies": {
     "@2bad/axiom": "1.0.0-beta.8",
