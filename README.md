@@ -16,7 +16,6 @@ A modern TypeScript SDK for TVT CCTV devices, providing a clean and type-safe in
 - **Error Handling**: Robust error handling with detailed error messages
 - **Logging**: Built-in debug logging for easier troubleshooting
 - **Documentation**: Extensive JSDoc documentation for all methods
-- **Cross-Platform**: Compatible with Node.js on Linux systems
 
 ## 📦 Installation
 
