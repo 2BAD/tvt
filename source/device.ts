@@ -201,13 +201,7 @@ export class Device {
       // @TODO: get alarm channels from device info
       const alarmChannels = [0]
       const alarmValues = [value ? 1 : 0]
-      const result = sdk.triggerAlarm(
-        this.userId,
-        alarmChannels,
-        alarmValues,
-        alarmChannels.length,
-        this.#isAlarmOpen
-      )
+      const result = sdk.triggerAlarm(this.userId, alarmChannels, alarmValues, alarmChannels.length, this.#isAlarmOpen)
 
       if (result) {
         log(`Successfully triggered alarm on device ${this.uuid}`)

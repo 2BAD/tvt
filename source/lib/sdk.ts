@@ -238,13 +238,7 @@ const createSDK = (): SDK => {
      * @param {boolean} alarmOpen - Alarm open/close state
      * @returns {boolean} Success status
      */
-    triggerAlarm: getLib().func('NET_SDK_SetDeviceManualAlarm', 'bool', [
-      'long',
-      'long *',
-      'long *',
-      'long',
-      'bool'
-    ]),
+    triggerAlarm: getLib().func('NET_SDK_SetDeviceManualAlarm', 'bool', ['long', 'long *', 'long *', 'long', 'bool']),
 
     /**
      * Gets device configuration file.
