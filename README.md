@@ -1,44 +1,148 @@
-# TVT CCTV Research Repository
+# TVT Device SDK
 
-This repository is the result of extensive research, disassembling, and reverse engineering efforts focused on CCTV cameras produced by Tongwei Video Technology Co., Ltd. (TVT). Our aim is to document and facilitate a deep understanding and interaction with TVT CCTV systems, shedding light on proprietary technologies and protocols.
+[![NPM version](https://img.shields.io/npm/v/@2bad/tvt)](https://www.npmjs.com/package/@2bad/tvt)
+[![License](https://img.shields.io/npm/l/@2bad/tvt)](https://opensource.org/license/MIT)
+[![GitHub Build Status](https://img.shields.io/github/actions/workflow/status/2BAD/ryanair/build.yml)](https://github.com/2BAD/ryanair/actions/workflows/build.yml)
+[![Code coverage](https://img.shields.io/codecov/c/github/2BAD/tvt)](https://codecov.io/gh/2BAD/ryanair)
+[![Written in TypeScript](https://img.shields.io/github/languages/top/2BAD/tvt)](https://www.typescriptlang.org/)
 
-## Directory Structure
 
-### `bin`
+A modern TypeScript SDK for TVT CCTV devices, providing a clean and type-safe interface for device management, monitoring, and control. This project is the result of extensive research and reverse engineering of TVT (Tongwei Video Technology) CCTV systems.
 
-This directory contains precompiled SDK libraries needed for interfacing with TVT CCTV devices. These are essential for developing custom applications that can interact with TVT's proprietary protocols and device functionalities.
+## 🌟 Features
 
-### `docs`
+- **Type-Safe API**: Full TypeScript support with comprehensive type definitions
+- **Lazy Loading**: Efficient resource management with on-demand library loading
+- **Error Handling**: Robust error handling with detailed error messages
+- **Logging**: Built-in debug logging for easier troubleshooting
+- **Documentation**: Extensive JSDoc documentation for all methods
+- **Cross-Platform**: Compatible with Node.js on Linux systems
 
-This directory holds comprehensive documentation provided by TVT. It includes:
+## 📦 Installation
 
-- The original SDK manual
-- Header files
-- A variety of demo projects implemented in multiple programming languages
+```bash
+npm install tvt
+```
 
-### `proto`
+## 🚀 Quick Start
 
-In this directory, you will find the Wireshark dissector code for the proprietary network IPC protocol used by TVT devices. This dissector enables the analysis and debugging of network traffic to and from the CCTV cameras, making it easier to understand and reverse engineer the communication protocol.
+```typescript
+import { Device } from 'tvt'
 
-### `source`
+// Create a new device instance
+const device = new Device('192.168.1.100', 9008)
 
-This directory contains a TypeScript implementation of a device client. The client interacts with the TVT devices by making calls to a shared library via Foreign Function Interface (FFI). This implementation serves as a practical example of how to build applications that can communicate with TVT CCTV devices using TypeScript.
+// Login to the device
+device.login('admin', 'password')
 
-## Getting Started
+// Get device information
+const info = device.info
+console.log(`Connected to ${info.deviceName}`)
 
-1. Clone the repository:
+// Capture a snapshot
+device.saveSnapshot(0, '/path/to/snapshot.jpg')
 
-   ```bash
-   git clone https://github.com/2BAD/tvt.git
-   cd tvt
-   npm install
-   npm run build
-   ```
+// Clean up
+device.dispose()
+```
 
-2. Review the documentation in the `docs` directory to understand the SDK and its functionalities.
-3. If you are looking to analyze network traffic, refer to the `proto` directory for the Wireshark dissector code. Follow the instructions within to integrate it into Wireshark.
-4. To develop custom applications using the precompiled SDK, navigate to the `source` directory and explore the TypeScript client implementation. This can serve as a template or guide for your own projects.
+## 🔧 Core Features
 
-## Contributing
+### Device Management
+- Device discovery
+- Connection management
+- Authentication
+- Device information retrieval
 
-We welcome contributions! If you find a bug or want to request a new feature, please open an issue. If you want to submit a bug fix or new feature, please open a pull request.
+### Security Features
+- Alarm management
+- Manual alarm triggering
+- Event monitoring
+
+### Media Operations
+- Snapshot capture
+- Live stream management
+- Video recording
+
+## 📚 API Reference
+
+### Device Class
+
+The main interface for interacting with TVT devices.
+
+```typescript
+class Device {
+  constructor(ip: string, port?: number, settings?: Settings)
+  login(user: string, pass: string): boolean
+  logout(): boolean
+  triggerAlarm(value: boolean): boolean
+  saveSnapshot(channel: number, filePath: string): boolean
+  // ... and more
+}
+```
+
+See [API Documentation](source/lib/sdk.ts) for detailed method descriptions.
+
+## 🛠️ Development
+
+### Prerequisites
+
+- Node.js 18 or higher
+- Linux operating system
+
+### Building from Source
+
+```bash
+git clone https://github.com/yourusername/tvt.git
+cd tvt
+npm install
+npm run build
+```
+
+### Running Tests
+
+```bash
+npm test
+```
+
+## 📁 Project Structure
+
+```
+tvt/
+├── bin/            # Precompiled SDK libraries
+├── docs/           # Documentation and examples
+├── proto/          # Protocol definitions and dissectors
+└── source/         # TypeScript implementation
+    ├── lib/        # Core SDK implementation
+    ├── helpers/    # Utility functions
+    └── types/      # TypeScript type definitions
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+### Development Guidelines
+
+1. Follow TypeScript best practices
+2. Include tests for new features
+3. Update documentation as needed
+4. Follow the existing code style
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## ⚠️ Disclaimer
+
+This project is not officially associated with TVT Digital Technology Co., Ltd. It is an independent implementation based on research and reverse engineering. Use at your own risk.
+
+## 🙏 Acknowledgments
+
+- TVT Digital Technology for their CCTV systems
+- The open-source community for various tools and libraries used in this project
+- Contributors who have helped improve this SDK
+
+## 📬 Support
+
+- Create an issue for bug reports or feature requests
