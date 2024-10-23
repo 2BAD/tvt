@@ -2,8 +2,8 @@
 
 [![NPM version](https://img.shields.io/npm/v/@2bad/tvt)](https://www.npmjs.com/package/@2bad/tvt)
 [![License](https://img.shields.io/npm/l/@2bad/tvt)](https://opensource.org/license/MIT)
-[![GitHub Build Status](https://img.shields.io/github/actions/workflow/status/2BAD/ryanair/build.yml)](https://github.com/2BAD/ryanair/actions/workflows/build.yml)
-[![Code coverage](https://img.shields.io/codecov/c/github/2BAD/tvt)](https://codecov.io/gh/2BAD/ryanair)
+[![GitHub Build Status](https://img.shields.io/github/actions/workflow/status/2BAD/tvt/build.yml)](https://github.com/2BAD/tvt/actions/workflows/build.yml)
+[![Code coverage](https://img.shields.io/codecov/c/github/2BAD/tvt)](https://codecov.io/gh/2BAD/tvt)
 [![Written in TypeScript](https://img.shields.io/github/languages/top/2BAD/tvt)](https://www.typescriptlang.org/)
 
 A modern TypeScript SDK for TVT CCTV devices, providing a clean and type-safe interface for device management, monitoring, and control. This project is the result of extensive research and reverse engineering of TVT (Tongwei Video Technology) CCTV systems.
