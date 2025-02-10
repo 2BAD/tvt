@@ -71,7 +71,7 @@
     "tsc-alias": "1.8.10",
     "typescript": "5.7.2",
     "vite-tsconfig-paths": "5.1.4",
-    "vitest": "2.1.8"
+    "vitest": "2.1.9"
   },
   "packageManager": "npm@10.9.2",
   "engines": {
