@@ -72,10 +72,10 @@
   },
   "packageManager": "npm@11.3.0",
   "engines": {
-    "node": ">=20"
+    "node": ">=21.2.0"
   },
   "volta": {
-    "node": "22.15.0",
+    "node": "23.11.0",
     "npm": "10.9.2"
   }
 }

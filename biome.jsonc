@@ -48,7 +48,6 @@
           }
         },
         "useFilenamingConvention": "error",
-        "useNamingConvention": "error",
         "useNodeAssertStrict": "error"
       },
       "suspicious": {
