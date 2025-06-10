@@ -8,15 +8,6 @@
 
 A modern TypeScript SDK for TVT CCTV devices, providing a clean and type-safe interface for device management, monitoring, and control. This project is the result of extensive research and reverse engineering of TVT (Tongwei Video Technology) CCTV systems.
 
-## Features
-
-- **Type-Safe API**: Full TypeScript support with comprehensive type definitions
-- **Async/Await**: Modern promise-based API for better control flow
-- **Lazy Loading**: Efficient resource management with on-demand library loading
-- **Error Handling**: Robust error handling with detailed error messages
-- **Logging**: Built-in debug logging for easier troubleshooting
-- **Documentation**: Extensive JSDoc documentation for all methods
-
 ## Installation
 
 ```bash
