@@ -8,7 +8,7 @@
 
 A modern TypeScript SDK for TVT CCTV devices, providing a clean and type-safe interface for device management, monitoring, and control. This project is the result of extensive research and reverse engineering of TVT (Tongwei Video Technology) CCTV systems.
 
-## 🌟 Features
+## Features
 
 - **Type-Safe API**: Full TypeScript support with comprehensive type definitions
 - **Async/Await**: Modern promise-based API for better control flow
@@ -17,13 +17,13 @@ A modern TypeScript SDK for TVT CCTV devices, providing a clean and type-safe in
 - **Logging**: Built-in debug logging for easier troubleshooting
 - **Documentation**: Extensive JSDoc documentation for all methods
 
-## 📦 Installation
+## Installation
 
 ```bash
 npm install tvt
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ```typescript
 import { Device } from 'tvt'
@@ -50,7 +50,7 @@ try {
 
 ```
 
-## 🔧 Core Features
+## Core Features
 
 ### Device Management
 - Device discovery
@@ -68,7 +68,7 @@ try {
 - Live stream management
 - Video recording
 
-## 📚 API Reference
+## API Reference
 
 ### Device Class
 
@@ -89,7 +89,7 @@ class Device {
 
 See [API Documentation](source/lib/sdk.ts) for detailed method descriptions.
 
-## 🛠️ Development
+## Development
 
 ### Prerequisites
 
@@ -111,7 +111,7 @@ npm run build
 npm test
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 tvt/
@@ -124,7 +124,7 @@ tvt/
     └── types/      # TypeScript type definitions
 ```
 
-## 🔄 Migration from v1.x to v2.x
+## Migration from v1.x to v2.x
 
 ### Breaking Changes
 
@@ -156,7 +156,7 @@ const info = await device.getInfo()
 info.deviceName
 ```
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
@@ -167,20 +167,20 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 3. Update documentation as needed
 4. Follow the existing code style
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## ⚠️ Disclaimer
+## Disclaimer
 
 This project is not officially associated with TVT Digital Technology Co., Ltd. It is an independent implementation based on research and reverse engineering. Use at your own risk.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - TVT Digital Technology for their CCTV systems
 - The open-source community for various tools and libraries used in this project
 - Contributors who have helped improve this SDK
 
-## 📬 Support
+## Support
 
 - Create an issue for bug reports or feature requests
