@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "debug": "4.4.1",
-    "koffi": "2.11.0",
+    "koffi": "2.12.0",
     "p-series": "3.0.0"
   },
   "devDependencies": {
@@ -60,15 +60,15 @@
     "@2bad/tsfix": "1.1.1",
     "@biomejs/biome": "1.9.4",
     "@swc/cli": "0.7.7",
-    "@swc/core": "1.12.1",
+    "@swc/core": "1.12.5",
     "@types/debug": "4.1.12",
     "@types/node": "22.15.32",
-    "@vitest/coverage-v8": "3.2.3",
+    "@vitest/coverage-v8": "3.2.4",
     "npm-run-all2": "8.0.4",
     "rimraf": "6.0.1",
     "typescript": "5.8.3",
     "vite-tsconfig-paths": "5.1.4",
-    "vitest": "3.2.3"
+    "vitest": "3.2.4"
   },
   "packageManager": "npm@11.4.2",
   "engines": {
