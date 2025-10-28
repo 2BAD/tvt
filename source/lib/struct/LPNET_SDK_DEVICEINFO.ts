@@ -1,3 +1,4 @@
+/* eslint-disable import-x/no-named-as-default-member */
 import koffi from 'koffi'
 
 export const LPNET_SDK_DEVICEINFO = koffi.struct('LPNET_SDK_DEVICEINFO', {

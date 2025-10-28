@@ -142,7 +142,7 @@ export class Device {
    * @param user - The username.
    * @param pass - The password.
    * @returns A promise that resolves to a boolean indicating whether the login was successful.
-   * @throws An error if the login fails.
+   * @throws {Error} An error if the login fails.
    */
   @measure
   async login(user: string, pass: string): Promise<boolean> {

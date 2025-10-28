@@ -3,7 +3,7 @@
  *
  * @param dateString - The date string to parse. The format is expected to be "yMMdd", where "y" is the year offset from 2017, "MM" is the month, and "dd" is the day.
  * @returns The parsed date in the format "dd/mm/yyyy".
- * @throws An error if the date string is not in the expected format.
+ * @throws {Error} An error if the date string is not in the expected format.
  */
 export const parseBuildDate = (dateString: string): string => {
   if (dateString.length !== 5) {

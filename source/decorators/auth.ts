@@ -20,7 +20,7 @@ export const auth = <This extends Device, Args extends unknown[], Return>(
    *
    * @param args - Arguments passed to the original method.
    * @returns The result of the original method execution.
-   * @throws Will throw an error if the user is not logged in (userId is undefined).
+   * @throws {Error} Will throw an error if the user is not logged in (userId is undefined).
    */
   function requireAuth(this: This, ...args: Args): Return {
     if (this.userId === undefined) {

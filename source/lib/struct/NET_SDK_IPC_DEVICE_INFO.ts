@@ -1,3 +1,4 @@
+/* eslint-disable import-x/no-named-as-default-member */
 import koffi from 'koffi'
 
 export const NET_SDK_IPC_DEVICE_INFO = koffi.struct('NET_SDK_IPC_DEVICE_INFO', {
