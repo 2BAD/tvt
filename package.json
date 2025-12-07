@@ -51,24 +51,24 @@
     "@2bad/axiom": "1.0.3",
     "@2bad/tsconfig": "3.0.2",
     "@2bad/tsfix": "1.1.2",
-    "@biomejs/biome": "2.3.1",
-    "@swc/cli": "0.7.8",
-    "@swc/core": "1.13.5",
+    "@biomejs/biome": "2.3.8",
+    "@swc/cli": "0.7.9",
+    "@swc/core": "1.15.3",
     "@types/debug": "4.1.12",
-    "@types/node": "24.9.1",
-    "@vitest/coverage-v8": "4.0.4",
+    "@types/node": "24.10.1",
+    "@vitest/coverage-v8": "4.0.15",
     "npm-run-all2": "8.0.4",
-    "rimraf": "6.0.1",
+    "rimraf": "6.1.2",
     "typescript": "5.9.3",
     "vite-tsconfig-paths": "5.1.4",
-    "vitest": "4.0.4"
+    "vitest": "4.0.15"
   },
-  "packageManager": "npm@11.6.2",
+  "packageManager": "npm@11.6.4",
   "engines": {
     "node": ">=24"
   },
   "volta": {
-    "node": "24.10.0",
-    "npm": "11.6.2"
+    "node": "24.11.1",
+    "npm": "11.6.4"
   }
 }
