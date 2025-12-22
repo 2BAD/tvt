@@ -51,17 +51,17 @@
     "@2bad/axiom": "1.0.3",
     "@2bad/tsconfig": "3.0.2",
     "@2bad/tsfix": "1.1.2",
-    "@biomejs/biome": "2.3.8",
+    "@biomejs/biome": "2.3.10",
     "@swc/cli": "0.7.9",
-    "@swc/core": "1.15.3",
+    "@swc/core": "1.15.7",
     "@types/debug": "4.1.12",
-    "@types/node": "24.10.3",
-    "@vitest/coverage-v8": "4.0.15",
+    "@types/node": "24.10.4",
+    "@vitest/coverage-v8": "4.0.16",
     "npm-run-all2": "8.0.4",
     "rimraf": "6.1.2",
     "typescript": "5.9.3",
     "vite-tsconfig-paths": "5.1.4",
-    "vitest": "4.0.15"
+    "vitest": "4.0.16"
   },
   "packageManager": "npm@11.7.0",
   "engines": {
