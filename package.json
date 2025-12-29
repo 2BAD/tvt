@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "debug": "4.4.3",
-    "koffi": "2.14.1",
+    "koffi": "2.15.0",
     "p-series": "3.0.0"
   },
   "devDependencies": {
