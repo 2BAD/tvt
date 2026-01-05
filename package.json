@@ -53,7 +53,7 @@
     "@2bad/tsfix": "1.1.2",
     "@biomejs/biome": "2.3.10",
     "@swc/cli": "0.7.9",
-    "@swc/core": "1.15.7",
+    "@swc/core": "1.15.8",
     "@types/debug": "4.1.12",
     "@types/node": "24.10.4",
     "@vitest/coverage-v8": "4.0.16",
