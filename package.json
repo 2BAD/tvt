@@ -44,16 +44,16 @@
   },
   "dependencies": {
     "debug": "4.4.3",
-    "koffi": "2.15.6",
+    "koffi": "2.16.0",
     "p-series": "3.0.0"
   },
   "devDependencies": {
     "@2bad/axiom": "1.0.3",
     "@2bad/tsconfig": "3.0.2",
     "@2bad/tsfix": "1.1.2",
-    "@biomejs/biome": "2.4.11",
+    "@biomejs/biome": "2.4.12",
     "@swc/cli": "0.8.1",
-    "@swc/core": "1.15.24",
+    "@swc/core": "1.15.26",
     "@types/debug": "4.1.13",
     "@types/node": "24.12.2",
     "@vitest/coverage-v8": "4.1.4",
@@ -68,7 +68,7 @@
     "node": ">=24"
   },
   "volta": {
-    "node": "24.14.1",
+    "node": "24.15.0",
     "npm": "11.12.1"
   }
 }
