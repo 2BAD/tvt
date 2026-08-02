@@ -1,0 +1,5 @@
+allowBuilds:
+  '@swc/core': true
+  koffi: true
+minimumReleaseAgeExclude:
+  - '@2bad/axiom@2.1.0'
