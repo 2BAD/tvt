@@ -3,8 +3,8 @@ import { randomUUID } from 'node:crypto'
 import { existsSync, mkdirSync } from 'node:fs'
 import { platform } from 'node:os'
 import { dirname } from 'node:path'
+import { performance } from 'node:perf_hooks'
 import pSeries from 'p-series'
-import { auth, measure } from './decorators/index.ts'
 import { parseBuildDate } from './helpers/date.ts'
 import { validateIp, validatePort } from './helpers/validators.ts'
 import { sdk } from './lib/sdk.ts'
@@ -13,6 +13,7 @@ import type { Settings, VersionInfo } from './types.ts'
 export type * from './types.ts'
 
 const log = debug('tvt:device')
+const perf = debug('tvt:perf')
 
 /**
  * Represents a generic TVT Device.
@@ -28,8 +29,7 @@ export class Device {
   readonly #isReconnectEnabled: boolean = true
   readonly #isAlarmOpen: boolean = true
 
-  // this could have been a private but it's used in the @auth decorator and decorators can't access private properties atm
-  // @ts-expect-error checking for userId is done inside the @auth decorator so unless the decorator is removed, userId will always be defined
+  // @ts-expect-error assigned by login, every method that reads it calls #requireAuth first
   userId: number
   // @ts-expect-error deviceInfo is passed as a pointer to login function and should be initialized as an empty object
   #deviceInfo: DeviceInfo = {}
@@ -53,6 +53,12 @@ export class Device {
     this.#sdkBuild = sdkBuild
 
     log(`Device ${this.uuid} created with IP: ${this.ip}:${this.port}`)
+  }
+
+  #requireAuth(): void {
+    if (this.userId === undefined) {
+      throw new Error('Requested method require authentication. Please login first.')
+    }
   }
 
   /**
@@ -101,8 +107,9 @@ export class Device {
    * This getter method returns the versions information of the device and sdk.
    * If the information is not available, it throws an error.
    */
-  @auth
   get version(): VersionInfo {
+    this.#requireAuth()
+
     if (this.#deviceInfo === undefined) {
       throw new Error('Device info is not available!')
     }
@@ -130,8 +137,9 @@ export class Device {
    *
    * @returns A promise that resolves to the device information
    */
-  @auth
   async getInfo(): Promise<DeviceInfo> {
+    this.#requireAuth()
+
     await sdk.getDeviceInfo(this.userId, this.#deviceInfo)
     return this.#deviceInfo
   }
@@ -144,9 +152,9 @@ export class Device {
    * @returns A promise that resolves to a boolean indicating whether the login was successful.
    * @throws {Error} An error if the login fails.
    */
-  @measure
   async login(user: string, pass: string): Promise<boolean> {
     log(`Logging in to device ${this.uuid} with user: ${user}`)
+    const start = performance.now()
 
     try {
       this.userId = await sdk.login(this.ip, this.port, user, pass, this.#deviceInfo)
@@ -154,6 +162,7 @@ export class Device {
         throw new Error(await this.getLastError())
       }
       log(`Successfully logged in to device ${this.uuid}`)
+      perf(`[login] execution time: ${performance.now() - start} ms`)
       return Boolean(this.userId)
     } catch (error) {
       log(`Failed to log in to device ${this.uuid}: ${error}`)
@@ -166,8 +175,9 @@ export class Device {
    *
    * @returns A promise that resolves to a boolean indicating whether the logout was successful.
    */
-  @auth
   async logout(): Promise<boolean> {
+    this.#requireAuth()
+
     log(`Logging out from device ${this.uuid}`)
     try {
       const result = await sdk.logout(this.userId)
@@ -189,8 +199,9 @@ export class Device {
    * @param value - A boolean indicating what state to set the alarm to.
    * @returns A promise that resolves to a boolean indicating whether the alarm was triggered successfully.
    */
-  @auth
   async triggerAlarm(value: boolean): Promise<boolean> {
+    this.#requireAuth()
+
     log(`Triggering alarm on device ${this.uuid} with value: ${value}`)
 
     try {
@@ -225,8 +236,9 @@ export class Device {
    * @param filePath - The path where the snapshot will be saved.
    * @returns A promise that resolves to a boolean indicating if the snapshot was successfully saved.
    */
-  @auth
   async saveSnapshot(channel: number, filePath: string): Promise<boolean> {
+    this.#requireAuth()
+
     log(`Saving snapshot from device ${this.uuid} channel ${channel} to ${filePath}`)
 
     try {
