@@ -8,23 +8,19 @@ on:
 
 jobs:
   build:
-    name: build on node@${{ matrix.node-version }}
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version:
-          - 22
-          - 24
+    name: build
+    runs-on: blacksmith-4vcpu-ubuntu-2404
 
     steps:
-      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      - uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version-file: package.json
+          cache: pnpm
 
-      - run: npm ci
-      - run: npm run check
-      - run: npm run build
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm build

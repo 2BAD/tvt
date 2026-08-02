@@ -8,7 +8,7 @@ import { auth, measure } from './decorators/index.ts'
 import { parseBuildDate } from './helpers/date.ts'
 import { validateIp, validatePort } from './helpers/validators.ts'
 import { sdk } from './lib/sdk.ts'
-import { NET_SDK_ERROR, type DeviceInfo } from './lib/types.ts'
+import { NET_SDK_ERROR_NAME, type DeviceInfo } from './lib/types.ts'
 import type { Settings, VersionInfo } from './types.ts'
 export type * from './types.ts'
 
@@ -83,7 +83,7 @@ export class Device {
 
     if (!initResult || !timeoutResult || !reconnectResult) {
       const errorCode = await sdk.getLastError()
-      const error = NET_SDK_ERROR[errorCode] ?? 'Unknown error'
+      const error = NET_SDK_ERROR_NAME.get(errorCode) ?? 'Unknown error'
       log(`Failed to initialize device: ${error}`)
       throw new Error(error)
     }
@@ -259,7 +259,7 @@ export class Device {
    */
   async getLastError(): Promise<string> {
     const errorCode = await sdk.getLastError()
-    return NET_SDK_ERROR[errorCode] ?? 'Unknown error'
+    return NET_SDK_ERROR_NAME.get(errorCode) ?? 'Unknown error'
   }
 
   /**
