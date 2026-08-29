@@ -17,6 +17,30 @@ Everything is async. Native calls don't block the event loop, and callbacks from
 
 The required `.so` files ship with the package under `bin/linux` and are loaded automatically. No system-wide installation, no `LD_LIBRARY_PATH` stuff.
 
+## Compatibility
+
+TVT is mostly a white-label manufacturer, so their hardware gets sold under a lot of other names. If a device answers on port 9008 or works with TVT's SuperLive/SuperCam apps, it's almost certainly a rebadged TVT and this SDK should talk to it.
+
+Brands known to sell rebadged TVT devices:
+
+- Digital Watchdog (some product lines)
+- Q-See
+- CP Plus
+- Provision-ISR
+- Avycon
+- TeleEye
+- NoVus
+- Meriva Security
+- InVid Tech
+- Alibi (Observint)
+- TecVoz
+- JFL Alarmes
+- Gazer
+- Questek
+- Technomate
+
+The long tail is much bigger: pulling the OEM logo files out of TVT firmware turned up 79 brands ([IPVM has the list](https://ipvm.com/discussions/a-list-of-tvt-s-79-dvr-oems)). Most of these brands source from several manufacturers though, so not every product they sell is TVT. And GE's TruVision "TVT-xxxx" model numbers have nothing to do with TVT, that's just a product-line prefix.
+
 ## Install
 
 ```bash
