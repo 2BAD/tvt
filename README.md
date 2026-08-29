@@ -41,6 +41,40 @@ try {
 
 ```
 
+## Live Streaming
+
+```typescript
+import { Device, FRAME_TYPE, STREAM_TYPE } from 'tvt'
+
+const device = await Device.create('192.168.1.100', 9008)
+await device.login('admin', 'password')
+
+// Start a live stream (channel 0, main stream by default)
+const stream = await device.startLiveStream(0, STREAM_TYPE.MAIN)
+
+// Record the stream to an AVI file (H.264 + PCM)
+await stream.recordTo('/path/to/capture.avi')
+await new Promise((resolve) => setTimeout(resolve, 10_000))
+await stream.stopRecording()
+
+// Or consume raw frames as they arrive
+for await (const frame of stream.frames()) {
+  if (frame.frameType === FRAME_TYPE.VIDEO) {
+    // frame.data is an H.264 Annex B elementary stream chunk
+    console.log(`${frame.width}x${frame.height} keyframe=${frame.keyFrame} ${frame.data.length} bytes`)
+  }
+  if (frame.keyFrame) {
+    break
+  }
+}
+
+// Clean up
+await stream.stop()
+await device.dispose()
+```
+
+Recording and frame iteration can run at the same time on a single stream. Any stream still running when `device.dispose()` is called is stopped automatically.
+
 ## Core Features
 
 ### Device Management
@@ -73,8 +107,16 @@ class Device {
   getInfo(): Promise<DeviceInfo>
   triggerAlarm(value: boolean): Promise<boolean>
   saveSnapshot(channel: number, filePath: string): Promise<boolean>
+  startLiveStream(channel?: number, streamType?: STREAM_TYPE): Promise<LiveStream>
   dispose(): Promise<boolean>
   // ... and more
+}
+
+class LiveStream {
+  frames(): AsyncGenerator<LiveFrame>
+  recordTo(filePath: string): Promise<boolean>
+  stopRecording(): Promise<boolean>
+  stop(): Promise<boolean>
 }
 ```
 
