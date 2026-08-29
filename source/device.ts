@@ -35,6 +35,8 @@ export class Device {
 
   // @ts-expect-error assigned by login, every method that reads it calls #requireAuth first
   userId: number
+  #user = ''
+  #pass = ''
   // @ts-expect-error deviceInfo is passed as a pointer to login function and should be initialized as an empty object
   #deviceInfo: DeviceInfo = {}
 
@@ -166,6 +168,8 @@ export class Device {
       if (this.userId === -1) {
         throw new Error(await this.getLastError())
       }
+      this.#user = user
+      this.#pass = pass
       log(`Successfully logged in to device ${this.uuid}`)
       perf(`[login] execution time: ${performance.now() - start} ms`)
       return Boolean(this.userId)
@@ -273,15 +277,16 @@ export class Device {
    * Captures a jpeg snapshot of a specific video channel into memory.
    *
    * @param channel - The channel number to capture.
+   * @param bufferSize - Size of the receiving buffer in bytes, for images larger than the 4MB default.
    * @returns A promise that resolves to the JPEG data.
    * @throws {Error} An error if the capture fails.
    */
-  async captureSnapshot(channel = 0): Promise<Buffer> {
+  async captureSnapshot(channel = 0, bufferSize?: number): Promise<Buffer> {
     this.#requireAuth()
 
     log(`Capturing snapshot from device ${this.uuid} channel ${channel}`)
 
-    const data = await sdk.captureJPEGData_V2(this.userId, channel)
+    const data = await sdk.captureJPEGData_V2(this.userId, channel, bufferSize)
     if (data === null) {
       throw new Error(await this.getLastError())
     }
@@ -320,21 +325,40 @@ export class Device {
   }
 
   /**
-   * Gets the RTSP URL of a video channel.
+   * Gets the RTSP URL of a video channel, with the login credentials embedded by default.
+   *
+   * Some firmware rejects the path its own SDK reports with 404 while serving the main stream
+   * at the root path; use omitPath on such devices.
    *
    * @param channel - The channel number.
    * @param streamType - The stream the URL points to (main or sub).
+   * @param options - includeCredentials embeds the login credentials (default true), omitPath
+   * drops the device-reported path and returns the root URL (default false).
    * @returns A promise that resolves to the RTSP URL.
    * @throws {Error} An error if the device does not return a URL.
    */
-  async getRtspUrl(channel = 0, streamType: STREAM_TYPE = STREAM_TYPE.MAIN): Promise<string> {
+  async getRtspUrl(
+    channel = 0,
+    streamType: STREAM_TYPE = STREAM_TYPE.MAIN,
+    options?: { includeCredentials?: boolean; omitPath?: boolean }
+  ): Promise<string> {
     this.#requireAuth()
 
-    const url = await sdk.getRtspUrl(this.userId, channel, streamType)
-    if (url === null) {
+    const raw = await sdk.getRtspUrl(this.userId, channel, streamType)
+    if (raw === null) {
       throw new Error(await this.getLastError())
     }
-    return url
+
+    const url = new URL(raw)
+    if (options?.includeCredentials ?? true) {
+      url.username = this.#user
+      url.password = this.#pass
+    }
+    if (options?.omitPath) {
+      url.pathname = '/'
+      url.search = ''
+    }
+    return url.href
   }
 
   /**

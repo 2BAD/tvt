@@ -97,7 +97,7 @@ interface TVTSDK {
   // ✅︎ BOOL NET_SDK_CaptureJPEGFile_V2(LONG lUserID, LONG lChannel, char *sPicFileName);
   captureJPEGFile_V2: (userId: number, channel: number, fileName: string) => Promise<boolean>
   // ✅︎ BOOL NET_SDK_CaptureJPEGData_V2(LONG lUserID, LONG lChannel, char *sJpegPicBuffer, DWORD dwPicSize, LPDWORD lpSizeReturned);
-  captureJPEGData_V2: (userId: number, channel: number) => Promise<Buffer | null>
+  captureJPEGData_V2: (userId: number, channel: number, bufferSize?: number) => Promise<Buffer | null>
   // ✅︎ BOOL NET_SDK_GetDeviceTime(LONG lUserID, DD_TIME *pTime);
   getDeviceTime: (userId: number, time: DeviceTime) => Promise<boolean>
   // ✅︎ BOOL NET_SDK_ChangTime(LONG lUserID, unsigned int time);
@@ -572,12 +572,17 @@ export class SDK implements TVTSDK {
    *
    * @param userId - User ID from successful login
    * @param channel - Video channel number
+   * @param bufferSize - Size of the receiving buffer in bytes
    * @returns The JPEG data, or null on failure
    */
-  public async captureJPEGData_V2(userId: number, channel: number): Promise<Buffer | null> {
+  public async captureJPEGData_V2(
+    userId: number,
+    channel: number,
+    bufferSize = 4 * 1024 * 1024
+  ): Promise<Buffer | null> {
     const koffi = await this.koffi
     const lib = await this.lib
-    const picBuffer = Buffer.alloc(4 * 1024 * 1024)
+    const picBuffer = Buffer.alloc(bufferSize)
     const sizeReturned = [0]
     const result = lib.func('NET_SDK_CaptureJPEGData_V2', 'bool', [
       'long',
