@@ -48,6 +48,33 @@ export type FrameInfo = {
 
 export type LiveFrameCallback = (frame: FrameInfo, data: Buffer) => void
 
+export type DeviceTime = {
+  second: number
+  minute: number
+  hour: number
+  /** day of week, 0-6, Sunday = 0 */
+  wday: number
+  /** day of month, 1-31 */
+  mday: number
+  /** month, 0-11, January = 0 */
+  month: number
+  /** years since 1900 */
+  year: number
+  nTotalseconds: number
+  nMicrosecond: number
+}
+
+export type VideoEffect = {
+  /** 0-100 */
+  brightness: number
+  /** 0-100 */
+  contrast: number
+  /** 0-100 */
+  saturation: number
+  /** 0-100 */
+  hue: number
+}
+
 // spell-checker: disable
 export const NET_SDK_ERROR = {
   NET_SDK_SUCCESS: 0,

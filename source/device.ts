@@ -8,7 +8,7 @@ import pSeries from 'p-series'
 import { parseBuildDate } from './helpers/date.ts'
 import { validateIp, validatePort } from './helpers/validators.ts'
 import { sdk } from './lib/sdk.ts'
-import { NET_SDK_ERROR_NAME, STREAM_TYPE, type DeviceInfo } from './lib/types.ts'
+import { NET_SDK_ERROR_NAME, STREAM_TYPE, type DeviceInfo, type DeviceTime, type VideoEffect } from './lib/types.ts'
 import { LiveStream } from './stream.ts'
 import type { Settings, VersionInfo } from './types.ts'
 export { FRAME_TYPE, STREAM_TYPE } from './lib/types.ts'
@@ -267,6 +267,141 @@ export class Device {
       log(`Error saving snapshot from device ${this.uuid}: ${error}`)
       return false
     }
+  }
+
+  /**
+   * Captures a jpeg snapshot of a specific video channel into memory.
+   *
+   * @param channel - The channel number to capture.
+   * @returns A promise that resolves to the JPEG data.
+   * @throws {Error} An error if the capture fails.
+   */
+  async captureSnapshot(channel = 0): Promise<Buffer> {
+    this.#requireAuth()
+
+    log(`Capturing snapshot from device ${this.uuid} channel ${channel}`)
+
+    const data = await sdk.captureJPEGData_V2(this.userId, channel)
+    if (data === null) {
+      throw new Error(await this.getLastError())
+    }
+    return data
+  }
+
+  /**
+   * Gets the current system time of the device, interpreted in the host timezone.
+   *
+   * @returns A promise that resolves to the device time.
+   * @throws {Error} An error if reading the time fails.
+   */
+  async getTime(): Promise<Date> {
+    this.#requireAuth()
+
+    // @ts-expect-error passed as a pointer and filled by the sdk
+    const time: DeviceTime = {}
+    if (!(await sdk.getDeviceTime(this.userId, time))) {
+      throw new Error(await this.getLastError())
+    }
+    return new Date(1900 + time.year, time.month, time.mday, time.hour, time.minute, time.second)
+  }
+
+  /**
+   * Sets the system time of the device.
+   *
+   * @param time - The time to set, defaults to now.
+   * @returns A promise that resolves to a boolean indicating whether the time was set successfully.
+   */
+  async setTime(time: Date = new Date()): Promise<boolean> {
+    this.#requireAuth()
+
+    log(`Setting time on device ${this.uuid} to ${time.toISOString()}`)
+    // the device stores wall-clock time, so shift the unix timestamp by the host timezone offset
+    return sdk.changeTime(this.userId, Math.floor(time.getTime() / 1000) - time.getTimezoneOffset() * 60)
+  }
+
+  /**
+   * Gets the RTSP URL of a video channel.
+   *
+   * @param channel - The channel number.
+   * @param streamType - The stream the URL points to (main or sub).
+   * @returns A promise that resolves to the RTSP URL.
+   * @throws {Error} An error if the device does not return a URL.
+   */
+  async getRtspUrl(channel = 0, streamType: STREAM_TYPE = STREAM_TYPE.MAIN): Promise<string> {
+    this.#requireAuth()
+
+    const url = await sdk.getRtspUrl(this.userId, channel, streamType)
+    if (url === null) {
+      throw new Error(await this.getLastError())
+    }
+    return url
+  }
+
+  /**
+   * Gets the video effect settings (brightness, contrast, saturation, hue) of a channel.
+   *
+   * @param channel - The channel number.
+   * @returns A promise that resolves to the video effect settings.
+   * @throws {Error} An error if reading the settings fails.
+   */
+  async getVideoEffect(channel = 0): Promise<VideoEffect> {
+    this.#requireAuth()
+
+    const effect = await sdk.getVideoEffect(this.userId, channel)
+    if (effect === null) {
+      throw new Error(await this.getLastError())
+    }
+    return effect
+  }
+
+  /**
+   * Sets the video effect settings (brightness, contrast, saturation, hue) of a channel.
+   *
+   * @param channel - The channel number.
+   * @param effect - The settings to apply.
+   * @returns A promise that resolves to a boolean indicating whether the settings were applied successfully.
+   */
+  async setVideoEffect(channel: number, effect: VideoEffect): Promise<boolean> {
+    this.#requireAuth()
+
+    log(`Setting video effect on device ${this.uuid} channel ${channel}`)
+    return sdk.setVideoEffect(this.userId, channel, effect)
+  }
+
+  /**
+   * Gets the number of streams a video channel supports.
+   *
+   * @param channel - The channel number.
+   * @returns A promise that resolves to the stream count.
+   */
+  async getStreamCount(channel = 0): Promise<number> {
+    this.#requireAuth()
+
+    return sdk.supportStreamNum(this.userId, channel)
+  }
+
+  /**
+   * Reboots the device. The session becomes invalid; create and login a new Device once it is back up.
+   *
+   * @returns A promise that resolves to a boolean indicating whether the reboot was accepted.
+   */
+  async reboot(): Promise<boolean> {
+    this.#requireAuth()
+
+    log(`Rebooting device ${this.uuid}`)
+    return sdk.reboot(this.userId)
+  }
+
+  /**
+   * Shuts the device down. It has to be powered back on physically.
+   *
+   * @returns A promise that resolves to a boolean indicating whether the shutdown was accepted.
+   */
+  async shutdown(): Promise<boolean> {
+    this.#requireAuth()
+
+    log(`Shutting down device ${this.uuid}`)
+    return sdk.shutdown(this.userId)
   }
 
   /**

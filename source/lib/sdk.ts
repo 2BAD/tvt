@@ -2,13 +2,23 @@ import type { IKoffiLib } from 'koffi'
 import { platform } from 'node:os'
 import { resolve } from 'node:path'
 import {
+  DD_TIME,
   LIVE_DATA_CALLBACK,
   LPNET_SDK_DEVICEINFO,
   NET_SDK_CLIENTINFO,
   NET_SDK_DEVICE_DISCOVERY_INFO,
+  NET_SDK_IMAGE_EFFECT_T,
   NET_SDK_IPC_DEVICE_INFO
 } from './struct/index.ts'
-import type { DeviceInfo, FrameInfo, LiveFrameCallback, LOG_LEVEL, STREAM_TYPE } from './types.ts'
+import type {
+  DeviceInfo,
+  DeviceTime,
+  FrameInfo,
+  LiveFrameCallback,
+  LOG_LEVEL,
+  STREAM_TYPE,
+  VideoEffect
+} from './types.ts'
 
 type RegisteredCallback = ReturnType<(typeof import('koffi'))['register']>
 
@@ -86,6 +96,24 @@ interface TVTSDK {
   stopSavingLiveStream: (liveHandle: number) => Promise<boolean>
   // ✅︎ BOOL NET_SDK_CaptureJPEGFile_V2(LONG lUserID, LONG lChannel, char *sPicFileName);
   captureJPEGFile_V2: (userId: number, channel: number, fileName: string) => Promise<boolean>
+  // ✅︎ BOOL NET_SDK_CaptureJPEGData_V2(LONG lUserID, LONG lChannel, char *sJpegPicBuffer, DWORD dwPicSize, LPDWORD lpSizeReturned);
+  captureJPEGData_V2: (userId: number, channel: number) => Promise<Buffer | null>
+  // ✅︎ BOOL NET_SDK_GetDeviceTime(LONG lUserID, DD_TIME *pTime);
+  getDeviceTime: (userId: number, time: DeviceTime) => Promise<boolean>
+  // ✅︎ BOOL NET_SDK_ChangTime(LONG lUserID, unsigned int time);
+  changeTime: (userId: number, unixSeconds: number) => Promise<boolean>
+  // ✅︎ BOOL NET_SDK_GetRtspUrl(LONG lUserID, LONG lChannel, LONG lStreamType, char *sRtspUrl);
+  getRtspUrl: (userId: number, channel: number, streamType: STREAM_TYPE) => Promise<string | null>
+  // ✅︎ BOOL NET_SDK_RebootDVR(LONG lUserID);
+  reboot: (userId: number) => Promise<boolean>
+  // ✅︎ BOOL NET_SDK_ShutDownDVR(LONG lUserID);
+  shutdown: (userId: number) => Promise<boolean>
+  // ✅︎ BOOL NET_SDK_GetVideoEffect_Ex(LONG lUserID, LONG lChannel, NET_SDK_IMAGE_EFFECT_T *pBrightValue, NET_SDK_IMAGE_EFFECT_T *pContrastValue, NET_SDK_IMAGE_EFFECT_T *pSaturationValue, NET_SDK_IMAGE_EFFECT_T *pHueValue);
+  getVideoEffect: (userId: number, channel: number) => Promise<VideoEffect | null>
+  // ✅︎ BOOL NET_SDK_SetVideoEffect_Ex(LONG lUserID, LONG lChannel, DWORD dwBrightValue, DWORD dwContrastValue, DWORD dwSaturationValue, DWORD dwHueValue);
+  setVideoEffect: (userId: number, channel: number, effect: VideoEffect) => Promise<boolean>
+  // ✅︎ unsigned int NET_SDK_SupportStreamNum(LONG lUserID, LONG lChannel);
+  supportStreamNum: (userId: number, channel: number) => Promise<number>
 }
 
 export class SDK implements TVTSDK {
@@ -537,6 +565,159 @@ export class SDK implements TVTSDK {
       channel,
       fileName
     )
+  }
+
+  /**
+   * Captures a JPEG snapshot from a channel into memory.
+   *
+   * @param userId - User ID from successful login
+   * @param channel - Video channel number
+   * @returns The JPEG data, or null on failure
+   */
+  public async captureJPEGData_V2(userId: number, channel: number): Promise<Buffer | null> {
+    const koffi = await this.koffi
+    const lib = await this.lib
+    const picBuffer = Buffer.alloc(4 * 1024 * 1024)
+    const sizeReturned = [0]
+    const result = lib.func('NET_SDK_CaptureJPEGData_V2', 'bool', [
+      'long',
+      'long',
+      'uint8_t *',
+      'uint32_t',
+      koffi.out(koffi.pointer('uint32_t'))
+    ])(userId, channel, picBuffer, picBuffer.length, sizeReturned)
+    return result ? Buffer.from(picBuffer.subarray(0, sizeReturned[0])) : null
+  }
+
+  /**
+   * Gets the current system time of the device.
+   *
+   * @param userId - User ID from successful login
+   * @param time - Buffer to store the device time
+   * @returns Success status
+   */
+  public async getDeviceTime(userId: number, time: DeviceTime): Promise<boolean> {
+    const koffi = await this.koffi
+    const lib = await this.lib
+    return lib.func('NET_SDK_GetDeviceTime', 'bool', ['long', koffi.out(koffi.pointer(DD_TIME))])(userId, time)
+  }
+
+  /**
+   * Sets the system time of the device.
+   *
+   * @param userId - User ID from successful login
+   * @param unixSeconds - Time in seconds since 1970-01-01 00:00:00 UTC
+   * @returns Success status
+   */
+  public async changeTime(userId: number, unixSeconds: number): Promise<boolean> {
+    return (await this.lib).func('NET_SDK_ChangTime', 'bool', ['long', 'uint32_t'])(userId, unixSeconds)
+  }
+
+  /**
+   * Gets the RTSP URL of a channel.
+   *
+   * @param userId - User ID from successful login
+   * @param channel - Video channel number
+   * @param streamType - Stream the URL points to (main or sub)
+   * @returns The RTSP URL, or null on failure
+   */
+  public async getRtspUrl(userId: number, channel: number, streamType: STREAM_TYPE): Promise<string | null> {
+    const lib = await this.lib
+    const urlBuffer = Buffer.alloc(512)
+    const result = lib.func('NET_SDK_GetRtspUrl', 'bool', ['long', 'long', 'long', 'uint8_t *'])(
+      userId,
+      channel,
+      streamType,
+      urlBuffer
+    )
+    if (!result) {
+      return null
+    }
+    const end = urlBuffer.indexOf(0)
+    return urlBuffer.toString('utf8', 0, end === -1 ? urlBuffer.length : end)
+  }
+
+  /**
+   * Reboots the device.
+   *
+   * @param userId - User ID from successful login
+   * @returns Success status
+   */
+  public async reboot(userId: number): Promise<boolean> {
+    return (await this.lib).func('NET_SDK_RebootDVR', 'bool', ['long'])(userId)
+  }
+
+  /**
+   * Shuts the device down. It has to be powered back on physically.
+   *
+   * @param userId - User ID from successful login
+   * @returns Success status
+   */
+  public async shutdown(userId: number): Promise<boolean> {
+    return (await this.lib).func('NET_SDK_ShutDownDVR', 'bool', ['long'])(userId)
+  }
+
+  /**
+   * Gets the video effect settings of a channel.
+   *
+   * @param userId - User ID from successful login
+   * @param channel - Video channel number
+   * @returns The video effect settings, or null on failure
+   */
+  public async getVideoEffect(userId: number, channel: number): Promise<VideoEffect | null> {
+    const koffi = await this.koffi
+    const lib = await this.lib
+    const out = koffi.out(koffi.pointer(NET_SDK_IMAGE_EFFECT_T))
+    const brightness = { curValue: 0 }
+    const contrast = { curValue: 0 }
+    const saturation = { curValue: 0 }
+    const hue = { curValue: 0 }
+    const result = lib.func('NET_SDK_GetVideoEffect_Ex', 'bool', ['long', 'long', out, out, out, out])(
+      userId,
+      channel,
+      brightness,
+      contrast,
+      saturation,
+      hue
+    )
+    return result
+      ? {
+          brightness: brightness.curValue,
+          contrast: contrast.curValue,
+          saturation: saturation.curValue,
+          hue: hue.curValue
+        }
+      : null
+  }
+
+  /**
+   * Sets the video effect settings of a channel.
+   *
+   * @param userId - User ID from successful login
+   * @param channel - Video channel number
+   * @param effect - The video effect settings to apply
+   * @returns Success status
+   */
+  public async setVideoEffect(userId: number, channel: number, effect: VideoEffect): Promise<boolean> {
+    return (await this.lib).func('NET_SDK_SetVideoEffect_Ex', 'bool', [
+      'long',
+      'long',
+      'uint32_t',
+      'uint32_t',
+      'uint32_t',
+      'uint32_t'
+    ])(userId, channel, effect.brightness, effect.contrast, effect.saturation, effect.hue)
+  }
+
+  /**
+   * Gets the number of streams a channel supports.
+   *
+   * @param userId - User ID from successful login
+   * @param channel - Video channel number
+   * @returns The stream count
+   */
+  public async supportStreamNum(userId: number, channel: number): Promise<number> {
+    return (await this.lib).func('NET_SDK_SupportStreamNum', 'uint32_t', ['long', 'long'])(userId, channel)
   }
 }
 
