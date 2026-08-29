@@ -6,16 +6,16 @@
 [![Code coverage](https://img.shields.io/codecov/c/github/2BAD/tvt)](https://codecov.io/gh/2BAD/tvt)
 [![Written in TypeScript](https://img.shields.io/github/languages/top/2BAD/tvt)](https://www.typescriptlang.org/)
 
-TypeScript bindings for TVT (Tongwei Video Technology) CCTV devices: IP cameras, NVRs, DVRs. Talks the proprietary NET_SDK protocol through the vendor's `libdvrnetsdk.so` via [koffi](https://koffi.dev/) FFI. No official documentation exists in English worth reading; this implementation comes from disassembling the vendor SDK, capturing traffic, and writing Wireshark dissectors for the wire protocol (see `proto/`).
+TypeScript bindings for TVT (Tongwei Video Technology) CCTV devices: IP cameras, NVRs, DVRs. Talks the proprietary NET_SDK protocol through the vendor's `libdvrnetsdk.so` via [koffi](https://koffi.dev/) FFI. There's no usable English documentation, so this was built by disassembling the vendor SDK and reverse engineering the wire protocol from packet captures. The Wireshark dissectors from that work are in `proto/`.
 
-Everything is async. Native calls run off the event loop, callbacks from the SDK's own threads are marshalled back into JS safely.
+Everything is async. Native calls don't block the event loop, and callbacks from the SDK's own threads get marshalled back into JS properly.
 
 ## Requirements
 
-- Linux x86_64. The vendor libraries are Linux-only binaries; `Device.create` refuses to run anywhere else.
-- Node.js >= 26.
+- Linux x86_64
+- Node.js >= 26
 
-The required `.so` files ship with the package under `bin/linux` and are loaded automatically. No system-wide installation, no `LD_LIBRARY_PATH` dance.
+The required `.so` files ship with the package under `bin/linux` and are loaded automatically. No system-wide installation, no `LD_LIBRARY_PATH` stuff.
 
 ## Install
 
@@ -61,7 +61,9 @@ await stream.stopRecording()
 // or consume frames directly
 for await (const frame of stream.frames()) {
   if (frame.frameType === FRAME_TYPE.VIDEO) {
-    console.log(`${frame.width}x${frame.height} keyframe=${frame.keyFrame} ${frame.data.length} bytes t=${frame.time}us`)
+    console.log(
+      `${frame.width}x${frame.height} keyframe=${frame.keyFrame} ${frame.data.length} bytes t=${frame.time}us`
+    )
   }
   if (frame.keyFrame) break
 }
@@ -70,12 +72,12 @@ await stream.stop()
 await device.dispose()
 ```
 
-Mechanics you should know:
+Things to know:
 
 - Each `frames()` iterator gets its own queue. A consumer that falls more than 256 frames behind loses the oldest frames; nobody blocks the SDK callback thread.
 - `recordTo` forces a keyframe request so the file starts within a GOP, not seconds later.
 - `frame.time` is absolute microseconds since the Unix epoch, `frame.relativeTime` is stream-relative microseconds.
-- A stream that is still running when `dispose()` is called gets stopped for you, but do not rely on that as a lifecycle strategy.
+- A stream that's still running when `dispose()` is called gets stopped for you, but don't rely on that.
 
 ## Alarm monitoring
 
@@ -102,7 +104,7 @@ One subscription per device. `startAlarmMonitoring` throws if one is already act
 
 ## Snapshots
 
-Two paths, pick per use case:
+Two ways to do it:
 
 ```typescript
 // straight to disk (directory is created if missing)
@@ -117,7 +119,7 @@ const big = await device.captureSnapshot(0, 16 * 1024 * 1024)
 
 ## RTSP
 
-If you would rather feed ffmpeg or GStreamer than pull frames over the SDK:
+If you'd rather feed ffmpeg or GStreamer than pull frames over the SDK:
 
 ```typescript
 const url = await device.getRtspUrl(0, STREAM_TYPE.MAIN)
@@ -129,15 +131,15 @@ Credentials from `login` are embedded by default; pass `{ includeCredentials: fa
 ## Device control
 
 ```typescript
-await device.getTime()                      // device wall clock as a Date, host timezone
-await device.setTime()                      // sync to now; or pass a Date
-await device.getVideoEffect(0)              // { brightness, contrast, saturation, hue }, each 0-100
+await device.getTime() // device wall clock as a Date, host timezone
+await device.setTime() // sync to now; or pass a Date
+await device.getVideoEffect(0) // { brightness, contrast, saturation, hue }, each 0-100
 await device.setVideoEffect(0, { brightness: 60, contrast: 50, saturation: 50, hue: 50 })
-await device.getStreamCount(0)              // streams the channel supports
-await device.triggerAlarm(true)             // drive the alarm output relay
-await device.reboot()                       // session dies; create a new Device when it is back
-await device.shutdown()                     // requires physical power-on afterwards
-device.version                              // SDK + device firmware/kernel/hardware/MCU versions
+await device.getStreamCount(0) // streams the channel supports
+await device.triggerAlarm(true) // drive the alarm output relay
+await device.reboot() // session dies; create a new Device when it is back
+await device.shutdown() // requires physical power-on afterwards
+device.version // SDK + device firmware/kernel/hardware/MCU versions
 ```
 
 The device stores wall-clock time with no timezone. `getTime`/`setTime` translate through the host timezone; run your host and device in the same one or account for it.
@@ -214,7 +216,7 @@ source/    the TypeScript implementation
   lib/struct/     koffi struct definitions mirroring the C headers
 ```
 
-`proto/ipc.lua` dissects the device protocol in Wireshark; useful if you are extending the bindings or investigating firmware behavior.
+`proto/ipc.lua` dissects the device protocol in Wireshark. Useful if you're extending the bindings or poking at firmware behavior.
 
 ## Development
 
@@ -230,8 +232,7 @@ pnpm test:integration   # requires a real device on the network
 
 ## Migration from v1.x
 
-1. Construction is a factory and async: `new Device(ip)` becomes `await Device.create(ip)`.
-2. Every SDK call returns a Promise: `device.info` becomes `await device.getInfo()`.
+Construction is now a factory and async: `new Device(ip)` becomes `await Device.create(ip)`. Every SDK call returns a Promise: `device.info` becomes `await device.getInfo()`.
 
 ## License
 
