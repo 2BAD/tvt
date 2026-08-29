@@ -3,8 +3,11 @@ import { defineConfig } from 'oxlint'
 
 export default defineConfig({
   extends: [axiom],
-  rules: {
-    // value + type declarations sharing a name (const X / type X) are valid TS, not a redeclaration
-    'no-redeclare': 'off'
-  }
+  overrides: [
+    {
+      // enum-style const X + type X pairs are valid TS, not a redeclaration; tsc catches real ones
+      files: ['**/lib/types.ts'],
+      rules: { 'no-redeclare': 'off' }
+    }
+  ]
 })
