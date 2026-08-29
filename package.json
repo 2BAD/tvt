@@ -1,8 +1,24 @@
 {
   "name": "@2bad/tvt",
   "version": "2.0.0",
-  "description": "",
-  "keywords": ["tvt", "ipc", "cctv"],
+  "description": "TypeScript SDK for TVT and rebadged OEM CCTV devices: login, live H.264 streaming, snapshots, alarm monitoring, RTSP, and device control over the NET_SDK protocol",
+  "keywords": [
+    "tvt",
+    "ipc",
+    "cctv",
+    "nvr",
+    "dvr",
+    "ip-camera",
+    "surveillance",
+    "rtsp",
+    "net-sdk",
+    "live-stream",
+    "h264",
+    "snapshot",
+    "alarm",
+    "koffi",
+    "ffi"
+  ],
   "homepage": "https://github.com/2BAD/tvt#readme",
   "bugs": {
     "url": "https://github.com/2BAD/tvt/issues"
