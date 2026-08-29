@@ -4,6 +4,8 @@ import { resolve } from 'node:path'
 import {
   DD_TIME,
   LIVE_DATA_CALLBACK,
+  NET_MESSAGE_CALLBACK,
+  NET_SDK_ALARMINFO,
   LPNET_SDK_DEVICEINFO,
   NET_SDK_CLIENTINFO,
   NET_SDK_DEVICE_DISCOVERY_INFO,
@@ -11,6 +13,7 @@ import {
   NET_SDK_IPC_DEVICE_INFO
 } from './struct/index.ts'
 import type {
+  AlarmEvent,
   DeviceInfo,
   DeviceTime,
   FrameInfo,
@@ -51,10 +54,13 @@ interface TVTSDK {
   login: (ip: string, port: number, username: string, password: string, deviceInfo: DeviceInfo) => Promise<number>
   // ✅︎ BOOL NET_SDK_Logout(LONG lUserID)
   logout: (userId: number) => Promise<boolean>
-  // LONG NET_SDK_SetupAlarmChan(LONG lUserID);
+  // ✅︎ LONG NET_SDK_SetupAlarmChan(LONG lUserID);
   setupAlarmChannel: (userId: number) => Promise<number>
-  // BOOL NET_SDK_CloseAlarmChan(LONG lAlarmHandle);
+  // ✅︎ BOOL NET_SDK_CloseAlarmChan(LONG lAlarmHandle);
   closeAlarmChannel: (alarmHandle: number) => Promise<boolean>
+  // ✅︎ BOOL NET_SDK_SetDVRMessageCallBack(NET_MESSAGE_CALLBACK fMessageCallBack, void *pUser);
+  addAlarmListener: (userId: number, listener: (events: AlarmEvent[]) => void) => Promise<boolean>
+  removeAlarmListener: (userId: number) => Promise<boolean>
   // ✅︎ BOOL NET_SDK_SetDeviceManualAlarm(LONG lUserID, LONG *pAramChannel, LONG *pValue, LONG lAramChannelCount, BOOL bAlarmOpen);
   triggerAlarm: (
     userId: number,
@@ -121,6 +127,8 @@ export class SDK implements TVTSDK {
   #_koffi: typeof import('koffi') | null = null
   #_lib: IKoffiLib | null = null
   readonly #liveCallbacks = new Map<number, RegisteredCallback>()
+  readonly #alarmListeners = new Map<number, (events: AlarmEvent[]) => void>()
+  #messageCallback: RegisteredCallback | null = null
 
   private constructor() {
     if (!this.isLinux) {
@@ -342,6 +350,89 @@ export class SDK implements TVTSDK {
    */
   public async closeAlarmChannel(alarmHandle: number): Promise<boolean> {
     return (await this.lib).func('NET_SDK_CloseAlarmChan', 'bool', ['long'])(alarmHandle)
+  }
+
+  /**
+   * Adds an alarm listener for a logged in user.
+   *
+   * The SDK has a single global message callback; it is registered with the first listener,
+   * removed with the last one, and dispatches to listeners by user ID.
+   *
+   * @param userId - User ID from successful login
+   * @param listener - Called with the alarms of every NET_SDK_ALARM message for this user
+   * @returns Success status
+   */
+  public async addAlarmListener(userId: number, listener: (events: AlarmEvent[]) => void): Promise<boolean> {
+    const koffi = await this.koffi
+    const lib = await this.lib
+
+    if (!this.#messageCallback) {
+      const registered = koffi.register(
+        (command: number, callbackUserId: number, buf: unknown, bufLen: number, _user: unknown): boolean => {
+          try {
+            // NET_SDK_ALARM is 0 in NET_SDK_DEVICE_MSG_TYPE
+            if (command !== 0 || bufLen === 0) {
+              return true
+            }
+            const count = Math.floor(bufLen / koffi.sizeof(NET_SDK_ALARMINFO))
+            const raw = koffi.decode(buf, koffi.array(NET_SDK_ALARMINFO, count)) as {
+              dwAlarmType: number
+              dwSensorIn: number
+              dwChannel: number
+              dwDisk: number
+            }[]
+            const events = raw.map((info) => ({
+              type: info.dwAlarmType,
+              sensorIn: info.dwSensorIn,
+              channel: info.dwChannel,
+              disk: info.dwDisk
+            }))
+            this.#alarmListeners.get(callbackUserId)?.(events)
+          } catch {
+            // an exception must not propagate into the SDK's message thread
+          }
+          return true
+        },
+        koffi.pointer(NET_MESSAGE_CALLBACK)
+      )
+
+      const result = lib.func('NET_SDK_SetDVRMessageCallBack', 'bool', [koffi.pointer(NET_MESSAGE_CALLBACK), 'void *'])(
+        registered,
+        null
+      )
+      if (!result) {
+        koffi.unregister(registered)
+        return false
+      }
+      this.#messageCallback = registered
+    }
+
+    this.#alarmListeners.set(userId, listener)
+    return true
+  }
+
+  /**
+   * Removes the alarm listener of a user, dropping the global message callback with the last one.
+   *
+   * @param userId - User ID the listener was added for
+   * @returns Success status
+   */
+  public async removeAlarmListener(userId: number): Promise<boolean> {
+    const koffi = await this.koffi
+    const lib = await this.lib
+
+    this.#alarmListeners.delete(userId)
+
+    if (this.#alarmListeners.size === 0 && this.#messageCallback) {
+      const result = lib.func('NET_SDK_SetDVRMessageCallBack', 'bool', [koffi.pointer(NET_MESSAGE_CALLBACK), 'void *'])(
+        null,
+        null
+      )
+      koffi.unregister(this.#messageCallback)
+      this.#messageCallback = null
+      return result
+    }
+    return true
   }
 
   /**

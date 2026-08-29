@@ -8,10 +8,17 @@ import pSeries from 'p-series'
 import { parseBuildDate } from './helpers/date.ts'
 import { validateIp, validatePort } from './helpers/validators.ts'
 import { sdk } from './lib/sdk.ts'
-import { NET_SDK_ERROR_NAME, STREAM_TYPE, type DeviceInfo, type DeviceTime, type VideoEffect } from './lib/types.ts'
+import {
+  NET_SDK_ERROR_NAME,
+  STREAM_TYPE,
+  type AlarmCallback,
+  type DeviceInfo,
+  type DeviceTime,
+  type VideoEffect
+} from './lib/types.ts'
 import { LiveStream } from './stream.ts'
 import type { Settings, VersionInfo } from './types.ts'
-export { FRAME_TYPE, STREAM_TYPE } from './lib/types.ts'
+export { ALARM_TYPE, ALARM_TYPE_NAME, FRAME_TYPE, STREAM_TYPE } from './lib/types.ts'
 export { LiveStream } from './stream.ts'
 export type { LiveFrame } from './stream.ts'
 export type * from './types.ts'
@@ -43,6 +50,10 @@ export class Device {
   readonly #sdkVersion: string
   readonly #sdkBuild: string
   readonly #liveStreams = new Set<LiveStream>()
+  #alarmHandle: number | null = null
+  // alarms arrive from the SDK's own thread, not through libuv, so a program that only waits
+  // for them would otherwise run out of event loop work and exit
+  #alarmKeepAlive: NodeJS.Timeout | null = null
 
   private constructor(ip: string, port: number, settings: Settings | undefined, sdkVersion: string, sdkBuild: string) {
     this.ip = ip
@@ -274,6 +285,64 @@ export class Device {
   }
 
   /**
+   * Starts alarm monitoring: subscribes to the device's alarm channel and invokes the callback
+   * with every alarm event it reports.
+   *
+   * @param onAlarm - Called once per alarm event.
+   * @returns A promise that resolves to a boolean indicating whether monitoring started.
+   * @throws {Error} An error if monitoring is already active or the subscription fails.
+   */
+  async startAlarmMonitoring(onAlarm: AlarmCallback): Promise<boolean> {
+    this.#requireAuth()
+
+    if (this.#alarmHandle !== null) {
+      throw new Error('Alarm monitoring is already active. Call stopAlarmMonitoring first.')
+    }
+
+    log(`Starting alarm monitoring on device ${this.uuid}`)
+
+    await sdk.addAlarmListener(this.userId, (events) => {
+      for (const event of events) {
+        onAlarm(event)
+      }
+    })
+
+    const handle = await sdk.setupAlarmChannel(this.userId)
+    if (handle === -1) {
+      await sdk.removeAlarmListener(this.userId)
+      throw new Error(await this.getLastError())
+    }
+
+    this.#alarmHandle = handle
+    this.#alarmKeepAlive = setInterval(() => {}, 60_000)
+    log(`Successfully started alarm monitoring on device ${this.uuid} with handle ${handle}`)
+    return true
+  }
+
+  /**
+   * Stops alarm monitoring. Idempotent.
+   *
+   * @returns A promise that resolves to a boolean indicating whether monitoring was stopped successfully.
+   */
+  async stopAlarmMonitoring(): Promise<boolean> {
+    if (this.#alarmHandle === null) {
+      return true
+    }
+
+    log(`Stopping alarm monitoring on device ${this.uuid}`)
+
+    const result = await sdk.closeAlarmChannel(this.#alarmHandle)
+    this.#alarmHandle = null
+    await sdk.removeAlarmListener(this.userId)
+
+    if (this.#alarmKeepAlive) {
+      clearInterval(this.#alarmKeepAlive)
+      this.#alarmKeepAlive = null
+    }
+    return result
+  }
+
+  /**
    * Captures a jpeg snapshot of a specific video channel into memory.
    *
    * @param channel - The channel number to capture.
@@ -477,6 +546,7 @@ export class Device {
       for (const stream of this.#liveStreams) {
         await stream.stop()
       }
+      await this.stopAlarmMonitoring()
       if (this.userId) {
         await this.logout()
       }

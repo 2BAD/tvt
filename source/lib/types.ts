@@ -48,6 +48,59 @@ export type FrameInfo = {
 
 export type LiveFrameCallback = (frame: FrameInfo, data: Buffer) => void
 
+// spell-checker: disable
+export const ALARM_TYPE = {
+  MOTION: 0x01,
+  SENSOR: 0x02,
+  VIDEO_LOSS: 0x03,
+  FRONT_OFFLINE: 0x04,
+  OSC: 0x05,
+  AVD: 0x06,
+  AVD_SCENE: 0x07,
+  AVD_CLARITY: 0x08,
+  AVD_COLOR: 0x09,
+  PEA_TRIPWIRE: 0x0a,
+  PEA_PERIMETER: 0x0b,
+  VFD: 0x0c,
+  CDD: 0x0d,
+  IPD: 0x0e,
+  CPC: 0x0f,
+  FACE_MATCH: 0x10,
+  FACE_MATCH_FOR_IPC: 0x11,
+  PEA_FOR_IPC: 0x12,
+  TRAJECT: 0x13,
+  VEHICLE: 0x14,
+  AOI_ENTRY: 0x15,
+  AOI_LEAVE: 0x16,
+  PASS_LINE: 0x17,
+  TRAFFIC: 0x18,
+  DOOR_BELL: 0x19,
+  EXCEPTION: 0x41,
+  IP_CONFLICT: 0x42,
+  DISK_IO_ERROR: 0x43,
+  DISK_FULL: 0x44
+} as const
+// spell-checker: enable
+
+export type ALARM_TYPE = (typeof ALARM_TYPE)[keyof typeof ALARM_TYPE]
+
+export const ALARM_TYPE_NAME: ReadonlyMap<number, string> = new Map(
+  Object.entries(ALARM_TYPE).map(([name, code]) => [code, name])
+)
+
+export type AlarmEvent = {
+  /** ALARM_TYPE code */
+  type: number
+  /** sensor input port for sensor alarms */
+  sensorIn: number
+  /** channel the alarm relates to */
+  channel: number
+  /** disk number for disk alarms */
+  disk: number
+}
+
+export type AlarmCallback = (event: AlarmEvent) => void
+
 export type DeviceTime = {
   second: number
   minute: number

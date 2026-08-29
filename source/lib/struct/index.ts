@@ -1,5 +1,6 @@
 // biome-ignore lint/performance/noBarrelFile: not relevant
 export { DD_TIME } from './DD_TIME.ts'
+export { NET_MESSAGE_CALLBACK, NET_SDK_ALARMINFO } from './NET_SDK_ALARMINFO.ts'
 export { LPNET_SDK_DEVICEINFO } from './LPNET_SDK_DEVICEINFO.ts'
 export { NET_SDK_CLIENTINFO } from './NET_SDK_CLIENTINFO.ts'
 export { NET_SDK_DEVICE_DISCOVERY_INFO } from './NET_SDK_DEVICE_DISCOVERY_INFO.ts'
