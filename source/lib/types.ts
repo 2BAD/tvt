@@ -101,6 +101,61 @@ export type AlarmEvent = {
 
 export type AlarmCallback = (event: AlarmEvent) => void
 
+export const RECORDING_FORMAT = {
+  AVI: 0,
+  PRIVATE: 1
+} as const
+
+export type RECORDING_FORMAT = (typeof RECORDING_FORMAT)[keyof typeof RECORDING_FORMAT]
+
+export const PLAYBACK_CONTROL = {
+  PAUSE: 0,
+  FAST_FORWARD: 1,
+  REWIND: 2,
+  RESUME: 3,
+  FRAME_STEP: 5,
+  NORMAL: 6
+} as const
+
+export type PLAYBACK_CONTROL = (typeof PLAYBACK_CONTROL)[keyof typeof PLAYBACK_CONTROL]
+
+// spell-checker: disable
+export const RECORD_TYPE = {
+  MANUAL: 0x0001,
+  SCHEDULE: 0x0002,
+  MOTION: 0x0004,
+  SENSOR: 0x0008,
+  BEHAVIOR: 0x0010,
+  SHELTER: 0x0020,
+  OVERSPEED: 0x0040,
+  OVERBOUND: 0x0080,
+  OSC: 0x0100,
+  AVD: 0x0200,
+  TRIPWIRE: 0x0400,
+  PERIMETER: 0x0800,
+  VFD: 0x1000,
+  POS: 0x2000,
+  PIR: 0x4000
+} as const
+// spell-checker: enable
+
+export type RECORD_TYPE = (typeof RECORD_TYPE)[keyof typeof RECORD_TYPE]
+
+export const RECORD_TYPE_NAME: ReadonlyMap<number, string> = new Map(
+  Object.entries(RECORD_TYPE).map(([name, code]) => [code, name])
+)
+
+export type RecFile = {
+  channel: number
+  locked: boolean
+  startTime: Date
+  stopTime: Date
+  /** bitmask of RECORD_TYPE flags */
+  recType: number
+  partition: number
+  fileIndex: number
+}
+
 export type DeviceTime = {
   second: number
   minute: number

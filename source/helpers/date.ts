@@ -1,3 +1,32 @@
+import type { DeviceTime } from '../lib/types.ts'
+
+/**
+ * Converts a Date into the device's broken-down time, interpreted in the host timezone.
+ *
+ * @param date - The date to convert.
+ * @returns The device time fields.
+ */
+export const toDeviceTime = (date: Date): DeviceTime => ({
+  second: date.getSeconds(),
+  minute: date.getMinutes(),
+  hour: date.getHours(),
+  wday: date.getDay(),
+  mday: date.getDate(),
+  month: date.getMonth(),
+  year: date.getFullYear() - 1900,
+  nTotalseconds: 0,
+  nMicrosecond: 0
+})
+
+/**
+ * Converts the device's broken-down time into a Date, interpreted in the host timezone.
+ *
+ * @param time - The device time fields.
+ * @returns The date.
+ */
+export const fromDeviceTime = (time: DeviceTime): Date =>
+  new Date(1900 + time.year, time.month, time.mday, time.hour, time.minute, time.second)
+
 /**
  * Parses a build date string provided by SDK.
  *

@@ -1,6 +1,7 @@
 import type { IKoffiLib } from 'koffi'
 import { platform } from 'node:os'
 import { resolve } from 'node:path'
+import { fromDeviceTime } from '../helpers/date.ts'
 import {
   DD_TIME,
   LIVE_DATA_CALLBACK,
@@ -10,8 +11,10 @@ import {
   NET_SDK_CLIENTINFO,
   NET_SDK_DEVICE_DISCOVERY_INFO,
   NET_SDK_IMAGE_EFFECT_T,
-  NET_SDK_IPC_DEVICE_INFO
+  NET_SDK_IPC_DEVICE_INFO,
+  NET_SDK_REC_FILE
 } from './struct/index.ts'
+import { NET_SDK_ERROR } from './types.ts'
 import type {
   AlarmEvent,
   DeviceInfo,
@@ -19,6 +22,9 @@ import type {
   FrameInfo,
   LiveFrameCallback,
   LOG_LEVEL,
+  PLAYBACK_CONTROL,
+  RecFile,
+  RECORDING_FORMAT,
   STREAM_TYPE,
   VideoEffect
 } from './types.ts'
@@ -120,6 +126,47 @@ interface TVTSDK {
   setVideoEffect: (userId: number, channel: number, effect: VideoEffect) => Promise<boolean>
   // ✅︎ unsigned int NET_SDK_SupportStreamNum(LONG lUserID, LONG lChannel);
   supportStreamNum: (userId: number, channel: number) => Promise<number>
+  // ✅︎ POINTERHANDLE NET_SDK_FindFile(LONG lUserID, LONG lChannel, DD_TIME *lpStartTime, DD_TIME *lpStopTime);
+  // ✅︎ LONG NET_SDK_FindNextFile(POINTERHANDLE lFindHandle, NET_SDK_REC_FILE *lpFindData);
+  // ✅︎ BOOL NET_SDK_FindClose(POINTERHANDLE lFindHandle);
+  searchRecordings: (
+    userId: number,
+    channel: number,
+    startTime: DeviceTime,
+    stopTime: DeviceTime
+  ) => Promise<RecFile[] | null>
+  // ✅︎ POINTERHANDLE NET_SDK_GetFileByTimeExV2(LONG lUserID, LONG lChannel, DD_TIME *lpStartTime, DD_TIME *lpStopTime, char *sSavedFileName, char recFormat, BOOL bFirstStream, BOOL bUseCallBack, BACKUP_DATA_CALLBACK, void *pUser);
+  getFileByTime: (
+    userId: number,
+    channel: number,
+    startTime: DeviceTime,
+    stopTime: DeviceTime,
+    fileName: string,
+    format: RECORDING_FORMAT,
+    firstStream: boolean
+  ) => Promise<number>
+  // ✅︎ int NET_SDK_GetDownloadPos(POINTERHANDLE lFileHandle);
+  getDownloadPos: (fileHandle: number) => Promise<number>
+  // ✅︎ BOOL NET_SDK_StopGetFile(POINTERHANDLE lFileHandle);
+  stopGetFile: (fileHandle: number) => Promise<boolean>
+  // ✅︎ POINTERHANDLE NET_SDK_PlayBackByTime(LONG lUserID, LONG *pChannels, LONG channelNum, DD_TIME *lpStartTime, DD_TIME *lpStopTime, HWND *hWnds);
+  playBackByTime: (
+    userId: number,
+    channels: number[],
+    channelNum: number,
+    startTime: DeviceTime,
+    stopTime: DeviceTime
+  ) => Promise<number>
+  // ✅︎ BOOL NET_SDK_SetPlayDataCallBack(POINTERHANDLE lPlayHandle, PLAY_DATA_CALLBACK fPlayDataCallBack, void *pUser);
+  setPlayDataCallBack: (playHandle: number, onFrame: LiveFrameCallback | null) => Promise<boolean>
+  // ✅︎ BOOL NET_SDK_PlayBackControl(POINTERHANDLE lPlayHandle, DWORD dwControlCode, DWORD dwInValue, DWORD *lpOutValue);
+  playBackControl: (playHandle: number, controlCode: PLAYBACK_CONTROL, inValue: number) => Promise<boolean>
+  // ✅︎ BOOL NET_SDK_PlayBackSaveData(POINTERHANDLE lPlayHandle, LONG lChannel, char *sFileName);
+  startSavingPlayback: (playHandle: number, channel: number, fileName: string) => Promise<boolean>
+  // ✅︎ BOOL NET_SDK_StopPlayBackSave(POINTERHANDLE lPlayHandle, LONG lChannel);
+  stopSavingPlayback: (playHandle: number, channel: number) => Promise<boolean>
+  // ✅︎ BOOL NET_SDK_StopPlayBack(POINTERHANDLE lPlayHandle);
+  stopPlayBack: (playHandle: number) => Promise<boolean>
 }
 
 export class SDK implements TVTSDK {
@@ -127,6 +174,7 @@ export class SDK implements TVTSDK {
   #_koffi: typeof import('koffi') | null = null
   #_lib: IKoffiLib | null = null
   readonly #liveCallbacks = new Map<number, RegisteredCallback>()
+  readonly #playbackCallbacks = new Map<number, RegisteredCallback>()
   readonly #alarmListeners = new Map<number, (events: AlarmEvent[]) => void>()
   #messageCallback: RegisteredCallback | null = null
 
@@ -814,6 +862,270 @@ export class SDK implements TVTSDK {
    */
   public async supportStreamNum(userId: number, channel: number): Promise<number> {
     return (await this.lib).func('NET_SDK_SupportStreamNum', 'uint32_t', ['long', 'long'])(userId, channel)
+  }
+
+  /**
+   * Searches for recorded files on a channel within a time range.
+   *
+   * @param userId - User ID from successful login
+   * @param channel - Video channel number
+   * @param startTime - Range start, in device time
+   * @param stopTime - Range end, in device time
+   * @returns The recordings found, or null on failure
+   */
+  public async searchRecordings(
+    userId: number,
+    channel: number,
+    startTime: DeviceTime,
+    stopTime: DeviceTime
+  ): Promise<RecFile[] | null> {
+    const koffi = await this.koffi
+    const lib = await this.lib
+
+    const findHandle = lib.func('NET_SDK_FindFile', 'long', [
+      'long',
+      'long',
+      koffi.pointer(DD_TIME),
+      koffi.pointer(DD_TIME)
+    ])(userId, channel, startTime, stopTime)
+    if (findHandle < 0) {
+      return null
+    }
+
+    const findNext = lib.func('NET_SDK_FindNextFile', 'long', ['long', koffi.out(koffi.pointer(NET_SDK_REC_FILE))])
+    const files: RecFile[] = []
+    for (let guard = 0; guard < 1_000_000; guard++) {
+      const rec = {} as {
+        dwChannel: number
+        bFileLocked: number
+        startTime: DeviceTime
+        stopTime: DeviceTime
+        dwRecType: number
+        dwPartition: number
+        dwFileIndex: number
+      }
+      if (findNext(findHandle, rec) !== NET_SDK_ERROR.NET_SDK_FILE_SUCCESS) {
+        break
+      }
+      files.push({
+        channel: rec.dwChannel,
+        locked: Boolean(rec.bFileLocked),
+        startTime: fromDeviceTime(rec.startTime),
+        stopTime: fromDeviceTime(rec.stopTime),
+        recType: rec.dwRecType,
+        partition: rec.dwPartition,
+        fileIndex: rec.dwFileIndex
+      })
+    }
+
+    lib.func('NET_SDK_FindClose', 'bool', ['long'])(findHandle)
+    return files
+  }
+
+  /**
+   * Starts downloading a recording to a file.
+   *
+   * @param userId - User ID from successful login
+   * @param channel - Video channel number
+   * @param startTime - Range start, in device time
+   * @param stopTime - Range end, in device time
+   * @param fileName - Path to save the recording
+   * @param format - Container format (AVI or the device's private format)
+   * @param firstStream - Download the main stream (true) or the sub stream (false)
+   * @returns Download handle if successful, -1 if failed
+   */
+  public async getFileByTime(
+    userId: number,
+    channel: number,
+    startTime: DeviceTime,
+    stopTime: DeviceTime,
+    fileName: string,
+    format: RECORDING_FORMAT,
+    firstStream: boolean
+  ): Promise<number> {
+    const koffi = await this.koffi
+    const lib = await this.lib
+    return lib.func('NET_SDK_GetFileByTimeExV2', 'long', [
+      'long',
+      'long',
+      koffi.pointer(DD_TIME),
+      koffi.pointer(DD_TIME),
+      'string',
+      'char',
+      'bool',
+      'bool',
+      'void *',
+      'void *'
+    ])(userId, channel, startTime, stopTime, fileName, format, firstStream, false, null, null)
+  }
+
+  /**
+   * Gets the progress of a download.
+   *
+   * @param fileHandle - Handle from getFileByTime
+   * @returns Progress percent 0-100, or a negative value on error
+   */
+  public async getDownloadPos(fileHandle: number): Promise<number> {
+    return (await this.lib).func('NET_SDK_GetDownloadPos', 'int', ['long'])(fileHandle)
+  }
+
+  /**
+   * Stops a download and releases its handle.
+   *
+   * @param fileHandle - Handle from getFileByTime
+   * @returns Success status
+   */
+  public async stopGetFile(fileHandle: number): Promise<boolean> {
+    return (await this.lib).func('NET_SDK_StopGetFile', 'bool', ['long'])(fileHandle)
+  }
+
+  /**
+   * Starts playback of recordings on one or more channels within a time range.
+   *
+   * @param userId - User ID from successful login
+   * @param channels - Video channel numbers
+   * @param channelNum - Number of channels
+   * @param startTime - Range start, in device time
+   * @param stopTime - Range end, in device time
+   * @returns Playback handle if successful, -1 if failed
+   */
+  public async playBackByTime(
+    userId: number,
+    channels: number[],
+    channelNum: number,
+    startTime: DeviceTime,
+    stopTime: DeviceTime
+  ): Promise<number> {
+    const koffi = await this.koffi
+    const lib = await this.lib
+    return lib.func('NET_SDK_PlayBackByTime', 'long', [
+      'long',
+      'long *',
+      'long',
+      koffi.pointer(DD_TIME),
+      koffi.pointer(DD_TIME),
+      'void *'
+    ])(userId, channels, channelNum, startTime, stopTime, null)
+  }
+
+  /**
+   * Sets or removes the frame data callback of a playback stream.
+   *
+   * @param playHandle - Handle from playBackByTime
+   * @param onFrame - Callback invoked with every received frame, or null to remove the current one
+   * @returns Success status
+   */
+  public async setPlayDataCallBack(playHandle: number, onFrame: LiveFrameCallback | null): Promise<boolean> {
+    const koffi = await this.koffi
+    const lib = await this.lib
+
+    let registered: RegisteredCallback | null = null
+    if (onFrame) {
+      registered = koffi.register((_playHandle: number, frame: FrameInfo, buffer: unknown, _user: unknown): void => {
+        try {
+          onFrame(frame, Buffer.from(koffi.decode(buffer, koffi.array('uint8', frame.length))))
+        } catch {
+          // an exception must not propagate into the SDK's streaming thread
+        }
+      }, koffi.pointer(LIVE_DATA_CALLBACK))
+    }
+
+    const result = lib.func('NET_SDK_SetPlayDataCallBack', 'bool', [
+      'long',
+      koffi.pointer(LIVE_DATA_CALLBACK),
+      'void *'
+    ])(playHandle, registered, null)
+
+    const previous = this.#playbackCallbacks.get(playHandle)
+    if (previous) {
+      koffi.unregister(previous)
+      this.#playbackCallbacks.delete(playHandle)
+    }
+
+    if (registered) {
+      if (result) {
+        this.#playbackCallbacks.set(playHandle, registered)
+      } else {
+        koffi.unregister(registered)
+      }
+    }
+
+    return result
+  }
+
+  /**
+   * Controls a playback stream (pause, resume, speed, step).
+   *
+   * @param playHandle - Handle from playBackByTime
+   * @param controlCode - The control action
+   * @param inValue - Control-specific input value
+   * @returns Success status
+   */
+  public async playBackControl(playHandle: number, controlCode: PLAYBACK_CONTROL, inValue: number): Promise<boolean> {
+    const koffi = await this.koffi
+    const lib = await this.lib
+    return lib.func('NET_SDK_PlayBackControl', 'bool', [
+      'long',
+      'uint32_t',
+      'uint32_t',
+      koffi.out(koffi.pointer('uint32_t'))
+    ])(playHandle, controlCode, inValue, [0])
+  }
+
+  /**
+   * Starts saving a playback stream to file.
+   *
+   * @param playHandle - Handle from playBackByTime
+   * @param channel - Video channel number
+   * @param fileName - Path to save the stream file
+   * @returns Success status
+   */
+  public async startSavingPlayback(playHandle: number, channel: number, fileName: string): Promise<boolean> {
+    return (await this.lib).func('NET_SDK_PlayBackSaveData', 'bool', ['long', 'long', 'string'])(
+      playHandle,
+      channel,
+      fileName
+    )
+  }
+
+  /**
+   * Stops saving a playback stream to file.
+   *
+   * @param playHandle - Handle from playBackByTime
+   * @param channel - Video channel number
+   * @returns Success status
+   */
+  public async stopSavingPlayback(playHandle: number, channel: number): Promise<boolean> {
+    return (await this.lib).func('NET_SDK_StopPlayBackSave', 'bool', ['long', 'long'])(playHandle, channel)
+  }
+
+  /**
+   * Stops a playback stream.
+   *
+   * The native call runs on a koffi worker thread: NET_SDK_StopPlayBack waits for
+   * in-flight data callbacks to finish, and those callbacks need the main thread.
+   *
+   * @param playHandle - Handle from playBackByTime
+   * @returns Success status
+   */
+  public async stopPlayBack(playHandle: number): Promise<boolean> {
+    const koffi = await this.koffi
+    const lib = await this.lib
+
+    const stop = lib.func('NET_SDK_StopPlayBack', 'bool', ['long'])
+    const result = await new Promise<boolean>((resolve, reject) => {
+      stop.async(playHandle, (error: Error | null, value: boolean) => {
+        error ? reject(error) : resolve(value)
+      })
+    })
+
+    const registered = this.#playbackCallbacks.get(playHandle)
+    if (registered) {
+      koffi.unregister(registered)
+      this.#playbackCallbacks.delete(playHandle)
+    }
+
+    return result
   }
 }
 

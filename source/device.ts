@@ -5,20 +5,34 @@ import { platform } from 'node:os'
 import { dirname } from 'node:path'
 import { performance } from 'node:perf_hooks'
 import pSeries from 'p-series'
-import { parseBuildDate } from './helpers/date.ts'
+import { fromDeviceTime, parseBuildDate, toDeviceTime } from './helpers/date.ts'
 import { validateIp, validatePort } from './helpers/validators.ts'
 import { sdk } from './lib/sdk.ts'
 import {
   NET_SDK_ERROR_NAME,
+  RECORDING_FORMAT,
   STREAM_TYPE,
   type AlarmCallback,
   type DeviceInfo,
   type DeviceTime,
+  type RecFile,
   type VideoEffect
 } from './lib/types.ts'
+import { PlaybackStream } from './playback.ts'
 import { LiveStream } from './stream.ts'
 import type { Settings, VersionInfo } from './types.ts'
-export { ALARM_TYPE, ALARM_TYPE_NAME, FRAME_TYPE, STREAM_TYPE } from './lib/types.ts'
+export {
+  ALARM_TYPE,
+  ALARM_TYPE_NAME,
+  FRAME_TYPE,
+  PLAYBACK_CONTROL,
+  RECORD_TYPE,
+  RECORD_TYPE_NAME,
+  RECORDING_FORMAT,
+  STREAM_TYPE
+} from './lib/types.ts'
+export { PlaybackStream } from './playback.ts'
+export type { PlaybackFrame } from './playback.ts'
 export { LiveStream } from './stream.ts'
 export type { LiveFrame } from './stream.ts'
 export type * from './types.ts'
@@ -50,6 +64,7 @@ export class Device {
   readonly #sdkVersion: string
   readonly #sdkBuild: string
   readonly #liveStreams = new Set<LiveStream>()
+  readonly #playbackStreams = new Set<PlaybackStream>()
   #alarmHandle: number | null = null
   // alarms arrive from the SDK's own thread, not through libuv, so a program that only waits
   // for them would otherwise run out of event loop work and exit
@@ -376,7 +391,7 @@ export class Device {
     if (!(await sdk.getDeviceTime(this.userId, time))) {
       throw new Error(await this.getLastError())
     }
-    return new Date(1900 + time.year, time.month, time.mday, time.hour, time.minute, time.second)
+    return fromDeviceTime(time)
   }
 
   /**
@@ -525,6 +540,130 @@ export class Device {
   }
 
   /**
+   * Searches for recorded files on a channel within a time range.
+   *
+   * Times are interpreted in the host timezone; run host and device in the same one or account
+   * for the offset.
+   *
+   * @param channel - The channel number.
+   * @param start - Range start.
+   * @param stop - Range end.
+   * @returns A promise that resolves to the recordings found, ordered as the device returns them.
+   * @throws {Error} An error if the search fails.
+   */
+  async searchRecordings(channel: number, start: Date, stop: Date): Promise<RecFile[]> {
+    this.#requireAuth()
+
+    log(
+      `Searching recordings on device ${this.uuid} channel ${channel} from ${start.toISOString()} to ${stop.toISOString()}`
+    )
+
+    const files = await sdk.searchRecordings(this.userId, channel, toDeviceTime(start), toDeviceTime(stop))
+    if (files === null) {
+      throw new Error(await this.getLastError())
+    }
+    return files
+  }
+
+  /**
+   * Downloads a recording of a channel to a file, resolving once the download completes.
+   *
+   * Times are interpreted in the host timezone; run host and device in the same one or account
+   * for the offset.
+   *
+   * @param channel - The channel number.
+   * @param start - Range start.
+   * @param stop - Range end.
+   * @param filePath - The path where the recording will be saved.
+   * @param options - format selects the container (RECORDING_FORMAT.AVI by default, or the device's
+   * private format), streamType picks main or sub stream (main by default), onProgress is called
+   * with the download percentage (0-100) as it advances.
+   * @returns A promise that resolves to true once the download completes.
+   * @throws {Error} An error if the download fails to start or fails midway.
+   */
+  async downloadRecording(
+    channel: number,
+    start: Date,
+    stop: Date,
+    filePath: string,
+    options?: { format?: RECORDING_FORMAT; streamType?: STREAM_TYPE; onProgress?: (percent: number) => void }
+  ): Promise<boolean> {
+    this.#requireAuth()
+
+    log(`Downloading recording from device ${this.uuid} channel ${channel} to ${filePath}`)
+
+    const dirPath = dirname(filePath)
+    if (!existsSync(dirPath)) {
+      mkdirSync(dirPath, { recursive: true })
+    }
+
+    const format = options?.format ?? RECORDING_FORMAT.AVI
+    const firstStream = (options?.streamType ?? STREAM_TYPE.MAIN) === STREAM_TYPE.MAIN
+    const handle = await sdk.getFileByTime(
+      this.userId,
+      channel,
+      toDeviceTime(start),
+      toDeviceTime(stop),
+      filePath,
+      format,
+      firstStream
+    )
+    if (handle === -1) {
+      throw new Error(await this.getLastError())
+    }
+
+    try {
+      for (;;) {
+        const pos = await sdk.getDownloadPos(handle)
+        if (pos < 0) {
+          throw new Error(await this.getLastError())
+        }
+        options?.onProgress?.(pos)
+        if (pos >= 100) {
+          break
+        }
+        await new Promise((resolve) => setTimeout(resolve, 500))
+      }
+    } finally {
+      await sdk.stopGetFile(handle)
+    }
+
+    log(`Successfully downloaded recording from device ${this.uuid}`)
+    return true
+  }
+
+  /**
+   * Starts playback of a channel's recordings over a time range.
+   *
+   * Times are interpreted in the host timezone; run host and device in the same one or account
+   * for the offset.
+   *
+   * @param channel - The channel number.
+   * @param start - Range start.
+   * @param stop - Range end.
+   * @returns A promise that resolves to a PlaybackStream.
+   * @throws {Error} An error if starting playback fails.
+   */
+  async startPlayback(channel: number, start: Date, stop: Date): Promise<PlaybackStream> {
+    this.#requireAuth()
+
+    log(
+      `Starting playback from device ${this.uuid} channel ${channel} from ${start.toISOString()} to ${stop.toISOString()}`
+    )
+
+    const handle = await sdk.playBackByTime(this.userId, [channel], 1, toDeviceTime(start), toDeviceTime(stop))
+    if (handle === -1) {
+      throw new Error(await this.getLastError())
+    }
+
+    const stream: PlaybackStream = new PlaybackStream(handle, [channel], () => this.#playbackStreams.delete(stream))
+    this.#playbackStreams.add(stream)
+
+    log(`Successfully started playback from device ${this.uuid} with handle ${handle}`)
+    return stream
+  }
+
+  /**
    * Gets the last error that occurred.
    *
    * @returns A promise that resolves to a string describing the last error.
@@ -544,6 +683,9 @@ export class Device {
 
     try {
       for (const stream of this.#liveStreams) {
+        await stream.stop()
+      }
+      for (const stream of this.#playbackStreams) {
         await stream.stop()
       }
       await this.stopAlarmMonitoring()

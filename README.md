@@ -52,6 +52,7 @@ npm install @2bad/tvt
 ```typescript
 import { Device } from '@2bad/tvt'
 
+// 9008 port for cameras, 6036 for NVRs
 const device = await Device.create('192.168.1.100', 9008)
 await device.login('admin', 'password')
 
@@ -126,6 +127,78 @@ await device.stopAlarmMonitoring()
 
 One subscription per device. `startAlarmMonitoring` throws if one is already active; `stopAlarmMonitoring` is idempotent. While monitoring is active the process is kept alive even if the event loop has nothing else to do, since alarms arrive from the SDK's thread, not libuv.
 
+## Recordings
+
+Search the recorder's disk for what it has, then either download a clip to a file or play it back frame by frame.
+
+```typescript
+import { Device, RECORD_TYPE_NAME } from '@2bad/tvt'
+
+const device = await Device.create('192.168.1.100')
+await device.login('admin', 'password')
+
+const start = new Date('2026-08-29T08:00:00')
+const stop = new Date('2026-08-29T09:00:00')
+
+// what recordings exist on channel 0 in that window
+const files = await device.searchRecordings(0, start, stop)
+for (const file of files) {
+  console.log(
+    `${file.startTime.toISOString()} - ${file.stopTime.toISOString()} ${RECORD_TYPE_NAME.get(file.recType) ?? file.recType}${file.locked ? ' (locked)' : ''}`
+  )
+}
+
+// download the whole window to an AVI, with progress
+await device.downloadRecording(0, start, stop, '/tmp/clip.avi', {
+  onProgress: (percent) => console.log(`${percent}%`)
+})
+```
+
+`searchRecordings` returns the segments the device reports for the channel, each with `startTime`/`stopTime` (Date), a `recType` bitmask (decode via `RECORD_TYPE_NAME`), the `locked` flag, and the device-internal `partition`/`fileIndex`. `downloadRecording` resolves once the file is fully written; it polls the device for progress and calls `onProgress` as it advances.
+
+The download defaults to a standard AVI container and the main stream. Pass `format: RECORDING_FORMAT.PRIVATE` for the device's native format (an H.264 elementary stream in a proprietary header, playable in TVT's SDPlayer), or `streamType: STREAM_TYPE.SUB` for the sub stream:
+
+```typescript
+import { RECORDING_FORMAT, STREAM_TYPE } from '@2bad/tvt'
+
+await device.downloadRecording(0, start, stop, '/tmp/clip.dav', {
+  format: RECORDING_FORMAT.PRIVATE,
+  streamType: STREAM_TYPE.SUB
+})
+```
+
+Times are wall-clock, interpreted in the host timezone, same as `getTime`/`setTime`. Run host and device in the same zone or account for the offset.
+
+## Playback
+
+Streaming playback works like the live path: a `PlaybackStream` with the same `frames()` iterator and `recordTo`, plus transport controls.
+
+```typescript
+import { Device, FRAME_TYPE } from '@2bad/tvt'
+
+const device = await Device.create('192.168.1.100')
+await device.login('admin', 'password')
+
+const stream = await device.startPlayback(0, new Date('2026-08-29T08:00:00'), new Date('2026-08-29T09:00:00'))
+
+for await (const frame of stream.frames()) {
+  if (frame.frameType === FRAME_TYPE.VIDEO) {
+    console.log(`${frame.width}x${frame.height} keyframe=${frame.keyFrame} ${frame.data.length} bytes`)
+  }
+}
+
+// transport controls, any time while playing
+await stream.pause()
+await stream.resume()
+await stream.fastForward() // one speed step up; rewind() steps down; normalSpeed() resets
+await stream.frameStep() // advance one frame while paused
+
+await stream.stop()
+await device.dispose()
+```
+
+Same mechanics as a live stream: per-iterator queues with the 256-frame drop policy, `recordTo`/`stopRecording` to save the playback to an AVI, and automatic cleanup of any playback stream still running at `device.dispose()`.
+
 ## Snapshots
 
 Two ways to do it:
@@ -185,6 +258,16 @@ class Device {
   getRtspUrl(channel?: number, streamType?: STREAM_TYPE, options?: RtspUrlOptions): Promise<string>
   getStreamCount(channel?: number): Promise<number>
 
+  searchRecordings(channel: number, start: Date, stop: Date): Promise<RecFile[]>
+  downloadRecording(
+    channel: number,
+    start: Date,
+    stop: Date,
+    filePath: string,
+    options?: { format?: RECORDING_FORMAT; streamType?: STREAM_TYPE; onProgress?: (percent: number) => void }
+  ): Promise<boolean>
+  startPlayback(channel: number, start: Date, stop: Date): Promise<PlaybackStream>
+
   startAlarmMonitoring(onAlarm: AlarmCallback): Promise<boolean>
   stopAlarmMonitoring(): Promise<boolean>
   triggerAlarm(value: boolean): Promise<boolean>
@@ -208,6 +291,20 @@ class LiveStream {
   stop(): Promise<boolean>
   get stopped(): boolean
 }
+
+class PlaybackStream {
+  frames(): AsyncGenerator<PlaybackFrame>
+  recordTo(filePath: string): Promise<boolean>
+  stopRecording(): Promise<boolean>
+  pause(): Promise<boolean>
+  resume(): Promise<boolean>
+  fastForward(): Promise<boolean>
+  rewind(): Promise<boolean>
+  frameStep(): Promise<boolean>
+  normalSpeed(): Promise<boolean>
+  stop(): Promise<boolean>
+  get stopped(): boolean
+}
 ```
 
 `Settings` on `Device.create` controls the native connection behavior: `connectionTimeoutMs` (5000), `maxRetries` (3), `reconnectIntervalMs` (30000), `isReconnectEnabled` (true).
@@ -216,7 +313,7 @@ Every method except `create`, `login`, and `getLastError` requires a prior succe
 
 ### Error semantics
 
-Methods that return data (`getInfo`, `captureSnapshot`, `getTime`, `getRtspUrl`, `getVideoEffect`, `startLiveStream`, `login`) throw on failure with the decoded NET_SDK error name. Methods that perform an action (`saveSnapshot`, `triggerAlarm`, `setTime`, `logout`, ...) resolve `false` on failure. `getLastError()` returns the name of the most recent SDK error; the full table is exported as `NET_SDK_ERROR`.
+Methods that return data (`getInfo`, `captureSnapshot`, `getTime`, `getRtspUrl`, `getVideoEffect`, `startLiveStream`, `searchRecordings`, `startPlayback`, `downloadRecording`, `login`) throw on failure with the decoded NET_SDK error name. Methods that perform an action (`saveSnapshot`, `triggerAlarm`, `setTime`, `logout`, ...) resolve `false` on failure. `getLastError()` returns the name of the most recent SDK error; the full table is exported as `NET_SDK_ERROR`.
 
 ### Debug logging
 
@@ -236,6 +333,7 @@ proto/     Wireshark dissectors (Lua) for the wire protocol
 source/    the TypeScript implementation
   device.ts       Device class, public entry point
   stream.ts       LiveStream
+  playback.ts     PlaybackStream
   lib/sdk.ts      typed FFI layer over libdvrnetsdk.so
   lib/struct/     koffi struct definitions mirroring the C headers
 ```
