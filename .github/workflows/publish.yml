@@ -7,7 +7,7 @@ on:
 jobs:
   publish:
     name: publish
-    runs-on: blacksmith-4vcpu-ubuntu-2404
+    runs-on: ubuntu-latest
 
     permissions:
       contents: read
@@ -18,11 +18,23 @@ jobs:
         with:
           persist-credentials: false
       - uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
-      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: package.json
           registry-url: https://registry.npmjs.org
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
-      - run: pnpm publish --provenance --access public --no-git-checks
+      - name: determine dist-tag
+        id: dist-tag
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [[ "$VERSION" =~ -([a-zA-Z]+) ]]; then
+            echo "tag=${BASH_REMATCH[1]}" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=latest" >> "$GITHUB_OUTPUT"
+          fi
+      - name: publish
+        env:
+          NPM_TAG: ${{ steps.dist-tag.outputs.tag }}
+        run: pnpm publish --provenance --access public --no-git-checks --tag "$NPM_TAG"
