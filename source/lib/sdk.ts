@@ -1,8 +1,16 @@
 import type { IKoffiLib } from 'koffi'
 import { platform } from 'node:os'
 import { resolve } from 'node:path'
-import { LPNET_SDK_DEVICEINFO, NET_SDK_DEVICE_DISCOVERY_INFO, NET_SDK_IPC_DEVICE_INFO } from './struct/index.ts'
-import type { DeviceInfo, LOG_LEVEL } from './types.ts'
+import {
+  LIVE_DATA_CALLBACK,
+  LPNET_SDK_DEVICEINFO,
+  NET_SDK_CLIENTINFO,
+  NET_SDK_DEVICE_DISCOVERY_INFO,
+  NET_SDK_IPC_DEVICE_INFO
+} from './struct/index.ts'
+import type { DeviceInfo, FrameInfo, LiveFrameCallback, LOG_LEVEL, STREAM_TYPE } from './types.ts'
+
+type RegisteredCallback = ReturnType<(typeof import('koffi'))['register']>
 
 interface TVTSDK {
   // ✅︎ DWORD NET_SDK_GetSDKVersion();
@@ -64,6 +72,14 @@ interface TVTSDK {
    */
   // BOOL NET_SDK_SetLogToFile(BOOL bLogEnable = FALSE, char *strLogDir = NULL, BOOL bAutoDel = TRUE, int logLevel = YLOG_DEBUG);
   setLogToFile: (logEnable: boolean, logDir: string, autoDel: boolean, logLevel: LOG_LEVEL) => Promise<true>
+  // ✅︎ POINTERHANDLE NET_SDK_LivePlay(LONG lUserID, LPNET_SDK_CLIENTINFO lpClientInfo, LIVE_DATA_CALLBACK fLiveDataCallBack = NULL, void* pUser = NULL);
+  livePlay: (userId: number, channel: number, streamType: STREAM_TYPE) => Promise<number>
+  // ✅︎ BOOL NET_SDK_SetLiveDataCallBack(POINTERHANDLE lLiveHandle, LIVE_DATA_CALLBACK fLiveDataCallBack, void *pUser);
+  setLiveDataCallBack: (liveHandle: number, onFrame: LiveFrameCallback | null) => Promise<boolean>
+  // ✅︎ BOOL NET_SDK_StopLivePlay(POINTERHANDLE lLiveHandle);
+  stopLivePlay: (liveHandle: number) => Promise<boolean>
+  // ✅︎ BOOL NET_SDK_MakeKeyFrameEx(LONG lUserID, LONG lChannel, unsigned int streamType);
+  makeKeyFrame: (userId: number, channel: number, streamType: STREAM_TYPE) => Promise<boolean>
   // BOOL NET_SDK_SaveLiveData(POINTERHANDLE lLiveHandle, char *sFileName);
   startSavingLiveStream: (liveHandle: number, fileName: string) => Promise<boolean>
   // BOOL NET_SDK_StopSaveLiveData(POINTERHANDLE lLiveHandle);
@@ -76,6 +92,7 @@ export class SDK implements TVTSDK {
   static #instance: SDK
   #_koffi: typeof import('koffi') | null = null
   #_lib: IKoffiLib | null = null
+  readonly #liveCallbacks = new Map<number, RegisteredCallback>()
 
   private constructor() {
     if (!this.isLinux) {
@@ -372,6 +389,117 @@ export class SDK implements TVTSDK {
       autoDel,
       logLevel
     )
+  }
+
+  /**
+   * Starts live streaming from a channel.
+   *
+   * @param userId - User ID from successful login
+   * @param channel - Video channel number
+   * @param streamType - Stream to pull (main or sub)
+   * @returns Live handle if successful, -1 if failed
+   */
+  public async livePlay(userId: number, channel: number, streamType: STREAM_TYPE): Promise<number> {
+    const koffi = await this.koffi
+    const lib = await this.lib
+
+    const clientInfo = { lChannel: channel, streamType, hPlayWnd: null, bNoDecode: 0 }
+    return lib.func('NET_SDK_LivePlay', 'long', [
+      'long',
+      koffi.pointer(NET_SDK_CLIENTINFO),
+      koffi.pointer(LIVE_DATA_CALLBACK),
+      'void *'
+    ])(userId, clientInfo, null, null)
+  }
+
+  /**
+   * Requests an immediate keyframe from the encoder.
+   *
+   * @param userId - User ID from successful login
+   * @param channel - Video channel number
+   * @param streamType - Stream to request the keyframe on (main or sub)
+   * @returns Success status
+   */
+  public async makeKeyFrame(userId: number, channel: number, streamType: STREAM_TYPE): Promise<boolean> {
+    return (await this.lib).func('NET_SDK_MakeKeyFrameEx', 'bool', ['long', 'long', 'uint'])(
+      userId,
+      channel,
+      streamType
+    )
+  }
+
+  /**
+   * Sets or removes the frame data callback of a live stream.
+   *
+   * @param liveHandle - Handle from livePlay
+   * @param onFrame - Callback invoked with every received frame, or null to remove the current one
+   * @returns Success status
+   */
+  public async setLiveDataCallBack(liveHandle: number, onFrame: LiveFrameCallback | null): Promise<boolean> {
+    const koffi = await this.koffi
+    const lib = await this.lib
+
+    let registered: RegisteredCallback | null = null
+    if (onFrame) {
+      registered = koffi.register((_liveHandle: number, frame: FrameInfo, buffer: unknown, _user: unknown): void => {
+        try {
+          onFrame(frame, Buffer.from(koffi.decode(buffer, koffi.array('uint8', frame.length))))
+        } catch {
+          // an exception must not propagate into the SDK's streaming thread
+        }
+      }, koffi.pointer(LIVE_DATA_CALLBACK))
+    }
+
+    const result = lib.func('NET_SDK_SetLiveDataCallBack', 'bool', [
+      'long',
+      koffi.pointer(LIVE_DATA_CALLBACK),
+      'void *'
+    ])(liveHandle, registered, null)
+
+    const previous = this.#liveCallbacks.get(liveHandle)
+    if (previous) {
+      koffi.unregister(previous)
+      this.#liveCallbacks.delete(liveHandle)
+    }
+
+    if (registered) {
+      if (result) {
+        this.#liveCallbacks.set(liveHandle, registered)
+      } else {
+        koffi.unregister(registered)
+      }
+    }
+
+    return result
+  }
+
+  /**
+   * Stops live streaming.
+   *
+   * The native call runs on a koffi worker thread: NET_SDK_StopLivePlay waits for
+   * in-flight data callbacks to finish, and those callbacks need the main thread.
+   *
+   * @param liveHandle - Handle from livePlay
+   * @returns Success status
+   */
+  public async stopLivePlay(liveHandle: number): Promise<boolean> {
+    const koffi = await this.koffi
+    const lib = await this.lib
+
+    const stop = lib.func('NET_SDK_StopLivePlay', 'bool', ['long'])
+    const result = await new Promise<boolean>((resolve, reject) => {
+      stop.async(liveHandle, (error: Error | null, value: boolean) => {
+        error ? reject(error) : resolve(value)
+      })
+    })
+
+    const registered = this.#liveCallbacks.get(liveHandle)
+    if (registered) {
+      koffi.unregister(registered)
+      this.#liveCallbacks.delete(liveHandle)
+    }
+
+    return result
   }
 
   /**

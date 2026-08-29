@@ -9,6 +9,45 @@ export const LOG_LEVEL = {
 
 export type LOG_LEVEL = (typeof LOG_LEVEL)[keyof typeof LOG_LEVEL]
 
+export const STREAM_TYPE = {
+  MAIN: 0,
+  SUB: 1
+} as const
+
+export type STREAM_TYPE = (typeof STREAM_TYPE)[keyof typeof STREAM_TYPE]
+
+export const FRAME_TYPE = {
+  NONE: 0,
+  VIDEO: 1,
+  AUDIO: 2,
+  TALK_AUDIO: 3,
+  JPEG: 4,
+  VIDEO_FORMAT: 5,
+  AUDIO_FORMAT: 6,
+  TALK_AUDIO_FORMAT: 7
+} as const
+
+export type FRAME_TYPE = (typeof FRAME_TYPE)[keyof typeof FRAME_TYPE]
+
+export type FrameInfo = {
+  deviceID: number
+  channel: number
+  frameType: number
+  length: number
+  keyFrame: number
+  width: number
+  height: number
+  frameIndex: number
+  frameAttrib: number
+  streamID: number
+  /** absolute time in microseconds since 1970-01-01 00:00:00 UTC */
+  time: number
+  /** relative time in microseconds */
+  relativeTime: number
+}
+
+export type LiveFrameCallback = (frame: FrameInfo, data: Buffer) => void
+
 // spell-checker: disable
 export const NET_SDK_ERROR = {
   NET_SDK_SUCCESS: 0,

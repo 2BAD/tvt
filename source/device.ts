@@ -8,8 +8,12 @@ import pSeries from 'p-series'
 import { parseBuildDate } from './helpers/date.ts'
 import { validateIp, validatePort } from './helpers/validators.ts'
 import { sdk } from './lib/sdk.ts'
-import { NET_SDK_ERROR_NAME, type DeviceInfo } from './lib/types.ts'
+import { NET_SDK_ERROR_NAME, STREAM_TYPE, type DeviceInfo } from './lib/types.ts'
+import { LiveStream } from './stream.ts'
 import type { Settings, VersionInfo } from './types.ts'
+export { FRAME_TYPE, STREAM_TYPE } from './lib/types.ts'
+export { LiveStream } from './stream.ts'
+export type { LiveFrame } from './stream.ts'
 export type * from './types.ts'
 
 const log = debug('tvt:device')
@@ -36,6 +40,7 @@ export class Device {
 
   readonly #sdkVersion: string
   readonly #sdkBuild: string
+  readonly #liveStreams = new Set<LiveStream>()
 
   private constructor(ip: string, port: number, settings: Settings | undefined, sdkVersion: string, sdkBuild: string) {
     this.ip = ip
@@ -265,6 +270,33 @@ export class Device {
   }
 
   /**
+   * Starts pulling a live stream from a video channel.
+   *
+   * @param channel - The channel number to stream from.
+   * @param streamType - The stream to pull (main or sub).
+   * @returns A promise that resolves to a LiveStream.
+   * @throws {Error} An error if starting the stream fails.
+   */
+  async startLiveStream(channel = 0, streamType: STREAM_TYPE = STREAM_TYPE.MAIN): Promise<LiveStream> {
+    this.#requireAuth()
+
+    log(`Starting live stream from device ${this.uuid} channel ${channel} (stream type ${streamType})`)
+
+    const liveHandle = await sdk.livePlay(this.userId, channel, streamType)
+    if (liveHandle === -1) {
+      throw new Error(await this.getLastError())
+    }
+
+    const stream: LiveStream = new LiveStream(liveHandle, this.userId, channel, streamType, () =>
+      this.#liveStreams.delete(stream)
+    )
+    this.#liveStreams.add(stream)
+
+    log(`Successfully started live stream from device ${this.uuid} with handle ${liveHandle}`)
+    return stream
+  }
+
+  /**
    * Gets the last error that occurred.
    *
    * @returns A promise that resolves to a string describing the last error.
@@ -283,6 +315,9 @@ export class Device {
     log(`Disposing device ${this.uuid}...`)
 
     try {
+      for (const stream of this.#liveStreams) {
+        await stream.stop()
+      }
       if (this.userId) {
         await this.logout()
       }
