@@ -66,180 +66,17 @@ await device.dispose()
 
 `dispose()` stops any running streams and alarm monitoring, logs out, and releases the SDK. Call it exactly once, at the end.
 
-## Live streaming
+## Examples
 
-`startLiveStream` pulls the raw elementary stream from a channel. Video frames are H.264 Annex B chunks, audio is PCM. You can record to disk, consume frames programmatically, or both at once on a single stream.
+Runnable examples live in [`docs/examples`](docs/examples):
 
-```typescript
-import { Device, FRAME_TYPE, STREAM_TYPE } from '@2bad/tvt'
-
-const device = await Device.create('192.168.1.100')
-await device.login('admin', 'password')
-
-const stream = await device.startLiveStream(0, STREAM_TYPE.MAIN)
-
-// record to an AVI container (H.264 + PCM)
-await stream.recordTo('/tmp/capture.avi')
-await new Promise((resolve) => setTimeout(resolve, 10_000))
-await stream.stopRecording()
-
-// or consume frames directly
-for await (const frame of stream.frames()) {
-  if (frame.frameType === FRAME_TYPE.VIDEO) {
-    console.log(
-      `${frame.width}x${frame.height} keyframe=${frame.keyFrame} ${frame.data.length} bytes t=${frame.time}us`
-    )
-  }
-  if (frame.keyFrame) break
-}
-
-await stream.stop()
-await device.dispose()
-```
-
-Things to know:
-
-- Each `frames()` iterator gets its own queue. A consumer that falls more than 256 frames behind loses the oldest frames; nobody blocks the SDK callback thread.
-- `recordTo` forces a keyframe request so the file starts within a GOP, not seconds later.
-- `frame.time` is absolute microseconds since the Unix epoch, `frame.relativeTime` is stream-relative microseconds.
-- A stream that's still running when `dispose()` is called gets stopped for you, but don't rely on that.
-
-## Alarm monitoring
-
-Subscribes to the device's alarm channel. The device pushes events; you get a callback per event. Motion, sensor inputs, video loss, tripwire, perimeter, face match, disk errors: the whole `ALARM_TYPE` table.
-
-```typescript
-import { ALARM_TYPE, ALARM_TYPE_NAME, Device } from '@2bad/tvt'
-
-const device = await Device.create('192.168.1.100')
-await device.login('admin', 'password')
-
-await device.startAlarmMonitoring((event) => {
-  console.log(`${ALARM_TYPE_NAME.get(event.type)} on channel ${event.channel}`)
-  if (event.type === ALARM_TYPE.SENSOR) {
-    console.log(`sensor input ${event.sensorIn}`)
-  }
-})
-
-// later
-await device.stopAlarmMonitoring()
-```
-
-One subscription per device. `startAlarmMonitoring` throws if one is already active; `stopAlarmMonitoring` is idempotent. While monitoring is active the process is kept alive even if the event loop has nothing else to do, since alarms arrive from the SDK's thread, not libuv.
-
-## Recordings
-
-Search the recorder's disk for what it has, then either download a clip to a file or play it back frame by frame.
-
-```typescript
-import { Device, RECORD_TYPE_NAME } from '@2bad/tvt'
-
-const device = await Device.create('192.168.1.100')
-await device.login('admin', 'password')
-
-const start = new Date('2026-08-29T08:00:00')
-const stop = new Date('2026-08-29T09:00:00')
-
-// what recordings exist on channel 0 in that window
-const files = await device.searchRecordings(0, start, stop)
-for (const file of files) {
-  console.log(
-    `${file.startTime.toISOString()} - ${file.stopTime.toISOString()} ${RECORD_TYPE_NAME.get(file.recType) ?? file.recType}${file.locked ? ' (locked)' : ''}`
-  )
-}
-
-// download the whole window to an AVI, with progress
-await device.downloadRecording(0, start, stop, '/tmp/clip.avi', {
-  onProgress: (percent) => console.log(`${percent}%`)
-})
-```
-
-`searchRecordings` returns the segments the device reports for the channel, each with `startTime`/`stopTime` (Date), a `recType` bitmask (decode via `RECORD_TYPE_NAME`), the `locked` flag, and the device-internal `partition`/`fileIndex`. `downloadRecording` resolves once the file is fully written; it polls the device for progress and calls `onProgress` as it advances.
-
-The download defaults to a standard AVI container and the main stream. Pass `format: RECORDING_FORMAT.PRIVATE` for the device's native format (an H.264 elementary stream in a proprietary header, playable in TVT's SDPlayer), or `streamType: STREAM_TYPE.SUB` for the sub stream:
-
-```typescript
-import { RECORDING_FORMAT, STREAM_TYPE } from '@2bad/tvt'
-
-await device.downloadRecording(0, start, stop, '/tmp/clip.dav', {
-  format: RECORDING_FORMAT.PRIVATE,
-  streamType: STREAM_TYPE.SUB
-})
-```
-
-Times are wall-clock, interpreted in the host timezone, same as `getTime`/`setTime`. Run host and device in the same zone or account for the offset.
-
-## Playback
-
-Streaming playback works like the live path: a `PlaybackStream` with the same `frames()` iterator and `recordTo`, plus transport controls.
-
-```typescript
-import { Device, FRAME_TYPE } from '@2bad/tvt'
-
-const device = await Device.create('192.168.1.100')
-await device.login('admin', 'password')
-
-const stream = await device.startPlayback(0, new Date('2026-08-29T08:00:00'), new Date('2026-08-29T09:00:00'))
-
-for await (const frame of stream.frames()) {
-  if (frame.frameType === FRAME_TYPE.VIDEO) {
-    console.log(`${frame.width}x${frame.height} keyframe=${frame.keyFrame} ${frame.data.length} bytes`)
-  }
-}
-
-// transport controls, any time while playing
-await stream.pause()
-await stream.resume()
-await stream.fastForward() // one speed step up; rewind() steps down; normalSpeed() resets
-await stream.frameStep() // advance one frame while paused
-
-await stream.stop()
-await device.dispose()
-```
-
-Same mechanics as a live stream: per-iterator queues with the 256-frame drop policy, `recordTo`/`stopRecording` to save the playback to an AVI, and automatic cleanup of any playback stream still running at `device.dispose()`.
-
-## Snapshots
-
-Two ways to do it:
-
-```typescript
-// straight to disk (directory is created if missing)
-await device.saveSnapshot(0, '/tmp/snapshot.jpg')
-
-// in memory
-const jpeg = await device.captureSnapshot(0)
-
-// megapixel sensors can exceed the 4MB default buffer; size it yourself
-const big = await device.captureSnapshot(0, 16 * 1024 * 1024)
-```
-
-## RTSP
-
-If you'd rather feed ffmpeg or GStreamer than pull frames over the SDK:
-
-```typescript
-const url = await device.getRtspUrl(0, STREAM_TYPE.MAIN)
-// rtsp://admin:password@192.168.1.100:554/...
-```
-
-Credentials from `login` are embedded by default; pass `{ includeCredentials: false }` to keep them out. Some firmware reports a stream path that its own RTSP server answers with 404, while serving the main stream at the root; `{ omitPath: true }` works around that.
-
-## Device control
-
-```typescript
-await device.getTime() // device wall clock as a Date, host timezone
-await device.setTime() // sync to now; or pass a Date
-await device.getVideoEffect(0) // { brightness, contrast, saturation, hue }, each 0-100
-await device.setVideoEffect(0, { brightness: 60, contrast: 50, saturation: 50, hue: 50 })
-await device.getStreamCount(0) // streams the channel supports
-await device.triggerAlarm(true) // drive the alarm output relay
-await device.reboot() // session dies; create a new Device when it is back
-await device.shutdown() // requires physical power-on afterwards
-device.version // SDK + device firmware/kernel/hardware/MCU versions
-```
-
-The device stores wall-clock time with no timezone. `getTime`/`setTime` translate through the host timezone; run your host and device in the same one or account for it.
+- [Live streaming](docs/examples/live-streaming.md) - pull frames or record to an AVI
+- [Alarm monitoring](docs/examples/alarm-monitoring.md) - subscribe to the device's alarm events
+- [Recordings](docs/examples/recordings.md) - search and download recorded footage
+- [Playback](docs/examples/playback.md) - stream a recording with transport controls
+- [Snapshots](docs/examples/snapshots.md) - capture a JPEG to disk or memory
+- [RTSP](docs/examples/rtsp.md) - get an RTSP URL for ffmpeg or GStreamer
+- [Device control](docs/examples/device-control.md) - time, image, power, and version
 
 ## API
 
@@ -328,7 +165,7 @@ DEBUG=tvt:perf node app.js    # native call timings only
 
 ```
 bin/       vendor .so libraries (libdvrnetsdk.so and dependencies)
-docs/      vendor NET_SDK manuals (PDF/CHM), C headers, demo sources
+docs/      usage examples, vendor NET_SDK manuals (PDF/CHM), C headers, demo sources
 proto/     Wireshark dissectors (Lua) for the wire protocol
 source/    the TypeScript implementation
   device.ts       Device class, public entry point
