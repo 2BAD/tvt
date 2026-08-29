@@ -71,15 +71,15 @@
     "@2bad/tsconfig": "4.0.0",
     "@arethetypeswrong/cli": "0.18.5",
     "@types/debug": "4.1.13",
-    "@types/node": "26.2.0",
-    "@vitest/coverage-v8": "4.1.10",
+    "@types/node": "26.3.0",
+    "@vitest/coverage-v8": "4.1.11",
     "npm-run-all2": "9.0.3",
-    "oxfmt": "0.63.0",
-    "oxlint": "1.78.0",
-    "publint": "0.3.23",
+    "oxfmt": "0.65.0",
+    "oxlint": "1.80.0",
+    "publint": "0.3.24",
     "tsdown": "0.22.14",
     "typescript": "7.0.2",
-    "vitest": "4.1.10"
+    "vitest": "4.1.11"
   },
   "packageManager": "pnpm@11.24.0",
   "engines": {
