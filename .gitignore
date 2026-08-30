@@ -44,3 +44,7 @@ coverage
 
 ## Quokka configuration
 .quokka
+
+## Local working notes
+docs/todo.md
+docs/alarm-monitoring-handoff.md

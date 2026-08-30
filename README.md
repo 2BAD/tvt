@@ -165,7 +165,9 @@ DEBUG=tvt:perf node app.js    # native call timings only
 
 ```
 bin/       vendor .so libraries (libdvrnetsdk.so and dependencies)
-docs/      usage examples, vendor NET_SDK manuals (PDF/CHM), C headers, demo sources
+docs/
+  examples/       usage examples
+  vendor/         vendor SDK reference: NET_SDK manuals (PDF/CHM), C headers, demo sources
 proto/     Wireshark dissectors (Lua) for the wire protocol
 source/    the TypeScript implementation
   device.ts       Device class, public entry point
