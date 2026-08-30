@@ -1,6 +1,6 @@
 # Live streaming
 
-`startLiveStream` pulls the raw elementary stream from a channel. Video frames are H.264 Annex B chunks, audio is PCM. You can record to disk, consume frames programmatically, or both at once on a single stream.
+`startLiveStream` pulls the raw elementary stream from a channel. Video frames are H.264 Annex B chunks, audio is PCM. Record to disk, read frames in code, or both at once on one stream.
 
 ```typescript
 import { Device, FRAME_TYPE, STREAM_TYPE } from '@2bad/tvt'

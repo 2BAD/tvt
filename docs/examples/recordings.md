@@ -1,6 +1,6 @@
 # Recordings
 
-Search the recorder's disk for what it has, then either download a clip to a file or play it back frame by frame.
+Search the recorder's disk, then download a clip or play it back frame by frame.
 
 ```typescript
 import { Device, RECORD_TYPE_NAME } from '@2bad/tvt'
