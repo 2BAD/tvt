@@ -1,6 +1,6 @@
 {
   "name": "@2bad/tvt",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "TypeScript SDK for TVT and rebadged OEM CCTV devices: login, live H.264 streaming, snapshots, alarm monitoring, RTSP, and device control over the NET_SDK protocol",
   "keywords": [
     "tvt",
@@ -45,7 +45,10 @@
       }
     }
   },
-  "files": ["bin", "build"],
+  "files": [
+    "bin",
+    "build"
+  ],
   "scripts": {
     "build": "tsdown",
     "check": "run-p check:**",
