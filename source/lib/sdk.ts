@@ -1,4 +1,4 @@
-import type { IKoffiLib } from 'koffi'
+import type { LibraryHandle } from 'koffi'
 import { platform } from 'node:os'
 import { resolve } from 'node:path'
 import { fromDeviceTime } from '../helpers/date.ts'
@@ -171,8 +171,8 @@ interface TVTSDK {
 
 export class SDK implements TVTSDK {
   static #instance: SDK
-  #_koffi: typeof import('koffi') | null = null
-  #_lib: IKoffiLib | null = null
+  #_koffi: (typeof import('koffi'))['default'] | null = null
+  #_lib: LibraryHandle | null = null
   readonly #liveCallbacks = new Map<number, RegisteredCallback>()
   readonly #playbackCallbacks = new Map<number, RegisteredCallback>()
   readonly #alarmListeners = new Map<number, (events: AlarmEvent[]) => void>()
