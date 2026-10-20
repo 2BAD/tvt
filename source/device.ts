@@ -4,7 +4,6 @@ import { existsSync, mkdirSync } from 'node:fs'
 import { platform } from 'node:os'
 import { dirname } from 'node:path'
 import { performance } from 'node:perf_hooks'
-import pSeries from 'p-series'
 import { fromDeviceTime, parseBuildDate, toDeviceTime } from './helpers/date.ts'
 import { validateIp, validatePort } from './helpers/validators.ts'
 import { sdk } from './lib/sdk.ts'
@@ -114,11 +113,12 @@ export class Device {
     log(`Initializing device with IP: ${validatedIp}:${validatedPort}`)
 
     // Initialize the SDK
-    const [initResult, timeoutResult, reconnectResult] = await pSeries([
-      () => sdk.init(),
-      () => sdk.setConnectTimeout(settings?.connectionTimeoutMs ?? 5000, settings?.maxRetries ?? 3),
-      () => sdk.setReconnectInterval(settings?.reconnectIntervalMs ?? 30000, settings?.isReconnectEnabled ?? true)
-    ])
+    const initResult = await sdk.init()
+    const timeoutResult = await sdk.setConnectTimeout(settings?.connectionTimeoutMs ?? 5000, settings?.maxRetries ?? 3)
+    const reconnectResult = await sdk.setReconnectInterval(
+      settings?.reconnectIntervalMs ?? 30000,
+      settings?.isReconnectEnabled ?? true
+    )
 
     if (!initResult || !timeoutResult || !reconnectResult) {
       const errorCode = await sdk.getLastError()

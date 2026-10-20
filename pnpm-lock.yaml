@@ -14,9 +14,6 @@ importers:
       koffi:
         specifier: 3.3.3
         version: 3.3.3
-      p-series:
-        specifier: 3.0.0
-        version: 3.0.0
     devDependencies:
       '@2bad/axiom':
         specifier: 2.1.0
@@ -1213,10 +1210,6 @@ packages:
       vite-plus:
         optional: true
 
-  p-series@3.0.0:
-    resolution: {integrity: sha512-geaabIwiqy+jN4vuJROl1rpMJT/myHAMAfdubPQGJT3Grr8td+ogWvTk2qLsNlhYXcoZZAfl01pfq7lK3/gYKQ==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-
   package-manager-detector@1.9.0:
     resolution: {integrity: sha512-zAMfbta9nPA8AKkA4WdmNAT8R8s6Dk0/xwPsqNnRidMFcLo1YkLuPDTgs2f64XdzS8vbLNnoJ+uUIkgbz7oRHA==}
 
@@ -2388,8 +2381,6 @@ snapshots:
       '@oxlint/binding-win32-arm64-msvc': 1.88.0
       '@oxlint/binding-win32-ia32-msvc': 1.88.0
       '@oxlint/binding-win32-x64-msvc': 1.88.0
-
-  p-series@3.0.0: {}
 
   package-manager-detector@1.9.0: {}
 
