@@ -66,8 +66,7 @@
   },
   "dependencies": {
     "debug": "4.4.3",
-    "koffi": "3.3.3",
-    "p-series": "3.0.0"
+    "koffi": "3.3.3"
   },
   "devDependencies": {
     "@2bad/axiom": "2.1.0",
